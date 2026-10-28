@@ -3,3 +3,5 @@ out/
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.b5-deps/
+pgdata/

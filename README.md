@@ -1,6 +1,6 @@
 # 青禾镇 RPG 世界 MVP
 
-当前完成 B1 确定性七日规则模拟、B2 主智能体核心、B3 NPC 脚本运行时和 B4 SQLite 世界/记忆存储。代码不连接服务器、真实模型或生产数据。
+当前完成 B1 确定性七日规则模拟、B2 主智能体核心、B3 NPC 脚本运行时、B4 SQLite 世界/记忆存储和 B5 双数据库契约。代码不连接服务器、真实模型或生产数据。
 
 ## 运行
 
@@ -95,3 +95,26 @@ pwsh -NoProfile -File scripts/test-b4.ps1
 ```
 
 B4 提供世界版本、动作/事件日志、SQLite 迁移与回滚、六维记忆作用域、召回、衰减、锁定、模糊、归档、强化、NPC 有限记忆和投影失败核对。B4 契约说明见 [docs/handoff-B4.md](docs/handoff-B4.md)。
+
+## B5 SQLite/PostgreSQL 契约
+
+安装 B5 本地依赖：
+
+```powershell
+python -m pip install -r requirements-b5-dev.txt
+```
+
+运行 B1 至 B5 全量测试，包括隔离 PostgreSQL：
+
+```powershell
+pwsh -NoProfile -File scripts/test-b5.ps1
+```
+
+查询、迁移或回滚显式指定的本地测试数据库：
+
+```powershell
+pwsh -NoProfile -File scripts/migrate-b5.ps1 -Url "sqlite:///out/b5/world.db" -Command migrate
+pwsh -NoProfile -File scripts/migrate-b5.ps1 -Url "sqlite:///out/b5/world.db" -Command version
+```
+
+B5 提供 SQLAlchemy 模型、SQLite/PostgreSQL JSON/时区/空值/索引/约束映射、同夹具业务摘要对比、迁移回滚、契约矩阵和生产执行清单。详见 [postgres-contract-matrix.md](docs/postgres-contract-matrix.md) 与 [postgres-migration-runbook.md](docs/postgres-migration-runbook.md)。
