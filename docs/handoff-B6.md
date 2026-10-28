@@ -119,7 +119,7 @@ B6 API、health、ready：17 项通过
 ```text
 任务 ID：B6 本地 FastAPI 与 OpenAPI
 分支：codex/bx-b6-fastapi-api
-提交哈希：待提交后回填
+提交哈希：cf313b1
 改动文件：app/api_models.py、app/local_state.py、app/main.py、tests/test_b6_api.py、tests/test_health.py、tests/test_ready.py、scripts/test-b6.ps1、scripts/run-b6-api.ps1、scripts/export-openapi.ps1、scripts/export_openapi.py、requirements-b6.txt、requirements-b6-dev.txt、docs/openapi-projection.md、docs/openapi-v1.json、README.md、docs/handoff-B6.md
 测试命令：pwsh -NoProfile -File scripts/test-b6.ps1
 测试结果：B1-B5 75 项、B6 17 项，合计 92 项通过
