@@ -1,0 +1,113 @@
+{
+  "schema_version": "rpg-event-pack-v1",
+  "events": [
+    {
+      "template_id": "dirtpl_campus_first_commute_v1",
+      "event_type": "character_moved",
+      "location_ids": ["loc_dorm", "loc_classroom"],
+      "summary": "林澄开始本周第一次通勤。",
+      "source": "原创冻结场景",
+      "rights_status": "original",
+      "review_status": "approved"
+    },
+    {
+      "template_id": "dirtpl_library_notice_deadline_v1",
+      "event_type": "detail_observed",
+      "location_ids": ["loc_library"],
+      "summary": "公告栏贴出校刊截稿提前的新通知。",
+      "source": "原创冻结场景",
+      "rights_status": "original",
+      "review_status": "approved"
+    },
+    {
+      "template_id": "dirtpl_canteen_menu_change_v1",
+      "event_type": "conversation_completed",
+      "location_ids": ["loc_canteen"],
+      "summary": "食堂更新公开菜单，高原只说明已知的售罄信息。",
+      "source": "原创冻结场景",
+      "rights_status": "original",
+      "review_status": "approved"
+    },
+    {
+      "template_id": "dirtpl_layout_disagreement_v1",
+      "event_type": "conversation_completed",
+      "location_ids": ["loc_classroom"],
+      "summary": "苏晚和林澄对版面重点保留了公开分歧。",
+      "source": "原创冻结场景",
+      "rights_status": "original",
+      "review_status": "approved"
+    },
+    {
+      "template_id": "dirtpl_lost_notebook_v1",
+      "event_type": "detail_observed",
+      "location_ids": ["loc_library", "loc_classroom"],
+      "summary": "阅览桌边出现一本无人认领的笔记本。",
+      "source": "原创冻结场景",
+      "rights_status": "original",
+      "review_status": "approved"
+    },
+    {
+      "template_id": "dirtpl_photo_permission_v1",
+      "event_type": "conversation_completed",
+      "location_ids": ["loc_classroom", "loc_river"],
+      "summary": "顾言提出拍摄活动，双方核对使用范围。",
+      "source": "原创冻结场景",
+      "rights_status": "original",
+      "review_status": "approved"
+    },
+    {
+      "template_id": "dirtpl_presentation_pressure_v1",
+      "event_type": "detail_observed",
+      "location_ids": ["loc_classroom"],
+      "summary": "公开展示安排变得更紧。",
+      "source": "原创冻结场景",
+      "rights_status": "original",
+      "review_status": "approved"
+    },
+    {
+      "template_id": "dirtpl_notice_misreading_v1",
+      "event_type": "detail_observed",
+      "location_ids": ["loc_library", "loc_classroom"],
+      "summary": "林澄发现提交说明还包含楼层要求。",
+      "source": "原创冻结场景",
+      "rights_status": "original",
+      "review_status": "approved"
+    },
+    {
+      "template_id": "dirtpl_reconciliation_v1",
+      "event_type": "conversation_completed",
+      "location_ids": ["loc_library", "loc_classroom"],
+      "summary": "苏晚和林澄依据公开要求重新确认分工。",
+      "source": "原创冻结场景",
+      "rights_status": "original",
+      "review_status": "approved"
+    },
+    {
+      "template_id": "dirtpl_river_cleanup_v1",
+      "event_type": "activity_participated",
+      "location_ids": ["loc_river"],
+      "summary": "林澄参加河边公开清理活动。",
+      "source": "原创冻结场景",
+      "rights_status": "original",
+      "review_status": "approved"
+    },
+    {
+      "template_id": "dirtpl_rain_return_umbrella_v1",
+      "event_type": "detail_observed",
+      "location_ids": ["loc_canteen", "loc_shop"],
+      "summary": "食堂门边出现一把无人认领的旧伞。",
+      "source": "原创冻结场景",
+      "rights_status": "original",
+      "review_status": "approved"
+    },
+    {
+      "template_id": "dirtpl_sunday_letter_v1",
+      "event_type": "journal_written",
+      "location_ids": ["loc_dorm"],
+      "summary": "林澄整理本周事实并准备周分享。",
+      "source": "原创冻结场景",
+      "rights_status": "original",
+      "review_status": "approved"
+    }
+  ]
+}

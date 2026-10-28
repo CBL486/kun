@@ -1,0 +1,29 @@
+{
+  "schema_version": "rpg-course-pack-v1",
+  "courses": [
+    {
+      "course_id": "course_narrative_writing_01",
+      "title": "叙事写作课",
+      "summary": "练习用可核实的场景细节组织短篇叙事。",
+      "source": "原创合成课程夹具",
+      "rights_status": "original",
+      "review_status": "approved"
+    },
+    {
+      "course_id": "course_layout_practice_01",
+      "title": "版面实践课",
+      "summary": "练习标题层级、正文重点和协作修改。",
+      "source": "原创合成课程夹具",
+      "rights_status": "original",
+      "review_status": "approved"
+    },
+    {
+      "course_id": "course_photo_ethics_01",
+      "title": "校园摄影边界",
+      "summary": "讨论肖像同意、使用范围和撤回方式。",
+      "source": "原创合成课程夹具",
+      "rights_status": "original",
+      "review_status": "approved"
+    }
+  ]
+}

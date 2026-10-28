@@ -1,6 +1,6 @@
 # 青禾镇 RPG 世界 MVP
 
-当前完成 B1 确定性七日规则模拟和 B2 主智能体核心。代码不连接服务器、真实模型或生产数据。
+当前完成 B1 确定性七日规则模拟、B2 主智能体核心和 B3 NPC 脚本运行时。代码不连接服务器、真实模型或生产数据。
 
 ## 运行
 
@@ -56,3 +56,19 @@ pwsh -NoProfile -File scripts/test-b2.ps1
 ```
 
 B2 提供最小感知包、确定性候选、可解释决策轨迹、模型意图和世界 ActionIntent 双层结构、状态过期恢复以及幂等重放。B2 契约说明见 [docs/handoff-B2.md](docs/handoff-B2.md)。
+
+## B3 NPC 运行时
+
+查看四名 NPC 的七日切片日程：
+
+```powershell
+pwsh -NoProfile -File scripts/run-b3-demo.ps1 -Date 2026-11-04
+```
+
+运行 B1 至 B3 的全部测试：
+
+```powershell
+pwsh -NoProfile -File scripts/test-b3.ps1
+```
+
+B3 提供四名 NPC 的离线日程状态机、知识隔离、审核台词模板、事件反应、48 小时重复控制、最多 8 个有限记忆槽、课程包和事件包。B3 契约说明见 [docs/handoff-B3.md](docs/handoff-B3.md)。
