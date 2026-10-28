@@ -4,11 +4,14 @@ from __future__ import annotations
 
 import uuid
 from collections.abc import Awaitable, Callable
+from pathlib import Path
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 from app.api_models import (
     AgentResponse,
@@ -28,6 +31,7 @@ from app.local_state import LocalWorldStore, PublicProjectionError
 APP_NAME = "AI World"
 APP_VERSION = "0.1.0"
 PUBLIC_API_VERSION = "v1"
+WEB_ROOT = Path(__file__).resolve().parents[1] / "web"
 
 
 def create_app(
@@ -193,6 +197,17 @@ def create_app(
     )
     async def send_chat(body: ChatRequest) -> ChatResponse:
         return local_world.chat(body.message)
+
+    if WEB_ROOT.is_dir():
+        application.mount(
+            "/static",
+            StaticFiles(directory=WEB_ROOT),
+            name="static",
+        )
+
+        @application.get("/", include_in_schema=False)
+        async def web_index() -> FileResponse:
+            return FileResponse(WEB_ROOT / "index.html")
 
     return application
 

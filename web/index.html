@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#163c3b">
+    <meta
+      name="description"
+      content="青禾镇观察者界面：查看主智能体、小镇公开时间线、分享、日记和记忆摘要。"
+    >
+    <title>青禾镇观察站</title>
+    <link rel="icon" href="/static/assets/placeholders/event.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">OBSERVER CHANNEL</p>
+        <h1>青禾镇观察站</h1>
+      </div>
+      <div class="observer-badge" aria-label="当前为观察者视角">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        观察者视角
+      </div>
+    </header>
+
+    <div id="connection-banner" class="banner banner-error" hidden role="alert">
+      <div>
+        <strong>暂时无法连接小镇</strong>
+        <p id="connection-message">请检查本地 API 是否已启动。</p>
+      </div>
+      <button id="retry-button" class="button button-secondary" type="button">
+        重新连接
+      </button>
+    </div>
+
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="主要页面">
+        <nav class="desktop-nav">
+          <button class="nav-item is-active" type="button" data-view="map">
+            <span class="nav-mark" aria-hidden="true">镇</span>小镇地图
+          </button>
+          <button class="nav-item" type="button" data-view="character">
+            <span class="nav-mark" aria-hidden="true">澄</span>角色卡
+          </button>
+          <button class="nav-item" type="button" data-view="timeline">
+            <span class="nav-mark" aria-hidden="true">时</span>公开时间线
+          </button>
+          <button class="nav-item" type="button" data-view="chat">
+            <span class="nav-mark" aria-hidden="true">言</span>观察留言
+          </button>
+          <button class="nav-item" type="button" data-view="diary">
+            <span class="nav-mark" aria-hidden="true">记</span>日记摘要
+          </button>
+          <button class="nav-item" type="button" data-view="memory">
+            <span class="nav-mark" aria-hidden="true">忆</span>记忆摘要
+          </button>
+          <button class="nav-item" type="button" data-view="settings">
+            <span class="nav-mark" aria-hidden="true">设</span>设置
+          </button>
+        </nav>
+        <div class="sidebar-note">
+          <span id="service-status" class="status-chip">连接中</span>
+          <p>你只能观察、留言和查看公开投影。</p>
+        </div>
+      </aside>
+
+      <main id="main-content" class="main-content" tabindex="-1">
+        <div id="loading-state" class="view-panel" aria-live="polite">
+          <div class="skeleton skeleton-title"></div>
+          <div class="skeleton-grid">
+            <div class="skeleton skeleton-card"></div>
+            <div class="skeleton skeleton-card"></div>
+            <div class="skeleton skeleton-card"></div>
+          </div>
+        </div>
+
+        <section id="view-map" class="view-panel" data-view-panel="map" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">TODAY IN QINGHE</p>
+              <h2>小镇此刻</h2>
+            </div>
+            <p id="world-clock" class="time-label"></p>
+          </div>
+
+          <div class="map-layout">
+            <article class="map-card">
+              <div class="map-art" aria-hidden="true">
+                <img src="/static/assets/placeholders/town-map.svg" alt="">
+              </div>
+              <div class="map-headline">
+                <div>
+                  <p class="eyebrow">CURRENT LOCATION</p>
+                  <h3 id="current-location">正在读取</h3>
+                </div>
+                <p id="world-name">青禾镇</p>
+              </div>
+              <div id="map-locations" class="location-grid" aria-live="polite"></div>
+            </article>
+
+            <aside class="agent-preview" aria-labelledby="preview-heading">
+              <div class="portrait portrait-large">
+                <img
+                  src="/static/assets/placeholders/avatar.svg"
+                  alt="林澄头像占位图"
+                >
+                <span>澄</span>
+              </div>
+              <p class="eyebrow">MAIN AGENT</p>
+              <h2 id="preview-heading">林澄</h2>
+              <p id="preview-identity" class="muted"></p>
+              <dl class="fact-list">
+                <div>
+                  <dt>现在</dt>
+                  <dd id="preview-mood">—</dd>
+                </div>
+                <div>
+                  <dt>当前目标</dt>
+                  <dd id="preview-goal">—</dd>
+                </div>
+              </dl>
+              <button class="button" type="button" data-view="character">
+                查看完整角色卡
+              </button>
+            </aside>
+          </div>
+        </section>
+
+        <section id="view-character" class="view-panel" data-view-panel="character" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">RESIDENT PROFILE</p>
+              <h2>角色卡</h2>
+            </div>
+          </div>
+          <div id="agent-card" class="character-layout"></div>
+        </section>
+
+        <section id="view-timeline" class="view-panel" data-view-panel="timeline" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">PUBLIC TIMELINE</p>
+              <h2>已经发生的事</h2>
+            </div>
+            <p class="muted">公开事件与放学分享</p>
+          </div>
+          <div id="timeline-list" class="timeline-list" aria-live="polite"></div>
+        </section>
+
+        <section id="view-chat" class="view-panel" data-view-panel="chat" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">OBSERVER MESSAGE</p>
+              <h2>给林澄留言</h2>
+            </div>
+            <span class="status-chip status-chip-soft">需审核</span>
+          </div>
+          <p class="intro-copy">
+            留言只会进入待处理队列。林澄会在下一个合法时段自行决定是否回应，不会听从你直接修改世界。
+          </p>
+          <div class="chat-card">
+            <div id="chat-log" class="chat-log" aria-live="polite">
+              <div class="chat-empty">
+                <img
+                  src="/static/assets/placeholders/event.svg"
+                  alt=""
+                  aria-hidden="true"
+                >
+                <p>还没有留言。你可以先问一个具体、公开的问题。</p>
+              </div>
+            </div>
+            <form id="chat-form" class="chat-form">
+              <label for="chat-message">留言内容</label>
+              <textarea
+                id="chat-message"
+                name="message"
+                rows="3"
+                maxlength="280"
+                placeholder="例如：今天的校刊任务进展怎么样？"
+                required
+              ></textarea>
+              <div class="form-footer">
+                <span id="chat-counter" class="muted">0 / 280</span>
+                <button id="chat-submit" class="button" type="submit">
+                  发送留言
+                </button>
+              </div>
+              <p id="chat-status" class="inline-status" role="status"></p>
+            </form>
+          </div>
+        </section>
+
+        <section id="view-diary" class="view-panel" data-view-panel="diary" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">PRIVATE NOTE · SAFE SUMMARY</p>
+              <h2>日记摘要</h2>
+            </div>
+            <span class="status-chip status-chip-soft">仅摘要</span>
+          </div>
+          <p class="intro-copy">
+            这里只展示审核后的安全摘要，不展示完整私密记忆或角色内心原文。
+          </p>
+          <div id="diary-list" class="diary-list" aria-live="polite"></div>
+        </section>
+
+        <section id="view-memory" class="view-panel" data-view-panel="memory" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">MEMORY MOSAIC</p>
+              <h2>记忆摘要</h2>
+            </div>
+            <label class="select-label">
+              类型
+              <select id="memory-filter">
+                <option value="">全部</option>
+                <option value="经历">经历</option>
+                <option value="回顾">回顾</option>
+                <option value="关系">关系</option>
+                <option value="偏好">偏好</option>
+              </select>
+            </label>
+          </div>
+          <div id="memory-list" class="memory-grid" aria-live="polite"></div>
+          <button id="memory-more" class="button button-secondary" type="button" hidden>
+            加载更多
+          </button>
+        </section>
+
+        <section id="view-settings" class="view-panel" data-view-panel="settings" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">SETTINGS</p>
+              <h2>观察设置</h2>
+            </div>
+          </div>
+          <div class="settings-card">
+            <img
+              src="/static/assets/placeholders/event.svg"
+              alt=""
+              aria-hidden="true"
+            >
+            <div>
+              <h3>设置将在后续批次开放</h3>
+              <p>B7 只提供占位页。正式美术、主题切换和辅助功能选项将在 B7.5 接入。</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <nav class="mobile-nav" aria-label="手机主要页面">
+      <button class="is-active" type="button" data-view="map">小镇</button>
+      <button type="button" data-view="character">角色</button>
+      <button type="button" data-view="timeline">时间线</button>
+      <button type="button" data-view="chat">留言</button>
+      <button type="button" data-view="diary">日记</button>
+      <button type="button" data-view="memory">记忆</button>
+    </nav>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
