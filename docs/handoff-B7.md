@@ -8,6 +8,8 @@
 
 分支：`codex/bx-b7-web`
 
+B6 整合基线：`a75c5ce`
+
 ## 1. 实现范围
 
 B7 提供：
@@ -111,7 +113,7 @@ B7：9 项通过
 ```text
 任务 ID：B7 最小 RPG Web
 分支：codex/bx-b7-web
-提交哈希：待提交后回填
+提交哈希：05ce186
 改动文件：web/、app/main.py、tests/test_b7_web.py、scripts/test-b7.ps1、scripts/run-b7-web.ps1、docs/web-ux-spec.md、docs/screenshots/、README.md、docs/handoff-B7.md
 测试命令：pwsh -NoProfile -File scripts/test-b7.ps1
 测试结果：B1-B6 92 项、B7 9 项，合计 101 项通过
