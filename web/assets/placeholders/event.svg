@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title id="title">事件摘要占位图标</title>
+  <rect x="22" y="12" width="76" height="96" rx="12" fill="#f5e5c9"/>
+  <path d="M38 38h44M38 54h44M38 70h30" stroke="#b87a2d" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="88" cy="91" r="18" fill="#163c3b"/>
+  <path d="M80 91l6 6 11-13" fill="none" stroke="#fffdf7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

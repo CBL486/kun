@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title">
+  <title id="title">角色头像占位图</title>
+  <rect width="240" height="240" fill="#dce9e4"/>
+  <circle cx="120" cy="86" r="42" fill="#9dbeb2"/>
+  <path d="M45 220c7-56 34-86 75-86s68 30 75 86" fill="#5f8f82"/>
+  <circle cx="105" cy="82" r="4" fill="#163c3b"/>
+  <circle cx="136" cy="82" r="4" fill="#163c3b"/>
+  <path d="M105 102q15 10 30 0" fill="none" stroke="#163c3b" stroke-width="4" stroke-linecap="round"/>
+</svg>

@@ -12,6 +12,7 @@
 - B4 SQLite 世界状态与记忆持久化已完成，66 项 B1-B4 测试通过。
 - B5 SQLite/PostgreSQL 契约与迁移已完成，75 项 B1-B5 测试通过。
 - B6 本地 FastAPI、OpenAPI 和公开投影已完成，B1-B6 共 92 项测试通过。
+- B7 最小 RPG Web 已通过评审前本地验收，B1-B7 共 101 项测试通过。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。`n- B6 至 G3 执行计划见 `B6至G3执行计划书_V1.md`。
 - B0 契约索引见 `docs/rpg-b0-index.md`。
 - G1 评审结果见 `docs/review-result-B0.md`。
@@ -82,6 +83,20 @@ GET /memory
 ```
 
 公开投影字段见 `docs/openapi-projection.md`，静态契约见 `docs/openapi-v1.json`。B6 只使用本地冻结场景和 mock，不连接生产环境。
+
+## B7 最小 RPG Web
+
+```powershell
+pwsh -NoProfile -File scripts/run-b7-web.ps1
+```
+
+浏览器打开 `http://127.0.0.1:8080/`。页面包含小镇地图、角色卡、时间线、留言、日记摘要、记忆摘要和设置占位页。
+
+```powershell
+pwsh -NoProfile -File scripts/test-b7.ps1
+```
+
+UX 与 B7.5 资源接口见 `docs/web-ux-spec.md`。
 
 ## 边界
 
