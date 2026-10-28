@@ -11,7 +11,7 @@
 - B3 NPC 脚本运行时已完成，50 项 B1+B2+B3 测试通过。
 - B4 SQLite 世界状态与记忆持久化已完成，66 项 B1-B4 测试通过。
 - B5 SQLite/PostgreSQL 契约与迁移已完成，75 项 B1-B5 测试通过。
-- Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
+- Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。`n- B6 至 G3 执行计划见 `B6至G3执行计划书_V1.md`。
 - B0 契约索引见 `docs/rpg-b0-index.md`。
 - G1 评审结果见 `docs/review-result-B0.md`。
 
