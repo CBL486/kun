@@ -26,7 +26,7 @@ server = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["app*", "rpg_sim*", "rpg_agent*", "rpg_npc*", "rpg_storage*", "agent_core*", "world_engine*", "narrative_director*", "npc_runtime*", "memory_core*"]
+include = ["app*", "rpg_sim*", "rpg_agent*", "rpg_npc*", "rpg_storage*", "rpg_orm*", "agent_core*", "world_engine*", "narrative_director*", "npc_runtime*", "memory_core*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

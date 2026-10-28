@@ -23,3 +23,5 @@ build/
 _pg_pkg/
 out/
 .tmp-*/
+.b5-deps/
+pgdata/
