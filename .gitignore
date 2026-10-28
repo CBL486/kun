@@ -1,3 +1,7 @@
+# 私有凭据与所有者资料：永不入库
+private/
+server-access-*.md
+
 .env
 .env.*
 !.env.example

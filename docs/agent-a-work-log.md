@@ -6,7 +6,7 @@
 
 仓库：<https://github.com/CBL486/kun>
 
-日志生成前远端基线：`3bfc7488ff7a27eecae887fbbef8ec7ab0401b1b`
+当前远端基线：`72aa593ba6e99c84fd8a53105f46e4a4d244ab2b`（= `main`，A 于 2026-10-28 复核）
 
 > 本日志记录“当前结论、已完成工作、下一步、边界和验证方法”。它不包含服务器密码、GitHub Token、生产密钥或真实用户数据。
 
@@ -57,6 +57,18 @@ pwsh -NoProfile -File scripts/test-b7.ps1
 - 测试应至少保持 `101 passed`。
 - 如果 Git 传输提示连接重置，可改用已经登录的 GitHub API；**不要输出或提交 Token**。
 - 在修改前先阅读本日志、`docs/review-result-B7.md` 和 `B6至G3执行计划书_V1.md`。
+
+### A 侧环境基线（2026-10-28 复核，换机或重装后按此恢复）
+
+实测结论，不是推测：
+
+- 本机 `github.com:443` 被网络重置，`git fetch/push` 走 HTTPS 必失败；`api.github.com` 正常。
+- 因此 `origin` 已改为 SSH：`git@github.com:CBL486/kun.git`，使用仓库级部署密钥 `~/.ssh/id_ed25519_kun`（写权限，仅此仓库）。
+- git 2.56.0 位于 `C:\Program Files\Git\cmd\git.exe`。
+- 本机没有 `pwsh`，会话里的 shell 是 Windows PowerShell 5.1；调用脚本用 `powershell -NoProfile -File`。
+- Python 用仓库内 `.venv\Scripts\python.exe`（3.12.14）；跑测试要把 `.b6-deps` 加入 `PYTHONPATH`，等价于 `scripts/test-b7.ps1`。
+- `private/` 已加入 `.gitignore`，私有凭据目录不再依赖“没人执行 `git add -A`”。
+- 101 项测试已由 A 在本机复验通过（2026-10-28 22:2x）。
 
 ### 文档可信顺序
 

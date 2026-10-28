@@ -1,6 +1,6 @@
 # B7 最小 RPG Web 交接
 
-状态：本地实现完成，等待 A 验收
+状态：A 已验收通过（结论与修补见 `docs/review-result-B7.md`）
 
 批次：B7
 
