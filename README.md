@@ -11,6 +11,7 @@
 - B0 契约已完成 G1 冻结。
 - B1 确定性七日模拟已完成，17 项测试通过，两次运行业务哈希一致。
 - B2 主智能体核心已完成，29 项 B1+B2 测试通过。
+- B3 NPC 脚本运行时已完成，50 项 B1+B2+B3 测试通过。
 - 详细计划见 `RPG智能体世界项目双人任务书_V4.md`。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B0 契约索引见 `docs/rpg-b0-index.md`。
@@ -33,6 +34,15 @@ pwsh -NoProfile -File scripts/run-b2-demo.ps1
 ```
 
 B2 演示输出最小感知包、候选决策轨迹、双层意图和世界引擎提交结果。详见 `docs/handoff-B2.md`。
+
+## B3 NPC 运行时
+
+```powershell
+pwsh -NoProfile -File scripts/test-b3.ps1
+pwsh -NoProfile -File scripts/run-b3-demo.ps1
+```
+
+B3 演示输出四名 NPC 一天的工作日日程和状态。详见 `docs/handoff-B3.md`。
 
 ## 本地 API
 
