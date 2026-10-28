@@ -1,6 +1,6 @@
 # 青禾镇 RPG 世界 MVP
 
-当前完成 B1 的确定性七日规则模拟。B1 不连接服务器、真实模型或生产数据。
+当前完成 B1 确定性七日规则模拟和 B2 主智能体核心。代码不连接服务器、真实模型或生产数据。
 
 ## 运行
 
@@ -40,3 +40,19 @@ pwsh -NoProfile -File scripts/test-b1.ps1
 ```
 
 B1 契约说明见 [docs/handoff-B1.md](docs/handoff-B1.md)。
+
+## B2 主智能体
+
+运行单步演示：
+
+```powershell
+pwsh -NoProfile -File scripts/run-b2-demo.ps1
+```
+
+运行 B1 与 B2 的全部测试：
+
+```powershell
+pwsh -NoProfile -File scripts/test-b2.ps1
+```
+
+B2 提供最小感知包、确定性候选、可解释决策轨迹、模型意图和世界 ActionIntent 双层结构、状态过期恢复以及幂等重放。B2 契约说明见 [docs/handoff-B2.md](docs/handoff-B2.md)。
