@@ -131,7 +131,7 @@ B5 新增覆盖：
 ```text
 任务 ID：B5 PostgreSQL Schema、迁移与契约矩阵
 分支：codex/bx-b5-postgres-contract
-提交哈希：待提交后回填
+提交哈希：9983e0f
 改动文件：rpg_orm/、tests/test_b5_postgres_contract.py、scripts/test-b5.ps1、scripts/migrate-b5.ps1、requirements-b5*.txt、docs/postgres-contract-matrix.md、docs/postgres-migration-runbook.md、README.md、docs/handoff-B5.md
 实现摘要：SQLAlchemy 双后端模型、迁移回滚、同夹具对比和 A 执行清单。
 测试命令：pwsh -NoProfile -File scripts/test-b5.ps1
