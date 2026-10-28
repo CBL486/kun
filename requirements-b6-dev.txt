@@ -1,0 +1,3 @@
+-r requirements-b5-dev.txt
+-r requirements-b6.txt
+pytest>=8,<10

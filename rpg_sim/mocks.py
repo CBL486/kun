@@ -35,6 +35,12 @@ class MockLLM:
                 input_tokens=760,
                 output_tokens=240,
             )
+        if operation == "observer_message_ack":
+            return MockLLMResponse(
+                text="留言已收下，会在下一个合法时段按角色自己的意愿处理。",
+                input_tokens=100,
+                output_tokens=30,
+            )
         fingerprint = digest({"seed": self.seed, "operation": operation})[:12]
         return MockLLMResponse(
             text=f"mock-{operation}-{fingerprint}",
