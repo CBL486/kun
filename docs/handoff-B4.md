@@ -176,7 +176,7 @@ B4 覆盖：
 ```text
 任务 ID：B4 世界状态、记忆与 SQLite
 分支：codex/bx-b4-state-memory
-提交哈希：待提交后回填
+提交哈希：b249fd9
 改动文件：memory_core/、rpg_storage/、tests/test_b4_persistence.py、scripts/migrate-b4.ps1、scripts/test-b4.ps1、README.md、docs/handoff-B4.md
 实现摘要：SQLite 世界/动作/事件事务、六维记忆核心、召回生命周期、NPC 槽和投影核对。
 测试命令：pwsh -NoProfile -File scripts/test-b4.ps1
