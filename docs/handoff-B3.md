@@ -150,7 +150,7 @@ B3 新增测试覆盖：
 ```text
 任务 ID：B3 NPC 脚本运行时
 分支：codex/bx-b3-npc-runtime
-提交哈希：待提交后回填
+提交哈希：86b2f41
 改动文件：rpg_npc/、content/b3/、tests/test_b3_npc_runtime.py、scripts/run-b3-demo.ps1、scripts/test-b3.ps1、README.md、docs/handoff-B3.md
 实现摘要：四名 NPC 的日程状态机、知识隔离、模板反应、有限记忆、关系候选和内容包。
 测试命令：pwsh -NoProfile -File scripts/test-b3.ps1
