@@ -11,7 +11,7 @@
 - B0 契约已完成 G1 冻结。
 - B1 确定性七日模拟已完成，17 项测试通过，两次运行业务哈希一致。
 - B2 主智能体核心已完成，29 项 B1+B2 测试通过。
-- B3 NPC 脚本运行时已完成，50 项 B1+B2+B3 测试通过。
+- B3 NPC 脚本运行时已完成，50 项 B1+B2+B3 测试通过。`r`n- B4 SQLite 世界状态与记忆持久化已完成，66 项 B1-B4 测试通过。
 - 详细计划见 `RPG智能体世界项目双人任务书_V4.md`。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B0 契约索引见 `docs/rpg-b0-index.md`。
@@ -44,7 +44,7 @@ pwsh -NoProfile -File scripts/run-b3-demo.ps1
 
 B3 演示输出四名 NPC 一天的工作日日程和状态。详见 `docs/handoff-B3.md`。
 
-## 本地 API
+## B4 SQLite 持久化`r`n`r`n```powershell`r`npwsh -NoProfile -File scripts/test-b4.ps1`r`npwsh -NoProfile -File scripts/migrate-b4.ps1 -Database out/b4/world.db -Command migrate`r`n```
 
 ```powershell
 python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8080
