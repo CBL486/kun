@@ -16,8 +16,10 @@ $requiredDocuments = @(
 
 $supportingDocuments = @(
     "docs/rpg-b0-index.md",
+    "docs/adr-memory-core.md",
     "docs/review-request-B0-V5.md",
-    "docs/handoff-B0-V5.md"
+    "docs/handoff-B0-V5.md",
+    "docs/review-result-B0.md"
 )
 
 function Assert-True {
@@ -44,7 +46,7 @@ function Read-Contract {
 $contents = @{}
 foreach ($document in $requiredDocuments) {
     $contents[$document] = Read-Contract $document
-    Assert-True ($contents[$document] -match "状态：B0 草案") "未标明 B0 草案状态：$document"
+    Assert-True ($contents[$document] -match "状态：(B0 草案|G1 已冻结)") "未标明 B0 草案或 G1 冻结状态：$document"
 }
 
 foreach ($document in $supportingDocuments) {
@@ -52,6 +54,12 @@ foreach ($document in $supportingDocuments) {
 }
 
 $allText = $contents.Values -join "`n"
+Assert-True ($allText.Contains("codex/bx-b0-v5-contracts-fix")) "交接记录缺少当前修复分支"
+Assert-True ($allText.Contains("eda1d3c31e6386e286e361eafb9a00408d4cf71d")) "交接记录缺少复审基线提交"
+Assert-True ($allText.Contains("已由 A 带入整合分支并复核") -or $allText.Contains("已带入整合分支并复核") -or $allText.Contains("A 已带入并复核")) "缺失上级资料状态不正确"
+Assert-True ($contents["docs/adr-memory-core.md"].Contains("状态：G1 已冻结")) "记忆 ADR 未标记 G1 冻结"
+Assert-True (-not $allText.Contains("B0-V5/docs/")) "交付文档仍混用 B0-V5 路径"
+Assert-True (-not $allText.Contains("B0-V5/scripts/")) "交付脚本仍混用 B0-V5 路径"
 
 $expectedActions = @(
     "attend_class",
@@ -72,7 +80,7 @@ $actionMatches = [regex]::Matches(
 $actualActions = @($actionMatches | ForEach-Object { $_.Groups[1].Value } | Sort-Object)
 Assert-True (
     ($actualActions -join ",") -eq ($expectedActions -join ",")
-) "动作清单必须恰好包含九个已冻结动作"
+) "动作清单必须恰好包含九个首版动作"
 
 $expectedNpcs = @("npc_chen", "npc_su", "npc_gao", "npc_gu")
 foreach ($npc in $expectedNpcs) {

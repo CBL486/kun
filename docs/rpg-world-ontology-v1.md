@@ -1,6 +1,6 @@
 # RPG 世界本体契约 V1
 
-状态：B0 草案，等待 G1 冻结
+状态：G1 已冻结（2026-10-28）
 
 契约编号：`rpg-world-ontology-v1`
 
@@ -14,11 +14,11 @@
 
 1. 项目所有者在本轮明确确认的结论；
 2. 《协作 Agent B RPG 世界详细任务单 V5》；
-3. 已冻结的 [`adr-memory-core.md`](adr-memory-core.md)；
-4. 仓库中的 V2 产品设定文档；
+3. 经 G1 冻结的 [`adr-memory-core.md`](adr-memory-core.md)；
+4. A 带入的上级 ADR 与任务书，以 G1 复核结果为准；
 5. 本 B0 草案。
 
-任务书引用但仓库当前缺少 `docs/adr-001-single-agent-town.md`、`docs/adr-002-mvp-runtime.md` 和上级 V4 任务书。它们不影响本草案表达 V5 的明确规则，但 G1 前必须由 A 补齐或书面确认不适用。
+`adr-memory-core.md` 已随 G1 冻结。任务书引用的 `docs/adr-001-single-agent-town.md`、`docs/adr-002-mvp-runtime.md` 和上级 V4 任务书已由 A 带入整合分支并复核；B 的原始交付不声称读取过这些文件。
 
 ## 2. MVP 范围
 
