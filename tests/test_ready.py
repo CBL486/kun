@@ -24,4 +24,7 @@ def test_ready_returns_503_when_database_is_unreachable(monkeypatch) -> None:
     response = client.get("/ready")
 
     assert response.status_code == 503
-    assert response.json() == {"detail": "database unavailable"}
+    payload = response.json()
+    assert payload["schema_version"] == "rpg-error-v1"
+    assert payload["error"]["code"] == "database_unavailable"
+    assert payload["error"]["request_id"] == response.headers["X-Request-ID"]

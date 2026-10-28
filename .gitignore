@@ -24,4 +24,5 @@ _pg_pkg/
 out/
 .tmp-*/
 .b5-deps/
+.b6-deps/
 pgdata/
