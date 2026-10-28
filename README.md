@@ -8,13 +8,23 @@
 - 服务器 Python 运行时、PostgreSQL、独立账号、开机任务与每日备份已完成。
 - PostgreSQL 备份恢复演练已通过。
 - 最小 FastAPI 服务已部署，`/health` 与 `/ready` 已在服务器验证。
-- B0 契约已完成 G1 冻结，下一步进入 B1 单镇模拟器。
+- B0 契约已完成 G1 冻结。
+- B1 确定性七日模拟已完成，17 项测试通过，两次运行业务哈希一致。
 - 详细计划见 `RPG智能体世界项目双人任务书_V4.md`。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B0 契约索引见 `docs/rpg-b0-index.md`。
 - G1 评审结果见 `docs/review-result-B0.md`。
 
-## 本地运行
+## B1 模拟
+
+```powershell
+pwsh -NoProfile -File scripts/test-b1.ps1
+pwsh -NoProfile -File scripts/run-b1.ps1 -Output out/b1
+```
+
+B1 输出完整报告、前后快照、重放清单、检查点和终端摘要；暂停与恢复说明见 `docs/handoff-B1.md`。
+
+## 本地 API
 
 ```powershell
 python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8080

@@ -21,3 +21,5 @@ build/
 .pytest_cache/
 .coverage
 _pg_pkg/
+out/
+.tmp-*/
