@@ -1,6 +1,6 @@
 # 青禾镇 RPG 世界 MVP
 
-当前完成 B1 确定性七日规则模拟、B2 主智能体核心和 B3 NPC 脚本运行时。代码不连接服务器、真实模型或生产数据。
+当前完成 B1 确定性七日规则模拟、B2 主智能体核心、B3 NPC 脚本运行时和 B4 SQLite 世界/记忆存储。代码不连接服务器、真实模型或生产数据。
 
 ## 运行
 
@@ -72,3 +72,26 @@ pwsh -NoProfile -File scripts/test-b3.ps1
 ```
 
 B3 提供四名 NPC 的离线日程状态机、知识隔离、审核台词模板、事件反应、48 小时重复控制、最多 8 个有限记忆槽、课程包和事件包。B3 契约说明见 [docs/handoff-B3.md](docs/handoff-B3.md)。
+
+## B4 SQLite 世界与记忆
+
+创建或升级本地数据库：
+
+```powershell
+pwsh -NoProfile -File scripts/migrate-b4.ps1 -Database out/b4/world.db -Command migrate
+```
+
+查看与回滚 schema：
+
+```powershell
+pwsh -NoProfile -File scripts/migrate-b4.ps1 -Database out/b4/world.db -Command version
+pwsh -NoProfile -File scripts/migrate-b4.ps1 -Database out/b4/world.db -Command rollback -TargetVersion 0
+```
+
+运行 B1 至 B4 的全部测试：
+
+```powershell
+pwsh -NoProfile -File scripts/test-b4.ps1
+```
+
+B4 提供世界版本、动作/事件日志、SQLite 迁移与回滚、六维记忆作用域、召回、衰减、锁定、模糊、归档、强化、NPC 有限记忆和投影失败核对。B4 契约说明见 [docs/handoff-B4.md](docs/handoff-B4.md)。
