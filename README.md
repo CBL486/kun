@@ -10,7 +10,7 @@
 - 最小 FastAPI 服务已部署，`/health` 与 `/ready` 已在服务器验证。
 - B0 契约已完成 G1 冻结，下一步进入 B1 单镇模拟器。
 - 详细计划见 `RPG智能体世界项目双人任务书_V4.md`。
-- Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V5.md`。
+- Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B0 契约索引见 `docs/rpg-b0-index.md`。
 - G1 评审结果见 `docs/review-result-B0.md`。
 
