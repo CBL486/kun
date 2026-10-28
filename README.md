@@ -15,6 +15,7 @@
 - B7 最小 RPG Web 已通过 A 验收，B1-B7 共 101 项测试通过。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B6 至 G3 执行计划见 `B6至G3执行计划书_V1.md`。
+- A 侧当前工作日志与续接手册见 `docs/agent-a-work-log.md`。
 - B0 契约索引见 `docs/rpg-b0-index.md`。
 - G1 评审结果见 `docs/review-result-B0.md`。
 
