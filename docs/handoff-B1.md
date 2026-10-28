@@ -108,7 +108,7 @@ B1 到此停止。数据库迁移、API、Web、集成和服务器动作留给�
 ```text
 任务 ID：B1 单镇模拟器
 分支：codex/bx-b0-v5-contracts-fix
-提交哈希：待回填
+提交哈希：7b64f89
 改动文件：README.md、.gitignore、rpg_sim/、tests/、scripts/、docs/handoff-B1.md
 实现摘要：确定性七日规则模拟、mock LLM/审核、预算、快照、暂停、重启和恢复。
 测试命令：pwsh -NoProfile -File scripts/test-b1.ps1
