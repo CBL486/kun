@@ -14,11 +14,11 @@
 
 1. 项目所有者在本轮明确确认的结论；
 2. 《协作 Agent B RPG 世界详细任务单 V5》；
-3. 已冻结的 [`adr-memory-core.md`](adr-memory-core.md)；
+3. 经 G1 冻结的 [`adr-memory-core.md`](adr-memory-core.md)；
 4. 仓库中的 V2 产品设定文档；
 5. 本 B0 草案。
 
-任务书引用但仓库当前缺少 `docs/adr-001-single-agent-town.md`、`docs/adr-002-mvp-runtime.md` 和上级 V4 任务书。它们不影响本草案表达 V5 的明确规则，但 G1 前必须由 A 补齐或书面确认不适用。
+`adr-memory-core.md` 当前是 B0 复评候选，不是已经冻结的契约。任务书引用的 `docs/adr-001-single-agent-town.md`、`docs/adr-002-mvp-runtime.md` 和上级 V4 任务书由 A 提供，待整合分支复核；B 不以这些文件已被核对为前提。
 
 ## 2. MVP 范围
 
