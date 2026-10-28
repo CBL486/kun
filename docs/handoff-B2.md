@@ -145,7 +145,7 @@ B2 覆盖：
 ```text
 任务 ID：B2 主智能体核心
 分支：codex/bx-b2-agent-core
-提交哈希：待提交后回填
+提交哈希：144a768
 改动文件：rpg_agent/、tests/test_b2_agent_core.py、scripts/run-b2-demo.ps1、scripts/test-b2.ps1、README.md、docs/handoff-B2.md
 实现摘要：最小感知、确定性候选、决策轨迹、双层结构化意图、幂等与过期恢复。
 测试命令：pwsh -NoProfile -File scripts/test-b2.ps1
