@@ -1,0 +1,33 @@
+lin_cheng.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+lin_cheng_body
+  rotate: false
+  xy: 2, 2
+  size: 48, 45
+  orig: 48, 45
+  offset: 0, 0
+  index: -1
+lin_cheng_leg_left
+  rotate: false
+  xy: 54, 2
+  size: 24, 21
+  orig: 24, 21
+  offset: 0, 0
+  index: -1
+lin_cheng_leg_right
+  rotate: false
+  xy: 82, 2
+  size: 24, 21
+  orig: 24, 21
+  offset: 0, 0
+  index: -1
+lin_cheng_shadow
+  rotate: false
+  xy: 54, 28
+  size: 32, 8
+  orig: 32, 8
+  offset: 0, 0
+  index: -1

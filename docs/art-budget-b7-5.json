@@ -1,0 +1,548 @@
+{
+  "schema_version": "rpg-art-budget-v1",
+  "captured_on": "2026-10-30",
+  "desktop": {
+    "viewportWidth": 1440,
+    "scrollWidth": 1440,
+    "stage": {
+      "left": 104,
+      "right": 1336,
+      "top": 96.5625,
+      "bottom": 789.5625
+    },
+    "worldPlane": {
+      "width": 2400,
+      "height": 900,
+      "transform": "translate3d(0px, 0px, 0px)"
+    },
+    "dashboardPanelsHidden": true,
+    "buildings": [
+      {
+        "id": "loc_dorm",
+        "label": "宿舍",
+        "left": 42,
+        "right": 402,
+        "top": 92,
+        "bottom": 331.84375
+      },
+      {
+        "id": "loc_classroom",
+        "label": "教学楼",
+        "left": 610,
+        "right": 930,
+        "top": 16,
+        "bottom": 350.921875
+      },
+      {
+        "id": "loc_library",
+        "label": "青禾书院",
+        "left": 1350,
+        "right": 1650,
+        "top": 44,
+        "bottom": 344.125
+      },
+      {
+        "id": "loc_canteen",
+        "label": "食堂",
+        "left": 294,
+        "right": 514,
+        "top": 510,
+        "bottom": 795.296875
+      },
+      {
+        "id": "loc_river",
+        "label": "河边步道",
+        "left": 1018,
+        "right": 1114,
+        "top": 656,
+        "bottom": 863.75
+      },
+      {
+        "id": "loc_shop",
+        "label": "便利店",
+        "left": 2010,
+        "right": 2190,
+        "top": 504,
+        "bottom": 791.875
+      }
+    ],
+    "assetRequests": [
+      {
+        "name": "icons/brand.png",
+        "transferBytes": 590,
+        "decodedBytes": 290
+      },
+      {
+        "name": "icons/character.png",
+        "transferBytes": 556,
+        "decodedBytes": 256
+      },
+      {
+        "name": "icons/map.png",
+        "transferBytes": 564,
+        "decodedBytes": 264
+      },
+      {
+        "name": "icons/diary.png",
+        "transferBytes": 604,
+        "decodedBytes": 304
+      },
+      {
+        "name": "icons/chat.png",
+        "transferBytes": 631,
+        "decodedBytes": 331
+      },
+      {
+        "name": "icons/timeline.png",
+        "transferBytes": 729,
+        "decodedBytes": 429
+      },
+      {
+        "name": "icons/memory.png",
+        "transferBytes": 788,
+        "decodedBytes": 488
+      },
+      {
+        "name": "icons/settings.png",
+        "transferBytes": 760,
+        "decodedBytes": 460
+      },
+      {
+        "name": "maps/town-map-world.webp",
+        "transferBytes": 21996,
+        "decodedBytes": 21696
+      },
+      {
+        "name": "characters/lin_cheng.webp",
+        "transferBytes": 626,
+        "decodedBytes": 326
+      },
+      {
+        "name": "portraits/lin_cheng.webp",
+        "transferBytes": 546,
+        "decodedBytes": 246
+      },
+      {
+        "name": "interiors/dorm.webp",
+        "transferBytes": 79154,
+        "decodedBytes": 78854
+      },
+      {
+        "name": "spine/lin_cheng.json",
+        "transferBytes": 5485,
+        "decodedBytes": 5185
+      },
+      {
+        "name": "spine/lin_cheng.atlas",
+        "transferBytes": 823,
+        "decodedBytes": 523
+      },
+      {
+        "name": "spine/lin_cheng.png",
+        "transferBytes": 1161,
+        "decodedBytes": 861
+      },
+      {
+        "name": "placeholders/event.svg",
+        "transferBytes": 808,
+        "decodedBytes": 508
+      },
+      {
+        "name": "buildings/dorm.webp",
+        "transferBytes": 13108,
+        "decodedBytes": 12808
+      },
+      {
+        "name": "icons/closed.png",
+        "transferBytes": 552,
+        "decodedBytes": 252
+      },
+      {
+        "name": "buildings/canteen.webp",
+        "transferBytes": 2000,
+        "decodedBytes": 1700
+      },
+      {
+        "name": "icons/open.png",
+        "transferBytes": 523,
+        "decodedBytes": 223
+      },
+      {
+        "name": "buildings/classroom.webp",
+        "transferBytes": 17978,
+        "decodedBytes": 17678
+      },
+      {
+        "name": "buildings/library.webp",
+        "transferBytes": 12332,
+        "decodedBytes": 12032
+      },
+      {
+        "name": "buildings/river.webp",
+        "transferBytes": 852,
+        "decodedBytes": 552
+      },
+      {
+        "name": "portraits/chen_lan.webp",
+        "transferBytes": 572,
+        "decodedBytes": 272
+      },
+      {
+        "name": "buildings/shop.webp",
+        "transferBytes": 1624,
+        "decodedBytes": 1324
+      },
+      {
+        "name": "portraits/su_wan.webp",
+        "transferBytes": 552,
+        "decodedBytes": 252
+      },
+      {
+        "name": "portraits/gao_yuan.webp",
+        "transferBytes": 640,
+        "decodedBytes": 340
+      },
+      {
+        "name": "portraits/gu_yan.webp",
+        "transferBytes": 626,
+        "decodedBytes": 326
+      }
+    ],
+    "domContentLoadedMs": 282,
+    "loadMs": 286,
+    "consoleErrors": [],
+    "wallTimeMs": 1407.45,
+    "pointer": "desktop",
+    "cameraMovement": {
+      "before": "translate3d(0px, 0px, 0px)",
+      "after": "translate3d(-271.886px, 0px, 0px)",
+      "playerBefore": {
+        "x": 430,
+        "y": 338
+      },
+      "playerAfter": {
+        "x": 1034.49,
+        "y": 338
+      },
+      "spineBefore": {
+        "ready": true,
+        "animation": "idle",
+        "facing": 1,
+        "frames": 199,
+        "rootY": NaN,
+        "leftLegRotation": 0,
+        "torsoRotation": 0.175901079117131
+      },
+      "spineMoving": {
+        "ready": true,
+        "animation": "walk",
+        "facing": 1,
+        "frames": 814,
+        "rootY": 0,
+        "leftLegRotation": 4.680014662742032,
+        "torsoRotation": 0.3900012218951694
+      },
+      "spineIdle": {
+        "ready": true,
+        "animation": "idle",
+        "facing": 1,
+        "frames": 886,
+        "rootY": 0.36571435188760676,
+        "leftLegRotation": 0,
+        "torsoRotation": -0.43885723970374735
+      },
+      "dialogueBefore": "\n                      傍晚的风穿过教学楼的走廊。今天也许会有新的消息。\n                    ",
+      "dialogueAfter": "夜色落在小镇的屋檐上，远处只剩几盏还亮着的灯。"
+    }
+  },
+  "mobile": {
+    "viewportWidth": 390,
+    "scrollWidth": 390,
+    "stage": {
+      "left": 8,
+      "right": 382,
+      "top": 109.296875,
+      "bottom": 319.671875
+    },
+    "worldPlane": {
+      "width": 2400,
+      "height": 900,
+      "transform": "translate3d(-199.36px, -188.24px, 0px)"
+    },
+    "dashboardPanelsHidden": true,
+    "buildings": [
+      {
+        "id": "loc_dorm",
+        "label": "宿舍",
+        "left": 42,
+        "right": 402,
+        "top": 92,
+        "bottom": 327.78125
+      },
+      {
+        "id": "loc_classroom",
+        "label": "教学楼",
+        "left": 610.0000152587891,
+        "right": 930.0000152587891,
+        "top": 16,
+        "bottom": 346.859375
+      },
+      {
+        "id": "loc_library",
+        "label": "青禾书院",
+        "left": 1350.000015258789,
+        "right": 1650.000015258789,
+        "top": 44,
+        "bottom": 340.0625
+      },
+      {
+        "id": "loc_canteen",
+        "label": "食堂",
+        "left": 294,
+        "right": 514.0000152587891,
+        "top": 510.00001525878906,
+        "bottom": 791.2343902587891
+      },
+      {
+        "id": "loc_river",
+        "label": "河边步道",
+        "left": 1018.0000152587891,
+        "right": 1114.000015258789,
+        "top": 656.0000152587891,
+        "bottom": 859.6875152587891
+      },
+      {
+        "id": "loc_shop",
+        "label": "便利店",
+        "left": 2010.000015258789,
+        "right": 2190.000015258789,
+        "top": 504.00001525878906,
+        "bottom": 787.8125152587891
+      }
+    ],
+    "assetRequests": [
+      {
+        "name": "icons/character.png",
+        "transferBytes": 556,
+        "decodedBytes": 256
+      },
+      {
+        "name": "icons/timeline.png",
+        "transferBytes": 729,
+        "decodedBytes": 429
+      },
+      {
+        "name": "icons/brand.png",
+        "transferBytes": 590,
+        "decodedBytes": 290
+      },
+      {
+        "name": "icons/map.png",
+        "transferBytes": 564,
+        "decodedBytes": 264
+      },
+      {
+        "name": "icons/chat.png",
+        "transferBytes": 631,
+        "decodedBytes": 331
+      },
+      {
+        "name": "icons/diary.png",
+        "transferBytes": 604,
+        "decodedBytes": 304
+      },
+      {
+        "name": "icons/memory.png",
+        "transferBytes": 788,
+        "decodedBytes": 488
+      },
+      {
+        "name": "icons/settings.png",
+        "transferBytes": 760,
+        "decodedBytes": 460
+      },
+      {
+        "name": "maps/town-map-world.webp",
+        "transferBytes": 21996,
+        "decodedBytes": 21696
+      },
+      {
+        "name": "characters/lin_cheng.webp",
+        "transferBytes": 626,
+        "decodedBytes": 326
+      },
+      {
+        "name": "portraits/lin_cheng.webp",
+        "transferBytes": 546,
+        "decodedBytes": 246
+      },
+      {
+        "name": "interiors/dorm.webp",
+        "transferBytes": 79154,
+        "decodedBytes": 78854
+      },
+      {
+        "name": "spine/lin_cheng.json",
+        "transferBytes": 5485,
+        "decodedBytes": 5185
+      },
+      {
+        "name": "spine/lin_cheng.atlas",
+        "transferBytes": 823,
+        "decodedBytes": 523
+      },
+      {
+        "name": "spine/lin_cheng.png",
+        "transferBytes": 1161,
+        "decodedBytes": 861
+      },
+      {
+        "name": "placeholders/event.svg",
+        "transferBytes": 808,
+        "decodedBytes": 508
+      },
+      {
+        "name": "icons/open.png",
+        "transferBytes": 523,
+        "decodedBytes": 223
+      },
+      {
+        "name": "buildings/dorm.webp",
+        "transferBytes": 13108,
+        "decodedBytes": 12808
+      },
+      {
+        "name": "buildings/classroom.webp",
+        "transferBytes": 17978,
+        "decodedBytes": 17678
+      },
+      {
+        "name": "icons/closed.png",
+        "transferBytes": 552,
+        "decodedBytes": 252
+      },
+      {
+        "name": "buildings/canteen.webp",
+        "transferBytes": 2000,
+        "decodedBytes": 1700
+      },
+      {
+        "name": "buildings/library.webp",
+        "transferBytes": 12332,
+        "decodedBytes": 12032
+      },
+      {
+        "name": "buildings/shop.webp",
+        "transferBytes": 1624,
+        "decodedBytes": 1324
+      },
+      {
+        "name": "buildings/river.webp",
+        "transferBytes": 852,
+        "decodedBytes": 552
+      },
+      {
+        "name": "portraits/su_wan.webp",
+        "transferBytes": 552,
+        "decodedBytes": 252
+      },
+      {
+        "name": "portraits/chen_lan.webp",
+        "transferBytes": 572,
+        "decodedBytes": 272
+      },
+      {
+        "name": "portraits/gao_yuan.webp",
+        "transferBytes": 640,
+        "decodedBytes": 340
+      },
+      {
+        "name": "portraits/gu_yan.webp",
+        "transferBytes": 626,
+        "decodedBytes": 326
+      }
+    ],
+    "domContentLoadedMs": 117,
+    "loadMs": 120,
+    "consoleErrors": [],
+    "wallTimeMs": 1230.28,
+    "pointer": "mobile",
+    "cameraMovement": {
+      "before": "translate3d(-199.36px, -188.24px, 0px)",
+      "after": "translate3d(-786.795px, -188.24px, 0px)",
+      "playerBefore": {
+        "x": 430,
+        "y": 338
+      },
+      "playerAfter": {
+        "x": 1017.43,
+        "y": 338
+      },
+      "spineBefore": {
+        "ready": true,
+        "animation": "idle",
+        "facing": 1,
+        "frames": 207,
+        "rootY": NaN,
+        "leftLegRotation": 0,
+        "torsoRotation": 0.24730303113131544
+      },
+      "spineMoving": {
+        "ready": true,
+        "animation": "walk",
+        "facing": 1,
+        "frames": 820,
+        "rootY": 0,
+        "leftLegRotation": 5.880013470649184,
+        "torsoRotation": 0.4900011225540988
+      },
+      "spineIdle": {
+        "ready": true,
+        "animation": "idle",
+        "facing": 1,
+        "frames": 878,
+        "rootY": 0.3814288613017774,
+        "leftLegRotation": 0,
+        "torsoRotation": -0.4577146517500783
+      },
+      "dialogueBefore": "\n                      傍晚的风穿过教学楼的走廊。今天也许会有新的消息。\n                    ",
+      "dialogueAfter": "夜色落在小镇的屋檐上，远处只剩几盏还亮着的灯。"
+    }
+  },
+  "desktop_interior": {
+    "location": "loc_dorm",
+    "title": "宿舍",
+    "image": "/assets/interiors/dorm.webp",
+    "description": "木地板宿舍里，行李已经收好，书桌边留着今天的小纸条。"
+  },
+  "mobile_interior": {
+    "location": "loc_dorm",
+    "title": "宿舍",
+    "image": "/assets/interiors/dorm.webp",
+    "description": "木地板宿舍里，行李已经收好，书桌边留着今天的小纸条。"
+  },
+  "east_town": {
+    "cameraBefore": "translate3d(0px, 0px, 0px)",
+    "cameraAfter": "translate3d(-1170px, -97.35px, 0px)",
+    "player": {
+      "x": 2300,
+      "y": 594.87
+    },
+    "screenshot": "docs/screenshots/b75-town-east-desktop.png"
+  },
+  "river_walk": {
+    "camera": "translate3d(-180.256px, -209px, 0px)",
+    "player": {
+      "x": 942.856,
+      "y": 846
+    },
+    "label": "视野 · 河边步道",
+    "screenshot": "docs/screenshots/b75-river-walk-desktop.png"
+  },
+  "first_screen_transfer_bytes": {
+    "desktop": 167180,
+    "mobile": 167180
+  },
+  "missing_building_fallback_verified": true,
+  "interior_overview": "docs/screenshots/b75-interiors-overview.png"
+}

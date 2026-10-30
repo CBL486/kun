@@ -1,0 +1,4515 @@
+{
+  "assets": [
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "Modern Exteriors by LimeZu；以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "LimeZu 与项目内场景编排",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        2400,
+        900
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 72773,
+          "path": "assets/maps/town-map-world.png",
+          "sha256": "0d372a00ca2a1ddafd12509936efe8cdc3bf1170f573395a1444b02e205a16a9"
+        },
+        {
+          "bytes": 21696,
+          "path": "assets/maps/town-map-world.webp",
+          "sha256": "9d5833b3bda84873dad4c07bafb4fc31343ee4849c721b14ad78b288ab874870"
+        }
+      ],
+      "id": "town_map_world",
+      "kind": "map_background",
+      "license_status": "commercial-licensed",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": true,
+      "rights_status": "commercial-licensed",
+      "role": "横向小镇大世界",
+      "runtime_display": [
+        1200,
+        450
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/1_Terrains_and_Fences_Singles_48x48/ME_Singles_Terrains_and_Fences_48x48_Grass_2_9.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/1_Terrains_and_Fences_Singles_48x48/ME_Singles_Terrains_and_Fences_48x48_Deep_Water_1_9.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/2_City_Terrains_Singles_48x48/ME_Singles_City_Terrains_48x48_Sidewalk_1_25.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/2_City_Terrains_Singles_48x48/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_18.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            144
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Tree_3.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Shrub_4.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            48
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Flower_Bush_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            192
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Street_Lamp_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Hydrant_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Mailbox_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Trashbin_10.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            48
+          ],
+          "modification_operation": "direct sprite placement",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/13_School_Singles_48x48/ME_Singles_School_48x48_Bench_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "direct sprite placement",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Info_Sign_1.png",
+          "source_pack": "modern_exteriors"
+        }
+      ],
+      "source_packs": [
+        "modern_exteriors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "Modern Exteriors by LimeZu；以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "LimeZu 与项目内场景编排",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        1101,
+        672
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 38216,
+          "path": "assets/buildings/dorm.png",
+          "sha256": "f717865b1004af3e85792959e6e64f12b58b818151dbc338df43a62e667a365a"
+        },
+        {
+          "bytes": 12808,
+          "path": "assets/buildings/dorm.webp",
+          "sha256": "0db547c0733295b312505373aa836106e58b7435162f4f2ae9aeb29fcc84a91b"
+        }
+      ],
+      "id": "building_dorm",
+      "kind": "building",
+      "license_status": "commercial-licensed",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": true,
+      "rights_status": "commercial-licensed",
+      "role": "宿舍",
+      "runtime_display": [
+        240,
+        160
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            0,
+            0,
+            1104,
+            672
+          ],
+          "modification_operation": "direct source sprite",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/24_Additional_Houses_Singles_48x48/24_Additional_Houses_Modern_House_48x48.png",
+          "source_pack": "modern_exteriors"
+        }
+      ],
+      "source_packs": [
+        "modern_exteriors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "Modern Exteriors by LimeZu；以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "LimeZu 与项目内场景编排",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        1110,
+        1092
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 50048,
+          "path": "assets/buildings/classroom.png",
+          "sha256": "dfc0380c43823a705f116896069cd327e6359259225d3fa073c715f6d100934c"
+        },
+        {
+          "bytes": 17678,
+          "path": "assets/buildings/classroom.webp",
+          "sha256": "e56a4ce07236fb98f42d184665359904cbb02ac08ef51dd4df96a23581e6f9e5"
+        }
+      ],
+      "id": "building_classroom",
+      "kind": "building",
+      "license_status": "commercial-licensed",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": true,
+      "rights_status": "commercial-licensed",
+      "role": "教学楼",
+      "runtime_display": [
+        240,
+        160
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            0,
+            0,
+            1152,
+            1104
+          ],
+          "modification_operation": "direct source sprite",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/13_School_Singles_48x48/ME_Singles_School_48x48_School_1.png",
+          "source_pack": "modern_exteriors"
+        }
+      ],
+      "source_packs": [
+        "modern_exteriors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "Modern Exteriors by LimeZu；以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "LimeZu 与项目内场景编排",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        720,
+        672
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 34290,
+          "path": "assets/buildings/library.png",
+          "sha256": "58cc3b84cafa9bc4dbf59e04580ebb77ccaa004f80e120ec792dc905b72671d4"
+        },
+        {
+          "bytes": 12032,
+          "path": "assets/buildings/library.webp",
+          "sha256": "5850717a1750ad256d60940be0cf98edea97f6d38778ad7957c79848f8af74ea"
+        }
+      ],
+      "id": "building_library",
+      "kind": "building",
+      "license_status": "commercial-licensed",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": true,
+      "rights_status": "commercial-licensed",
+      "role": "青禾书院",
+      "runtime_display": [
+        240,
+        160
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            0,
+            0,
+            720,
+            672
+          ],
+          "modification_operation": "direct source sprite",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/24_Additional_Houses_Singles_48x48/24_Additional_Houses_Japanese_House_48x48.png",
+          "source_pack": "modern_exteriors"
+        }
+      ],
+      "source_packs": [
+        "modern_exteriors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "Modern Exteriors by LimeZu；以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "LimeZu 与项目内场景编排",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        336,
+        405
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 4707,
+          "path": "assets/buildings/canteen.png",
+          "sha256": "82883e873f7270b20edaa95ed37bcf8673665b0a9caa7cfee1141aa365526fc2"
+        },
+        {
+          "bytes": 1700,
+          "path": "assets/buildings/canteen.webp",
+          "sha256": "d87f3023fa73d5e278a5b74156fd9617024fcf79b1276f7bb51478ad46e4a0f1"
+        }
+      ],
+      "id": "building_canteen",
+      "kind": "building",
+      "license_status": "commercial-licensed",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": true,
+      "rights_status": "commercial-licensed",
+      "role": "食堂",
+      "runtime_display": [
+        240,
+        160
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            0,
+            0,
+            336,
+            432
+          ],
+          "modification_operation": "direct source sprite",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/9_Shopping_Center_and_Markets_Singles_48x48/ME_Singles_Shopping_Center_and_Markets_48x48_Market_Medium_1.png",
+          "source_pack": "modern_exteriors"
+        }
+      ],
+      "source_packs": [
+        "modern_exteriors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "Modern Exteriors by LimeZu；以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "LimeZu 与项目内场景编排",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        240,
+        357
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 3586,
+          "path": "assets/buildings/shop.png",
+          "sha256": "4ec92435075ca3d89c15ff5208583d2a82b1c9e073ae133f90996f4389cf1f83"
+        },
+        {
+          "bytes": 1324,
+          "path": "assets/buildings/shop.webp",
+          "sha256": "2dd4fa4ee9c4b7004dabcc248f29b771f3e280ff4cd92a5f3f03aa2288e2ec78"
+        }
+      ],
+      "id": "building_shop",
+      "kind": "building",
+      "license_status": "commercial-licensed",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": true,
+      "rights_status": "commercial-licensed",
+      "role": "便利店",
+      "runtime_display": [
+        240,
+        160
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            0,
+            0,
+            240,
+            384
+          ],
+          "modification_operation": "direct source sprite",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/9_Shopping_Center_and_Markets_Singles_48x48/ME_Singles_Shopping_Center_and_Markets_48x48_Market_Small_1.png",
+          "source_pack": "modern_exteriors"
+        }
+      ],
+      "source_packs": [
+        "modern_exteriors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "Modern Exteriors by LimeZu；以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "LimeZu 与项目内场景编排",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        66,
+        129
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 1458,
+          "path": "assets/buildings/river.png",
+          "sha256": "97de49b69e6ada1a4869191c0adcfc23564b026ada0114deba681cdc74fedb79"
+        },
+        {
+          "bytes": 552,
+          "path": "assets/buildings/river.webp",
+          "sha256": "a0aebec0a2d243ad13a17907e4978c90a051763c309fa8ccf40a6ffc0268f1d2"
+        }
+      ],
+      "id": "building_river",
+      "kind": "building",
+      "license_status": "commercial-licensed",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": true,
+      "rights_status": "commercial-licensed",
+      "role": "河边步道",
+      "runtime_display": [
+        240,
+        160
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            144
+          ],
+          "modification_operation": "direct source sprite",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/11_Camping_Singles_48x48/ME_Singles_Camping_48x48_Pier_1.png",
+          "source_pack": "modern_exteriors"
+        }
+      ],
+      "source_packs": [
+        "modern_exteriors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "Modern Interior Tileset by AppleDog；以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "AppleDog 与项目内场景编排",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        960,
+        540
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 95267,
+          "path": "assets/interiors/dorm.png",
+          "sha256": "6f5396d1c577e6cae964d4516d6634dc0a715765d273e19262ddabd967207863"
+        },
+        {
+          "bytes": 78854,
+          "path": "assets/interiors/dorm.webp",
+          "sha256": "d2746c3ef90356b730f325d086f0561f0defc05ac00fd65657f12a1e736e17d3"
+        }
+      ],
+      "id": "interior_dorm",
+      "kind": "interior_scene",
+      "license_status": "commercial-licensed",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": true,
+      "rights_status": "commercial-licensed",
+      "role": "宿舍内部",
+      "runtime_display": [
+        960,
+        540
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            288,
+            96,
+            96,
+            96
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Old_Stuff/Floors_only_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            384,
+            288,
+            144,
+            96
+          ],
+          "modification_operation": "crop 3x2 wall module + repeated",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Room_Builder_subfiles_48x48/Room_Builder_Walls_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            288,
+            2080,
+            96,
+            72
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              90,
+              20
+            ],
+            "trimmed_size": [
+              75,
+              60
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/1_Generic_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            384,
+            2080,
+            96,
+            72
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              770,
+              20
+            ],
+            "trimmed_size": [
+              75,
+              60
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/1_Generic_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            32,
+            64
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              872,
+              22
+            ],
+            "trimmed_size": [
+              26,
+              34
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/3_Animated_objects/48x48/spritesheets/animated_cuckoo_clock_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            256,
+            1344,
+            64,
+            64
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              430,
+              30
+            ],
+            "trimmed_size": [
+              64,
+              64
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/1_Generic_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            60,
+            0,
+            120,
+            177
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              52,
+              176
+            ],
+            "trimmed_size": [
+              120,
+              177
+            ]
+          },
+          "source_archive": "Full Tileset.7z",
+          "source_member": "Full Tileset.7z!/48x48/inside_home_C.png",
+          "source_pack": "appledog_interiors"
+        },
+        {
+          "crop_box": [
+            204,
+            3,
+            168,
+            177
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              760,
+              176
+            ],
+            "trimmed_size": [
+              168,
+              177
+            ]
+          },
+          "source_archive": "Full Tileset.7z",
+          "source_member": "Full Tileset.7z!/48x48/inside_home_C.png",
+          "source_pack": "appledog_interiors"
+        },
+        {
+          "crop_box": [
+            627,
+            294,
+            90,
+            105
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              354,
+              176
+            ],
+            "trimmed_size": [
+              90,
+              105
+            ]
+          },
+          "source_archive": "Full Tileset.7z",
+          "source_member": "Full Tileset.7z!/48x48/Inside_home_B.png",
+          "source_pack": "appledog_interiors"
+        },
+        {
+          "crop_box": [
+            48,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              540,
+              278
+            ],
+            "trimmed_size": [
+              48,
+              66
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            384,
+            480,
+            64,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              810,
+              342
+            ],
+            "trimmed_size": [
+              64,
+              87
+            ]
+          },
+          "source_archive": "Full Tileset.7z",
+          "source_member": "Full Tileset.7z!/48x48/Inside_home_B.png",
+          "source_pack": "appledog_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            48,
+            141,
+            144
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              20,
+              370
+            ],
+            "trimmed_size": [
+              141,
+              144
+            ]
+          },
+          "source_archive": "Full Tileset.7z",
+          "source_member": "Full Tileset.7z!/48x48/Inside_home_B.png",
+          "source_pack": "appledog_interiors"
+        },
+        {
+          "crop_box": [
+            144,
+            51,
+            144,
+            141
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              164,
+              373
+            ],
+            "trimmed_size": [
+              144,
+              141
+            ]
+          },
+          "source_archive": "Full Tileset.7z",
+          "source_member": "Full Tileset.7z!/48x48/Inside_home_B.png",
+          "source_pack": "appledog_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            1056,
+            288,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              330,
+              378
+            ],
+            "trimmed_size": [
+              243,
+              90
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/4_Bedroom_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            27,
+            210,
+            87,
+            117
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              714,
+              382
+            ],
+            "trimmed_size": [
+              87,
+              117
+            ]
+          },
+          "source_archive": "Full Tileset.7z",
+          "source_member": "Full Tileset.7z!/48x48/Inside_home_B.png",
+          "source_pack": "appledog_interiors"
+        }
+      ],
+      "source_packs": [
+        "appledog_interiors",
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        960,
+        540
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 88379,
+          "path": "assets/interiors/classroom.png",
+          "sha256": "6cb51874143e70d8f7f3f73d55f8a02f369f8d36531b8249c65c22ea96452f0a"
+        },
+        {
+          "bytes": 73890,
+          "path": "assets/interiors/classroom.webp",
+          "sha256": "2d7167d143d42e23f71bb15515ee5096690c3329ecde82aab67013959ff1037d"
+        }
+      ],
+      "id": "interior_classroom",
+      "kind": "interior_scene",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "教学楼内部",
+      "runtime_display": [
+        960,
+        540
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Old_Stuff/Floors_only_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            384,
+            144,
+            96
+          ],
+          "modification_operation": "crop 3x2 wall module + repeated",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Room_Builder_subfiles_48x48/Room_Builder_Walls_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            384,
+            0,
+            192,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              384,
+              12
+            ],
+            "trimmed_size": [
+              192,
+              63
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/5_Classroom_and_library_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            192,
+            1344,
+            64,
+            64
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              74,
+              18
+            ],
+            "trimmed_size": [
+              64,
+              64
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/1_Generic_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            256,
+            1344,
+            64,
+            64
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              820,
+              18
+            ],
+            "trimmed_size": [
+              64,
+              64
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/1_Generic_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            32,
+            64
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              878,
+              18
+            ],
+            "trimmed_size": [
+              26,
+              34
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/3_Animated_objects/48x48/spritesheets/animated_cuckoo_clock_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            384,
+            192
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              288,
+              142
+            ],
+            "trimmed_size": [
+              381,
+              156
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/5_Classroom_and_library_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            48,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              462,
+              252
+            ],
+            "trimmed_size": [
+              48,
+              66
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            192,
+            384,
+            192,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              28,
+              312
+            ],
+            "trimmed_size": [
+              192,
+              72
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/5_Classroom_and_library_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            384,
+            384,
+            192,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              740,
+              312
+            ],
+            "trimmed_size": [
+              192,
+              72
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/5_Classroom_and_library_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            384,
+            192
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              288,
+              326
+            ],
+            "trimmed_size": [
+              381,
+              156
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/5_Classroom_and_library_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            496,
+            20,
+            64,
+            104
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              894,
+              438
+            ],
+            "trimmed_size": [
+              54,
+              93
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/2_LivingRoom_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            1056,
+            288,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              24,
+              442
+            ],
+            "trimmed_size": [
+              243,
+              90
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/4_Bedroom_48x48.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "Modern Interior Tileset by AppleDog；以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "AppleDog 与项目内场景编排",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        960,
+        540
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 109625,
+          "path": "assets/interiors/library.png",
+          "sha256": "aaebd50ca79af0add49f96b0167a26237c2be37afdfe85ca7066d2309bc8cbeb"
+        },
+        {
+          "bytes": 90680,
+          "path": "assets/interiors/library.webp",
+          "sha256": "7ed776071da739e4b33a92c1e516d2fd3f45bea5d6d9be0fd4333b02ab4b6a2f"
+        }
+      ],
+      "id": "interior_library",
+      "kind": "interior_scene",
+      "license_status": "commercial-licensed",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": true,
+      "rights_status": "commercial-licensed",
+      "role": "青禾书院内部",
+      "runtime_display": [
+        960,
+        540
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            192,
+            192,
+            96,
+            96
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Old_Stuff/Floors_only_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            384,
+            384,
+            144,
+            96
+          ],
+          "modification_operation": "crop 3x2 wall module + repeated",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Room_Builder_subfiles_48x48/Room_Builder_Walls_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            256,
+            1344,
+            64,
+            64
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              768,
+              10
+            ],
+            "trimmed_size": [
+              64,
+              64
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/1_Generic_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            32,
+            64
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              878,
+              18
+            ],
+            "trimmed_size": [
+              26,
+              34
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/3_Animated_objects/48x48/spritesheets/animated_cuckoo_clock_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            672,
+            192,
+            192
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              20,
+              34
+            ],
+            "trimmed_size": [
+              189,
+              192
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/5_Classroom_and_library_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            672,
+            192,
+            192
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              210,
+              34
+            ],
+            "trimmed_size": [
+              189,
+              192
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/5_Classroom_and_library_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            672,
+            192,
+            192
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              400,
+              34
+            ],
+            "trimmed_size": [
+              189,
+              192
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/5_Classroom_and_library_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            672,
+            192,
+            192
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              590,
+              34
+            ],
+            "trimmed_size": [
+              189,
+              192
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/5_Classroom_and_library_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              140,
+              202
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              248,
+              202
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              538,
+              202
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              646,
+              202
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            96,
+            192,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              122,
+              236
+            ],
+            "trimmed_size": [
+              159,
+              87
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            96,
+            192,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              520,
+              236
+            ],
+            "trimmed_size": [
+              159,
+              87
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow + vertical flip",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              140,
+              314
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow + vertical flip",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              248,
+              314
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow + vertical flip",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              538,
+              314
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow + vertical flip",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              646,
+              314
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            192,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              432,
+              318
+            ],
+            "trimmed_size": [
+              48,
+              66
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            384,
+            96,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              846,
+              378
+            ],
+            "trimmed_size": [
+              90,
+              66
+            ]
+          },
+          "source_archive": "Full Tileset.7z",
+          "source_member": "Full Tileset.7z!/48x48/Inside_home_B.png",
+          "source_pack": "appledog_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            1056,
+            288,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              252,
+              388
+            ],
+            "trimmed_size": [
+              243,
+              90
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/4_Bedroom_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            96,
+            192,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              18,
+              402
+            ],
+            "trimmed_size": [
+              192,
+              96
+            ]
+          },
+          "source_archive": "Full Tileset.7z",
+          "source_member": "Full Tileset.7z!/48x48/Inside_home_B.png",
+          "source_pack": "appledog_interiors"
+        },
+        {
+          "crop_box": [
+            496,
+            20,
+            64,
+            104
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              752,
+              438
+            ],
+            "trimmed_size": [
+              54,
+              93
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/2_LivingRoom_48x48.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "appledog_interiors",
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        960,
+        540
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 76047,
+          "path": "assets/interiors/canteen.png",
+          "sha256": "24789f13340007eb60a767c3fdb3de9ea68278cfdb12836bda40e2dbae747cb2"
+        },
+        {
+          "bytes": 63798,
+          "path": "assets/interiors/canteen.webp",
+          "sha256": "e7a8a92a04e31fb8d18f876ce93a0d9b515b330e6ec2726fd4968d2841d03362"
+        }
+      ],
+      "id": "interior_canteen",
+      "kind": "interior_scene",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "食堂内部",
+      "runtime_display": [
+        960,
+        540
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            192,
+            0,
+            96,
+            96
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Old_Stuff/Floors_only_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            480,
+            144,
+            96
+          ],
+          "modification_operation": "crop 3x2 wall module + repeated",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Room_Builder_subfiles_48x48/Room_Builder_Walls_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            192,
+            192,
+            192,
+            192
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              68,
+              10
+            ],
+            "trimmed_size": [
+              192,
+              171
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/12_Kitchen_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            384,
+            192,
+            192,
+            192
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              260,
+              10
+            ],
+            "trimmed_size": [
+              192,
+              174
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/12_Kitchen_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            192,
+            192,
+            192,
+            192
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              642,
+              10
+            ],
+            "trimmed_size": [
+              192,
+              171
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/12_Kitchen_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            384,
+            1344,
+            64,
+            64
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              452,
+              10
+            ],
+            "trimmed_size": [
+              64,
+              64
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/1_Generic_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            32,
+            64
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              882,
+              18
+            ],
+            "trimmed_size": [
+              26,
+              34
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/3_Animated_objects/48x48/spritesheets/animated_cuckoo_clock_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            256,
+            704,
+            128,
+            128
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              760,
+              86
+            ],
+            "trimmed_size": [
+              128,
+              112
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/12_Kitchen_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              76,
+              180
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              184,
+              180
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              404,
+              180
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              512,
+              180
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              732,
+              180
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              840,
+              180
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            96,
+            192,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              58,
+              214
+            ],
+            "trimmed_size": [
+              159,
+              87
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            96,
+            192,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              386,
+              214
+            ],
+            "trimmed_size": [
+              159,
+              87
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            96,
+            192,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              714,
+              214
+            ],
+            "trimmed_size": [
+              159,
+              87
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow + vertical flip",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              76,
+              292
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow + vertical flip",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              184,
+              292
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow + vertical flip",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              404,
+              292
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow + vertical flip",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              512,
+              292
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow + vertical flip",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              732,
+              292
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow + vertical flip",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              840,
+              292
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              238,
+              340
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              346,
+              340
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              566,
+              340
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              674,
+              340
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              494,
+              354
+            ],
+            "trimmed_size": [
+              48,
+              66
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            96,
+            192,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              220,
+              374
+            ],
+            "trimmed_size": [
+              159,
+              87
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            96,
+            192,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              548,
+              374
+            ],
+            "trimmed_size": [
+              159,
+              87
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            496,
+            20,
+            64,
+            104
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              12,
+              438
+            ],
+            "trimmed_size": [
+              54,
+              93
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/2_LivingRoom_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            496,
+            20,
+            64,
+            104
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              894,
+              438
+            ],
+            "trimmed_size": [
+              54,
+              93
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/2_LivingRoom_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow + vertical flip",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              238,
+              452
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow + vertical flip",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              346,
+              452
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow + vertical flip",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              566,
+              452
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow + vertical flip",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              674,
+              452
+            ],
+            "trimmed_size": [
+              48,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/13_Conference_Hall_48x48.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        960,
+        540
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 112054,
+          "path": "assets/interiors/shop.png",
+          "sha256": "95362bf149d1418482f54638c04319265628849ada7cb27d2611c75714612c97"
+        },
+        {
+          "bytes": 103762,
+          "path": "assets/interiors/shop.webp",
+          "sha256": "0ac263ce9c4d276b69c9b702145c89035185d72ff28472949068fe0f0f57746b"
+        }
+      ],
+      "id": "interior_shop",
+      "kind": "interior_scene",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "便利店内部",
+      "runtime_display": [
+        960,
+        540
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            576,
+            0,
+            96,
+            96
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Old_Stuff/Floors_only_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            1152,
+            288,
+            144,
+            96
+          ],
+          "modification_operation": "crop 3x2 wall module + repeated",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Room_Builder_subfiles_48x48/Room_Builder_Walls_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            320,
+            1344,
+            64,
+            64
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              378,
+              10
+            ],
+            "trimmed_size": [
+              64,
+              64
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/1_Generic_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            32,
+            64
+          ],
+          "modification_operation": "crop + alpha trim + interior composition",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              882,
+              18
+            ],
+            "trimmed_size": [
+              26,
+              34
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/3_Animated_objects/48x48/spritesheets/animated_cuckoo_clock_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            81,
+            393,
+            78,
+            108
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              108,
+              108
+            ],
+            "trimmed_size": [
+              78,
+              108
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/16_Grocery_store_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            273,
+            393,
+            78,
+            108
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              314,
+              108
+            ],
+            "trimmed_size": [
+              78,
+              108
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/16_Grocery_store_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            192,
+            396,
+            48,
+            105
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              206,
+              110
+            ],
+            "trimmed_size": [
+              48,
+              105
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/16_Grocery_store_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            384,
+            396,
+            48,
+            105
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              416,
+              110
+            ],
+            "trimmed_size": [
+              48,
+              105
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/16_Grocery_store_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            0,
+            528,
+            480,
+            69
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              476,
+              110
+            ],
+            "trimmed_size": [
+              480,
+              69
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/16_Grocery_store_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            675,
+            573,
+            42,
+            66
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              808,
+              218
+            ],
+            "trimmed_size": [
+              42,
+              42
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/16_Grocery_store_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            15,
+            726,
+            66,
+            138
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              20,
+              230
+            ],
+            "trimmed_size": [
+              66,
+              138
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/16_Grocery_store_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            15,
+            726,
+            66,
+            138
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              884,
+              230
+            ],
+            "trimmed_size": [
+              66,
+              138
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/16_Grocery_store_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            96,
+            624,
+            338,
+            48
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              120,
+              230
+            ],
+            "trimmed_size": [
+              338,
+              48
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/16_Grocery_store_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            516,
+            1320,
+            216,
+            120
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              500,
+              230
+            ],
+            "trimmed_size": [
+              216,
+              120
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/16_Grocery_store_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            675,
+            597,
+            42,
+            45
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              808,
+              292
+            ],
+            "trimmed_size": [
+              42,
+              45
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/16_Grocery_store_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            48,
+            96,
+            48,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              770,
+              318
+            ],
+            "trimmed_size": [
+              39,
+              66
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            128,
+            1344,
+            384,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              430,
+              414
+            ],
+            "trimmed_size": [
+              349,
+              96
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/16_Grocery_store_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            496,
+            20,
+            64,
+            104
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              10,
+              438
+            ],
+            "trimmed_size": [
+              54,
+              93
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/2_LivingRoom_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            496,
+            20,
+            64,
+            104
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              894,
+              438
+            ],
+            "trimmed_size": [
+              54,
+              93
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/2_LivingRoom_48x48.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "Modern Exteriors by LimeZu；以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "LimeZu 与项目内场景编排",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        960,
+        540
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 17930,
+          "path": "assets/interiors/river.png",
+          "sha256": "dd59c0b0f97e573f4465cfdeda5990c66f9dd3cb59361e56ad70f08faf9f2215"
+        },
+        {
+          "bytes": 6366,
+          "path": "assets/interiors/river.webp",
+          "sha256": "d2f7bcf4749a7c63cbcf7d24bbb38f6a1001f02fd2dabff0adb635d08af0fe1b"
+        }
+      ],
+      "id": "interior_river",
+      "kind": "interior_scene",
+      "license_status": "commercial-licensed",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": true,
+      "rights_status": "commercial-licensed",
+      "role": "河边步道内部",
+      "runtime_display": [
+        960,
+        540
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/1_Terrains_and_Fences_Singles_48x48/ME_Singles_Terrains_and_Fences_48x48_Grass_2_9.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/2_City_Terrains_Singles_48x48/ME_Singles_City_Terrains_48x48_Sidewalk_1_25.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/1_Terrains_and_Fences_Singles_48x48/ME_Singles_Terrains_and_Fences_48x48_Deep_Water_1_9.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            144
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Tree_3.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Shrub_4.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            48
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Flower_Bush_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            192
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Street_Lamp_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            48
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/13_School_Singles_48x48/ME_Singles_School_48x48_Bench_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            144
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/11_Camping_Singles_48x48/ME_Singles_Camping_48x48_Pier_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Info_Sign_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            48,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + riverside placement",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_exteriors",
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        96,
+        96
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 617,
+          "path": "assets/portraits/lin_cheng.png",
+          "sha256": "74507ef72cb72a573d17bc88fadf573c1fb85138c14987e49d7c71fca9cf3cb4"
+        },
+        {
+          "bytes": 246,
+          "path": "assets/portraits/lin_cheng.webp",
+          "sha256": "23619e26a1f7226d34b4606574f2f4d0489fc7be8f9d6f67e26224b50cc2a2cb"
+        }
+      ],
+      "id": "portrait_lin_cheng",
+      "kind": "portrait",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "林澄",
+      "runtime_display": [
+        96,
+        96
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            48,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop one RPG Maker character frame + alpha trim + nearest 2x",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        96,
+        96
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 699,
+          "path": "assets/portraits/chen_lan.png",
+          "sha256": "b6cd11c3a026be660fdaac2bb642aa45d9ec983932d7117c5b993a7942689a93"
+        },
+        {
+          "bytes": 272,
+          "path": "assets/portraits/chen_lan.webp",
+          "sha256": "61cba71a539262d57a0f4176f356e9ba459d9ade89c2b7b0f6999755c55cd63b"
+        }
+      ],
+      "id": "portrait_chen_lan",
+      "kind": "portrait",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "陈岚",
+      "runtime_display": [
+        96,
+        96
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            192,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop one RPG Maker character frame + alpha trim + nearest 2x",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        96,
+        96
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 649,
+          "path": "assets/portraits/su_wan.png",
+          "sha256": "36ad60ee6d005965e124322f23c743d64ff565af80fa731c2dbe47fd345b9b18"
+        },
+        {
+          "bytes": 252,
+          "path": "assets/portraits/su_wan.webp",
+          "sha256": "0848f86511a1a93a9d3dcaeb8b2f7cf400cc535ed5f834d0b7aade8f0658d769"
+        }
+      ],
+      "id": "portrait_su_wan",
+      "kind": "portrait",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "苏晚",
+      "runtime_display": [
+        96,
+        96
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop one RPG Maker character frame + alpha trim + nearest 2x",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        96,
+        96
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 625,
+          "path": "assets/portraits/gao_yuan.png",
+          "sha256": "87d61c65473938c4981e9636f51e502b008154f97bc0436940a7fb9643cdcef6"
+        },
+        {
+          "bytes": 340,
+          "path": "assets/portraits/gao_yuan.webp",
+          "sha256": "ddb92428134b0412ed71dd32dc9083135a3f9abd1d6398ec0115c706ce3f0f99"
+        }
+      ],
+      "id": "portrait_gao_yuan",
+      "kind": "portrait",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "高原",
+      "runtime_display": [
+        96,
+        96
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            48,
+            96,
+            48,
+            96
+          ],
+          "modification_operation": "crop one RPG Maker character frame + alpha trim + nearest 2x",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        96,
+        96
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 606,
+          "path": "assets/portraits/gu_yan.png",
+          "sha256": "6a3c4737f90646f2b35d7a7f194b3992182705276733df3e6a64eb3a3bf3f76e"
+        },
+        {
+          "bytes": 326,
+          "path": "assets/portraits/gu_yan.webp",
+          "sha256": "2e06dd100beb194455aa04c512baae43b5b83176162b3fcc4deb2e4177fed799"
+        }
+      ],
+      "id": "portrait_gu_yan",
+      "kind": "portrait",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "顾言",
+      "runtime_display": [
+        96,
+        96
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            336,
+            192,
+            48,
+            96
+          ],
+          "modification_operation": "crop one RPG Maker character frame + alpha trim + nearest 2x",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        48,
+        66
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 808,
+          "path": "assets/characters/lin_cheng.png",
+          "sha256": "7ce5fc15bfd3820ff8acea844ff86f7543ed80091de406a881c39b1f6a150a7c"
+        },
+        {
+          "bytes": 326,
+          "path": "assets/characters/lin_cheng.webp",
+          "sha256": "050332a4b955db3cdb9b97c6e75b4f377001df884deb9be3e077e55cf930a9da"
+        }
+      ],
+      "id": "character_lin_cheng",
+      "kind": "world_character",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "林澄地图行走形象",
+      "runtime_display": [
+        48,
+        66
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            48,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop one RPG Maker character frame + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "Modern Exteriors by LimeZu；以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "LimeZu 与项目内场景编排",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        32,
+        32
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 264,
+          "path": "assets/icons/map.png",
+          "sha256": "46af21606efe571af311bc138624aec51f4213d65a33b97e964882ece349c3e6"
+        }
+      ],
+      "id": "icon_map",
+      "kind": "ui_icon",
+      "license_status": "commercial-licensed",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": true,
+      "rights_status": "commercial-licensed",
+      "role": "map 像素图标",
+      "runtime_display": [
+        20,
+        20
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/1_Terrains_and_Fences_Singles_48x48/ME_Singles_Terrains_and_Fences_48x48_Grass_2_9.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/1_Terrains_and_Fences_Singles_48x48/ME_Singles_Terrains_and_Fences_48x48_Deep_Water_1_9.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/2_City_Terrains_Singles_48x48/ME_Singles_City_Terrains_48x48_Sidewalk_1_25.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "tile + repeated",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/2_City_Terrains_Singles_48x48/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_18.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            144
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Tree_3.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Shrub_4.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            48
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Flower_Bush_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            192
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Street_Lamp_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Hydrant_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Mailbox_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop + alpha trim",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Trashbin_10.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            96,
+            48
+          ],
+          "modification_operation": "direct sprite placement",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/13_School_Singles_48x48/ME_Singles_School_48x48_Bench_1.png",
+          "source_pack": "modern_exteriors"
+        },
+        {
+          "crop_box": [
+            0,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "direct sprite placement",
+          "original_pixel_used": true,
+          "source_archive": "modernexteriors-win.zip",
+          "source_member": "Modern_Exteriors_48x48/ME_Theme_Sorter_48x48/3_City_Props_Singles_48x48/ME_Singles_City_Props_48x48_Info_Sign_1.png",
+          "source_pack": "modern_exteriors"
+        }
+      ],
+      "source_packs": [
+        "modern_exteriors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        32,
+        32
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 256,
+          "path": "assets/icons/character.png",
+          "sha256": "d5a24c788f408b905480d1eee45e768160b33fe120605df831d2c54d6f8e6545"
+        }
+      ],
+      "id": "icon_character",
+      "kind": "ui_icon",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "character 像素图标",
+      "runtime_display": [
+        20,
+        20
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            192,
+            0,
+            32,
+            32
+          ],
+          "modification_operation": "crop + alpha trim + nearest fit",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_User_Interface_Elements/UI_32x32.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        32,
+        32
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 429,
+          "path": "assets/icons/timeline.png",
+          "sha256": "0955e319e78b7c08d92d88248f22d7d2b89182de2e6c11753d85cf7512215982"
+        }
+      ],
+      "id": "icon_timeline",
+      "kind": "ui_icon",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "timeline 像素图标",
+      "runtime_display": [
+        20,
+        20
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            320,
+            128,
+            32,
+            32
+          ],
+          "modification_operation": "crop + alpha trim + nearest fit",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_User_Interface_Elements/UI_32x32.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        32,
+        32
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 331,
+          "path": "assets/icons/chat.png",
+          "sha256": "0bb6b851431fb0b4871e2193d3a34b4361f913bd0822da2b011642bf5d1bad8f"
+        }
+      ],
+      "id": "icon_chat",
+      "kind": "ui_icon",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "chat 像素图标",
+      "runtime_display": [
+        20,
+        20
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            288,
+            32,
+            32,
+            32
+          ],
+          "modification_operation": "crop + alpha trim + nearest fit",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_User_Interface_Elements/UI_32x32.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        32,
+        32
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 304,
+          "path": "assets/icons/diary.png",
+          "sha256": "4723cccae8737d8e980de3497a431fab3c4f81e4d2e4c562bec8c92d7a4a9571"
+        }
+      ],
+      "id": "icon_diary",
+      "kind": "ui_icon",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "diary 像素图标",
+      "runtime_display": [
+        20,
+        20
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            352,
+            0,
+            32,
+            32
+          ],
+          "modification_operation": "crop + alpha trim + nearest fit",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_User_Interface_Elements/UI_32x32.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        32,
+        32
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 488,
+          "path": "assets/icons/memory.png",
+          "sha256": "1b851cefd1ec1466592c26ea8d6ffd1be387dd348906e0ab3eae99250a26d846"
+        }
+      ],
+      "id": "icon_memory",
+      "kind": "ui_icon",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "memory 像素图标",
+      "runtime_display": [
+        20,
+        20
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            256,
+            128,
+            32,
+            32
+          ],
+          "modification_operation": "crop + alpha trim + nearest fit",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_User_Interface_Elements/UI_32x32.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        32,
+        32
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 460,
+          "path": "assets/icons/settings.png",
+          "sha256": "ee735aa770b2e72522dd5b33ce3e1fdb1ea54aec6df264481238200f8272964f"
+        }
+      ],
+      "id": "icon_settings",
+      "kind": "ui_icon",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "settings 像素图标",
+      "runtime_display": [
+        20,
+        20
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            352,
+            128,
+            32,
+            32
+          ],
+          "modification_operation": "crop + alpha trim + nearest fit",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_User_Interface_Elements/UI_32x32.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        32,
+        32
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 223,
+          "path": "assets/icons/open.png",
+          "sha256": "838f31840435383867175852ccf01ece92e3a30bb2e67873c7235df52bca4745"
+        }
+      ],
+      "id": "icon_open",
+      "kind": "ui_icon",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "open 像素图标",
+      "runtime_display": [
+        20,
+        20
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "modification_operation": "crop + alpha trim + nearest fit",
+          "original_pixel_used": true,
+          "source_archive": "农场生活.zip",
+          "source_member": "SUNNYSIDE_WORLD_UI_V1.0/SUNNYSIDEWORLD_UI_V1.0/ASSETS/confirm.png",
+          "source_pack": "sunnyside_world"
+        }
+      ],
+      "source_packs": [
+        "sunnyside_world"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        32,
+        32
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 252,
+          "path": "assets/icons/closed.png",
+          "sha256": "daa83b10c2630de7b99a2ef03444f549cb61040f1de33beb8b68d0ca92d346c2"
+        }
+      ],
+      "id": "icon_closed",
+      "kind": "ui_icon",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "closed 像素图标",
+      "runtime_display": [
+        20,
+        20
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "modification_operation": "crop + alpha trim + nearest fit",
+          "original_pixel_used": true,
+          "source_archive": "农场生活.zip",
+          "source_member": "SUNNYSIDE_WORLD_UI_V1.0/SUNNYSIDEWORLD_UI_V1.0/ASSETS/cancel.png",
+          "source_pack": "sunnyside_world"
+        }
+      ],
+      "source_packs": [
+        "sunnyside_world"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "attribution": "项目方授权素材包原始像素，以及 Clean City v3、Sunnyside World、Modern Interiors 与《村庄田园像素游戏》素材。",
+      "author": "项目方授权素材包原始像素与项目内裁切拼贴",
+      "authorization": "项目所有者于 2026-10-29 确认可直接使用或改造。",
+      "canvas": [
+        32,
+        32
+      ],
+      "creation_route": "source-composite",
+      "exports": [
+        {
+          "bytes": 290,
+          "path": "assets/icons/brand.png",
+          "sha256": "7bbfed79c89c79b96ea5389dad52dcbb7045f63ad34f6e86d8c9b29c2cc98e5c"
+        }
+      ],
+      "id": "icon_brand",
+      "kind": "ui_icon",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "source crop, transparent alpha, nearest-neighbor integer scaling; no programmatic redraw",
+      "raw_source_included": false,
+      "requires_attribution": false,
+      "rights_status": "project-authorized",
+      "role": "brand 像素图标",
+      "runtime_display": [
+        20,
+        20
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "modification_operation": "crop + alpha trim + nearest fit",
+          "original_pixel_used": true,
+          "source_archive": "农场生活.zip",
+          "source_member": "SUNNYSIDE_WORLD_UI_V1.0/SUNNYSIDEWORLD_UI_V1.0/ASSETS/basket.png",
+          "source_pack": "sunnyside_world"
+        }
+      ],
+      "source_packs": [
+        "sunnyside_world"
+      ]
+    },
+    {
+      "allowed_use": [
+        "本地开发",
+        "本项目集成",
+        "作为本项目组成部分公开分发"
+      ],
+      "animations": [
+        "idle",
+        "walk"
+      ],
+      "attribution": "角色纹理来自 Modern Interiors 授权角色帧。",
+      "author": "项目方授权角色像素与项目内 Spine 骨骼拆分",
+      "authorization": "项目所有者授权使用并改造原始角色素材。",
+      "canvas": [
+        48,
+        66
+      ],
+      "creation_route": "spine-json-composite",
+      "editor_export_status": "trial license blocks project save and animation export; runtime-compatible Spine JSON generated from native rig",
+      "exports": [
+        {
+          "bytes": 5185,
+          "path": "assets/spine/lin_cheng.json",
+          "sha256": "7e91aef89060cc794d15ddc2e56be892c9f2a2e6d7bd1ac8072b71001b3859c3"
+        },
+        {
+          "bytes": 523,
+          "path": "assets/spine/lin_cheng.atlas",
+          "sha256": "8e77b23b7e420f1079fee7c511c44c7b660294fdfd4ad75c932bf475bcdf1f0c"
+        },
+        {
+          "bytes": 861,
+          "path": "assets/spine/lin_cheng.png",
+          "sha256": "4203766e347eb5b5acfced4b1753fe2e155eddc992ce6faaaf7ccc0d0a9cc228"
+        }
+      ],
+      "id": "spine_lin_cheng",
+      "kind": "spine_skeleton",
+      "license_status": "project-authorized",
+      "original_pixel_used": true,
+      "pixel_treatment": "Spine WebGL, nearest-neighbor atlas, 2x render",
+      "raw_source_included": false,
+      "rights_status": "project-authorized",
+      "role": "林澄 Spine 待机与行走动画",
+      "runtime_display": [
+        48,
+        70
+      ],
+      "source_layers": [
+        {
+          "crop_box": [
+            48,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "alpha trim, split torso and two leg regions, Spine 4.3 JSON rig",
+          "original_pixel_used": true,
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
+          "source_pack": "modern_interiors"
+        }
+      ],
+      "source_packs": [
+        "modern_interiors"
+      ],
+      "spine_editor": "Spine Trial 4.3.26"
+    }
+  ],
+  "authorization": {
+    "confirmed_on": "2026-10-29",
+    "note": "原始压缩包未提交；仅提交基于授权素材的裁切、组合和运行时导出资源。",
+    "status": "project-authorized"
+  },
+  "fallback": {
+    "missing_building": "assets/icons/brand.png",
+    "missing_portrait": "assets/icons/character.png",
+    "text_alternative": "每个图片均配套运行时中文名称和状态文本。"
+  },
+  "schema_version": "rpg-asset-manifest-v2",
+  "source_packs": [
+    {
+      "archive": "Full Tileset.7z",
+      "archive_sha256": "630F38A16CF8D2368612CB92AE7292F234B98EB94A57E5D351B71C937473081F",
+      "attribution": "Modern Interior Tileset by AppleDog",
+      "id": "appledog_interiors",
+      "license_status": "commercial-licensed",
+      "license_url": "https://apple-dog.itch.io/modern-tileset-by-appledog",
+      "name": "Modern Interior Tileset by AppleDog",
+      "role": "卧室、客厅及生活道具补充"
+    },
+    {
+      "archive": "modernexteriors-win.zip",
+      "archive_sha256": "D12C6892ED96BC18CDA34EAFDF3EF15B1EDA10D0D6733F377730F46932F728FE",
+      "attribution": "Modern Exteriors by LimeZu",
+      "id": "modern_exteriors",
+      "license_status": "commercial-licensed",
+      "license_url": "https://limezu.itch.io/modernexteriors",
+      "name": "LimeZu Modern Exteriors",
+      "role": "现代建筑外观、道路、铺装、围栏与室外道具"
+    },
+    {
+      "archive": "2106161.zip",
+      "archive_sha256": "467DBFB0887B4EE605D4F4C3038B8642271C1C5CA967A8ABC4EC2247525A0DE5",
+      "id": "clean_city_v3",
+      "license_status": "project-authorized",
+      "name": "GuttyKreum Clean City v3",
+      "role": "现代建筑、商铺、道路和校园街区"
+    },
+    {
+      "archive": "农场生活.zip",
+      "archive_sha256": "B9084F961E8E78CDB8789ED72ED7383B6A9B3EBE8130F4B792A88A65C5D40CF5",
+      "id": "sunnyside_world",
+      "license_status": "project-authorized",
+      "name": "Sunnyside World Assets / UI",
+      "role": "像素 UI 状态图标"
+    },
+    {
+      "archive": "2104261.zip",
+      "archive_sha256": "8FE691CE84881936F6B7A25E15A9847A1BFD555D21984A99939EA930A52C4C91",
+      "id": "modern_interiors",
+      "license_status": "project-authorized",
+      "name": "Modern Interiors",
+      "role": "角色帧、Spine 骨骼拆分、室内图块和界面图标"
+    },
+    {
+      "archive": "村庄田园像素游戏.rar",
+      "archive_sha256": "E2D8D538183A9674C479C7620DE17B8F3547F2236E08604557A6E98F0A1D5F3A",
+      "id": "village_pixel_pack",
+      "license_status": "project-authorized",
+      "name": "村庄田园像素游戏",
+      "role": "草地、水岸、石路、树木与传统 RPG 地图布局"
+    }
+  ],
+  "spine_runtime": {
+    "file": "web/vendor/spine-webgl.min.js",
+    "license_file": "web/vendor/SPINE-RUNTIMES-LICENSE.txt",
+    "package": "@esotericsoftware/spine-webgl",
+    "version": "4.3.13"
+  },
+  "theme": {
+    "display_scale": 1,
+    "image_rendering": "pixelated",
+    "logical_tile": 32,
+    "name": "青禾镇 · 田园观察手账",
+    "palette": {
+      "amber": "#d39a3a",
+      "brick": "#9c5d3f",
+      "cream": "#f7edcf",
+      "forest": "#274c35",
+      "forest_dark": "#17372a",
+      "ink": "#283329",
+      "ink_soft": "#445144",
+      "leaf": "#85bb51",
+      "leaf_light": "#aede73",
+      "paper": "#fff7df",
+      "sand": "#d8b875",
+      "stone": "#8493a4",
+      "water": "#36a4c8"
+    },
+    "projection": "top-down 3/4"
+  }
+}
