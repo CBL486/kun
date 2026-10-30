@@ -13,6 +13,7 @@
 - B5 SQLite/PostgreSQL 契约与迁移已完成，75 项 B1-B5 测试通过。
 - B6 本地 FastAPI、OpenAPI 和公开投影已完成，B1-B6 共 92 项测试通过。
 - B7 最小 RPG Web 已通过 A 验收，B1-B7 共 101 项测试通过。
+- B7.5 首轮提交 `1b7e4dc` 未通过 A 验收，阻断问题与修复要求见 `docs/review-result-B7-5.md`。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B6 至 G3 执行计划见 `B6至G3执行计划书_V1.md`。
 - A 侧当前工作日志与续接手册见 `docs/agent-a-work-log.md`。
