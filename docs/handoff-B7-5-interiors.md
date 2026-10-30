@@ -1,145 +1,203 @@
-# B7.5 室内资产修复与角色模型现状交接
+# B7.5 修复版交接
 
-状态：本轮工作已完成并通过自动化与视觉验收，纳入最终美术提交
+状态：修复完成，等待 A 复审
 
 日期：2026-10-30
 
 分支：`codex/bx-b7-5-art`
 
-基线提交：`bd56080`
+修复前提交：`1b7e4dc7d3283829f0b3107088e275b569e700ca`
 
-## 1. 本轮完成内容
+修复代码提交：`bbb70bdbb44f35df14a1f99f6455880c6fe77ad4`
 
-### 室内场景
+## 1. P0 修复
 
-五个真正的室内场景均已重建并复查：
+### Web 与 Spine Runtime
 
-- 宿舍：补齐两扇墙面窗户；粉色和棕色圆盘使用完整图块；粉色圆盘右移至
-  `(330, 378)`，不再遮挡紫色沙发；角色、床位和右侧家具没有新增重叠。
-- 教学楼：补齐粉色与棕色圆盘，移除残缺边角装饰，替换为完整盆栽。
-- 青禾书院：补齐粉色与棕色圆盘，移除压在沙发上的残缺边缘物件，保留完整盆栽。
-- 食堂：移除画布角落的残片，换成完整盆栽；桌椅和角色位置不变。
-- 便利店：不再使用区域拼图中间截段，改为完整独立冰箱、货架、商品展台、
-  收银台、货架组和盆栽重新编排；所有家具都落在 960×540 画布内。
-
-河边步道属于室外场景，本轮没有改动。
-
-### 资产记录与回归检查
-
-- `assets/manifest.json` 已重新生成，记录每个室内图块的来源、裁切框、
-  最终落点、透明收缩后尺寸和运行导出哈希。
-- 新增室内家具完整性测试，检查：
-  - 宿舍窗户使用完整裁切框；
-  - 前三间场景使用完整双圆盘；
-  - 粉色圆盘起点不早于沙发右缘；
-  - 已废弃的残缺植物裁切不会重新出现；
-  - 所有室内家具的最终落点都在画布范围内。
-
-## 2. 关键文件
+实际运行所需的 Web 文件均已提交：
 
 ```text
-assets/interiors/
-  dorm.png / dorm.webp
-  classroom.png / classroom.webp
-  library.png / library.webp
-  canteen.png / canteen.webp
-  shop.png / shop.webp
-  river.png / river.webp
-assets/manifest.json
-scripts/build_b75_assets.py
-tests/test_b75_assets.py
-docs/art-pipeline.md
-docs/art-budget-b7-5.json
-docs/screenshots/
-  b75-interiors-overview.png
-  b75-interior-desktop.png
-  b75-interior-mobile.png
+web/index.html
+web/app.js
+web/styles.css
+web/spine-player.js
+web/vendor/spine-webgl.min.js
+web/vendor/SPINE-RUNTIMES-LICENSE.txt
 ```
 
-构建入口会重建主资产和 Spine 资源：
+页面包含 `.world-map-stage`、`#world-plane`、`#map-player` 和
+`#map-player-canvas`。`web/app.js` 初始化 `window.qingheSpinePlayer`，
+Spine `idle` 与 `walk` 会随地图移动状态切换。
 
-```powershell
-pwsh -NoProfile -File scripts/build-b75-assets.ps1
+### 静态资源路由
+
+`app/main.py` 同时提供：
+
+```text
+/static -> web/
+/assets -> assets/
 ```
 
-完整测试与视觉验收：
+测试已实际请求地图、角色、建筑、室内、头像、Spine 和图标资源，全部返回 200。
+
+### Manifest 与字节一致性
+
+- 构建脚本以 LF 写出 Manifest、Spine JSON 和 Atlas；
+- `.gitattributes` 禁止这三个生成文本文件在检出时发生换行转换；
+- Manifest 共 30 个资源、51 个导出文件；
+- 字节数、SHA-256、Runtime 文件和许可证文件全部匹配；
+- 干净检出后重新审计仍为 `all_exports_match=true`。
+
+关键实际文件尺寸：
+
+```text
+assets/spine/lin_cheng.json    4921 bytes
+assets/spine/lin_cheng.atlas    490 bytes
+```
+
+### 测试入口
+
+`scripts/test-b75.ps1` 默认只测试已提交资源和 Web，不再强制重建私密素材。
 
 ```powershell
 pwsh -NoProfile -File scripts/test-b75.ps1
 ```
 
-## 3. 验证结果
+需要重建时，必须显式指向私密素材目录：
 
-- `pytest`：112 项通过，存在 1 条 Starlette/httpx 弃用警告，不影响本轮功能。
-- Node 语法检查：`web/app.js`、`web/spine-player.js` 通过。
-- 桌面视觉检查：通过，`scrollWidth=1440`，控制台无错误。
-- 手机视觉检查：通过，`scrollWidth=390`，控制台无错误。
-- 室内图加载、角色移动、Spine `idle`/`walk` 切换和河边移动均通过。
-- 验收记录：`docs/art-budget-b7-5.json`。
-- 室内总览：`docs/screenshots/b75-interiors-overview.png`。
+```powershell
+$env:B75_SOURCE_ROOT = "D:\private\b75-source-extracted"
+pwsh -NoProfile -File scripts/build-b75-assets.ps1
+pwsh -NoProfile -File scripts/test-b75.ps1 -Rebuild
+```
 
-## 4. 角色模型现状
+### 回归测试
 
-当前项目没有 3D 角色资产，不存在 `.glb`、`.gltf`、`.fbx`、`.obj`、
-`.blend` 或 `.vrm` 模型文件。角色呈现采用 2D 像素和 Spine 骨骼动画。
+新增测试检查：
 
-### 已有可动画模型
+- Web 地图节点、Spine 播放器初始化和本地 Runtime 文件存在；
+- `/static/...` 与 `/assets/...` 返回 200；
+- Spine JSON/Atlas 哈希与 Manifest 一致；
+- NPC 头像、静态帧裁切、场景和动画状态映射一致；
+- 视觉报告包含生成提交、源码树、工作树状态和生成命令；
+- 室内家具不越界、不重叠，关键窗与地毯使用完整裁切。
 
-只有林澄：
+## 2. P1 角色映射
 
-- Spine 3.8/4.3 JSON 兼容数据：`assets/spine/lin_cheng.json`；
-- 图集：`assets/spine/lin_cheng.png`；
-- Atlas：`assets/spine/lin_cheng.atlas`；
-- 5 根骨骼：`root`、`torso`、`head`、`leg_left`、`leg_right`；
-- 4 个贴图区域：身体、左右腿、阴影；
-- 动作：`idle`、`walk`；
-- 地图静态帧：`assets/characters/lin_cheng.png`；
-- 运行时尺寸约 48×70。
+| 角色 | 静态帧裁切 | 稳定场景 | 动画 |
+| --- | --- | --- | --- |
+| 林澄 | `(48, 0, 48, 96)` | 宿舍、教学楼 | Spine `idle` / `walk` |
+| 陈岚 | `(192, 0, 48, 96)` | 青禾书院 | 静态 |
+| 苏晚 | `(336, 0, 48, 96)` | 教学楼 | 静态 |
+| 高原 | `(48, 96, 48, 96)` | 食堂 | 静态 |
+| 顾言 | `(336, 192, 48, 96)` | 河边步道 | 静态 |
 
-### 只有静态资源的角色
+同一映射写入 `assets/manifest.json` 的 `character_scene_map`，并由
+`tests/test_b75_assets.py` 校验。
 
-陈岚、苏晚、高原、顾言共有：
+## 3. 干净目录验证
 
-- 96×96 PNG/WebP 头像；
-- Modern Interiors 的 48×96 静态角色帧；
-- 日程、状态、知识边界和反应模板；
-- 没有独立 Spine 骨骼、独立行走贴图或个人动画。
+验证方式：
 
-原始 `New_Characters 48x48.png` 角色表为 576×768，包含 16 套角色模板，
-每套可提供 4 方向、每方向 3 帧。该表可以继续制作 2D 骨骼或逐帧行走角色，
-但目前只有五名具名角色被映射到项目内容。
+1. 从修复提交创建新的本地 clone；
+2. 确认 clone 中不存在 `out/b75-source-extracted`；
+3. 确认 clone 中不存在仓库内 `.b6-deps`；
+4. 仅使用外部已安装的 Python/Playwright 依赖运行正式测试；
+5. 从 clone 当前提交生成截图。
 
-## 5. 已知问题与风险
-
-- 室内静态角色帧与角色身份尚未完成全量一一核对。当前食堂场景使用的是
-  “苏晚”对应角色帧，而食堂设定角色是高原；顾言也尚无稳定的室内出场位置。
-- 四名 NPC 没有独立行走模型，不能直接当作可移动的 2D Spine 角色复用。
-- 没有 3D 模型、3D 骨骼、绑定、材质或动画，若转 3D 需要另立资产与渲染范围。
-- Spine 数据由项目内兼容 JSON 生成；当前 Spine Trial 不允许正式保存项目和导出动画。
-- 当前工作树包含大量未提交变更，本轮资产与截图均在未提交状态。
-
-## 6. 建议的后续顺序
-
-1. 先确定角色美术路线：继续 2D Spine，还是另立 3D 角色管线。
-2. 若继续 2D，优先为陈岚、苏晚、高原、顾言制作 `idle` 与 `walk` 骨架，
-   并建立统一的 `assets/spine/<character_id>/` 结构。
-3. 核对每个室内静态角色帧与人物设定，修正食堂等场景的身份映射。
-4. 将角色模型、场景静态帧和头像建立同一份角色资产清单，避免“有头像但无模型”
-   被误认为已具备可操作角色。
-5. 若需要 3D，先独立评估建模数量、绑定和动画人力，不从当前 2D 资产直接推定。
-
-## 7. 交接字段
+验证结果：
 
 ```text
-任务 ID：B7.5 室内资产修复与角色模型盘点
+113 passed, 1 warning in 12.54s
+```
+
+唯一警告为 `StarletteDeprecationWarning: Using httpx with starlette.testclient
+is deprecated`，不影响测试通过。
+
+其他结果：
+
+- `node --check web/app.js`：通过；
+- `node --check web/spine-player.js`：通过；
+- 桌面 1440×1000：无横向溢出，控制台错误 0；
+- 手机 390×844：无横向溢出，控制台错误 0；
+- 地图移动、镜头跟随、室内弹窗正常；
+- Spine `idle` / `walk` 正常切换；
+- 建筑图片失败回退验证通过。
+
+## 4. 截图证据
+
+截图生成提交：
+
+```text
+bbb70bdbb44f35df14a1f99f6455880c6fe77ad4
+```
+
+截图生成命令：
+
+```powershell
+pwsh -NoProfile -File scripts/check-b75-visual.ps1
+```
+
+生成时源码树：
+
+```text
+9faa892fc553f84c1849ceeb99a4e09cf4f66e3c
+```
+
+生成前工作树：干净
+
+桌面/手机截图：
+
+```text
+docs/screenshots/b75-desktop.png
+docs/screenshots/b75-mobile.png
+docs/screenshots/b75-interior-desktop.png
+docs/screenshots/b75-interior-mobile.png
+docs/screenshots/b75-spine-walk-desktop.png
+docs/screenshots/b75-spine-walk-mobile.png
+docs/screenshots/b75-town-east-desktop.png
+docs/screenshots/b75-river-walk-desktop.png
+docs/screenshots/b75-map-moved-desktop.png
+docs/screenshots/b75-map-moved-mobile.png
+docs/screenshots/b75-interiors-overview.png
+```
+
+机器可读验证记录：
+
+```text
+docs/art-budget-b7-5.json
+```
+
+最终截图证据提交只追加上述截图、总览和验证记录；Web 与运行时文件保持与
+`bbb70bd` 相同。
+
+## 5. 已知限制
+
+- 陈岚、苏晚、高原、顾言目前只有头像和静态场景帧，没有独立 Spine 行走模型。
+- 林澄的 Spine Runtime 已完整，但当前骨架只有 `idle` 与 `walk` 两个动作。
+- Spine 数据由 Spine 4.3 兼容 JSON 生成；Spine Trial 不允许正式保存工程和导出动画。
+- 生产发布前仍需补齐各素材包购买/授权凭证和正式 Spine Editor 许可证。
+- `StarletteDeprecationWarning` 属于依赖升级项，不阻塞本轮复审。
+
+## 6. 交接字段
+
+```text
+任务 ID：B7.5 修复版
 分支：codex/bx-b7-5-art
-基线提交：bd56080
-当前提交：本次最终美术提交（使用 `git log -1` 查看）
-主要改动：assets/、scripts/build_b75_assets.py、tests/test_b75_assets.py、
-          docs/art-pipeline.md、docs/art-budget-b7-5.json、docs/screenshots/
+新提交哈希：bbb70bdbb44f35df14a1f99f6455880c6fe77ad4（修复代码）
+改动文件：app/main.py、web/、assets/、spine/、scripts/、tests/、
+          README.md、docs/art-pipeline.md、docs/art-budget-b7-5.json、
+          docs/screenshots/、docs/handoff-B7-5-interiors.md、.gitattributes
+Web 运行文件：web/index.html、web/app.js、web/styles.css
+Spine Runtime 文件：web/spine-player.js、web/vendor/spine-webgl.min.js、
+                     web/vendor/SPINE-RUNTIMES-LICENSE.txt
+Manifest 审计结果：30 个资源 / 51 个导出全部存在，字节和 SHA-256 匹配
 测试命令：pwsh -NoProfile -File scripts/test-b75.ps1
-测试结果：112 项通过；桌面/手机视觉检查通过
-素材许可：Modern Interiors、Modern Exteriors、AppleDog Modern Interior Tileset
-原始素材：压缩包和解包源不提交，只提交裁切、拼贴和运行时资源
-未完成项：NPC 独立骨骼模型、角色身份映射核对、3D 模型路线
+测试真实输出：113 passed, 1 warning in 12.54s
+原始素材前置条件：正式测试不需要；重建资源才需要 B75_SOURCE_ROOT
+截图生成提交：bbb70bdbb44f35df14a1f99f6455880c6fe77ad4
+桌面/手机截图路径：docs/screenshots/b75-desktop.png、
+                    docs/screenshots/b75-mobile.png
+已知风险：四名 NPC 无独立行走模型；Spine Trial 需在发布前替换正式导出
+需要 A 在服务器执行的动作：无
 ```
