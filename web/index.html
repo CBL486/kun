@@ -19,6 +19,12 @@
 
     <header class="topbar">
       <div>
+        <img
+          class="brand-emblem"
+          src="/assets/icons/brand.png"
+          alt=""
+          aria-hidden="true"
+        >
         <p class="eyebrow">OBSERVER CHANNEL</p>
         <h1>青禾镇观察站</h1>
       </div>
@@ -42,25 +48,25 @@
       <aside class="sidebar" aria-label="主要页面">
         <nav class="desktop-nav">
           <button class="nav-item is-active" type="button" data-view="map">
-            <span class="nav-mark" aria-hidden="true">镇</span>小镇地图
+            <img class="nav-mark" src="/assets/icons/map.png" alt="">小镇地图
           </button>
           <button class="nav-item" type="button" data-view="character">
-            <span class="nav-mark" aria-hidden="true">澄</span>角色卡
+            <img class="nav-mark" src="/assets/icons/character.png" alt="">角色卡
           </button>
           <button class="nav-item" type="button" data-view="timeline">
-            <span class="nav-mark" aria-hidden="true">时</span>公开时间线
+            <img class="nav-mark" src="/assets/icons/timeline.png" alt="">公开时间线
           </button>
           <button class="nav-item" type="button" data-view="chat">
-            <span class="nav-mark" aria-hidden="true">言</span>观察留言
+            <img class="nav-mark" src="/assets/icons/chat.png" alt="">观察留言
           </button>
           <button class="nav-item" type="button" data-view="diary">
-            <span class="nav-mark" aria-hidden="true">记</span>日记摘要
+            <img class="nav-mark" src="/assets/icons/diary.png" alt="">日记摘要
           </button>
           <button class="nav-item" type="button" data-view="memory">
-            <span class="nav-mark" aria-hidden="true">忆</span>记忆摘要
+            <img class="nav-mark" src="/assets/icons/memory.png" alt="">记忆摘要
           </button>
           <button class="nav-item" type="button" data-view="settings">
-            <span class="nav-mark" aria-hidden="true">设</span>设置
+            <img class="nav-mark" src="/assets/icons/settings.png" alt="">设置
           </button>
         </nav>
         <div class="sidebar-note">
@@ -80,34 +86,95 @@
         </div>
 
         <section id="view-map" class="view-panel" data-view-panel="map" hidden>
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">TODAY IN QINGHE</p>
-              <h2>小镇此刻</h2>
-            </div>
-            <p id="world-clock" class="time-label"></p>
-          </div>
-
-          <div class="map-layout">
-            <article class="map-card">
-              <div class="map-art" aria-hidden="true">
-                <img src="/static/assets/placeholders/town-map.svg" alt="">
-              </div>
-              <div class="map-headline">
-                <div>
-                  <p class="eyebrow">CURRENT LOCATION</p>
-                  <h3 id="current-location">正在读取</h3>
+          <h2 class="visually-hidden">小镇此刻</h2>
+          <div class="map-layout immersive">
+            <article class="map-card game-screen">
+              <div
+                class="map-art world-map-stage"
+                tabindex="0"
+                aria-label="青禾镇横向地图，可使用方向键或 WASD 移动视野"
+              >
+                <div id="world-plane" class="world-plane">
+                  <img
+                    class="map-background-image"
+                    src="/assets/maps/town-map-world.webp"
+                    alt=""
+                  >
+                  <div
+                    id="map-buildings"
+                    class="map-buildings"
+                    aria-live="polite"
+                  ></div>
+                  <div
+                    id="map-player"
+                    class="map-player"
+                    role="img"
+                    aria-label="林澄在地图上移动"
+                  >
+                    <canvas
+                      id="map-player-canvas"
+                      class="map-player-canvas"
+                      width="96"
+                      height="140"
+                    ></canvas>
+                    <img
+                      id="map-player-fallback"
+                      class="map-player-fallback"
+                      src="/assets/characters/lin_cheng.webp"
+                      alt=""
+                      hidden
+                    >
+                  </div>
                 </div>
-                <p id="world-name">青禾镇</p>
+                <div class="scene-meta">
+                  <span>QINGHE TOWN</span>
+                  <strong id="map-view-label">视野 · 宿舍</strong>
+                  <time id="world-clock" class="time-label"></time>
+                </div>
+                <div class="map-compass" aria-hidden="true">N</div>
+                <div class="map-controls" aria-label="地图移动">
+                  <button type="button" data-move="up" aria-label="向上移动">↑</button>
+                  <button type="button" data-move="left" aria-label="向左移动">←</button>
+                  <button type="button" data-move="down" aria-label="向下移动">↓</button>
+                  <button type="button" data-move="right" aria-label="向右移动">→</button>
+                </div>
+                <p class="map-move-hint">方向键 / WASD 移动</p>
+                <div class="scene-dialogue">
+                  <div class="dialogue-portrait" aria-hidden="true">
+                    <img
+                      src="/assets/portraits/lin_cheng.webp"
+                      alt=""
+                    >
+                  </div>
+                  <div class="dialogue-copy">
+                    <div class="dialogue-heading">
+                      <strong>林澄</strong>
+                      <span id="current-location">正在读取</span>
+                      <span id="world-name">青禾镇</span>
+                    </div>
+                    <p id="scene-dialogue-line">
+                      傍晚的风穿过教学楼的走廊。今天也许会有新的消息。
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div id="map-locations" class="location-grid" aria-live="polite"></div>
             </article>
 
-            <aside class="agent-preview" aria-labelledby="preview-heading">
+            <div
+              id="map-locations"
+              class="location-grid visually-hidden"
+              aria-live="polite"
+            ></div>
+
+            <aside class="agent-preview" aria-labelledby="preview-heading" hidden>
+              <div class="postcard-stamp" aria-hidden="true">
+                <span>今日</span>
+                <strong>明信片</strong>
+              </div>
               <div class="portrait portrait-large">
                 <img
-                  src="/static/assets/placeholders/avatar.svg"
-                  alt="林澄头像占位图"
+                  src="/assets/portraits/lin_cheng.webp"
+                  alt="林澄像素头像"
                 >
                 <span>澄</span>
               </div>
@@ -167,7 +234,7 @@
             <div id="chat-log" class="chat-log" aria-live="polite">
               <div class="chat-empty">
                 <img
-                  src="/static/assets/placeholders/event.svg"
+                  src="/assets/icons/chat.png"
                   alt=""
                   aria-hidden="true"
                 >
@@ -241,7 +308,7 @@
           </div>
           <div class="settings-card">
             <img
-              src="/static/assets/placeholders/event.svg"
+              src="/assets/icons/brand.png"
               alt=""
               aria-hidden="true"
             >
@@ -254,16 +321,62 @@
       </main>
     </div>
 
+    <dialog id="location-dialog" class="location-dialog">
+      <div class="location-dialog-card">
+        <button
+          id="location-dialog-close"
+          class="dialog-close"
+          type="button"
+          aria-label="关闭地点内部"
+        >关闭</button>
+        <div class="interior-heading">
+          <div>
+            <p class="eyebrow">地点回忆</p>
+            <h2 id="location-dialog-title">地点内部</h2>
+          </div>
+          <span id="location-dialog-status" class="status-chip">观察中</span>
+        </div>
+        <figure class="interior-scene">
+          <img
+            id="location-dialog-art"
+            src="/assets/interiors/dorm.webp"
+            alt="宿舍内部像素场景"
+          >
+        </figure>
+        <div class="interior-copy">
+          <p id="location-dialog-description"></p>
+          <p id="location-dialog-people" class="muted"></p>
+        </div>
+        <p class="interior-hint">点击地图建筑或地点卡，可以继续翻阅其他内部手账。</p>
+      </div>
+    </dialog>
+
     <nav class="mobile-nav" aria-label="手机主要页面">
-      <button class="is-active" type="button" data-view="map">小镇</button>
-      <button type="button" data-view="character">角色</button>
-      <button type="button" data-view="timeline">时间线</button>
-      <button type="button" data-view="chat">留言</button>
-      <button type="button" data-view="diary">日记</button>
-      <button type="button" data-view="memory">记忆</button>
-      <button type="button" data-view="settings">设置</button>
+      <button class="is-active" type="button" data-view="map">
+        <img src="/assets/icons/map.png" alt=""><span>小镇</span>
+      </button>
+      <button type="button" data-view="character">
+        <img src="/assets/icons/character.png" alt=""><span>角色</span>
+      </button>
+      <button type="button" data-view="timeline">
+        <img src="/assets/icons/timeline.png" alt=""><span>时间线</span>
+      </button>
+      <button type="button" data-view="chat">
+        <img src="/assets/icons/chat.png" alt=""><span>留言</span>
+      </button>
+      <button type="button" data-view="diary">
+        <img src="/assets/icons/diary.png" alt=""><span>日记</span>
+      </button>
+      <button type="button" data-view="memory">
+        <img src="/assets/icons/memory.png" alt=""><span>记忆</span>
+      </button>
+      <button type="button" data-view="settings">
+        <img src="/assets/icons/settings.png" alt=""><span>设置</span>
+      </button>
     </nav>
 
+    <script src="/static/vendor/spine-webgl.min.js" defer></script>
+    <script src="/static/spine-player.js" defer></script>
     <script src="/static/app.js" defer></script>
   </body>
 </html>

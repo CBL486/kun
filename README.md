@@ -13,6 +13,7 @@
 - B5 SQLite/PostgreSQL 契约与迁移已完成，75 项 B1-B5 测试通过。
 - B6 本地 FastAPI、OpenAPI 和公开投影已完成，B1-B6 共 92 项测试通过。
 - B7 最小 RPG Web 已通过 A 验收，B1-B7 共 101 项测试通过。
+- B7.5 美术竖切片已完成，横向大世界、Spine 镜头跟随移动、六地点内部手账、五角色头像和 UI 图标已接入 Web。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B6 至 G3 执行计划见 `B6至G3执行计划书_V1.md`。
 - A 侧当前工作日志与续接手册见 `docs/agent-a-work-log.md`。
@@ -99,6 +100,28 @@ pwsh -NoProfile -File scripts/test-b7.ps1
 ```
 
 UX 与 B7.5 资源接口见 `docs/web-ux-spec.md`。
+
+## B7.5 美术资源
+
+```powershell
+pwsh -NoProfile -File scripts/test-b75.ps1
+```
+
+正式测试只验证已提交资源、Web、Spine 和截图，不要求私密源素材。需要重建资源时，
+先在私有素材环境设置 `B75_SOURCE_ROOT`：
+
+```powershell
+$env:B75_SOURCE_ROOT = "D:\private\b75-source-extracted"
+pwsh -NoProfile -File scripts/build-b75-assets.ps1
+pwsh -NoProfile -File scripts/test-b75.ps1 -Rebuild
+```
+
+正式接入资源位于 `assets/`。素材来源、授权状态、哈希与用途见 `assets/manifest.json`；构图和生成说明见 `docs/art-pipeline.md`，授权审计见 `docs/asset-license-audit.md`。
+
+当前 B7.5 使用 2400×900 的横向大世界，镜头随林澄移动；六处地点均可进入
+960×540 的内部场景。河面、步道与栈桥直接绘入世界底层；六处室内统一使用
+Modern Interiors 的 Room Builder 墙面与地板，并以 AppleDog 免费商用素材
+补充宿舍和书院细节。原始压缩包均不入库。
 
 ## 边界
 

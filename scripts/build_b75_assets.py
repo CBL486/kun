@@ -1386,7 +1386,7 @@ def river_scene_asset() -> tuple[Image.Image, list[dict]]:
     place(canvas, sign, (420, 124))
     place(
         canvas,
-        alpha_trim(crop("character_frames", (48, 0, 48, 96))),
+        alpha_trim(crop("character_frames", (336, 192, 48, 96))),
         (610, 112),
     )
 
@@ -1415,7 +1415,7 @@ def river_scene_asset() -> tuple[Image.Image, list[dict]]:
         ),
         layer(
             "character_frames",
-            (48, 0, 48, 96),
+            (336, 192, 48, 96),
             "crop + alpha trim + riverside placement",
         ),
     ]
@@ -1442,6 +1442,49 @@ COMMERCIAL_ATTRIBUTIONS = {
     "modern_exteriors": "Modern Exteriors by LimeZu",
     "appledog_interiors": "Modern Interior Tileset by AppleDog",
 }
+
+CHARACTER_SCENE_MAP = [
+    {
+        "character_id": "char_lin_cheng",
+        "name": "林澄",
+        "portrait": "assets/portraits/lin_cheng.png",
+        "static_frame": [48, 0, 48, 96],
+        "scenes": ["dorm", "classroom"],
+        "animation_state": "idle/walk via Spine",
+    },
+    {
+        "character_id": "npc_chen",
+        "name": "陈岚",
+        "portrait": "assets/portraits/chen_lan.png",
+        "static_frame": [192, 0, 48, 96],
+        "scenes": ["library"],
+        "animation_state": "static",
+    },
+    {
+        "character_id": "npc_su",
+        "name": "苏晚",
+        "portrait": "assets/portraits/su_wan.png",
+        "static_frame": [336, 0, 48, 96],
+        "scenes": ["classroom"],
+        "animation_state": "static",
+    },
+    {
+        "character_id": "npc_gao",
+        "name": "高原",
+        "portrait": "assets/portraits/gao_yuan.png",
+        "static_frame": [48, 96, 48, 96],
+        "scenes": ["canteen"],
+        "animation_state": "static",
+    },
+    {
+        "character_id": "npc_gu",
+        "name": "顾言",
+        "portrait": "assets/portraits/gu_yan.png",
+        "static_frame": [336, 192, 48, 96],
+        "scenes": ["river"],
+        "animation_state": "static",
+    },
+]
 
 
 def _commercial_author(source_pack_ids: list[str]) -> str:
@@ -1553,6 +1596,7 @@ def write_manifest(logical_assets: Iterable[dict]) -> None:
         },
         "source_packs": SOURCE_PACKS,
         "assets": assets,
+        "character_scene_map": CHARACTER_SCENE_MAP,
         "fallback": {
             "missing_building": "assets/icons/brand.png",
             "missing_portrait": "assets/icons/character.png",
@@ -1562,6 +1606,7 @@ def write_manifest(logical_assets: Iterable[dict]) -> None:
     (ASSET_ROOT / "manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
+        newline="\n",
     )
 
 
@@ -1656,6 +1701,7 @@ def build() -> None:
                 ),
                 ("interior_living", (496, 20, 64, 104), (894, 438), 1),
                 ("character_frames", (48, 0, 48, 96), (462, 252), 1),
+                ("character_frames", (336, 0, 48, 96), (216, 208), 1),
             ],
         ),
         "library": interior_asset(
@@ -1699,7 +1745,7 @@ def build() -> None:
                 ("interior_kitchen", (256, 704, 128, 128), (760, 86), 1),
                 ("interior_living", (496, 20, 64, 104), (12, 438), 1),
                 ("interior_living", (496, 20, 64, 104), (894, 438), 1),
-                ("character_frames", (336, 0, 48, 96), (494, 354), 1),
+                ("character_frames", (48, 96, 48, 96), (494, 354), 1),
             ],
         ),
         "shop": interior_asset(
@@ -1722,7 +1768,6 @@ def build() -> None:
                 ("interior_clock", (0, 0, 32, 64), (882, 18), 1),
                 ("interior_living", (496, 20, 64, 104), (10, 438), 1),
                 ("interior_living", (496, 20, 64, 104), (894, 438), 1),
-                ("character_frames", (48, 96, 48, 96), (770, 318), 1),
             ],
         ),
         "river": river_scene_asset(),

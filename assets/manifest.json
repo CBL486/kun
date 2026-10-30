@@ -949,14 +949,14 @@
       "creation_route": "source-composite",
       "exports": [
         {
-          "bytes": 88379,
+          "bytes": 89163,
           "path": "assets/interiors/classroom.png",
-          "sha256": "6cb51874143e70d8f7f3f73d55f8a02f369f8d36531b8249c65c22ea96452f0a"
+          "sha256": "058255fe672f8ced92af75192ca115436ad1af64ca22951b5165436ca311987d"
         },
         {
-          "bytes": 73890,
+          "bytes": 74526,
           "path": "assets/interiors/classroom.webp",
-          "sha256": "2d7167d143d42e23f71bb15515ee5096690c3329ecde82aab67013959ff1037d"
+          "sha256": "6911ddb838f3db9864d5962f0007d349a064c290da6397e504dc1c6e249c7820"
         }
       ],
       "id": "interior_classroom",
@@ -1112,6 +1112,29 @@
           },
           "source_archive": "2104261.zip",
           "source_member": "Modern_Interiors/1_Interiors/48x48/Theme_Sorter_48x48/5_Classroom_and_library_48x48.png",
+          "source_pack": "modern_interiors"
+        },
+        {
+          "crop_box": [
+            336,
+            0,
+            48,
+            96
+          ],
+          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
+          "original_pixel_used": true,
+          "placement": {
+            "destination": [
+              216,
+              208
+            ],
+            "trimmed_size": [
+              48,
+              66
+            ]
+          },
+          "source_archive": "2104261.zip",
+          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
           "source_pack": "modern_interiors"
         },
         {
@@ -1828,14 +1851,14 @@
       "creation_route": "source-composite",
       "exports": [
         {
-          "bytes": 76047,
+          "bytes": 75917,
           "path": "assets/interiors/canteen.png",
-          "sha256": "24789f13340007eb60a767c3fdb3de9ea68278cfdb12836bda40e2dbae747cb2"
+          "sha256": "680571396d8ee84c998f9ec88ca672535ff013f6c95f45ea20d351d5df1356ce"
         },
         {
-          "bytes": 63798,
+          "bytes": 63736,
           "path": "assets/interiors/canteen.webp",
-          "sha256": "e7a8a92a04e31fb8d18f876ce93a0d9b515b330e6ec2726fd4968d2841d03362"
+          "sha256": "dc7b1c7bc65c678d55db0201e6f4e741e50664bbf73b17b638c43bbfd5f08d74"
         }
       ],
       "id": "interior_canteen",
@@ -2455,8 +2478,8 @@
         },
         {
           "crop_box": [
-            336,
-            0,
+            48,
+            96,
             48,
             96
           ],
@@ -2468,7 +2491,7 @@
               354
             ],
             "trimmed_size": [
-              48,
+              39,
               66
             ]
           },
@@ -2681,14 +2704,14 @@
       "creation_route": "source-composite",
       "exports": [
         {
-          "bytes": 112054,
+          "bytes": 111446,
           "path": "assets/interiors/shop.png",
-          "sha256": "95362bf149d1418482f54638c04319265628849ada7cb27d2611c75714612c97"
+          "sha256": "0beb934082019a5eeb131abd3ca922fceba5a1c12cac68aca88ee01e0294b123"
         },
         {
-          "bytes": 103762,
+          "bytes": 103550,
           "path": "assets/interiors/shop.webp",
-          "sha256": "0ac263ce9c4d276b69c9b702145c89035185d72ff28472949068fe0f0f57746b"
+          "sha256": "ecfdc07c9728b62cd73730138595681b2bb64482e023e77d43a2d7ce6ab34780"
         }
       ],
       "id": "interior_shop",
@@ -3032,29 +3055,6 @@
         },
         {
           "crop_box": [
-            48,
-            96,
-            48,
-            96
-          ],
-          "modification_operation": "crop + alpha trim + interior composition + source-alpha contact shadow",
-          "original_pixel_used": true,
-          "placement": {
-            "destination": [
-              770,
-              318
-            ],
-            "trimmed_size": [
-              39,
-              66
-            ]
-          },
-          "source_archive": "2104261.zip",
-          "source_member": "Modern_Interiors/4_RPG_MAKER_MV/Characters/New_Characters 48x48.png",
-          "source_pack": "modern_interiors"
-        },
-        {
-          "crop_box": [
             128,
             1344,
             384,
@@ -3143,14 +3143,14 @@
       "creation_route": "source-composite",
       "exports": [
         {
-          "bytes": 17930,
+          "bytes": 17854,
           "path": "assets/interiors/river.png",
-          "sha256": "dd59c0b0f97e573f4465cfdeda5990c66f9dd3cb59361e56ad70f08faf9f2215"
+          "sha256": "431e7fec92738faa7d38c459cc08487264f21b97cd963b1aefe6ada757b51739"
         },
         {
-          "bytes": 6366,
+          "bytes": 6392,
           "path": "assets/interiors/river.webp",
-          "sha256": "d2f7bcf4749a7c63cbcf7d24bbb38f6a1001f02fd2dabff0adb635d08af0fe1b"
+          "sha256": "41a707eb62a5bd12a67b125f9bb2729a82abb9472463714bdb15a78c7ea7faa7"
         }
       ],
       "id": "interior_river",
@@ -3299,8 +3299,8 @@
         },
         {
           "crop_box": [
-            48,
-            0,
+            336,
+            192,
             48,
             96
           ],
@@ -4371,14 +4371,14 @@
       "editor_export_status": "trial license blocks project save and animation export; runtime-compatible Spine JSON generated from native rig",
       "exports": [
         {
-          "bytes": 5185,
+          "bytes": 4921,
           "path": "assets/spine/lin_cheng.json",
-          "sha256": "7e91aef89060cc794d15ddc2e56be892c9f2a2e6d7bd1ac8072b71001b3859c3"
+          "sha256": "3c9884c78424244a29ed542f1bf8af9e1ae00efb2c0b21e45a9654259a79fd8d"
         },
         {
-          "bytes": 523,
+          "bytes": 490,
           "path": "assets/spine/lin_cheng.atlas",
-          "sha256": "8e77b23b7e420f1079fee7c511c44c7b660294fdfd4ad75c932bf475bcdf1f0c"
+          "sha256": "d864b1befeebbc9367a1a8c032c7cc9e6d4fc57b25706716976a9ead45d879bd"
         },
         {
           "bytes": 861,
@@ -4424,6 +4424,84 @@
     "note": "原始压缩包未提交；仅提交基于授权素材的裁切、组合和运行时导出资源。",
     "status": "project-authorized"
   },
+  "character_scene_map": [
+    {
+      "animation_state": "idle/walk via Spine",
+      "character_id": "char_lin_cheng",
+      "name": "林澄",
+      "portrait": "assets/portraits/lin_cheng.png",
+      "scenes": [
+        "dorm",
+        "classroom"
+      ],
+      "static_frame": [
+        48,
+        0,
+        48,
+        96
+      ]
+    },
+    {
+      "animation_state": "static",
+      "character_id": "npc_chen",
+      "name": "陈岚",
+      "portrait": "assets/portraits/chen_lan.png",
+      "scenes": [
+        "library"
+      ],
+      "static_frame": [
+        192,
+        0,
+        48,
+        96
+      ]
+    },
+    {
+      "animation_state": "static",
+      "character_id": "npc_su",
+      "name": "苏晚",
+      "portrait": "assets/portraits/su_wan.png",
+      "scenes": [
+        "classroom"
+      ],
+      "static_frame": [
+        336,
+        0,
+        48,
+        96
+      ]
+    },
+    {
+      "animation_state": "static",
+      "character_id": "npc_gao",
+      "name": "高原",
+      "portrait": "assets/portraits/gao_yuan.png",
+      "scenes": [
+        "canteen"
+      ],
+      "static_frame": [
+        48,
+        96,
+        48,
+        96
+      ]
+    },
+    {
+      "animation_state": "static",
+      "character_id": "npc_gu",
+      "name": "顾言",
+      "portrait": "assets/portraits/gu_yan.png",
+      "scenes": [
+        "river"
+      ],
+      "static_frame": [
+        336,
+        192,
+        48,
+        96
+      ]
+    }
+  ],
   "fallback": {
     "missing_building": "assets/icons/brand.png",
     "missing_portrait": "assets/icons/character.png",

@@ -24,6 +24,15 @@ EDGE_CANDIDATES = (
 )
 
 
+def git_value(*args: str) -> str:
+    return subprocess.check_output(
+        ["git", *args],
+        cwd=ROOT,
+        text=True,
+        encoding="utf-8",
+    ).strip()
+
+
 def wait_for_port(port: int, timeout: float = 20.0) -> None:
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
@@ -364,6 +373,11 @@ def main() -> int:
     if not browser_path:
         raise RuntimeError("找不到 Edge 或 Chrome，无法执行视觉检查")
 
+    source_snapshot = {
+        "source_commit": git_value("rev-parse", "HEAD"),
+        "source_tree": git_value("rev-parse", "HEAD^{tree}"),
+        "worktree_dirty": bool(git_value("status", "--porcelain")),
+    }
     environment = os.environ.copy()
     dependency_path = ROOT / ".b6-deps"
     if dependency_path.is_dir():
@@ -456,6 +470,10 @@ def main() -> int:
     report = {
         "schema_version": "rpg-art-budget-v1",
         "captured_on": date.today().isoformat(),
+        **source_snapshot,
+        "generation_command": (
+            "pwsh -NoProfile -File scripts/check-b75-visual.ps1"
+        ),
         "desktop": desktop,
         "mobile": mobile,
         "desktop_interior": desktop_interior,
@@ -476,6 +494,7 @@ def main() -> int:
     REPORT_PATH.write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
+        newline="\n",
     )
     print(REPORT_PATH)
     print(json.dumps(report["first_screen_transfer_bytes"], ensure_ascii=False))

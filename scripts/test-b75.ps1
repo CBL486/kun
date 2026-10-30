@@ -1,3 +1,7 @@
+param(
+    [switch]$Rebuild
+)
+
 $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent $PSScriptRoot
 . (Join-Path $PSScriptRoot "resolve-b1-python.ps1")
@@ -22,13 +26,11 @@ else {
 
 Push-Location $repoRoot
 try {
-    & $pythonPath scripts/build_b75_assets.py
-    if ($LASTEXITCODE -ne 0) {
-        exit $LASTEXITCODE
-    }
-    & $pythonPath scripts/build_spine_assets.py
-    if ($LASTEXITCODE -ne 0) {
-        exit $LASTEXITCODE
+    if ($Rebuild) {
+        & (Join-Path $PSScriptRoot "build-b75-assets.ps1")
+        if ($LASTEXITCODE -ne 0) {
+            exit $LASTEXITCODE
+        }
     }
     & $pythonPath -m pytest -q
     if ($LASTEXITCODE -ne 0) {

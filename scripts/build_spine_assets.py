@@ -238,6 +238,7 @@ def pack_runtime_assets() -> None:
     (EXPORT_DIR / "lin_cheng.atlas").write_text(
         "\n".join(lines) + "\n",
         encoding="utf-8",
+        newline="\n",
     )
     shutil.copy2(SOURCE_DIR / "lin_cheng.json", EXPORT_DIR / "lin_cheng.json")
 
@@ -328,6 +329,7 @@ def update_manifest() -> None:
     MANIFEST_PATH.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
+        newline="\n",
     )
 
 
@@ -341,6 +343,7 @@ def main() -> None:
         )
         + "\n",
         encoding="utf-8",
+        newline="\n",
     )
     pack_runtime_assets()
     update_manifest()

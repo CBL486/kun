@@ -14,8 +14,8 @@
 - 原始 ZIP/RAR/PSD/ASEPRITE 不进入仓库；
 - 每个运行时资源在 `assets/manifest.json` 中记录压缩包、成员、裁切框和处理操作。
 
-素材解压目录默认是 `out/b75-source-extracted`，也可通过环境变量
-`B75_SOURCE_ROOT` 指向其他本地解压目录。
+重建命令要求通过环境变量 `B75_SOURCE_ROOT` 指向本地私密素材解压目录；
+公开仓库不包含原始素材。
 
 ## 2. 视觉规格
 
@@ -49,6 +49,19 @@
 | 角色骨骼动画 | Spine 4.3 数据格式 + `@esotericsoftware/spine-webgl` 4.3.13 |
 | 建筑与街区补充 | `Modern Exteriors`（LimeZu，$2.50，已购买并接入） |
 
+### 角色场景映射
+
+| 角色 | 静态帧裁切 | 稳定出场场景 | 动画 |
+| --- | --- | --- | --- |
+| 林澄 | `(48, 0, 48, 96)` | 宿舍、教学楼 | Spine `idle` / `walk` |
+| 陈岚 | `(192, 0, 48, 96)` | 青禾书院 | 静态 |
+| 苏晚 | `(336, 0, 48, 96)` | 教学楼 | 静态 |
+| 高原 | `(48, 96, 48, 96)` | 食堂 | 静态 |
+| 顾言 | `(336, 192, 48, 96)` | 河边步道 | 静态 |
+
+同一映射写入 `assets/manifest.json` 的 `character_scene_map`，并由资产测试校验
+头像、裁切框、场景和动画状态一致。
+
 ## 4. 地图构图
 
 横向外部地图：
@@ -72,7 +85,7 @@
 - 教学楼包含成排课桌、讲台和电脑桌；
 - 青禾书院包含连续书架、阅读桌椅和角色；
 - 食堂包含备餐柜台、灶具、冰箱、餐桌和角色；
-- 便利店包含货架、冷柜、收银台和角色；
+- 便利店包含货架、冷柜和收银台；
 - 书院与食堂的桌椅使用同源的完整会议桌模块，根据前后朝向拼成四椅一桌；
 - 所有室内统一采用剖切式墙面、地板和接触阴影，避免家具悬浮或裁切错位。
 - 墙面窗、地毯、沙发、货架和边角绿植均使用覆盖完整透明边界的图块裁切框，
@@ -98,10 +111,18 @@ Spine Editor 许可证后，可将 `spine/lin_cheng/source/lin_cheng.json` 导�
 
 ## 6. 重建与验收
 
+测试默认只验证已提交资源，不依赖私密源素材：
+
 ```powershell
-pwsh -NoProfile -File scripts/build-b75-assets.ps1
-pwsh -NoProfile -File scripts/check-b75-visual.ps1
 pwsh -NoProfile -File scripts/test-b75.ps1
+```
+
+需要重建时，在拥有私密素材的环境设置源目录：
+
+```powershell
+$env:B75_SOURCE_ROOT = "D:\private\b75-source-extracted"
+pwsh -NoProfile -File scripts/build-b75-assets.ps1
+pwsh -NoProfile -File scripts/test-b75.ps1 -Rebuild
 ```
 
 验收会检查：
@@ -112,3 +133,5 @@ pwsh -NoProfile -File scripts/test-b75.ps1
 - 图片失败时保留地点名称和状态；
 - 六地点内部图均可打开、正常加载并有独立来源记录；
 - 资源来源、成员路径、裁切框、哈希和原始像素标记完整。
+- `assets/`、Web 入口、`/static` 与 `/assets` 均由同一个应用实例提供；
+- Manifest 中的 Spine JSON/Atlas 哈希在干净检出后仍与文件字节一致。

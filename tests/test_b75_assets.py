@@ -218,6 +218,38 @@ def test_spine_assets_and_runtime_are_complete() -> None:
     assert (ROOT / runtime["license_file"]).is_file()
 
 
+def test_character_scene_map_matches_runtime_scenes() -> None:
+    manifest = _manifest()
+    assets = {asset["id"]: asset for asset in manifest["assets"]}
+    mapping = {
+        item["character_id"]: item
+        for item in manifest["character_scene_map"]
+    }
+
+    expected = {
+        "char_lin_cheng": ([48, 0, 48, 96], ["dorm", "classroom"]),
+        "npc_chen": ([192, 0, 48, 96], ["library"]),
+        "npc_su": ([336, 0, 48, 96], ["classroom"]),
+        "npc_gao": ([48, 96, 48, 96], ["canteen"]),
+        "npc_gu": ([336, 192, 48, 96], ["river"]),
+    }
+    assert set(mapping) == set(expected)
+    for character_id, (frame, scenes) in expected.items():
+        item = mapping[character_id]
+        assert item["static_frame"] == frame
+        assert item["scenes"] == scenes
+        assert (ROOT / item["portrait"]).is_file()
+        for scene in scenes:
+            scene_asset = assets[f"interior_{scene}"]
+            assert any(
+                layer["crop_box"] == frame
+                for layer in scene_asset["source_layers"]
+                if layer["source_member"].endswith(
+                    "New_Characters 48x48.png"
+                )
+            ), (character_id, scene)
+
+
 def test_runtime_canvases_match_supplied_asset_dimensions() -> None:
     for asset in _manifest()["assets"]:
         if asset["kind"] == "spine_skeleton":
@@ -294,3 +326,9 @@ def test_art_budget_records_desktop_and_mobile_layout() -> None:
     )
     assert report["first_screen_transfer_bytes"]["desktop"] < 250_000
     assert report["first_screen_transfer_bytes"]["mobile"] < 200_000
+    assert len(report["source_commit"]) == 40
+    assert len(report["source_tree"]) == 40
+    assert isinstance(report["worktree_dirty"], bool)
+    assert report["generation_command"] == (
+        "pwsh -NoProfile -File scripts/check-b75-visual.ps1"
+    )

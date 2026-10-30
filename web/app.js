@@ -6,16 +6,92 @@ const state = {
   memoryLimit: 20,
 };
 
+const BUILDING_ASSETS = {
+  loc_dorm: "dorm",
+  loc_classroom: "classroom",
+  loc_library: "library",
+  loc_canteen: "canteen",
+  loc_shop: "shop",
+  loc_river: "river",
+};
+
+const INTERIOR_ASSETS = {
+  loc_dorm: "dorm",
+  loc_classroom: "classroom",
+  loc_library: "library",
+  loc_canteen: "canteen",
+  loc_shop: "shop",
+  loc_river: "river",
+};
+
+const INTERIOR_NOTES = {
+  loc_dorm: "木地板宿舍里，行李已经收好，书桌边留着今天的小纸条。",
+  loc_classroom: "课桌整齐排开，黑板前还留着午后讨论的痕迹。",
+  loc_library: "书院的书架层层排开，靠窗的位置最适合安静读完一章。",
+  loc_canteen: "热食柜台、长桌和餐椅都准备好了，饭点前显得格外安静。",
+  loc_shop: "便利店货架塞得满满的，收银台边放着刚补上的日用品。",
+  loc_river: "石桥横过河面，步道边的树影和长椅把傍晚拉得很长。",
+};
+
+const SCENE_DIALOGUE = {
+  loc_dorm: "宿舍的灯还亮着。晚风把窗边晾着的纸页轻轻翻了一页。",
+  loc_classroom: "教学楼前的路灯亮起来了，走廊里还留着放学后的回声。",
+  loc_library: "青禾书院很安静，只有靠窗的一盏灯照着尚未合上的书。",
+  loc_canteen: "食堂刚结束收拾，空气里还留着一点热汤和米饭的味道。",
+  loc_river: "河边传来很轻的水声，石桥上的影子被路灯拉得很长。",
+  loc_shop: "便利店的灯箱映在路面上，门铃偶尔响一下，又归于安静。",
+};
+
+const MAP_WORLD = {
+  width: 2400,
+  height: 900,
+  playerWidth: 36,
+  playerHeight: 54,
+  speed: 170,
+};
+
+const BUILDING_LAYOUT = {
+  loc_dorm: { x: 42, y: 92, width: 360, height: 220 },
+  loc_classroom: { x: 610, y: 16, width: 320, height: 315 },
+  loc_library: { x: 1350, y: 44, width: 300, height: 280 },
+  loc_canteen: { x: 294, y: 510, width: 220, height: 265 },
+  loc_river: { x: 1018, y: 656, width: 96, height: 144 },
+  loc_shop: { x: 2010, y: 504, width: 180, height: 268 },
+};
+
+const LOCATION_STARTS = {
+  loc_dorm: { x: 430, y: 338 },
+  loc_classroom: { x: 960, y: 338 },
+  loc_library: { x: 1510, y: 338 },
+  loc_canteen: { x: 530, y: 456 },
+  loc_river: { x: 1120, y: 724 },
+  loc_shop: { x: 2120, y: 456 },
+};
+
+const PORTRAITS = {
+  char_lin_cheng: "lin_cheng",
+  npc_chen: "chen_lan",
+  npc_su: "su_wan",
+  npc_gao: "gao_yuan",
+  npc_gu: "gu_yan",
+};
+
 const elements = {
   loading: document.querySelector("#loading-state"),
   connectionBanner: document.querySelector("#connection-banner"),
   connectionMessage: document.querySelector("#connection-message"),
   retryButton: document.querySelector("#retry-button"),
   serviceStatus: document.querySelector("#service-status"),
+  mapStage: document.querySelector(".world-map-stage"),
+  worldPlane: document.querySelector("#world-plane"),
+  mapPlayer: document.querySelector("#map-player"),
+  mapViewLabel: document.querySelector("#map-view-label"),
+  sceneDialogueLine: document.querySelector("#scene-dialogue-line"),
   currentLocation: document.querySelector("#current-location"),
   worldName: document.querySelector("#world-name"),
   worldClock: document.querySelector("#world-clock"),
   locations: document.querySelector("#map-locations"),
+  mapBuildings: document.querySelector("#map-buildings"),
   previewIdentity: document.querySelector("#preview-identity"),
   previewMood: document.querySelector("#preview-mood"),
   previewGoal: document.querySelector("#preview-goal"),
@@ -31,6 +107,22 @@ const elements = {
   memory: document.querySelector("#memory-list"),
   memoryFilter: document.querySelector("#memory-filter"),
   memoryMore: document.querySelector("#memory-more"),
+  locationDialog: document.querySelector("#location-dialog"),
+  locationDialogClose: document.querySelector("#location-dialog-close"),
+  locationDialogTitle: document.querySelector("#location-dialog-title"),
+  locationDialogStatus: document.querySelector("#location-dialog-status"),
+  locationDialogArt: document.querySelector("#location-dialog-art"),
+  locationDialogDescription: document.querySelector("#location-dialog-description"),
+  locationDialogPeople: document.querySelector("#location-dialog-people"),
+};
+
+const mapState = {
+  initialized: false,
+  active: new Set(),
+  x: 278,
+  y: 386,
+  lastFrame: 0,
+  nearestLocationId: null,
 };
 
 async function fetchJSON(url, options = {}) {
@@ -106,8 +198,18 @@ function renderWorld(worldPayload) {
   elements.currentLocation.textContent = `${world.current_location_name} · 当前`;
   elements.worldClock.textContent = `${formatDate(world.current_date)} ${world.current_time}`;
   elements.locations.replaceChildren();
+  elements.mapBuildings.replaceChildren();
+  const mapImage = document.querySelector(".map-background-image");
+  mapImage.addEventListener(
+    "error",
+    () => {
+      mapImage.hidden = true;
+    },
+    { once: true },
+  );
 
   locations.forEach((location, index) => {
+    elements.mapBuildings.append(renderMapBuilding(location, world));
     const card = createElement("article", "location-card");
     if (location.location_id === world.current_location_id) {
       card.classList.add("is-current");
@@ -124,9 +226,229 @@ function renderWorld(worldPayload) {
       topline,
       createElement("h4", "", location.name),
       createElement("p", "", people),
+      createElement("span", "location-open-hint", "查看内部"),
     );
+    makeLocationInteractive(card, location);
     elements.locations.append(card);
   });
+  initializeMapPlayer(worldPayload);
+}
+
+function renderMapBuilding(location, world) {
+  const assetName = BUILDING_ASSETS[location.location_id];
+  const layout = BUILDING_LAYOUT[location.location_id];
+  const card = createElement("article", "map-building");
+  card.dataset.location = location.location_id;
+  if (layout) {
+    card.style.left = `${layout.x}px`;
+    card.style.top = `${layout.y}px`;
+    card.style.width = `${layout.width}px`;
+  }
+  if (location.location_id === world.current_location_id) {
+    card.classList.add("is-current");
+  }
+  if (!assetName) {
+    card.classList.add("is-missing");
+  }
+
+  const image = createElement("img", "map-building-art");
+  image.src = assetName
+    ? `/assets/buildings/${assetName}.webp`
+    : "/assets/icons/brand.png";
+  image.alt = `${location.name}像素建筑`;
+  image.loading = "eager";
+  image.decoding = "async";
+  image.addEventListener(
+    "error",
+    () => {
+      card.classList.add("is-missing");
+      image.src = "/assets/icons/brand.png";
+    },
+    { once: true },
+  );
+
+  const label = createElement("div", "map-building-label");
+  const title = createElement("strong", "", location.name);
+  const stateText = createElement(
+    "span",
+    "",
+    location.is_open ? "开放" : "已关闭",
+  );
+  const statusIcon = createElement("img", "building-status");
+  statusIcon.src = location.is_open
+    ? "/assets/icons/open.png"
+    : "/assets/icons/closed.png";
+  statusIcon.alt = "";
+  title.textContent = location.name;
+  label.append(statusIcon, title, stateText);
+  const openHint = createElement("span", "map-building-open", "点击进入");
+  card.append(image, label, openHint);
+  makeLocationInteractive(card, location);
+  return card;
+}
+
+function makeLocationInteractive(element, location) {
+  element.tabIndex = 0;
+  element.setAttribute("role", "button");
+  element.setAttribute("aria-label", `查看${location.name}内部`);
+  element.addEventListener("click", () => openLocationDialog(location));
+  element.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openLocationDialog(location);
+    }
+  });
+}
+
+function openLocationDialog(location) {
+  const assetName = INTERIOR_ASSETS[location.location_id] || "dorm";
+  elements.locationDialogTitle.textContent = location.name;
+  elements.locationDialogStatus.textContent = location.is_open ? "开放中" : "已关闭";
+  elements.locationDialogStatus.classList.toggle("is-closed", !location.is_open);
+  elements.locationDialogDescription.textContent =
+    INTERIOR_NOTES[location.location_id] || "这里保留着小镇今天的一页观察手账。";
+  elements.locationDialogPeople.textContent = location.people.length
+    ? `此刻在内：${location.people.join("、")}`
+    : "此刻无人，只留下安静的场景。";
+  elements.locationDialogArt.src = `/assets/interiors/${assetName}.webp`;
+  elements.locationDialogArt.alt = `${location.name}内部像素场景`;
+  elements.locationDialog.dataset.location = location.location_id;
+  document.body.classList.add("has-open-location");
+  if (typeof elements.locationDialog.showModal === "function") {
+    elements.locationDialog.showModal();
+  } else {
+    elements.locationDialog.setAttribute("open", "");
+  }
+}
+
+function closeLocationDialog() {
+  if (typeof elements.locationDialog.close === "function") {
+    elements.locationDialog.close();
+  } else {
+    elements.locationDialog.removeAttribute("open");
+  }
+  document.body.classList.remove("has-open-location");
+}
+
+function setMapPlayerPosition(x, y) {
+  mapState.x = Math.max(0, Math.min(MAP_WORLD.width - MAP_WORLD.playerWidth, x));
+  mapState.y = Math.max(0, Math.min(MAP_WORLD.height - MAP_WORLD.playerHeight, y));
+  elements.mapPlayer.style.left = `${mapState.x}px`;
+  elements.mapPlayer.style.top = `${mapState.y}px`;
+}
+
+function clampCamera(value, viewport, world) {
+  return Math.max(0, Math.min(world - viewport, value));
+}
+
+function updateMapCamera() {
+  if (!elements.mapStage || !elements.worldPlane) return;
+  const viewportWidth = elements.mapStage.clientWidth;
+  const viewportHeight = elements.mapStage.clientHeight;
+  const cameraX = clampCamera(
+    mapState.x - viewportWidth * 0.62,
+    viewportWidth,
+    MAP_WORLD.width,
+  );
+  const cameraY = clampCamera(
+    mapState.y - viewportHeight * 0.72,
+    viewportHeight,
+    MAP_WORLD.height,
+  );
+  elements.worldPlane.style.transform =
+    `translate3d(${-cameraX}px, ${-cameraY}px, 0)`;
+}
+
+function updateMapViewLabel(locations) {
+  let nearest = null;
+  let nearestDistance = Number.POSITIVE_INFINITY;
+  locations.forEach((location) => {
+    const layout = BUILDING_LAYOUT[location.location_id];
+    if (!layout) return;
+    const centerX = layout.x + layout.width / 2;
+    const centerY = layout.y + layout.height / 2;
+    const distance = Math.hypot(
+      centerX - (mapState.x + MAP_WORLD.playerWidth / 2),
+      centerY - (mapState.y + MAP_WORLD.playerHeight / 2),
+    );
+    if (distance < nearestDistance) {
+      nearest = location;
+      nearestDistance = distance;
+    }
+  });
+  const nextId = nearestDistance < 260 ? nearest?.location_id : null;
+  if (nextId === mapState.nearestLocationId) return;
+  mapState.nearestLocationId = nextId;
+  elements.mapViewLabel.textContent = nextId
+    ? `视野 · ${nearest.name}`
+    : "视野 · 小镇街口";
+  elements.sceneDialogueLine.textContent = nextId
+    ? SCENE_DIALOGUE[nextId]
+    : "夜色落在小镇的屋檐上，远处只剩几盏还亮着的灯。";
+}
+
+function initializeMapPlayer(worldPayload) {
+  const { world, locations } = worldPayload;
+  if (!mapState.initialized) {
+    const start =
+      LOCATION_STARTS[world.current_location_id] || LOCATION_STARTS.loc_dorm;
+    setMapPlayerPosition(start.x, start.y);
+    mapState.initialized = true;
+  }
+  updateMapCamera();
+  updateMapViewLabel(locations);
+  document.body.dataset.mapReady = "true";
+}
+
+function blockedByBuilding(nextX, nextY) {
+  return Object.values(BUILDING_LAYOUT).some(
+    (building) =>
+      nextX + MAP_WORLD.playerWidth > building.x + 4 &&
+      nextX < building.x + building.width - 4 &&
+      nextY + MAP_WORLD.playerHeight > building.y + 8 &&
+      nextY < building.y + building.height,
+  );
+}
+
+function mapAnimationFrame(timestamp) {
+  if (!mapState.lastFrame) mapState.lastFrame = timestamp;
+  const elapsed = Math.min((timestamp - mapState.lastFrame) / 1000, 0.05);
+  mapState.lastFrame = timestamp;
+  let horizontal = 0;
+  let vertical = 0;
+  if (mapState.active.has("left")) horizontal -= 1;
+  if (mapState.active.has("right")) horizontal += 1;
+  if (mapState.active.has("up")) vertical -= 1;
+  if (mapState.active.has("down")) vertical += 1;
+
+  if (horizontal || vertical) {
+    const length = Math.hypot(horizontal, vertical);
+    const step = MAP_WORLD.speed * elapsed;
+    const deltaX = (horizontal / length) * step;
+    const deltaY = (vertical / length) * step;
+    const nextX = mapState.x + deltaX;
+    const nextY = mapState.y + deltaY;
+    if (!blockedByBuilding(nextX, mapState.y)) {
+      mapState.x = nextX;
+    }
+    if (!blockedByBuilding(mapState.x, nextY)) {
+      mapState.y = nextY;
+    }
+    setMapPlayerPosition(mapState.x, mapState.y);
+    updateMapCamera();
+    if (state.world) updateMapViewLabel(state.world.locations);
+    if (horizontal) {
+      window.qingheSpinePlayer?.setFacing(horizontal);
+    }
+  }
+  elements.mapPlayer.classList.toggle(
+    "is-moving",
+    Boolean(horizontal || vertical),
+  );
+  window.qingheSpinePlayer?.setAnimation(
+    horizontal || vertical ? "walk" : "idle",
+  );
+  requestAnimationFrame(mapAnimationFrame);
 }
 
 function renderAgent(agentPayload) {
@@ -140,8 +462,15 @@ function renderAgent(agentPayload) {
   const identity = createElement("div", "character-identity");
   const portrait = createElement("div", "portrait portrait-large");
   const avatar = createElement("img");
-  avatar.src = "/static/assets/placeholders/avatar.svg";
-  avatar.alt = `${agent.name}头像占位图`;
+  avatar.src = portraitPath(agent.person_id);
+  avatar.alt = `${agent.name}像素头像`;
+  avatar.addEventListener(
+    "error",
+    () => {
+      avatar.src = "/assets/icons/character.png";
+    },
+    { once: true },
+  );
   portrait.append(avatar, createElement("span", "", agent.name.slice(0, 1)));
   const identityText = createElement("div");
   identityText.append(
@@ -176,16 +505,33 @@ function renderAgent(agentPayload) {
   const relationshipList = createElement("div", "relationship-list");
   agent.relationships.forEach((relationship) => {
     const row = createElement("div", "relationship-row");
+    const identity = createElement("div", "relationship-identity");
+    const miniPortrait = createElement("img", "relationship-avatar");
+    miniPortrait.src = portraitPath(relationship.person_id);
+    miniPortrait.alt = "";
+    miniPortrait.addEventListener(
+      "error",
+      () => {
+        miniPortrait.src = "/assets/icons/character.png";
+      },
+      { once: true },
+    );
     const copy = createElement("div");
     copy.append(
       createElement("strong", "", relationship.name),
       createElement("p", "", relationship.recent_context),
     );
-    row.append(copy, createElement("span", "", relationship.label));
+    identity.append(miniPortrait, copy);
+    row.append(identity, createElement("span", "", relationship.label));
     relationshipList.append(row);
   });
   side.append(relationshipList);
   elements.agentCard.replaceChildren(main, side);
+}
+
+function portraitPath(personId) {
+  const name = PORTRAITS[personId] || "lin_cheng";
+  return `/assets/portraits/${name}.webp`;
 }
 
 function renderTimeline(timelinePayload) {
@@ -319,6 +665,79 @@ elements.retryButton.addEventListener("click", loadDashboard);
 document.querySelectorAll("[data-view]").forEach((button) => {
   button.addEventListener("click", () => showView(button.dataset.view));
 });
+
+const MOVE_KEYS = {
+  ArrowUp: "up",
+  KeyW: "up",
+  ArrowDown: "down",
+  KeyS: "down",
+  ArrowLeft: "left",
+  KeyA: "left",
+  ArrowRight: "right",
+  KeyD: "right",
+};
+
+function canMoveMap() {
+  return (
+    !document.querySelector("#view-map").hidden
+    && !elements.locationDialog.open
+    && !["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName)
+  );
+}
+
+window.addEventListener("keydown", (event) => {
+  const direction = MOVE_KEYS[event.code];
+  if (!direction || !canMoveMap()) return;
+  event.preventDefault();
+  mapState.active.add(direction);
+});
+
+window.addEventListener("keyup", (event) => {
+  const direction = MOVE_KEYS[event.code];
+  if (direction) mapState.active.delete(direction);
+});
+
+window.addEventListener("blur", () => {
+  mapState.active.clear();
+});
+
+document.querySelectorAll("[data-move]").forEach((button) => {
+  const direction = button.dataset.move;
+  const stop = () => {
+    mapState.active.delete(direction);
+    button.classList.remove("is-pressed");
+  };
+  button.addEventListener("pointerdown", (event) => {
+    event.preventDefault();
+    button.setPointerCapture(event.pointerId);
+    mapState.active.add(direction);
+    button.classList.add("is-pressed");
+  });
+  button.addEventListener("pointerup", stop);
+  button.addEventListener("pointercancel", stop);
+  button.addEventListener("lostpointercapture", stop);
+});
+
+window.addEventListener("resize", updateMapCamera);
+window.qingheSpinePlayer?.initialize();
+requestAnimationFrame(mapAnimationFrame);
+
+elements.locationDialogClose.addEventListener("click", closeLocationDialog);
+elements.locationDialog.addEventListener("close", () => {
+  document.body.classList.remove("has-open-location");
+});
+elements.locationDialog.addEventListener("click", (event) => {
+  if (event.target === elements.locationDialog) {
+    closeLocationDialog();
+  }
+});
+elements.locationDialogArt.addEventListener(
+  "error",
+  () => {
+    elements.locationDialogArt.src = "/assets/icons/brand.png";
+  },
+  { once: true },
+);
 
 elements.chatMessage.addEventListener("input", () => {
   elements.chatCounter.textContent = `${elements.chatMessage.value.length} / 280`;

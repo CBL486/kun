@@ -1,0 +1,4 @@
+# Generated text assets are hashed byte-for-byte by the runtime manifest.
+assets/manifest.json -text
+assets/spine/*.json -text
+assets/spine/*.atlas -text
