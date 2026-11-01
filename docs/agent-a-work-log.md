@@ -2,13 +2,25 @@
 
 状态：当前有效，可作为下一位 AI 接手 A 侧工作的入口
 
-最后更新：2026-10-28（Asia/Shanghai）
+最后更新：2026-11-01（Asia/Shanghai）
 
 仓库：<https://github.com/CBL486/kun>
 
 当前远端基线：`72aa593ba6e99c84fd8a53105f46e4a4d244ab2b`（= `main`，A 于 2026-10-28 复核）
 
 > 本日志记录“当前结论、已完成工作、下一步、边界和验证方法”。它不包含服务器密码、GitHub Token、生产密钥或真实用户数据。
+
+## 2026-11-01 staging 最新状态
+
+- B0～B13 已全部通过 A 验收并合并。
+- 最新完整测试：**173 passed**，七日 E2E 通过，成本对账通过。
+- 隔离 SQLite staging 通过；隔离 PostgreSQL schema 4、备份恢复通过。
+- API 的 timeline、memory、OpenAPI、室内图、Spine 和留言持久化烟测通过。
+- release A→B→A junction 切换与回滚演练通过。
+- 已修复发布包缺少 `rpg_deploy`、缺少同步 PostgreSQL 驱动声明、运行时缓存误报和切换脚本校验器加载问题。
+- 详细记录见 `docs/staging-validation-v1.md` 与 `docs/staging-evidence-v1.json`。
+- 生产 `8080`、生产 PostgreSQL `55432`、生产计划任务和生产 `current` 均未改动。
+- 下一步：生产依赖安装、反向代理/TLS、staging 任务注册、真实模型/审核供应商和 14 天观察。
 
 ## 1. 给下一位 AI 的快速结论
 

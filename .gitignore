@@ -17,6 +17,7 @@ _vnc_tools/
 _docx_review_*/
 rdp-*.png
 server-session.rdp
+*.rdp
 node_modules/
 web/dist/
 dist/

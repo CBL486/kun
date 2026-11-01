@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import tomllib
 from pathlib import Path
 
 from fastapi.testclient import TestClient
@@ -109,6 +110,10 @@ def test_release_build_is_complete_and_excludes_sensitive_files(tmp_path) -> Non
     assert "app/main.py" in paths
     assert "assets/manifest.json" in paths
     assert "deploy/reverse-proxy/nginx.conf.template" in paths
+    assert "rpg_deploy/__main__.py" in paths
+    assert "rpg_deploy/release.py" in paths
+    assert "docs/staging-validation-v1.md" in paths
+    assert "docs/staging-evidence-v1.json" in paths
     assert not any(path.startswith("tests/") for path in paths)
     assert not any(path.startswith("out/") for path in paths)
     assert not any(name in {".env", ".env.local"} for name in paths)
@@ -118,6 +123,31 @@ def test_release_build_is_complete_and_excludes_sensitive_files(tmp_path) -> Non
         for path in paths
     )
 
+
+
+def test_switch_script_uses_bundled_release_verifier() -> None:
+    script = (ROOT / "deploy" / "windows" / "Switch-AIWorldRelease.ps1").read_text(
+        encoding="utf-8"
+    )
+    assert "from rpg_deploy.__main__ import main" in script
+    assert "-m rpg_deploy verify" not in script
+
+
+def test_release_verifier_ignores_runtime_generated_python_files(tmp_path) -> None:
+    output = tmp_path / "generated-release"
+    build_release(ROOT, output, version="0.1.0-test")
+    cache = output / "app" / "__pycache__"
+    cache.mkdir()
+    (cache / "main.cpython-312.pyc").write_bytes(b"cache")
+    (output / "app" / "generated.pyc").write_bytes(b"cache")
+    assert verify_release(output) == []
+
+
+def test_server_extra_declares_async_and_sync_postgres_drivers() -> None:
+    payload = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
+    server = payload["project"]["optional-dependencies"]["server"]
+    assert any(dep.startswith("asyncpg") for dep in server)
+    assert any(dep.startswith("psycopg[binary]") for dep in server)
 
 def test_release_verifier_detects_tampering(tmp_path) -> None:
     output = tmp_path / "tampered-release"

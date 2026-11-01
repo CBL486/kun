@@ -1,0 +1,38 @@
+{
+  "schema_version": "aiworld-staging-evidence-v1",
+  "date": "2026-11-01",
+  "candidate_version": "0.1.0-g2-rc1",
+  "database_schema_version": 4,
+  "seed": 20261028,
+  "production_touched": false,
+  "tests": {
+    "pytest_passed": 173,
+    "seven_day_e2e": "passed",
+    "seven_day_events": 49,
+    "seven_day_errors": 0,
+    "seven_day_warnings": 1,
+    "cost_bill_matches": true
+  },
+  "staging": {
+    "sqlite": "passed",
+    "postgresql": "passed",
+    "postgres_backup_restore": "passed",
+    "api_smoke": "passed",
+    "release_junction_rollback": "passed",
+    "release_verification_issues": []
+  },
+  "fixes": [
+    "include rpg_deploy in release package",
+    "declare psycopg binary server dependency",
+    "ignore generated Python cache files during release verification",
+    "load bundled release verifier explicitly in switch script"
+  ],
+  "remaining": [
+    "production dependency installation",
+    "reverse proxy, DNS, TLS and certificate validation",
+    "staging scheduled task registration and recovery drill",
+    "real LLM and review provider integration",
+    "production backup window and restore approval",
+    "14-day production observation"
+  ]
+}
