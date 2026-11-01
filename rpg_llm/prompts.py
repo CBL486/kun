@@ -1,0 +1,103 @@
+"""Versioned prompt templates and redacted audit records."""
+
+from __future__ import annotations
+
+import hashlib
+import re
+from dataclasses import dataclass
+from typing import Any
+
+from .errors import LlmGatewayError
+from .models import PromptAudit
+
+
+SENSITIVE_PATTERNS = (
+    re.compile(r"\bsk-[A-Za-z0-9_-]{8,}\b"),
+    re.compile(r"(?i)\bbearer\s+[A-Za-z0-9._~+/=-]+"),
+    re.compile(r"(?i)\b(api[_-]?key|password|secret)\s*[:=]\s*\S+"),
+    re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"),
+    re.compile(r"(?<!\d)1[3-9]\d{9}(?!\d)"),
+)
+
+
+@dataclass(frozen=True)
+class PromptTemplate:
+    template_id: str
+    version: str
+    system: str
+    user_template: str
+
+    def render(self, variables: dict[str, Any]) -> str:
+        try:
+            user = self.user_template.format_map(
+                {key: _safe_value(value) for key, value in variables.items()}
+            )
+        except KeyError as error:
+            raise LlmGatewayError(
+                "prompt_variable_missing",
+                f"提示词缺少变量：{error.args[0]}",
+            ) from error
+        return f"{self.system}\n\n{user}".strip()
+
+
+PROMPT_TEMPLATES = {
+    "daily_share": PromptTemplate(
+        template_id="daily_share",
+        version="daily-share-v1",
+        system=(
+            "你是小镇主智能体的叙事整理器。只整理已给出的公开事实，"
+            "不得写入世界状态、添加未发生的事件或泄露内部字段。"
+        ),
+        user_template=(
+            "日期：{world_date}\n公开事件：{summaries}\n"
+            "请输出包含 event、feeling、reflection 的三层 JSON。"
+        ),
+    ),
+    "observer_message_ack": PromptTemplate(
+        template_id="observer_message_ack",
+        version="observer-ack-v1",
+        system=(
+            "你是小镇观察站的留言确认器。只确认留言已进入待处理队列，"
+            "不得声称角色已经读过、答应或执行。"
+        ),
+        user_template="公开确认对象：{message_id}",
+    ),
+    "action_candidate": PromptTemplate(
+        template_id="action_candidate",
+        version="action-candidate-v1",
+        system=(
+            "你是主智能体的意图候选器。只能提出候选字段，不得提交事件、"
+            "修改关系、修改记忆或输出世界写入字段。"
+        ),
+        user_template=(
+            "当前地点：{location_id}\n当前状态：{world_state}\n"
+            "可在 move、talk、study、rest、observe 中选择一个候选。"
+        ),
+    ),
+}
+
+
+def redact_text(text: str) -> str:
+    redacted = text
+    for pattern in SENSITIVE_PATTERNS:
+        redacted = pattern.sub("[REDACTED]", redacted)
+    return redacted
+
+
+def prompt_audit(template: PromptTemplate, prompt: str) -> PromptAudit:
+    redacted = redact_text(prompt)
+    preview = redacted[:180]
+    if len(redacted) > 180:
+        preview += "…"
+    return PromptAudit(
+        template_id=template.template_id,
+        template_version=template.version,
+        prompt_sha256=hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+        redacted_preview=preview,
+    )
+
+
+def _safe_value(value: Any) -> str:
+    if isinstance(value, (dict, list, tuple)):
+        return str(value)
+    return str(value)

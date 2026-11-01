@@ -15,7 +15,7 @@
 - B7 最小 RPG Web 已通过 A 验收，B1-B7 共 101 项测试通过。
 - B7.5 已通过 A 复审，最终提交 `448a420`；横向大世界、六处室内、Spine 动画和素材清单已通过验收。
 - B8 调度、任务幂等、租约恢复和观察者留言持久化已通过 A 复审，提交 `de451a4`。
-- B9 LLM 网关、审核与成本核心已提交，但网络异常降级路径未通过 A 验收，详见 `docs/review-result-B9.md`。
+- B9 LLM 网关、审核与成本核心已通过 A 复审，最终提交 `338cbaa`。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B6 至 G3 执行计划见 `B6至G3执行计划书_V1.md`。
 - A 侧当前工作日志与续接手册见 `docs/agent-a-work-log.md`。
@@ -136,6 +136,18 @@ pwsh -NoProfile -File scripts/run-b8-scheduler.ps1 -Command status
 B8 使用持久任务队列、`operation_id` 幂等、worker 租约和 PostgreSQL advisory
 lock。任务支持超时、指数退避、死信和崩溃后恢复扫描；观察者留言通过同一 schema
 持久化。恢复流程见 `docs/scheduler-recovery-v1.md`。
+
+## B9 LLM 网关
+
+```powershell
+pwsh -NoProfile -File scripts/test-b9.ps1
+pwsh -NoProfile -File scripts/run-b9-audit.ps1 -BudgetDate "2026-11-01"
+```
+
+B9 提供 provider-neutral 调用接口、mock 与真实适配骨架、审核失败关闭、
+`operation_id` 业务缓存、`provider_request_id` 计费去重、每日硬预算、熔断和
+规则降级。真实 API Key 只从 `AIWORLD_LLM_API_KEY` 读取，不进入仓库、日志或测试输出。
+详细契约见 `docs/llm-gateway-v1.md`。
 
 ## 边界
 
