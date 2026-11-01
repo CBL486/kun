@@ -76,7 +76,7 @@ seed: 20261028
 ```text
 任务 ID：B13 备份恢复、发布证据与总交接
 分支：codex/bx-b13-release
-提交哈希：待提交
+提交哈希：5d0561b8054f5dc47cac378eaca45dc886f22b70
 改动文件：rpg_release/、scripts/、deploy/、docs/、tests/、app/metrics.py、README.md
 实现摘要：SQLite/PostgreSQL 备份恢复、完整性快照、备份告警、最终 E2E、release evidence、冻结与生产清单。
 测试命令：pwsh -NoProfile -File scripts/test-all.ps1
