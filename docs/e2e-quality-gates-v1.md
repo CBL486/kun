@@ -42,7 +42,7 @@ out/b10/e2e-report.json
 事件：49
 NPC 反应：8
 阻断错误：0
-警告：1（高原在同一日重复脚本台词）
+警告：1（顾言在同一日重复脚本台词）
 ```
 
 两次独立运行必须产生相同的 `business_hash` 和 `simulation_hash`。

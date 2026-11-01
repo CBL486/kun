@@ -261,6 +261,10 @@ class LlmGateway:
             cost_cny=actual_cost,
             price_version=self.price.version,
             now=now,
+            budget_date=request.budget_date,
+            event_id=request.event_id,
+            character_id=request.character_id,
+            interface=request.interface,
         )
         invalid_structured = (
             response.structured_candidate is not None
