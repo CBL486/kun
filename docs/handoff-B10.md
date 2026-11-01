@@ -70,7 +70,7 @@ business_hash: 145ce4a53180494191262033205db8c3a49a9541d1f18b1e6589018a118e2f18
 ```text
 任务 ID：B10 集成、CI、E2E 与穿帮检测
 分支：codex/bx-b10-integration
-提交哈希：待提交
+提交哈希：26f6551c87f6a543f946752e442d779dd83c2987
 改动文件：rpg_quality/、tests/、scripts/、.github/workflows/ci.yml、docs/、README.md
 实现摘要：7 天可复现 E2E、穿帮/越权/注入检测、资源与移动布局门禁及 CI。
 测试命令：pwsh -NoProfile -File scripts/test-all.ps1
