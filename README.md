@@ -16,6 +16,7 @@
 - B7.5 已通过 A 复审，最终提交 `448a420`；横向大世界、六处室内、Spine 动画和素材清单已通过验收。
 - B8 调度、任务幂等、租约恢复和观察者留言持久化已通过 A 复审，提交 `de451a4`。
 - B9 LLM 网关、审核与成本核心已通过 A 复审，最终提交 `338cbaa`。
+- B10 七天 E2E、统一 CI 和穿帮/越权质量门禁已通过 A 复审，最终提交 `5fd7249`。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B6 至 G3 执行计划见 `B6至G3执行计划书_V1.md`。
 - A 侧当前工作日志与续接手册见 `docs/agent-a-work-log.md`。
@@ -148,6 +149,18 @@ B9 提供 provider-neutral 调用接口、mock 与真实适配骨架、审核失
 `operation_id` 业务缓存、`provider_request_id` 计费去重、每日硬预算、熔断和
 规则降级。真实 API Key 只从 `AIWORLD_LLM_API_KEY` 读取，不进入仓库、日志或测试输出。
 详细契约见 `docs/llm-gateway-v1.md`。
+
+## B10 集成与质量门禁
+
+```powershell
+pwsh -NoProfile -File scripts/test-all.ps1
+pwsh -NoProfile -File scripts/run-b10-e2e.ps1
+```
+
+B10 提供可复现的七日 E2E、统一 Python/JavaScript 测试入口、GitHub Actions CI，
+以及 NPC 知识越界、私密字段泄漏、事实冲突、重复台词、导演越权、主智能体直接写
+世界、prompt injection、资源缺失和移动布局检查。规范见
+`docs/e2e-quality-gates-v1.md`。
 
 ## 边界
 
