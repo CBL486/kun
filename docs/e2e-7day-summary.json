@@ -1,0 +1,38 @@
+{
+  "schema_version": "rpg-b10-e2e-v1",
+  "status": "passed",
+  "seed": 20261028,
+  "scenario_id": "slice-seven-day-v1",
+  "days": 7,
+  "event_count": 49,
+  "npc_reaction_count": 8,
+  "business_hash": "145ce4a53180494191262033205db8c3a49a9541d1f18b1e6589018a118e2f18",
+  "simulation_hash": "9ed818bbe4d63ee2b4615a34f81346910914ffb5a05f2599356c53a89f0d0e1b",
+  "quality": {
+    "schema_version": "rpg-quality-report-v1",
+    "status": "passed",
+    "checks": [
+      "daily_budget",
+      "public_projection",
+      "npc_knowledge",
+      "duplicate_dialogue",
+      "director_authority",
+      "agent_authority",
+      "fact_consistency",
+      "asset_integrity"
+    ],
+    "error_count": 0,
+    "warning_count": 1,
+    "findings": [
+      {
+        "code": "duplicate_dialogue",
+        "severity": "warning",
+        "subject": "npc_gu:2026-11-05",
+        "message": "同一 NPC 同日重复台词 2 次"
+      }
+    ]
+  },
+  "finding_counts": {
+    "duplicate_dialogue": 1
+  }
+}
