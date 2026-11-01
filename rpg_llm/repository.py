@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections import defaultdict
 from datetime import date, datetime, time, timedelta, timezone
 from decimal import Decimal
 from typing import Any
@@ -10,7 +11,11 @@ from sqlalchemy import Engine, func, select
 from sqlalchemy.orm import Session
 
 from rpg_orm.migrations import migrate
-from rpg_orm.models import LlmOperationRow, LlmUsageRow
+from rpg_orm.models import (
+    LlmCostAttributionRow,
+    LlmOperationRow,
+    LlmUsageRow,
+)
 from rpg_sim.ids import stable_id
 
 from .models import BudgetSnapshot
@@ -106,6 +111,10 @@ class LlmRepository:
         cost_cny: Decimal,
         price_version: str,
         now: datetime,
+        budget_date: str,
+        event_id: str | None,
+        character_id: str,
+        interface: str,
     ) -> bool:
         usage_id = stable_id(
             "usage",
@@ -129,6 +138,15 @@ class LlmRepository:
                     cost_cny=cost_cny,
                     price_version=price_version,
                     created_at=now,
+                )
+            )
+            session.add(
+                LlmCostAttributionRow(
+                    usage_id=usage_id,
+                    budget_date=budget_date,
+                    event_id=event_id,
+                    character_id=character_id,
+                    interface=interface,
                 )
             )
             return True
@@ -205,3 +223,128 @@ class LlmRepository:
                 }
                 for row in rows
             ]
+
+    def cost_report(self, budget_date: str | None = None) -> dict[str, Any]:
+        with Session(self.engine) as session:
+            query = (
+                select(LlmUsageRow, LlmCostAttributionRow)
+                .outerjoin(
+                    LlmCostAttributionRow,
+                    LlmCostAttributionRow.usage_id == LlmUsageRow.usage_id,
+                )
+            )
+            if budget_date:
+                query = query.where(
+                    LlmCostAttributionRow.budget_date == budget_date
+                )
+            rows = session.execute(
+                query.order_by(LlmUsageRow.created_at)
+            ).all()
+
+        entries = []
+        for usage, attribution in rows:
+            entries.append(
+                {
+                    "usage_id": usage.usage_id,
+                    "operation_id": usage.operation_id,
+                    "budget_date": (
+                        attribution.budget_date
+                        if attribution
+                        else usage.created_at.astimezone(CHINA_TIMEZONE).date().isoformat()
+                    ),
+                    "event_id": attribution.event_id if attribution else None,
+                    "character_id": (
+                        attribution.character_id
+                        if attribution
+                        else "unknown"
+                    ),
+                    "interface": (
+                        attribution.interface if attribution else "unknown"
+                    ),
+                    "provider": usage.provider,
+                    "model": usage.model,
+                    "input_tokens": usage.input_tokens,
+                    "output_tokens": usage.output_tokens,
+                    "review_calls": usage.review_calls,
+                    "cost_cny": Decimal(row_cost)
+                    if (row_cost := usage.cost_cny) is not None
+                    else Decimal("0"),
+                    "price_version": usage.price_version,
+                }
+            )
+        return _aggregate_cost_entries(entries)
+
+
+def _aggregate_cost_entries(entries: list[dict[str, Any]]) -> dict[str, Any]:
+    def empty_totals() -> dict[str, Decimal | int]:
+        return {
+            "calls": 0,
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "review_calls": 0,
+            "cost_cny": Decimal("0"),
+        }
+
+    groups = {
+        "by_date": defaultdict(empty_totals),
+        "by_event": defaultdict(empty_totals),
+        "by_character": defaultdict(empty_totals),
+        "by_interface": defaultdict(empty_totals),
+    }
+    total = empty_totals()
+    for entry in entries:
+        dimensions = {
+            "by_date": entry["budget_date"],
+            "by_event": entry["event_id"] or "unattributed",
+            "by_character": entry["character_id"],
+            "by_interface": entry["interface"],
+        }
+        for group_name, key in dimensions.items():
+            target = groups[group_name][key]
+            _add_cost(target, entry)
+        _add_cost(total, entry)
+    return {
+        "schema_version": "rpg-cost-report-v1",
+        "total": _serialize_cost_totals(total),
+        "by_date": {
+            key: _serialize_cost_totals(value)
+            for key, value in sorted(groups["by_date"].items())
+        },
+        "by_event": {
+            key: _serialize_cost_totals(value)
+            for key, value in sorted(groups["by_event"].items())
+        },
+        "by_character": {
+            key: _serialize_cost_totals(value)
+            for key, value in sorted(groups["by_character"].items())
+        },
+        "by_interface": {
+            key: _serialize_cost_totals(value)
+            for key, value in sorted(groups["by_interface"].items())
+        },
+        "price_versions": sorted(
+            {entry["price_version"] for entry in entries}
+        ),
+    }
+
+
+def _add_cost(target: dict[str, Decimal | int], entry: dict[str, Any]) -> None:
+    target["calls"] += 1
+    target["input_tokens"] += entry["input_tokens"]
+    target["output_tokens"] += entry["output_tokens"]
+    target["review_calls"] += entry["review_calls"]
+    target["cost_cny"] = Decimal(target["cost_cny"]) + Decimal(
+        entry["cost_cny"]
+    )
+
+
+def _serialize_cost_totals(
+    totals: dict[str, Decimal | int],
+) -> dict[str, int | str]:
+    return {
+        "calls": int(totals["calls"]),
+        "input_tokens": int(totals["input_tokens"]),
+        "output_tokens": int(totals["output_tokens"]),
+        "review_calls": int(totals["review_calls"]),
+        "cost_cny": f"{Decimal(totals['cost_cny']):.8f}",
+    }

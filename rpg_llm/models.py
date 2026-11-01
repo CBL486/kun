@@ -15,6 +15,9 @@ class LlmRequest:
     variables: dict[str, Any]
     budget_date: str
     max_output_tokens: int = 1_200
+    event_id: str | None = None
+    character_id: str = "char_lin_cheng"
+    interface: str = "agent_loop"
 
     def __post_init__(self) -> None:
         if not self.operation_id.strip():
@@ -31,6 +34,9 @@ class LlmRequest:
                 "variables": self.variables,
                 "budget_date": self.budget_date,
                 "max_output_tokens": self.max_output_tokens,
+                "event_id": self.event_id,
+                "character_id": self.character_id,
+                "interface": self.interface,
             }
         )
 

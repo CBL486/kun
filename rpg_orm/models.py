@@ -375,3 +375,25 @@ class LlmUsageRow(Base):
         Index("idx_llm_usage_operation", "operation_id"),
         Index("idx_llm_usage_created", "created_at"),
     )
+
+
+class LlmCostAttributionRow(Base):
+    __tablename__ = "llm_cost_attributions"
+
+    usage_id: Mapped[str] = mapped_column(
+        String(128), primary_key=True
+    )
+    budget_date: Mapped[str] = mapped_column(String(10), nullable=False)
+    event_id: Mapped[str | None] = mapped_column(String(96), nullable=True)
+    character_id: Mapped[str] = mapped_column(String(96), nullable=False)
+    interface: Mapped[str] = mapped_column(String(64), nullable=False)
+
+    __table_args__ = (
+        Index(
+            "idx_llm_cost_attribution_dimensions",
+            "budget_date",
+            "event_id",
+            "character_id",
+            "interface",
+        ),
+    )

@@ -17,6 +17,7 @@
 - B8 调度、任务幂等、租约恢复和观察者留言持久化已通过 A 复审，提交 `de451a4`。
 - B9 LLM 网关、审核与成本核心已通过 A 复审，最终提交 `338cbaa`。
 - B10 七天 E2E、统一 CI 和穿帮/越权质量门禁已通过 A 复审，最终提交 `5fd7249`。
+- B11 五类成本压力、失败矩阵、归因账单和滑动限流已通过 A 复审，最终提交 `c8e89c1`。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B6 至 G3 执行计划见 `B6至G3执行计划书_V1.md`。
 - A 侧当前工作日志与续接手册见 `docs/agent-a-work-log.md`。
@@ -161,6 +162,17 @@ B10 提供可复现的七日 E2E、统一 Python/JavaScript 测试入口、GitHu
 以及 NPC 知识越界、私密字段泄漏、事实冲突、重复台词、导演越权、主智能体直接写
 世界、prompt injection、资源缺失和移动布局检查。规范见
 `docs/e2e-quality-gates-v1.md`。
+
+## B11 安全与成本压力
+
+```powershell
+pwsh -NoProfile -File scripts/test-all.ps1
+pwsh -NoProfile -File scripts/run-b11-stress.ps1
+```
+
+B11 覆盖正常日、异常日、长对话、连续重试和并发五类成本模型，按日期、事件、角色
+和接口聚合账单，并与 mock bill 对账。高风险动作支持人工确认门禁，运行时提供
+线程安全滑动窗口限流。失败矩阵见 `docs/security-failure-matrix-v1.md`。
 
 ## 边界
 

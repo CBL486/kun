@@ -1,0 +1,300 @@
+{
+  "schema_version": "rpg-cost-report-v1",
+  "total": {
+    "calls": 27,
+    "input_tokens": 48000,
+    "output_tokens": 10700,
+    "review_calls": 23,
+    "cost_cny": "0.36320000"
+  },
+  "by_date": {
+    "2026-11-01": {
+      "calls": 5,
+      "input_tokens": 6000,
+      "output_tokens": 1500,
+      "review_calls": 5,
+      "cost_cny": "0.04800000"
+    },
+    "2026-11-02": {
+      "calls": 2,
+      "input_tokens": 8000,
+      "output_tokens": 2400,
+      "review_calls": 2,
+      "cost_cny": "0.07040000"
+    },
+    "2026-11-03": {
+      "calls": 4,
+      "input_tokens": 14000,
+      "output_tokens": 2400,
+      "review_calls": 4,
+      "cost_cny": "0.09440000"
+    },
+    "2026-11-04": {
+      "calls": 8,
+      "input_tokens": 12000,
+      "output_tokens": 2400,
+      "review_calls": 4,
+      "cost_cny": "0.08640000"
+    },
+    "2026-11-05": {
+      "calls": 8,
+      "input_tokens": 8000,
+      "output_tokens": 2000,
+      "review_calls": 8,
+      "cost_cny": "0.06400000"
+    }
+  },
+  "by_event": {
+    "evt_abnormal_001": {
+      "calls": 1,
+      "input_tokens": 4000,
+      "output_tokens": 1200,
+      "review_calls": 1,
+      "cost_cny": "0.03520000"
+    },
+    "evt_abnormal_002": {
+      "calls": 1,
+      "input_tokens": 4000,
+      "output_tokens": 1200,
+      "review_calls": 1,
+      "cost_cny": "0.03520000"
+    },
+    "evt_concurrent_001": {
+      "calls": 1,
+      "input_tokens": 1000,
+      "output_tokens": 250,
+      "review_calls": 1,
+      "cost_cny": "0.00800000"
+    },
+    "evt_concurrent_002": {
+      "calls": 1,
+      "input_tokens": 1000,
+      "output_tokens": 250,
+      "review_calls": 1,
+      "cost_cny": "0.00800000"
+    },
+    "evt_concurrent_003": {
+      "calls": 1,
+      "input_tokens": 1000,
+      "output_tokens": 250,
+      "review_calls": 1,
+      "cost_cny": "0.00800000"
+    },
+    "evt_concurrent_004": {
+      "calls": 1,
+      "input_tokens": 1000,
+      "output_tokens": 250,
+      "review_calls": 1,
+      "cost_cny": "0.00800000"
+    },
+    "evt_concurrent_005": {
+      "calls": 1,
+      "input_tokens": 1000,
+      "output_tokens": 250,
+      "review_calls": 1,
+      "cost_cny": "0.00800000"
+    },
+    "evt_concurrent_006": {
+      "calls": 1,
+      "input_tokens": 1000,
+      "output_tokens": 250,
+      "review_calls": 1,
+      "cost_cny": "0.00800000"
+    },
+    "evt_concurrent_007": {
+      "calls": 1,
+      "input_tokens": 1000,
+      "output_tokens": 250,
+      "review_calls": 1,
+      "cost_cny": "0.00800000"
+    },
+    "evt_concurrent_008": {
+      "calls": 1,
+      "input_tokens": 1000,
+      "output_tokens": 250,
+      "review_calls": 1,
+      "cost_cny": "0.00800000"
+    },
+    "evt_long_001": {
+      "calls": 1,
+      "input_tokens": 3500,
+      "output_tokens": 600,
+      "review_calls": 1,
+      "cost_cny": "0.02360000"
+    },
+    "evt_long_002": {
+      "calls": 1,
+      "input_tokens": 3500,
+      "output_tokens": 600,
+      "review_calls": 1,
+      "cost_cny": "0.02360000"
+    },
+    "evt_long_003": {
+      "calls": 1,
+      "input_tokens": 3500,
+      "output_tokens": 600,
+      "review_calls": 1,
+      "cost_cny": "0.02360000"
+    },
+    "evt_long_004": {
+      "calls": 1,
+      "input_tokens": 3500,
+      "output_tokens": 600,
+      "review_calls": 1,
+      "cost_cny": "0.02360000"
+    },
+    "evt_normal_001": {
+      "calls": 1,
+      "input_tokens": 1200,
+      "output_tokens": 300,
+      "review_calls": 1,
+      "cost_cny": "0.00960000"
+    },
+    "evt_normal_002": {
+      "calls": 1,
+      "input_tokens": 1200,
+      "output_tokens": 300,
+      "review_calls": 1,
+      "cost_cny": "0.00960000"
+    },
+    "evt_normal_003": {
+      "calls": 1,
+      "input_tokens": 1200,
+      "output_tokens": 300,
+      "review_calls": 1,
+      "cost_cny": "0.00960000"
+    },
+    "evt_normal_004": {
+      "calls": 1,
+      "input_tokens": 1200,
+      "output_tokens": 300,
+      "review_calls": 1,
+      "cost_cny": "0.00960000"
+    },
+    "evt_normal_005": {
+      "calls": 1,
+      "input_tokens": 1200,
+      "output_tokens": 300,
+      "review_calls": 1,
+      "cost_cny": "0.00960000"
+    },
+    "evt_retry_001": {
+      "calls": 2,
+      "input_tokens": 3000,
+      "output_tokens": 600,
+      "review_calls": 1,
+      "cost_cny": "0.02160000"
+    },
+    "evt_retry_002": {
+      "calls": 2,
+      "input_tokens": 3000,
+      "output_tokens": 600,
+      "review_calls": 1,
+      "cost_cny": "0.02160000"
+    },
+    "evt_retry_003": {
+      "calls": 2,
+      "input_tokens": 3000,
+      "output_tokens": 600,
+      "review_calls": 1,
+      "cost_cny": "0.02160000"
+    },
+    "evt_retry_004": {
+      "calls": 2,
+      "input_tokens": 3000,
+      "output_tokens": 600,
+      "review_calls": 1,
+      "cost_cny": "0.02160000"
+    }
+  },
+  "by_character": {
+    "char_lin_cheng": {
+      "calls": 27,
+      "input_tokens": 48000,
+      "output_tokens": 10700,
+      "review_calls": 23,
+      "cost_cny": "0.36320000"
+    }
+  },
+  "by_interface": {
+    "agent_loop": {
+      "calls": 15,
+      "input_tokens": 26000,
+      "output_tokens": 6300,
+      "review_calls": 11,
+      "cost_cny": "0.20480000"
+    },
+    "burst_api": {
+      "calls": 8,
+      "input_tokens": 8000,
+      "output_tokens": 2000,
+      "review_calls": 8,
+      "cost_cny": "0.06400000"
+    },
+    "observer_chat": {
+      "calls": 4,
+      "input_tokens": 14000,
+      "output_tokens": 2400,
+      "review_calls": 4,
+      "cost_cny": "0.09440000"
+    }
+  },
+  "price_versions": [
+    "mock-price-b9-2026-11-01"
+  ],
+  "scenarios": [
+    {
+      "name": "normal_day",
+      "budget_date": "2026-11-01",
+      "accepted_requests": 5,
+      "blocked_requests": 0,
+      "billable_attempts": 5,
+      "total_cost_cny": "0.04800000"
+    },
+    {
+      "name": "abnormal_day",
+      "budget_date": "2026-11-02",
+      "accepted_requests": 2,
+      "blocked_requests": 8,
+      "billable_attempts": 2,
+      "total_cost_cny": "0.07040000"
+    },
+    {
+      "name": "long_conversation",
+      "budget_date": "2026-11-03",
+      "accepted_requests": 4,
+      "blocked_requests": 16,
+      "billable_attempts": 4,
+      "total_cost_cny": "0.09440000"
+    },
+    {
+      "name": "consecutive_retries",
+      "budget_date": "2026-11-04",
+      "accepted_requests": 4,
+      "blocked_requests": 2,
+      "billable_attempts": 8,
+      "total_cost_cny": "0.08640000"
+    },
+    {
+      "name": "concurrency",
+      "budget_date": "2026-11-05",
+      "accepted_requests": 8,
+      "blocked_requests": 12,
+      "billable_attempts": 8,
+      "total_cost_cny": "0.06400000"
+    }
+  ],
+  "mock_bill": {
+    "schema_version": "rpg-mock-bill-v1",
+    "line_count": 23,
+    "total": {
+      "calls": 27,
+      "input_tokens": 48000,
+      "output_tokens": 10700,
+      "review_calls": 23,
+      "cost_cny": "0.36320000"
+    },
+    "digest": "70a9d42d853fdff0deaf512632c2cf8ce8065476b13734d00420ea629c62dc32"
+  },
+  "bill_matches": true
+}
