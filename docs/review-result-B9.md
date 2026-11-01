@@ -18,6 +18,8 @@ A 侧当前 main 基线：`4e5cfdaa8f4f75c826de30fe9094c03e97374794`
 
 B9 的 mock、预算、审核、缓存、成本账本、熔断和提示词脱敏大部分实现正确，测试也能通过；但真实 provider 的非 `ProviderError` 网络异常会直接穿透网关，违反“供应商失败不阻断世界”的 B9 契约。
 
+可执行修复清单：[9-fix-request.md](b9-fix-request.md)
+
 ## 2. 测试证据
 
 B9 专项：
