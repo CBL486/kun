@@ -112,7 +112,7 @@ PowerShell 语法检查：passed
 ```text
 任务 ID：B12 部署包、反向代理、监控与回滚配置
 分支：codex/bx-b12-deployment
-提交哈希：待提交
+提交哈希：9e54c22881932690e46883d4adb16b847bb6eb6d
 改动文件：app/、rpg_deploy/、deploy/、scripts/、tests/、docs/、README.md
 实现摘要：allowlist 发布包、checksums、Windows 任务、代理/监控模板、健康检查和 release 回滚。
 测试命令：pwsh -NoProfile -File scripts/test-b12.ps1
