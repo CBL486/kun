@@ -18,6 +18,7 @@
 - B9 LLM 网关复审修复完成：provider 异常边界、重试去重计费和锁竞争行为已通过回归。
 - B10 七天 E2E、统一 CI 和穿帮/越权质量门禁已完成本地验证。
 - B11 五类成本压力、归因账单、滑动限流和人工确认门禁已完成本地验证。
+- B12 发布包、代理/监控模板、Windows 任务、健康检查和回滚配置已完成本地验证。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B6 至 G3 执行计划见 `B6至G3执行计划书_V1.md`。
 - A 侧当前工作日志与续接手册见 `docs/agent-a-work-log.md`。
@@ -173,6 +174,19 @@ pwsh -NoProfile -File scripts/run-b11-stress.ps1
 B11 覆盖正常日、异常日、长对话、连续重试和并发五类成本模型，按日期、事件、角色
 和接口聚合账单，并与 mock bill 对账。高风险动作支持人工确认门禁，运行时提供
 线程安全滑动窗口限流。失败矩阵见 `docs/security-failure-matrix-v1.md`。
+
+## B12 部署配置
+
+```powershell
+pwsh -NoProfile -File scripts/test-b12.ps1
+pwsh -NoProfile -File scripts/build-release.ps1 -Output "out/b12/release"
+pwsh -NoProfile -File scripts/verify-release.ps1 -Release "out/b12/release"
+```
+
+B12 提供 allowlist 发布包、SHA-256 manifest、Nginx/Caddy 模板、Prometheus 指标与
+告警、Windows 任务、API/scheduler 健康检查、日志轮转和 release junction 回滚。
+A 执行服务器配置的步骤见 `docs/deployment-checklist.md` 和
+`docs/rollback-runbook.md`。
 
 ## 边界
 

@@ -2,7 +2,7 @@
 
 状态：供 A 在生产环境执行；B 不执行本清单
 
-日期：2026-10-28
+日期：2026-11-01
 
 ## 1. 前置条件
 
@@ -47,7 +47,7 @@ python -m rpg_orm migrate --url $env:RPG_DATABASE_URL
 预期输出：
 
 ```json
-{"schema_version": 1}
+{"schema_version": 4}
 ```
 
 迁移可重复执行；再次执行不得产生重复表或重复版本记录。
@@ -60,9 +60,11 @@ python -m rpg_orm version --url $env:RPG_DATABASE_URL
 
 并由 A 在只读查询工具中确认：
 
-- `schema_versions` 恰有版本 1；
+- `schema_versions` 最高版本为 4；
 - `world_heads`、`world_versions`、`actions`、`events` 存在；
 - `memories`、`memory_projection_outbox`、`npc_memory_slots` 存在；
+- `scheduled_tasks`、`observer_messages` 存在；
+- `llm_operations`、`llm_usage`、`llm_cost_attributions` 存在；
 - 索引 `idx_memories_scope_state`、`idx_memories_source_event` 存在；
 - 应用 `/ready` 或等价数据库健康检查通过。
 

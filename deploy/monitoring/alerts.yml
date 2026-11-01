@@ -1,0 +1,42 @@
+groups:
+  - name: aiworld
+    rules:
+      - alert: AIWorldDown
+        expr: up{job="aiworld"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "AI World API is down"
+
+      - alert: AIWorldDatabaseNotReady
+        expr: aiworld_database_ready{job="aiworld"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "AI World database is not ready"
+
+      - alert: AIWorldServerErrors
+        expr: increase(aiworld_http_errors_total[5m]) > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "AI World is returning repeated 5xx responses"
+
+      - alert: AIWorldSchedulerExpiredLeases
+        expr: aiworld_scheduler_expired_leases > 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "AI World scheduler has expired task leases"
+
+      - alert: AIWorldSchedulerBacklog
+        expr: aiworld_scheduler_pending_due > 100
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "AI World scheduler backlog is growing"

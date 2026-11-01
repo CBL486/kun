@@ -4,6 +4,7 @@ from .messages import PersistentMessageQueue
 from .models import ScheduleSpec, TaskExecution, TaskStatus
 from .repository import SchedulerRepository
 from .service import SchedulerService
+from .worker import run_worker
 
 __all__ = [
     "PersistentMessageQueue",
@@ -12,4 +13,5 @@ __all__ = [
     "SchedulerService",
     "TaskExecution",
     "TaskStatus",
+    "run_worker",
 ]
