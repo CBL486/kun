@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import uuid
+import time
 from collections.abc import Awaitable, Callable
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Literal
 
@@ -11,6 +13,7 @@ from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.responses import FileResponse
+from fastapi.responses import PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.api_models import (
@@ -27,9 +30,10 @@ from app.api_models import (
 )
 from app.db import database_ready
 from app.local_state import LocalWorldStore, PublicProjectionError
+from app.metrics import MetricsRegistry
 from app.settings import settings
 from rpg_orm.migrations import create_database_engine
-from rpg_scheduler import PersistentMessageQueue
+from rpg_scheduler import PersistentMessageQueue, SchedulerRepository
 
 APP_NAME = "AI World"
 APP_VERSION = "0.1.0"
@@ -61,15 +65,46 @@ def create_app(
     application.state.local_world = local_world
     application.state.message_store = message_store
     application.state.readiness_check = readiness_check
+    application.state.metrics = MetricsRegistry()
 
     @application.middleware("http")
     async def public_api_headers(request: Request, call_next):
         request.state.request_id = str(uuid.uuid4())
+        started = time.perf_counter()
         response = await call_next(request)
+        application.state.metrics.observe(
+            status_code=response.status_code,
+            duration_seconds=time.perf_counter() - started,
+        )
         response.headers["X-Request-ID"] = request.state.request_id
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["Cache-Control"] = "no-store"
         return response
+
+    @application.get("/metrics", include_in_schema=False)
+    async def metrics() -> PlainTextResponse:
+        check = application.state.readiness_check or database_ready
+        try:
+            database = await check()
+        except Exception:
+            database = False
+        scheduler_backlog = None
+        if message_store is not None:
+            try:
+                scheduler_backlog = SchedulerRepository(
+                    message_store.engine,
+                    migrate_schema=False,
+                ).backlog(now=datetime.now(timezone.utc))
+            except Exception:
+                scheduler_backlog = None
+        return PlainTextResponse(
+            application.state.metrics.render(
+                version=APP_VERSION,
+                database_ready=database,
+                scheduler_backlog=scheduler_backlog,
+            ),
+            media_type="text/plain; version=0.0.4",
+        )
 
     @application.exception_handler(PublicProjectionError)
     async def projection_error_handler(
