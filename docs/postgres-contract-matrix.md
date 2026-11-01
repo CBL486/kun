@@ -1,10 +1,10 @@
 # SQLite / PostgreSQL 契约矩阵
 
-状态：B5 本地验证完成；B8 将 schema 扩展到 version 2
+状态：B5 本地验证完成；B8 扩展到 version 2，B9 扩展到 version 3
 
 日期：2026-11-01
 
-当前 schema：`rpg_orm` version 2（B8 新增调度与留言表）
+当前 schema：`rpg_orm` version 3（B9 新增 LLM operation 与 usage 表）
 
 ## 1. 通用约定
 
@@ -32,6 +32,8 @@
 | `npc_memory_slots` | JSON 文本 | JSONB | 来源和过期时间可空 | `(npc_id, slot_id)` 主键 |
 | `scheduled_tasks` | JSON 文本 | JSONB | lease、错误、结果和时间可空 | `operation_id` 唯一；ready/lease 索引 |
 | `observer_messages` | TEXT | TEXT | 否 | `message_id` 主键；状态与时间索引 |
+| `llm_operations` | JSON 文本 | JSONB | provider、model 和降级原因可空 | `operation_id` 主键 |
+| `llm_usage` | JSON / Numeric | JSONB / NUMERIC | 否 | `provider_request_id` 唯一；时间索引 |
 
 ## 3. 核心映射
 
@@ -103,4 +105,4 @@ Postgres = 7dd8a4b34eb72b64c2766165ca7e589238f0fc4b6516886522f8cfb162a81f74
 - SQLite 仅用于本地单进程验证；
 - PostgreSQL 实连使用 `pgserver` 启动的临时隔离实例；
 - 不连接生产库，不读取生产账号；
-- 当前 `rpg_orm` schema 版本为 2，未来字段变化必须新增编号迁移和对应回滚脚本。
+- 当前 `rpg_orm` schema 版本为 3，未来字段变化必须新增编号迁移和对应回滚脚本。

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+from decimal import Decimal
 from typing import Any
 
 from sqlalchemy import (
@@ -13,6 +14,7 @@ from sqlalchemy import (
     Index,
     Integer,
     JSON,
+    Numeric,
     String,
     Text,
     UniqueConstraint,
@@ -303,4 +305,73 @@ class ObserverMessageRow(Base):
             name="ck_observer_message_status",
         ),
         Index("idx_observer_messages_status", "status", "created_at"),
+    )
+
+
+class LlmOperationRow(Base):
+    __tablename__ = "llm_operations"
+
+    operation_id: Mapped[str] = mapped_column(String(160), primary_key=True)
+    request_hash: Mapped[str] = mapped_column(Text, nullable=False)
+    template_id: Mapped[str] = mapped_column(String(96), nullable=False)
+    template_version: Mapped[str] = mapped_column(String(32), nullable=False)
+    status: Mapped[str] = mapped_column(String(24), nullable=False)
+    result: Mapped[dict[str, Any]] = mapped_column(JSONDocument, nullable=False)
+    review_status: Mapped[str] = mapped_column(String(24), nullable=False)
+    run_mode: Mapped[str] = mapped_column(String(24), nullable=False)
+    provider: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    model: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    attempts: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    degradation_reason: Mapped[str | None] = mapped_column(
+        String(96), nullable=True
+    )
+    prompt_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    redacted_prompt_preview: Mapped[str] = mapped_column(Text, nullable=False)
+    latency_ms: Mapped[float] = mapped_column(Float, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime, nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(UTCDateTime, nullable=False)
+
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('succeeded', 'fallback', 'blocked')",
+            name="ck_llm_operation_status",
+        ),
+        CheckConstraint(
+            "review_status IN ('approved', 'blocked', 'unavailable')",
+            name="ck_llm_review_status",
+        ),
+        CheckConstraint(
+            "run_mode IN ('model', 'rule')",
+            name="ck_llm_run_mode",
+        ),
+    )
+
+
+class LlmUsageRow(Base):
+    __tablename__ = "llm_usage"
+
+    usage_id: Mapped[str] = mapped_column(String(128), primary_key=True)
+    operation_id: Mapped[str] = mapped_column(
+        String(160), nullable=False
+    )
+    attempt_id: Mapped[str] = mapped_column(String(128), nullable=False)
+    provider_request_id: Mapped[str] = mapped_column(
+        String(160), unique=True, nullable=False
+    )
+    provider: Mapped[str] = mapped_column(String(64), nullable=False)
+    model: Mapped[str] = mapped_column(String(128), nullable=False)
+    input_tokens: Mapped[int] = mapped_column(Integer, nullable=False)
+    output_tokens: Mapped[int] = mapped_column(Integer, nullable=False)
+    review_calls: Mapped[int] = mapped_column(Integer, nullable=False)
+    cost_cny: Mapped[Decimal] = mapped_column(Numeric(18, 8), nullable=False)
+    price_version: Mapped[str] = mapped_column(String(64), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime, nullable=False)
+
+    __table_args__ = (
+        CheckConstraint(
+            "input_tokens >= 0 AND output_tokens >= 0 AND review_calls >= 0",
+            name="ck_llm_usage_nonnegative",
+        ),
+        Index("idx_llm_usage_operation", "operation_id"),
+        Index("idx_llm_usage_created", "created_at"),
     )

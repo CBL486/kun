@@ -1,0 +1,22 @@
+{
+  "schema_version": "rpg-llm-audit-example-v1",
+  "operation_id": "op_example_b9_001",
+  "template_id": "daily_share",
+  "template_version": "daily-share-v1",
+  "prompt_sha256": "b8d898a0c6df2ea5c01a254cb26dd2c5f7e94a3e3c1c9a4a69f88c4b5f8e50b4",
+  "redacted_prompt_preview": "公开事件：[REDACTED]；公开事件：今天完成课堂记录。",
+  "provider": "mock",
+  "model": "mock-rule-v1",
+  "provider_request_id": "llmreq_example_001",
+  "input_tokens": 80,
+  "output_tokens": 20,
+  "review_calls": 1,
+  "review_status": "approved",
+  "review_policy_version": "mvp-content-b9-v1",
+  "cost_cny": "0.00064000",
+  "price_version": "mock-price-b9-2026-11-01",
+  "run_mode": "model",
+  "degradation_reason": null,
+  "contains_raw_prompt": false,
+  "contains_secret": false
+}
