@@ -20,6 +20,7 @@ INCLUDE_DIRS = (
     "rpg_npc",
     "rpg_orm",
     "rpg_quality",
+    "rpg_release",
     "rpg_scheduler",
     "rpg_sim",
     "rpg_storage",
@@ -41,10 +42,14 @@ INCLUDE_FILES = (
     "docs/deployment-checklist.md",
     "docs/rollback-runbook.md",
     "docs/deployment-topology-v1.md",
+    "docs/backup-restore-runbook.md",
     "docs/asset-license-audit.md",
     "docs/scheduler-recovery-v1.md",
     "docs/llm-gateway-v1.md",
     "docs/security-failure-matrix-v1.md",
+    "docs/handoff-B13.md",
+    "docs/production-actions-checklist.md",
+    "docs/release-freeze-v1.json",
 )
 EXCLUDED_PARTS = {
     ".git",

@@ -97,11 +97,31 @@ def create_app(
                 ).backlog(now=datetime.now(timezone.utc))
             except Exception:
                 scheduler_backlog = None
+        backup_age_seconds = None
+        if settings.backup_directory:
+            try:
+                backup_files = [
+                    path
+                    for path in Path(settings.backup_directory).glob("aiworld-*")
+                    if path.is_file()
+                ]
+                if backup_files:
+                    newest = max(
+                        backup_files,
+                        key=lambda path: path.stat().st_mtime,
+                    )
+                    backup_age_seconds = max(
+                        0.0,
+                        time.time() - newest.stat().st_mtime,
+                    )
+            except OSError:
+                backup_age_seconds = None
         return PlainTextResponse(
             application.state.metrics.render(
                 version=APP_VERSION,
                 database_ready=database,
                 scheduler_backlog=scheduler_backlog,
+                backup_age_seconds=backup_age_seconds,
             ),
             media_type="text/plain; version=0.0.4",
         )

@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     environment: str = "development"
     database_url: str = "sqlite+aiosqlite:///./data/local.sqlite3"
     scheduler_database_url: str | None = None
+    backup_directory: str | None = None
     log_level: str = "INFO"
     llm_model: str = "deepseek-chat"
 

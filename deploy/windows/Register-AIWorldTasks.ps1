@@ -20,6 +20,7 @@ $common = @(
 )
 $apiScript = Join-Path $PSScriptRoot "Start-AIWorldApi.ps1"
 $schedulerScript = Join-Path $PSScriptRoot "Start-AIWorldScheduler.ps1"
+$backupScript = Join-Path $PSScriptRoot "Invoke-AIWorldBackup.ps1"
 $rotationScript = Join-Path $PSScriptRoot "Rotate-AIWorldLogs.ps1"
 $envArguments = if ($EnvironmentFile) {
     "-EnvironmentFile `"$EnvironmentFile`""
@@ -54,6 +55,16 @@ $rotationAction = New-ScheduledTaskAction -Execute "pwsh.exe" `
         "-LogDirectory"
         "`"$(Join-Path $root 'logs')`""
     ) -join " ")
+$backupAction = New-ScheduledTaskAction -Execute "pwsh.exe" `
+    -Argument (@(
+        $common
+        "`"$backupScript`""
+        "-RootPath"
+        "`"$root`""
+        "-PythonPath"
+        "`"$PythonPath`""
+        $envArguments
+    ) -join " ")
 
 $startup = New-ScheduledTaskTrigger -AtStartup
 $daily = New-ScheduledTaskTrigger -Daily -At "03:30"
@@ -85,5 +96,11 @@ Register-ScheduledTask -TaskName "AIWorld-LogRotation" `
     -Principal $principal `
     -Settings $settings `
     -Force | Out-Null
+Register-ScheduledTask -TaskName "AIWorld-Backup" `
+    -Action $backupAction `
+    -Trigger (New-ScheduledTaskTrigger -Daily -At "03:00") `
+    -Principal $principal `
+    -Settings $settings `
+    -Force | Out-Null
 
-Write-Output "Registered AIWorld-API, AIWorld-Scheduler and AIWorld-LogRotation"
+Write-Output "Registered AIWorld-API, AIWorld-Scheduler, AIWorld-Backup and AIWorld-LogRotation"
