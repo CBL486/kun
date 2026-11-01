@@ -5,7 +5,7 @@
     "source_pack_count": 6
   },
   "branch": "codex/bx-b13-release",
-  "commit": "5d0561b8054f5dc47cac378eaca45dc886f22b70",
+  "commit": "1da065d145d594f47d5efc3fe005aa9ff04c8b1b",
   "cost": {
     "bill_matches": true,
     "price_versions": [
@@ -36,5 +36,5 @@
   ],
   "python": "3.12.14",
   "schema_version": "rpg-release-evidence-v1",
-  "tree": "41fc20dda476c79e14d4e9b358e71c0da3eb2790"
+  "tree": "2635af324215aba19d1cd8b676fdf630e40021b1"
 }
