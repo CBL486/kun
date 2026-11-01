@@ -19,6 +19,7 @@
 - B10 七天 E2E、统一 CI 和穿帮/越权质量门禁已通过 A 复审，最终提交 `5fd7249`。
 - B11 五类成本压力、失败矩阵、归因账单和滑动限流已通过 A 复审，最终提交 `c8e89c1`。
 - B12 发布包、代理/监控模板、健康检查和回滚配置已通过 A 复审，最终提交 `3643d83`。
+- B13 SQLite/PostgreSQL 备份恢复、发布证据、版本冻结和总交接已通过 A 复审，最终提交 `219ce66`。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B6 至 G3 执行计划见 `B6至G3执行计划书_V1.md`。
 - A 侧当前工作日志与续接手册见 `docs/agent-a-work-log.md`。
@@ -187,6 +188,18 @@ B12 提供 allowlist 发布包、SHA-256 manifest、Nginx/Caddy 模板、Prometh
 告警、Windows 任务、API/scheduler 健康检查、日志轮转和 release junction 回滚。
 A 执行服务器配置的步骤见 `docs/deployment-checklist.md` 和
 `docs/rollback-runbook.md`。
+
+## B13 备份与总交接
+
+```powershell
+pwsh -NoProfile -File scripts/test-all.ps1
+pwsh -NoProfile -File scripts/backup-database.ps1 -Url "sqlite:///./data/local.sqlite3" -Output "backups/local.sqlite3"
+pwsh -NoProfile -File scripts/create-release-evidence.ps1
+```
+
+B13 提供 SQLite/PostgreSQL 备份恢复、SHA-256 和关键行数校验、备份新鲜度指标、
+最终 7 天 E2E 证据、版本冻结清单和生产动作清单。总交接见
+`docs/handoff-B13.md`，A 侧动作见 `docs/production-actions-checklist.md`。
 
 ## 边界
 

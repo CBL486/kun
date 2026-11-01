@@ -1,0 +1,40 @@
+{
+  "assets": {
+    "asset_count": 30,
+    "authorized": true,
+    "source_pack_count": 6
+  },
+  "branch": "codex/bx-b13-release",
+  "commit": "1da065d145d594f47d5efc3fe005aa9ff04c8b1b",
+  "cost": {
+    "bill_matches": true,
+    "price_versions": [
+      "mock-price-b9-2026-11-01"
+    ]
+  },
+  "database_schema_version": 4,
+  "e2e": {
+    "business_hash": "145ce4a53180494191262033205db8c3a49a9541d1f18b1e6589018a118e2f18",
+    "days": 7,
+    "errors": 0,
+    "simulation_hash": "9ed818bbe4d63ee2b4615a34f81346910914ffb5a05f2599356c53a89f0d0e1b",
+    "status": "passed",
+    "warnings": 1
+  },
+  "files": {
+    "assets/manifest.json": "c2faf15c7cda50db22f95d577c9268f4b82764e7d0a783c0d64912cbb2353067",
+    "docs/art-budget-b7-5.json": "6ba3b655aa4c63c91f82364ed2f4e9305b227b9f165aefcb5e4543633c76d960",
+    "docs/asset-license-audit.md": "6bedc31b90e964ce0e40b51a8d9ce85f56a43cddfaf96faa8044ff9f4c361d21",
+    "docs/b11-cost-report.json": "e346bdf4797b2737b031e4d4c5cb6f3bbdeb3468346e4fa742edc4d8e8bdef0b",
+    "docs/e2e-7day-summary.json": "832bd9193e30fe677445575413900d30d93449a52a39c2e361ebf8c431c3fb21"
+  },
+  "known_risks": [
+    "真实供应商价格、审核 SLA 与幂等能力需 staging 确认",
+    "Spine Trial 导出需在发布前替换正式许可证版本",
+    "四名 NPC 尚无独立 Spine 行走模型",
+    "生产环境、TLS、DNS、数据库和备份恢复由 A 执行"
+  ],
+  "python": "3.12.14",
+  "schema_version": "rpg-release-evidence-v1",
+  "tree": "2635af324215aba19d1cd8b676fdf630e40021b1"
+}

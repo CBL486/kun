@@ -27,6 +27,7 @@ class MetricsRegistry:
         version: str,
         database_ready: bool,
         scheduler_backlog: dict[str, int] | None,
+        backup_age_seconds: float | None = None,
     ) -> str:
         with self._lock:
             requests = self._requests
@@ -76,6 +77,14 @@ class MetricsRegistry:
                     "# HELP aiworld_scheduler_expired_leases Expired leases.",
                     "# TYPE aiworld_scheduler_expired_leases gauge",
                     f"aiworld_scheduler_expired_leases {scheduler_backlog['expired_leases']}",
+                ]
+            )
+        if backup_age_seconds is not None:
+            lines.extend(
+                [
+                    "# HELP aiworld_backup_age_seconds Age of newest database backup.",
+                    "# TYPE aiworld_backup_age_seconds gauge",
+                    f"aiworld_backup_age_seconds {backup_age_seconds:.3f}",
                 ]
             )
         return "\n".join(lines) + "\n"

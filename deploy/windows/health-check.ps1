@@ -2,6 +2,8 @@ param(
     [string]$BaseUrl = "http://127.0.0.1:8080",
     [string]$SchedulerDatabaseUrl,
     [string]$PythonPath = "python",
+    [string]$BackupDirectory,
+    [int]$MaxBackupAgeHours = 36,
     [int]$MaxPending = 500,
     [int]$MaxExpiredLeases = 0
 )
@@ -15,6 +17,7 @@ $result = [ordered]@{
     metrics_database_ready = $false
     scheduler_checked = $false
     scheduler_backlog = $null
+    newest_backup_age_hours = $null
 }
 
 try {
@@ -55,6 +58,26 @@ if ($SchedulerDatabaseUrl) {
         }
     } catch {
         $result.scheduler_checked = $false
+        $healthy = $false
+    }
+}
+
+if ($BackupDirectory) {
+    try {
+        $newestBackup = Get-ChildItem -LiteralPath $BackupDirectory -File |
+            Where-Object { $_.Name -like "aiworld-*" } |
+            Sort-Object LastWriteTimeUtc -Descending |
+            Select-Object -First 1
+        if ($newestBackup) {
+            $age = ([DateTime]::UtcNow - $newestBackup.LastWriteTimeUtc).TotalHours
+            $result.newest_backup_age_hours = [Math]::Round($age, 2)
+            if ($age -gt $MaxBackupAgeHours) {
+                $healthy = $false
+            }
+        } else {
+            $healthy = $false
+        }
+    } catch {
         $healthy = $false
     }
 }

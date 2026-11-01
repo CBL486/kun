@@ -40,3 +40,11 @@ groups:
           severity: warning
         annotations:
           summary: "AI World scheduler backlog is growing"
+
+      - alert: AIWorldBackupStale
+        expr: aiworld_backup_age_seconds > 129600
+        for: 1h
+        labels:
+          severity: critical
+        annotations:
+          summary: "AI World database backup is older than 36 hours"

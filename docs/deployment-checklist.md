@@ -79,6 +79,7 @@ pwsh -NoProfile -File deploy/windows/Register-AIWorldTasks.ps1 `
 ```text
 AIWorld-API
 AIWorld-Scheduler
+AIWorld-Backup
 AIWorld-LogRotation
 ```
 
@@ -107,6 +108,7 @@ pwsh -NoProfile -File deploy/windows/health-check.ps1 `
 - `/ready` 返回 ready；
 - `/metrics` 显示 `aiworld_database_ready 1`；
 - scheduler 无过期租约，积压低于阈值；
+- 最新数据库备份不超过 36 小时；
 - 浏览器控制台无错误。
 
 ## 6. 监控与日志
@@ -114,6 +116,7 @@ pwsh -NoProfile -File deploy/windows/health-check.ps1 `
 - Prometheus 配置：`deploy/monitoring/prometheus.yml`
 - 告警：`deploy/monitoring/alerts.yml`
 - 日志轮转：`deploy/windows/Rotate-AIWorldLogs.ps1`
+- 备份任务：`deploy/windows/Invoke-AIWorldBackup.ps1`
 - 默认日志保留 14 天，单文件达到 20 MB 时轮转；
 - `/metrics` 仅内网访问；
 - 不记录 API Key、完整 prompt 或真实用户原文。

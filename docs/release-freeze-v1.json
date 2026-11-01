@@ -1,0 +1,40 @@
+{
+  "schema_version": "rpg-release-freeze-v1",
+  "release_name": "Qinghe Town G2 Candidate",
+  "version": "0.1.0-g2-rc1",
+  "suggested_tag": "v0.1.0-g2-rc1",
+  "database_schema_version": 4,
+  "scenario": {
+    "seed": 20261028,
+    "id": "slice-seven-day-v1"
+  },
+  "freeze_scope": [
+    "app/",
+    "web/",
+    "assets/",
+    "content/",
+    "rpg_agent/",
+    "rpg_npc/",
+    "rpg_orm/",
+    "rpg_scheduler/",
+    "rpg_llm/",
+    "rpg_quality/",
+    "rpg_stress/",
+    "rpg_deploy/",
+    "rpg_release/",
+    "deploy/",
+    "docs/e2e-7day-summary.json",
+    "docs/b11-cost-report.json",
+    "docs/release-evidence.json"
+  ],
+  "release_checks": [
+    "full pytest suite",
+    "JavaScript syntax",
+    "seven-day E2E",
+    "worst-cost matrix",
+    "release allowlist and SHA-256",
+    "SQLite backup restore",
+    "PostgreSQL backup restore"
+  ],
+  "production_actions_owner": "A"
+}
