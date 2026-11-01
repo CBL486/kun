@@ -84,7 +84,7 @@ B11 专项 6 passed
 ```text
 任务 ID：B11 安全、失败与成本压力测试
 分支：codex/bx-b11-stress
-提交哈希：待提交
+提交哈希：983d17ca0d13006d9b01f2153104431776f0d792
 改动文件：rpg_stress/、rpg_llm/、rpg_orm/、tests/、scripts/、docs/、README.md
 实现摘要：五类成本压力场景、成本归因、mock 对账、滑动限流、人工确认和失败矩阵。
 测试命令：pwsh -NoProfile -File scripts/test-all.ps1
