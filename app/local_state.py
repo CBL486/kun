@@ -6,6 +6,7 @@ import threading
 from datetime import datetime, timezone
 from typing import Any
 
+from rpg_scheduler import PersistentMessageQueue
 from rpg_sim.ids import stable_id
 from rpg_sim.mocks import MockLLM, MockReviewer
 from rpg_sim.scenario import LOCATIONS, MAIN_ID, SEED, location_is_open
@@ -42,10 +43,12 @@ class LocalWorldStore:
         *,
         seed: int = SEED,
         reviewer: MockReviewer | None = None,
+        message_store: PersistentMessageQueue | None = None,
     ):
         self.seed = seed
         self.llm = MockLLM(seed)
         self.reviewer = reviewer or MockReviewer()
+        self.message_store = message_store
         self._lock = threading.RLock()
         self._public_messages: list[dict[str, Any]] = []
         self._message_counter = 0
@@ -66,8 +69,12 @@ class LocalWorldStore:
             self.shares = list(self.simulator.daily_shares)
             self.memories = list(self.simulator.memories)
             self.diaries = list(self.simulator.diary_records)
-            self._public_messages = []
-            self._message_counter = 0
+            if self.message_store:
+                self._public_messages = self.message_store.list_messages()
+                self._message_counter = len(self._public_messages)
+            else:
+                self._public_messages = []
+                self._message_counter = 0
 
     def world(self) -> WorldResponse:
         with self._lock:
@@ -255,16 +262,23 @@ class LocalWorldStore:
             created_at = datetime.now(timezone.utc).isoformat()
             message_id = stable_id(
                 "msg",
-                [self.seed, self._message_counter, normalized],
+                [self.seed, self._message_counter, normalized, created_at],
             )
-            self._public_messages.append(
-                {
-                    "message_id": message_id,
-                    "message": normalized,
-                    "created_at": created_at,
-                    "status": "queued",
-                }
-            )
+            if self.message_store:
+                self.message_store.enqueue(
+                    message_id=message_id,
+                    content=normalized,
+                    created_at=datetime.fromisoformat(created_at),
+                )
+            else:
+                self._public_messages.append(
+                    {
+                        "message_id": message_id,
+                        "message": normalized,
+                        "created_at": created_at,
+                        "status": "queued",
+                    }
+                )
         generated = self.llm.complete(
             "observer_message_ack",
             {"message_id": message_id},
@@ -284,6 +298,12 @@ class LocalWorldStore:
     def public_event_count(self) -> int:
         with self._lock:
             return len(self.events)
+
+    def queued_messages(self) -> list[dict[str, Any]]:
+        with self._lock:
+            if self.message_store:
+                return self.message_store.list_messages()
+            return [dict(message) for message in self._public_messages]
 
     def _location(self, location_id: str) -> PublicLocation:
         source = LOCATIONS[location_id]

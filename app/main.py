@@ -27,6 +27,9 @@ from app.api_models import (
 )
 from app.db import database_ready
 from app.local_state import LocalWorldStore, PublicProjectionError
+from app.settings import settings
+from rpg_orm.migrations import create_database_engine
+from rpg_scheduler import PersistentMessageQueue
 
 APP_NAME = "AI World"
 APP_VERSION = "0.1.0"
@@ -38,9 +41,15 @@ ASSET_ROOT = Path(__file__).resolve().parents[1] / "assets"
 def create_app(
     *,
     store: LocalWorldStore | None = None,
+    message_store: PersistentMessageQueue | None = None,
     readiness_check: Callable[[], Awaitable[bool]] | None = None,
 ) -> FastAPI:
-    local_world = store or LocalWorldStore()
+    if store is None and message_store is None:
+        if settings.scheduler_database_url:
+            message_store = PersistentMessageQueue(
+                create_database_engine(settings.scheduler_database_url)
+            )
+    local_world = store or LocalWorldStore(message_store=message_store)
     application = FastAPI(
         title=APP_NAME,
         version=APP_VERSION,
@@ -50,6 +59,7 @@ def create_app(
     )
     application.openapi_version = "3.1.0"
     application.state.local_world = local_world
+    application.state.message_store = message_store
     application.state.readiness_check = readiness_check
 
     @application.middleware("http")
