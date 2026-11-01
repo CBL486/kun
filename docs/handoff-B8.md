@@ -70,7 +70,7 @@ pwsh -NoProfile -File scripts/test-b8.ps1
 ```text
 任务 ID：B8 调度、幂等与崩溃恢复
 分支：codex/bx-b8-scheduler
-提交哈希：待提交
+提交哈希：476a401f003a13e66300e7a0e6d1b1a651654c13
 改动文件：rpg_scheduler/、rpg_orm/、app/、tests/、scripts/、docs/、README.md
 实现摘要：schema 2 持久任务队列、租约、advisory lock、超时重试、崩溃恢复和留言持久化。
 测试命令：pwsh -NoProfile -File scripts/test-b8.ps1
