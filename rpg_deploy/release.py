@@ -50,6 +50,7 @@ INCLUDE_FILES = (
     "docs/handoff-B13.md",
     "docs/production-actions-checklist.md",
     "docs/release-freeze-v1.json",
+    "docs/release-evidence.json",
 )
 EXCLUDED_PARTS = {
     ".git",

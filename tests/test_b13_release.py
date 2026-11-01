@@ -185,6 +185,7 @@ def test_release_package_contains_recovery_tools_and_no_private_data(
     paths = {item["path"] for item in manifest["files"]}
     assert "rpg_release/backup.py" in paths
     assert "deploy/windows/Invoke-AIWorldBackup.ps1" in paths
+    assert "docs/release-evidence.json" in paths
     assert not any(path.startswith("tests/") for path in paths)
     assert not any(
         path.startswith("backups/") or path.startswith("data/")
