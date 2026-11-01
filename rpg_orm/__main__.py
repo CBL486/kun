@@ -10,7 +10,7 @@ from .migrations import create_database_engine, migrate, rollback, schema_versio
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="在明确指定的 SQLite/PostgreSQL 数据库上执行 B5 迁移"
+        description="在明确指定的 SQLite/PostgreSQL 数据库上执行 B5/B8 schema 迁移"
     )
     parser.add_argument("command", choices=["migrate", "rollback", "version"])
     parser.add_argument("--url", required=True)

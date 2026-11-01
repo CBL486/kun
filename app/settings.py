@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     app_version: str = "0.1.0"
     environment: str = "development"
     database_url: str = "sqlite+aiosqlite:///./data/local.sqlite3"
+    scheduler_database_url: str | None = None
     log_level: str = "INFO"
     llm_model: str = "deepseek-chat"
 

@@ -12,6 +12,7 @@ from sqlalchemy import inspect
 
 from rpg_agent.loop import AgentLoop
 from rpg_orm.migrations import (
+    LATEST_SCHEMA_VERSION,
     create_database_engine,
     migrate,
     rollback,
@@ -70,9 +71,9 @@ class SQLiteContractTests(unittest.TestCase):
         self.temporary.cleanup()
 
     def test_sqlite_migration_is_repeatable_and_rollback_drops_schema(self) -> None:
-        self.assertEqual(1, migrate(self.engine))
-        self.assertEqual(1, migrate(self.engine))
-        self.assertEqual(1, schema_version(self.engine))
+        self.assertEqual(LATEST_SCHEMA_VERSION, migrate(self.engine))
+        self.assertEqual(LATEST_SCHEMA_VERSION, migrate(self.engine))
+        self.assertEqual(LATEST_SCHEMA_VERSION, schema_version(self.engine))
         self.assertIn("memories", inspect(self.engine).get_table_names())
         self.assertEqual(0, rollback(self.engine))
         self.assertEqual(0, schema_version(self.engine))
@@ -188,11 +189,11 @@ class PostgreSQLContractTests(unittest.TestCase):
         pgserver_module.pg_ctl = make_command("pg_ctl.exe")
 
     def test_postgres_migration_and_rollback(self) -> None:
-        self.assertEqual(1, schema_version(self.engine))
+        self.assertEqual(LATEST_SCHEMA_VERSION, schema_version(self.engine))
         self.assertEqual(0, rollback(self.engine))
         self.assertEqual(0, schema_version(self.engine))
-        self.assertEqual(1, migrate(self.engine))
-        self.assertEqual(1, migrate(self.engine))
+        self.assertEqual(LATEST_SCHEMA_VERSION, migrate(self.engine))
+        self.assertEqual(LATEST_SCHEMA_VERSION, migrate(self.engine))
 
     def test_postgres_uses_jsonb_and_timezone_aware_datetime(self) -> None:
         columns = {

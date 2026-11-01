@@ -233,3 +233,74 @@ class NPCMemorySlotRow(Base):
     expires_on: Mapped[str | None] = mapped_column(String(10), nullable=True)
     last_used_at: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)
     updated_at: Mapped[datetime] = mapped_column(UTCDateTime, nullable=False)
+
+
+class ScheduledTaskRow(Base):
+    __tablename__ = "scheduled_tasks"
+
+    task_id: Mapped[str] = mapped_column(String(96), primary_key=True)
+    kind: Mapped[str] = mapped_column(String(48), nullable=False)
+    operation_id: Mapped[str] = mapped_column(
+        String(160), unique=True, nullable=False
+    )
+    fingerprint: Mapped[str] = mapped_column(Text, nullable=False)
+    payload: Mapped[dict[str, Any]] = mapped_column(
+        JSONDocument, nullable=False
+    )
+    status: Mapped[str] = mapped_column(String(24), nullable=False)
+    priority: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    available_at: Mapped[datetime] = mapped_column(UTCDateTime, nullable=False)
+    lease_owner: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    lease_expires_at: Mapped[datetime | None] = mapped_column(
+        UTCDateTime, nullable=True
+    )
+    attempts: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    max_attempts: Mapped[int] = mapped_column(Integer, nullable=False, default=3)
+    timeout_seconds: Mapped[float] = mapped_column(Float, nullable=False)
+    last_error: Mapped[str | None] = mapped_column(Text, nullable=True)
+    result: Mapped[dict[str, Any] | None] = mapped_column(
+        JSONDocument, nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime, nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(UTCDateTime, nullable=False)
+    completed_at: Mapped[datetime | None] = mapped_column(
+        UTCDateTime, nullable=True
+    )
+
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('pending', 'leased', 'succeeded', 'dead_letter')",
+            name="ck_scheduled_task_status",
+        ),
+        CheckConstraint("attempts >= 0", name="ck_scheduled_task_attempts"),
+        CheckConstraint("max_attempts > 0", name="ck_scheduled_task_max_attempts"),
+        Index(
+            "idx_scheduled_tasks_ready",
+            "status",
+            "priority",
+            "available_at",
+        ),
+        Index(
+            "idx_scheduled_tasks_lease",
+            "status",
+            "lease_expires_at",
+        ),
+    )
+
+
+class ObserverMessageRow(Base):
+    __tablename__ = "observer_messages"
+
+    message_id: Mapped[str] = mapped_column(String(96), primary_key=True)
+    content: Mapped[str] = mapped_column(Text, nullable=False)
+    status: Mapped[str] = mapped_column(String(24), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime, nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(UTCDateTime, nullable=False)
+
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('queued', 'claimed', 'responded', 'rejected')",
+            name="ck_observer_message_status",
+        ),
+        Index("idx_observer_messages_status", "status", "created_at"),
+    )

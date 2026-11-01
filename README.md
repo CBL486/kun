@@ -14,6 +14,7 @@
 - B6 本地 FastAPI、OpenAPI 和公开投影已完成，B1-B6 共 92 项测试通过。
 - B7 最小 RPG Web 已通过 A 验收，B1-B7 共 101 项测试通过。
 - B7.5 已通过 A 复审，最终提交 `448a420`；横向大世界、六处室内、Spine 动画和素材清单已通过验收。
+- B8 调度、任务幂等、租约恢复和观察者留言持久化已通过 A 复审，提交 `de451a4`。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B6 至 G3 执行计划见 `B6至G3执行计划书_V1.md`。
 - A 侧当前工作日志与续接手册见 `docs/agent-a-work-log.md`。
@@ -122,6 +123,18 @@ pwsh -NoProfile -File scripts/test-b75.ps1 -Rebuild
 960×540 的内部场景。河面、步道与栈桥直接绘入世界底层；六处室内统一使用
 Modern Interiors 的 Room Builder 墙面与地板，并以 AppleDog 免费商用素材
 补充宿舍和书院细节。原始压缩包均不入库。
+
+## B8 调度与恢复
+
+```powershell
+pwsh -NoProfile -File scripts/test-b8.ps1
+pwsh -NoProfile -File scripts/run-b8-api.ps1
+pwsh -NoProfile -File scripts/run-b8-scheduler.ps1 -Command status
+```
+
+B8 使用持久任务队列、`operation_id` 幂等、worker 租约和 PostgreSQL advisory
+lock。任务支持超时、指数退避、死信和崩溃后恢复扫描；观察者留言通过同一 schema
+持久化。恢复流程见 `docs/scheduler-recovery-v1.md`。
 
 ## 边界
 
