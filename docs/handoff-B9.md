@@ -78,7 +78,7 @@ B9 11 passed
 ```text
 任务 ID：B9 LLM 网关、审核与成本核心
 分支：codex/bx-b9-llm-gateway
-提交哈希：待提交
+提交哈希：e69bb9e42c69331a8e89abc195cb5bfe8c257d5f
 改动文件：rpg_llm/、rpg_orm/、tests/、scripts/、docs/、README.md
 实现摘要：provider-neutral 网关、审核失败关闭、预算硬熔断、重试去重计费、规则降级和脱敏审计。
 测试命令：pwsh -NoProfile -File scripts/test-b9.ps1
