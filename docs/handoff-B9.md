@@ -1,6 +1,6 @@
 # B9 LLM 网关、审核与成本核心交接
 
-状态：本地实现完成，等待 A 复审
+状态：复审阻断项已修复，等待 A 复审
 
 日期：2026-11-01
 
@@ -55,9 +55,9 @@ pwsh -NoProfile -File scripts/test-b9.ps1
 专项结果：
 
 ```text
-B9 11 passed
-累计专项入口 30 passed
-全量 134 passed
+B9 20 passed, 1 warning
+累计专项入口 39 passed, 1 warning
+全量 143 passed, 1 warning
 ```
 
 测试覆盖：
@@ -72,8 +72,23 @@ B9 11 passed
 - 提示词脱敏；
 - 并发调用预算；
 - 真实 provider 缺少密钥时失败关闭。
+- RuntimeError、ConnectError、TimeoutException 不会穿透 generate；
+- malformed JSON 与缺少 choices 转换为 provider_invalid_response；
+- HTTP 4xx 不重试；
+- 重试响应 ID 不同也只记一笔 usage；
+- 预算锁短暂占用不会让同 operation 返回无法解释的不同结果。
 
-## 4. 交接字段
+## 4. 复审修复
+
+- `OpenAICompatibleProvider` 将网络、超时、连接、HTTP 和响应解析异常统一转换为
+  `ProviderError`；
+- 网络/超时/5xx 标记可重试，4xx、鉴权错误和非法响应标记不可重试；
+- gateway 捕获通用 provider 异常，增加熔断计数并持久化安全模板；
+- usage 主键改为逻辑 `operation_id`，防止重试响应 ID 变化导致重复计费；
+- budget lock 由立即降级改为有限等待，避免同一 operation 出现非确定结果；
+- 新增 provider、JSON、HTTP 4xx、重试 ID 和锁占用回归测试。
+
+## 5. 交接字段
 
 ```text
 任务 ID：B9 LLM 网关、审核与成本核心
@@ -82,7 +97,7 @@ B9 11 passed
 改动文件：rpg_llm/、rpg_orm/、tests/、scripts/、docs/、README.md
 实现摘要：provider-neutral 网关、审核失败关闭、预算硬熔断、重试去重计费、规则降级和脱敏审计。
 测试命令：pwsh -NoProfile -File scripts/test-b9.ps1
-测试结果：B9 11 项通过；累计专项入口 30 项通过；全量 134 项通过
+测试结果：B9 20 项通过；累计专项入口 39 项通过；全量 143 项通过
 seed / mock：20261028；mock provider；mock reviewer；无真实密钥
 已知风险：真实供应商幂等能力、审核协议、价格和超时需 A 在 staging 确认。
 需要 A 合并的文件：本分支代码、测试、审计脚本和文档

@@ -8,8 +8,14 @@ class LlmGatewayError(RuntimeError):
 
 
 class ProviderError(LlmGatewayError):
-    def __init__(self, message: str, *, transient: bool = True):
-        super().__init__("provider_error", message)
+    def __init__(
+        self,
+        message: str,
+        *,
+        transient: bool = True,
+        code: str = "provider_error",
+    ):
+        super().__init__(code, message)
         self.transient = transient
 
 

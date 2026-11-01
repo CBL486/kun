@@ -27,7 +27,8 @@ operation_id 缓存检查
 
 - `operation_id` 是逻辑业务键；成功、阻断和规则降级结果都会缓存；
 - 同一 `operation_id` 内容不同返回 `duplicate_operation`；
-- `provider_request_id` 唯一，传输层重试不会重复写入 usage；
+- usage 以逻辑 `operation_id` 为主身份，`provider_request_id` 作为供应商请求证据；
+  传输层重试即使返回不同响应 ID，也不会重复写入 usage；
 - 一次真正的新模型尝试使用独立 `attempt_id`；
 - 重试成功只产生一个世界候选和一个 operation 结果；
 - token、审核调用、价格版本和成本写入 `llm_usage`；
@@ -75,8 +76,23 @@ mock-price-b9-2026-11-01
 - 熔断期间不发模型请求，直接进入规则模式；
 - 冷却时间结束后允许一个探测请求；
 - 探测成功恢复，失败重新打开；
+- 预算锁被同一日期的其他 worker 占用时，gateway 会等待并重试；
 - provider 未配置、预算超限、审核失败和结构化输出非法均不会阻断世界：
   只返回安全模板。
+
+### Provider 异常边界
+
+| 情况 | 分类 | 重试 |
+| --- | --- | --- |
+| `httpx.ConnectError` / `NetworkError` / `TimeoutException` | `provider_transport_error` | 是 |
+| `httpx.HTTPError`、5xx | `provider_transport_error` / `provider_server_error` | 是 |
+| 401 / 403 | `provider_auth_error` | 否 |
+| 其他 4xx | `provider_request_rejected` | 否 |
+| JSON 解析失败、缺少 choices/message/content、usage 结构非法 | `provider_invalid_response` | 否 |
+| 未分类 provider 异常 | `provider_failure` | 否 |
+
+gateway 对 provider 边界再次兜底捕获异常，记录熔断失败并持久化规则结果；异常不会
+穿透 `generate()`，也不会创建世界事件、关系变化或记忆。
 
 ## 6. 结构化输出边界
 

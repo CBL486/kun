@@ -10,6 +10,8 @@ from datetime import datetime, timezone
 from decimal import Decimal
 from typing import Any, Callable
 
+import httpx
+
 from rpg_scheduler.locks import advisory_lock
 from rpg_sim.ids import stable_id
 
@@ -60,28 +62,47 @@ class LlmGateway:
         self._thread_lock = threading.RLock()
 
     def generate(self, request: LlmRequest) -> dict[str, Any]:
+        started_at = time.perf_counter()
+        deadline = time.monotonic() + 5.0
         with self._thread_lock:
-            with advisory_lock(
-                self.repository.engine,
-                f"llm-budget:{request.budget_date}",
-            ) as acquired:
-                if not acquired:
-                    return self._fallback_without_audit(
-                        "budget_lock_busy",
-                    )
-                existing = self.repository.get_operation(
-                    request.operation_id
-                )
-                if existing:
-                    if existing["request_hash"] != request.request_hash:
-                        raise LlmGatewayError(
-                            "duplicate_operation",
-                            "同一 operation_id 的请求内容不一致",
+            while True:
+                with advisory_lock(
+                    self.repository.engine,
+                    f"llm-budget:{request.budget_date}",
+                ) as acquired:
+                    if acquired:
+                        existing = self.repository.get_operation(
+                            request.operation_id
                         )
-                    result = deepcopy(existing["result"])
-                    result["cache_hit"] = True
-                    return result
-                return self._execute(request, time.perf_counter())
+                        if existing:
+                            if (
+                                existing["request_hash"]
+                                != request.request_hash
+                            ):
+                                raise LlmGatewayError(
+                                    "duplicate_operation",
+                                    "同一 operation_id 的请求内容不一致",
+                                )
+                            result = deepcopy(existing["result"])
+                            result["cache_hit"] = True
+                            return result
+                        return self._execute(request, started_at)
+                if time.monotonic() >= deadline:
+                    template = PROMPT_TEMPLATES.get(request.template_id)
+                    if template is None:
+                        return self._fallback_without_audit(
+                            "budget_lock_busy",
+                        )
+                    prompt = template.render(request.variables)
+                    audit = prompt_audit(template, prompt)
+                    return self._save_fallback(
+                        request,
+                        template.version,
+                        audit,
+                        "budget_lock_busy",
+                        started_at=started_at,
+                    )
+                time.sleep(0.02)
 
     def _execute(
         self,
@@ -172,6 +193,25 @@ class LlmGateway:
                 self.circuit.record_failure()
                 if not error.transient:
                     break
+            except (
+                httpx.TimeoutException,
+                httpx.NetworkError,
+                httpx.HTTPError,
+            ):
+                last_error = ProviderError(
+                    "模型供应商网络请求失败",
+                    transient=True,
+                    code="provider_transport_error",
+                )
+                self.circuit.record_failure()
+            except Exception:
+                last_error = ProviderError(
+                    "模型供应商发生未分类异常",
+                    transient=False,
+                    code="provider_failure",
+                )
+                self.circuit.record_failure()
+                break
         if response is None:
             return self._save_fallback(
                 request,

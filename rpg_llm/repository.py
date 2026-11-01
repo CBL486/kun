@@ -109,7 +109,7 @@ class LlmRepository:
     ) -> bool:
         usage_id = stable_id(
             "usage",
-            [operation_id, provider_request_id],
+            [operation_id],
         )
         with Session(self.engine) as session, session.begin():
             existing = session.get(LlmUsageRow, usage_id)

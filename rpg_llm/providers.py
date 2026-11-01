@@ -95,27 +95,79 @@ class OpenAICompatibleProvider:
     def complete(self, request: ProviderRequest) -> ProviderResponse:
         if not self._api_key:
             raise ProviderUnavailable()
-        response = self.client.post(
-            f"{self.base_url}/chat/completions",
-            headers={
-                "Authorization": f"Bearer {self._api_key}",
-                "Idempotency-Key": request.request_id,
-            },
-            json={
-                "model": self.model,
-                "messages": [{"role": "user", "content": request.prompt}],
-                "max_tokens": request.max_output_tokens,
-            },
-        )
+        try:
+            response = self.client.post(
+                f"{self.base_url}/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {self._api_key}",
+                    "Idempotency-Key": request.request_id,
+                },
+                json={
+                    "model": self.model,
+                    "messages": [{"role": "user", "content": request.prompt}],
+                    "max_tokens": request.max_output_tokens,
+                },
+            )
+        except httpx.TimeoutException as error:
+            raise ProviderError(
+                "模型供应商请求超时",
+                transient=True,
+                code="provider_transport_error",
+            ) from error
+        except httpx.ConnectError as error:
+            raise ProviderError(
+                "模型供应商网络连接失败",
+                transient=True,
+                code="provider_transport_error",
+            ) from error
+        except httpx.NetworkError as error:
+            raise ProviderError(
+                "模型供应商网络连接失败",
+                transient=True,
+                code="provider_transport_error",
+            ) from error
+        except httpx.HTTPError as error:
+            raise ProviderError(
+                "模型供应商 HTTP 传输失败",
+                transient=True,
+                code="provider_transport_error",
+            ) from error
         if response.status_code >= 500:
-            raise ProviderError("模型供应商暂时不可用")
+            raise ProviderError(
+                "模型供应商暂时不可用",
+                transient=True,
+                code="provider_server_error",
+            )
+        if response.status_code in {401, 403}:
+            raise ProviderError(
+                "模型供应商鉴权失败",
+                transient=False,
+                code="provider_auth_error",
+            )
         if response.status_code >= 400:
             raise ProviderError(
                 "模型请求被拒绝",
                 transient=False,
+                code="provider_request_rejected",
             )
-        payload = response.json()
-        content = payload["choices"][0]["message"]["content"]
+        try:
+            payload = response.json()
+        except (json.JSONDecodeError, ValueError) as error:
+            raise ProviderError(
+                "模型供应商返回了无法解析的 JSON",
+                transient=False,
+                code="provider_invalid_response",
+            ) from error
+        try:
+            content = payload["choices"][0]["message"]["content"]
+            if not isinstance(content, (str, dict)):
+                raise TypeError("content type invalid")
+        except (KeyError, IndexError, TypeError) as error:
+            raise ProviderError(
+                "模型供应商响应缺少 choices/message/content",
+                transient=False,
+                code="provider_invalid_response",
+            ) from error
         structured = None
         text: Any = content
         if isinstance(content, str):
@@ -129,13 +181,26 @@ class OpenAICompatibleProvider:
                 except json.JSONDecodeError:
                     pass
         usage = payload.get("usage", {})
+        if not isinstance(usage, dict):
+            raise ProviderError(
+                "模型供应商 usage 结构非法",
+                transient=False,
+                code="provider_invalid_response",
+            )
         provider_id = payload.get("id") or request.request_id
-        return ProviderResponse(
-            text=text,
-            structured_candidate=structured,
-            input_tokens=int(usage.get("prompt_tokens", 0)),
-            output_tokens=int(usage.get("completion_tokens", 0)),
-            provider=self.provider_name,
-            model=payload.get("model", self.model),
-            provider_request_id=str(provider_id),
-        )
+        try:
+            return ProviderResponse(
+                text=text,
+                structured_candidate=structured,
+                input_tokens=int(usage.get("prompt_tokens", 0)),
+                output_tokens=int(usage.get("completion_tokens", 0)),
+                provider=self.provider_name,
+                model=str(payload.get("model", self.model)),
+                provider_request_id=str(provider_id),
+            )
+        except (TypeError, ValueError) as error:
+            raise ProviderError(
+                "模型供应商 token usage 非法",
+                transient=False,
+                code="provider_invalid_response",
+            ) from error

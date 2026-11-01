@@ -1,14 +1,18 @@
 from __future__ import annotations
 
+import json
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import contextmanager
 from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
 
+import httpx
 import pytest
 
+import rpg_llm.gateway as gateway_module
 from rpg_llm.circuit import CircuitBreaker
-from rpg_llm.errors import LlmGatewayError, ProviderUnavailable
+from rpg_llm.errors import LlmGatewayError, ProviderError
 from rpg_llm.gateway import LlmGateway
 from rpg_llm.models import (
     LlmRequest,
@@ -17,10 +21,13 @@ from rpg_llm.models import (
     ReviewDecision,
 )
 from rpg_llm.pricing import LlmBudgetPolicy
-from rpg_llm.providers import MockProvider
+from rpg_llm.providers import MockProvider, OpenAICompatibleProvider
 from rpg_llm.repository import LlmRepository
 from rpg_llm.review import MockReviewAdapter
 from rpg_orm.migrations import create_database_engine
+from rpg_sim.engine import WorldEngine
+from rpg_sim.ids import digest
+from rpg_sim.scenario import initial_world
 
 
 NOW = datetime(2026, 11, 1, 2, 0, tzinfo=timezone.utc)
@@ -339,9 +346,261 @@ def test_concurrent_calls_respect_call_budget(tmp_path) -> None:
         engine.dispose()
 
 
-def test_missing_real_provider_key_fails_closed(tmp_path, monkeypatch) -> None:
-    from rpg_llm.providers import OpenAICompatibleProvider
+class RuntimeFailureProvider:
+    calls = 0
 
+    def complete(self, request):
+        self.calls += 1
+        raise RuntimeError("unexpected provider failure")
+
+
+class ConnectFailureProvider:
+    calls = 0
+
+    def complete(self, request):
+        self.calls += 1
+        raise httpx.ConnectError(
+            "connection refused",
+            request=httpx.Request("POST", "https://example.invalid"),
+        )
+
+
+class TimeoutFailureProvider:
+    calls = 0
+
+    def complete(self, request):
+        self.calls += 1
+        raise httpx.TimeoutException(
+            "timed out",
+            request=httpx.Request("POST", "https://example.invalid"),
+        )
+
+
+class FakeHttpResponse:
+    def __init__(self, *, status_code=200, payload=None, json_error=None):
+        self.status_code = status_code
+        self._payload = payload
+        self._json_error = json_error
+
+    def json(self):
+        if self._json_error:
+            raise self._json_error
+        return self._payload
+
+
+class FakeHttpClient:
+    def __init__(self, response):
+        self.response = response
+        self.calls = 0
+
+    def post(self, *args, **kwargs):
+        self.calls += 1
+        return self.response
+
+
+class ChangingRequestIdProvider:
+    def __init__(self):
+        self.calls = 0
+
+    def complete(self, request: ProviderRequest) -> ProviderResponse:
+        self.calls += 1
+        if self.calls == 1:
+            raise ProviderError("temporary", transient=True)
+        return ProviderResponse(
+            text="重试成功",
+            structured_candidate=None,
+            input_tokens=20,
+            output_tokens=10,
+            provider="changing-id",
+            model="changing-v1",
+            provider_request_id=f"provider-response-{self.calls}",
+        )
+
+
+def assert_no_world_mutation(world: WorldEngine, before: str) -> None:
+    snapshot = world.snapshot()
+    assert digest(snapshot) == before
+    assert snapshot["events"] == world.snapshot()["events"]
+    assert snapshot["relationships"] == world.snapshot()["relationships"]
+    assert snapshot["npcs"] == world.snapshot()["npcs"]
+
+
+@pytest.mark.parametrize(
+    ("provider_factory", "reason", "expected_calls"),
+    [
+        (RuntimeFailureProvider, "provider_failure", 1),
+        (ConnectFailureProvider, "provider_transport_error", 2),
+        (TimeoutFailureProvider, "provider_transport_error", 2),
+    ],
+)
+def test_unclassified_and_httpx_provider_errors_fail_safely(
+    tmp_path,
+    provider_factory,
+    reason,
+    expected_calls,
+) -> None:
+    engine, repository = make_repository(tmp_path)
+    provider = provider_factory()
+    gateway = LlmGateway(
+        repository,
+        provider=provider,
+        reviewer=MockReviewAdapter(),
+        clock=lambda: NOW,
+    )
+    world = WorldEngine(initial_world())
+    before = digest(world.snapshot())
+    try:
+        result = gateway.generate(make_request())
+        assert result["status"] == "fallback"
+        assert result["run_mode"] == "rule"
+        assert result["degradation_reason"] == reason
+        assert provider.calls == expected_calls
+        assert gateway.circuit.state.consecutive_failures == expected_calls
+        assert repository.list_usage() == []
+        assert_no_world_mutation(world, before)
+    finally:
+        engine.dispose()
+
+
+@pytest.mark.parametrize(
+    "fake_response",
+    [
+        FakeHttpResponse(
+            json_error=json.JSONDecodeError("bad json", "", 0)
+        ),
+        FakeHttpResponse(payload={"id": "resp_missing_choices"}),
+    ],
+)
+def test_malformed_provider_response_fails_safely(
+    tmp_path,
+    fake_response,
+) -> None:
+    engine, repository = make_repository(tmp_path)
+    client = FakeHttpClient(fake_response)
+    provider = OpenAICompatibleProvider(
+        base_url="https://example.invalid/v1",
+        model="test-model",
+        api_key="test-key-not-real",
+        client=client,
+    )
+    gateway = LlmGateway(
+        repository,
+        provider=provider,
+        reviewer=MockReviewAdapter(),
+        clock=lambda: NOW,
+    )
+    world = WorldEngine(initial_world())
+    before = digest(world.snapshot())
+    try:
+        result = gateway.generate(make_request())
+        assert result["status"] == "fallback"
+        assert result["run_mode"] == "rule"
+        assert result["degradation_reason"] == "provider_invalid_response"
+        assert gateway.circuit.state.consecutive_failures == 1
+        assert repository.list_usage() == []
+        assert_no_world_mutation(world, before)
+    finally:
+        engine.dispose()
+
+
+@pytest.mark.parametrize(
+    ("status_code", "reason"),
+    [
+        (401, "provider_auth_error"),
+        (400, "provider_request_rejected"),
+    ],
+)
+def test_http_4xx_is_not_retried(
+    tmp_path,
+    status_code,
+    reason,
+) -> None:
+    engine, repository = make_repository(tmp_path)
+    client = FakeHttpClient(
+        FakeHttpResponse(status_code=status_code, payload={})
+    )
+    provider = OpenAICompatibleProvider(
+        base_url="https://example.invalid/v1",
+        model="test-model",
+        api_key="test-key-not-real",
+        client=client,
+    )
+    gateway = LlmGateway(
+        repository,
+        provider=provider,
+        reviewer=MockReviewAdapter(),
+        clock=lambda: NOW,
+    )
+    world = WorldEngine(initial_world())
+    before = digest(world.snapshot())
+    try:
+        result = gateway.generate(make_request())
+        assert result["status"] == "fallback"
+        assert result["run_mode"] == "rule"
+        assert result["degradation_reason"] == reason
+        assert client.calls == 1
+        assert gateway.circuit.state.consecutive_failures == 1
+        assert repository.list_usage() == []
+        assert_no_world_mutation(world, before)
+    finally:
+        engine.dispose()
+
+
+def test_retry_with_different_response_id_bills_once(tmp_path) -> None:
+    engine, repository = make_repository(tmp_path)
+    provider = ChangingRequestIdProvider()
+    gateway = LlmGateway(
+        repository,
+        provider=provider,
+        reviewer=MockReviewAdapter(),
+        clock=lambda: NOW,
+    )
+    world = WorldEngine(initial_world())
+    before = digest(world.snapshot())
+    try:
+        result = gateway.generate(make_request("op_b9_changing_id"))
+        usage = repository.list_usage()
+        assert result["status"] == "succeeded"
+        assert provider.calls == 2
+        assert len(usage) == 1
+        assert usage[0]["provider_request_id"] == "provider-response-2"
+        assert_no_world_mutation(world, before)
+    finally:
+        engine.dispose()
+
+
+def test_budget_lock_busy_waits_for_same_operation_result(
+    tmp_path,
+    monkeypatch,
+) -> None:
+    engine, repository = make_repository(tmp_path)
+    provider = MockProvider()
+    gateway = LlmGateway(
+        repository,
+        provider=provider,
+        reviewer=MockReviewAdapter(),
+        clock=lambda: NOW,
+    )
+    attempts = {"count": 0}
+
+    @contextmanager
+    def busy_once(*args, **kwargs):
+        attempts["count"] += 1
+        yield attempts["count"] > 1
+
+    monkeypatch.setattr(gateway_module, "advisory_lock", busy_once)
+    try:
+        result = gateway.generate(make_request("op_b9_lock_busy"))
+        replay = gateway.generate(make_request("op_b9_lock_busy"))
+        assert result["status"] == "succeeded"
+        assert replay["cache_hit"] is True
+        assert attempts["count"] >= 2
+        assert provider.calls == 1
+    finally:
+        engine.dispose()
+
+
+def test_missing_real_provider_key_fails_closed(tmp_path, monkeypatch) -> None:
     monkeypatch.delenv("AIWORLD_LLM_API_KEY", raising=False)
     engine, repository = make_repository(tmp_path)
     gateway = LlmGateway(
