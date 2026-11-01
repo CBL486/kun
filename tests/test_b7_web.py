@@ -77,6 +77,30 @@ def test_static_assets_and_placeholder_fallback_exist(client: TestClient) -> Non
     for path in (
         "/static/styles.css",
         "/static/app.js",
+        "/static/spine-player.js",
+        "/static/vendor/spine-webgl.min.js",
+        "/static/vendor/SPINE-RUNTIMES-LICENSE.txt",
+        "/assets/manifest.json",
+        "/assets/maps/town-map-world.webp",
+        "/assets/buildings/dorm.webp",
+        "/assets/buildings/classroom.webp",
+        "/assets/buildings/library.webp",
+        "/assets/buildings/canteen.webp",
+        "/assets/buildings/river.webp",
+        "/assets/buildings/shop.webp",
+        "/assets/interiors/dorm.webp",
+        "/assets/interiors/classroom.webp",
+        "/assets/interiors/library.webp",
+        "/assets/interiors/canteen.webp",
+        "/assets/interiors/river.webp",
+        "/assets/interiors/shop.webp",
+        "/assets/portraits/lin_cheng.webp",
+        "/assets/characters/lin_cheng.webp",
+        "/assets/spine/lin_cheng.json",
+        "/assets/spine/lin_cheng.atlas",
+        "/assets/spine/lin_cheng.png",
+        "/assets/icons/map.png",
+        "/assets/icons/settings.png",
         "/static/assets/placeholders/town-map.svg",
         "/static/assets/placeholders/avatar.svg",
         "/static/assets/placeholders/event.svg",
@@ -93,6 +117,9 @@ def test_responsive_desktop_and_mobile_layouts_are_defined() -> None:
     assert ".mobile-nav" in css
     assert "grid-template-columns: repeat(7, 1fr)" in css
     assert "env(safe-area-inset-bottom)" in css
+    assert "aspect-ratio: 16 / 9" in css
+    assert ".world-plane" in css
+    assert ".map-player" in css
     html = Path("web/index.html").read_text(encoding="utf-8")
     mobile_nav = html.split('<nav class="mobile-nav"', 1)[1].split('</nav>', 1)[0]
     assert 'data-view="settings"' in mobile_nav
@@ -137,13 +164,45 @@ def test_observer_loop_can_reach_world_character_chat_diary_and_memory(
 def test_b75_component_interfaces_are_reserved() -> None:
     html = Path("web/index.html").read_text(encoding="utf-8")
     css = Path("web/styles.css").read_text(encoding="utf-8")
-    assert 'class="map-art"' in html
+    assert 'class="map-art world-map-stage"' in html
     assert 'class="portrait portrait-large"' in html
     assert 'class="nav-mark"' in html
     assert ".location-card" in css
     assert ".timeline-item" in css
     assert ".memory-card" in css
-    assert "assets/placeholders" in html
+    assert "/assets/maps/town-map-world.webp" in html
+    assert "/assets/portraits/lin_cheng.webp" in html
+    assert 'id="world-plane"' in html
+    assert 'id="map-player"' in html
+    assert 'id="map-player-canvas"' in html
+    assert "/static/vendor/spine-webgl.min.js" in html
+    assert "/static/spine-player.js" in html
+    assert "window.qingheSpinePlayer?.initialize()" in Path(
+        "web/app.js"
+    ).read_text(encoding="utf-8")
+    assert 'data-move="right"' in html
+    assert 'id="location-dialog"' in html
+    assert 'class="interior-scene"' in html
+    assert "/assets/assets/" not in html
+
+
+def test_b75_locations_open_their_matching_interior() -> None:
+    javascript = Path("web/app.js").read_text(encoding="utf-8")
+    for location_id, interior in (
+        ("loc_dorm", "dorm"),
+        ("loc_classroom", "classroom"),
+        ("loc_library", "library"),
+        ("loc_canteen", "canteen"),
+        ("loc_shop", "shop"),
+        ("loc_river", "river"),
+    ):
+        assert f'{location_id}: "{interior}"' in javascript
+    assert "openLocationDialog" in javascript
+    assert "requestAnimationFrame(mapAnimationFrame)" in javascript
+    spine_javascript = Path("web/spine-player.js").read_text(encoding="utf-8")
+    assert 'spine.SpineCanvas' in spine_javascript
+    assert 'animationState.setAnimation(0, "idle", true)' in spine_javascript
+    assert '"/assets/interiors/"' in javascript or "`/assets/interiors/" in javascript
 
 
 def test_web_has_no_external_runtime_dependency(client: TestClient) -> None:

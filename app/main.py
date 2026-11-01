@@ -32,6 +32,7 @@ APP_NAME = "AI World"
 APP_VERSION = "0.1.0"
 PUBLIC_API_VERSION = "v1"
 WEB_ROOT = Path(__file__).resolve().parents[1] / "web"
+ASSET_ROOT = Path(__file__).resolve().parents[1] / "assets"
 
 
 def create_app(
@@ -208,6 +209,13 @@ def create_app(
         @application.get("/", include_in_schema=False)
         async def web_index() -> FileResponse:
             return FileResponse(WEB_ROOT / "index.html")
+
+    if ASSET_ROOT.is_dir():
+        application.mount(
+            "/assets",
+            StaticFiles(directory=ASSET_ROOT),
+            name="assets",
+        )
 
     return application
 

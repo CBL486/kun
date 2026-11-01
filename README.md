@@ -101,6 +101,28 @@ pwsh -NoProfile -File scripts/test-b7.ps1
 
 UX 与 B7.5 资源接口见 `docs/web-ux-spec.md`。
 
+## B7.5 美术资源
+
+```powershell
+pwsh -NoProfile -File scripts/test-b75.ps1
+```
+
+正式测试只验证已提交资源、Web、Spine 和截图，不要求私密源素材。需要重建资源时，
+先在私有素材环境设置 `B75_SOURCE_ROOT`：
+
+```powershell
+$env:B75_SOURCE_ROOT = "D:\private\b75-source-extracted"
+pwsh -NoProfile -File scripts/build-b75-assets.ps1
+pwsh -NoProfile -File scripts/test-b75.ps1 -Rebuild
+```
+
+正式接入资源位于 `assets/`。素材来源、授权状态、哈希与用途见 `assets/manifest.json`；构图和生成说明见 `docs/art-pipeline.md`，授权审计见 `docs/asset-license-audit.md`。
+
+当前 B7.5 使用 2400×900 的横向大世界，镜头随林澄移动；六处地点均可进入
+960×540 的内部场景。河面、步道与栈桥直接绘入世界底层；六处室内统一使用
+Modern Interiors 的 Room Builder 墙面与地板，并以 AppleDog 免费商用素材
+补充宿舍和书院细节。原始压缩包均不入库。
+
 ## 边界
 
 - 世界状态由世界引擎裁决。

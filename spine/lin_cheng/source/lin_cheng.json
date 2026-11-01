@@ -1,0 +1,264 @@
+{
+  "skeleton": {
+    "spine": "4.3.08",
+    "x": -24,
+    "y": -4,
+    "width": 48,
+    "height": 70,
+    "images": "."
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "torso",
+      "parent": "root",
+      "y": 21,
+      "length": 24
+    },
+    {
+      "name": "head",
+      "parent": "torso",
+      "y": 24,
+      "length": 21
+    },
+    {
+      "name": "leg_left",
+      "parent": "torso",
+      "x": -12,
+      "length": 21
+    },
+    {
+      "name": "leg_right",
+      "parent": "torso",
+      "x": 12,
+      "length": 21
+    }
+  ],
+  "slots": [
+    {
+      "name": "shadow",
+      "bone": "root",
+      "attachment": "shadow"
+    },
+    {
+      "name": "leg_left",
+      "bone": "leg_left",
+      "attachment": "leg_left"
+    },
+    {
+      "name": "leg_right",
+      "bone": "leg_right",
+      "attachment": "leg_right"
+    },
+    {
+      "name": "torso",
+      "bone": "torso",
+      "attachment": "body"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "shadow": {
+          "shadow": {
+            "path": "lin_cheng_shadow",
+            "x": 0,
+            "y": -4,
+            "width": 32,
+            "height": 8
+          }
+        },
+        "leg_left": {
+          "leg_left": {
+            "path": "lin_cheng_leg_left",
+            "x": 0,
+            "y": -10.5,
+            "width": 24,
+            "height": 21
+          }
+        },
+        "leg_right": {
+          "leg_right": {
+            "path": "lin_cheng_leg_right",
+            "x": 0,
+            "y": -10.5,
+            "width": 24,
+            "height": 21
+          }
+        },
+        "torso": {
+          "body": {
+            "path": "lin_cheng_body",
+            "x": 0,
+            "y": 22.5,
+            "width": 48,
+            "height": 45
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "idle": {
+      "bones": {
+        "root": {
+          "translate": [
+            {
+              "time": 0,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.7,
+              "x": 0,
+              "y": 1,
+              "curve": [
+                0.25,
+                0,
+                0.75,
+                1
+              ]
+            },
+            {
+              "time": 1.4,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        },
+        "torso": {
+          "rotate": [
+            {
+              "time": 0,
+              "value": 0
+            },
+            {
+              "time": 0.7,
+              "value": -1.2,
+              "curve": [
+                0.25,
+                0,
+                0.75,
+                1
+              ]
+            },
+            {
+              "time": 1.4,
+              "value": 0
+            }
+          ]
+        },
+        "head": {
+          "rotate": [
+            {
+              "time": 0,
+              "value": 0
+            },
+            {
+              "time": 0.7,
+              "value": 1.5,
+              "curve": [
+                0.25,
+                0,
+                0.75,
+                1
+              ]
+            },
+            {
+              "time": 1.4,
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "walk": {
+      "bones": {
+        "root": {
+          "translate": [
+            {
+              "time": 0,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.15,
+              "x": 0,
+              "y": 2,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.3,
+              "x": 0,
+              "y": 0,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.45,
+              "x": 0,
+              "y": 2,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.6,
+              "x": 0,
+              "y": 0,
+              "curve": "stepped"
+            }
+          ]
+        },
+        "torso": {
+          "rotate": [
+            {
+              "time": 0,
+              "value": -1.5
+            },
+            {
+              "time": 0.3,
+              "value": 1.5
+            },
+            {
+              "time": 0.6,
+              "value": -1.5
+            }
+          ]
+        },
+        "leg_left": {
+          "rotate": [
+            {
+              "time": 0,
+              "value": -18
+            },
+            {
+              "time": 0.3,
+              "value": 18
+            },
+            {
+              "time": 0.6,
+              "value": -18
+            }
+          ]
+        },
+        "leg_right": {
+          "rotate": [
+            {
+              "time": 0,
+              "value": 18
+            },
+            {
+              "time": 0.3,
+              "value": -18
+            },
+            {
+              "time": 0.6,
+              "value": 18
+            }
+          ]
+        }
+      }
+    }
+  }
+}
