@@ -30,16 +30,16 @@
 
 ```powershell
 pwsh -NoProfile -File scripts/verify-release.ps1 `
-  -Release "D:\AIWorld\releases\<previous>"
+  -Release "C:\AIWorld\releases\<previous>"
 ```
 
 然后由 A 执行：
 
 ```powershell
 pwsh -NoProfile -File scripts/rollback-release.ps1 `
-  -TargetRelease "D:\AIWorld\releases\<previous>" `
-  -CurrentLink "D:\AIWorld\current" `
-  -PythonPath "D:\AIWorld\runtime\Python312\python.exe" `
+  -TargetRelease "C:\AIWorld\releases\<previous>" `
+  -CurrentLink "C:\AIWorld\current" `
+  -PythonPath "C:\AIWorld\runtime\Python312\python.exe" `
   -ManageTasks `
   -ConfirmRollback
 ```

@@ -1,7 +1,7 @@
 {
   "schema_version": "aiworld-production-env-deepseek-evidence-v1",
   "checked_at": "2026-11-02T11:50:29.3381253+00:00",
-  "env_path": "C:\\AIWorld\\app\\.env",
+  "env_path": "C:\\AIWorld\\config\\production.env",
   "backup": "C:\\AIWorld\\data\\secrets\\app-env-before-deepseek-20261102T115024Z.env",
   "variables": [
     {

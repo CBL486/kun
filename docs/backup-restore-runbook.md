@@ -50,17 +50,17 @@ pwsh -NoProfile -File scripts/restore-database.ps1 `
 ```powershell
 pwsh -NoProfile -File scripts/backup-database.ps1 `
   -Url $env:AIWORLD_BACKUP_DATABASE_URL `
-  -Output "D:\AIWorld\backups\aiworld.dump" `
-  -PgBin "D:\AIWorld\runtime\PostgreSQL\bin"
+  -Output "C:\AIWorld\backups\aiworld.dump" `
+  -PgBin "C:\AIWorld\runtime\PostgreSQL\bin"
 ```
 
 恢复到隔离数据库：
 
 ```powershell
 pwsh -NoProfile -File scripts/restore-database.ps1 `
-  -Backup "D:\AIWorld\backups\aiworld.dump" `
+  -Backup "C:\AIWorld\backups\aiworld.dump" `
   -Url $env:AIWORLD_RESTORE_DATABASE_URL `
-  -PgBin "D:\AIWorld\runtime\PostgreSQL\bin" `
+  -PgBin "C:\AIWorld\runtime\PostgreSQL\bin" `
   -ConfirmRestore
 ```
 

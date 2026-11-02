@@ -31,7 +31,7 @@ seed：`20261028`
 
 | 项目 | 结果 |
 | --- | --- |
-| 全量测试 | `178 passed` |
+| 全量测试 | `179 passed` |
 | 七日 E2E | `passed`，49 个事件，0 错误，1 警告 |
 | 成本对账 | `bill_matches=true` |
 | SQLite staging | 健康、就绪、世界、角色、指标、Web、素材、调度器通过 |

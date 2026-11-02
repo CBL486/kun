@@ -67,10 +67,14 @@ deploy/reverse-proxy/Caddyfile.template
 ## 4. 注册 Windows 任务
 
 ```powershell
-pwsh -NoProfile -File deploy/windows/Register-AIWorldTasks.ps1 `
-  -RootPath "D:\AIWorld\current" `
-  -PythonPath "D:\AIWorld\runtime\Python312\python.exe" `
-  -EnvironmentFile "D:\AIWorld\config\production.env" `
+powershell.exe -NoProfile -ExecutionPolicy Bypass `
+  -File deploy/windows/Register-AIWorldTasks.ps1 `
+  -RootPath "C:\AIWorld\current" `
+  -PythonPath "C:\AIWorld\runtime\Python312\python.exe" `
+  -EnvironmentFile "C:\AIWorld\config\production.env" `
+  -LogDirectory "C:\AIWorld\logs" `
+  -BackupDirectory "C:\AIWorld\backups" `
+  -PgBin "C:\AIWorld\runtime\Python312\Lib\site-packages\embedded_postgres\pginstall\bin" `
   -ConfirmRegistration
 ```
 

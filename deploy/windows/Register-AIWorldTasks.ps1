@@ -4,6 +4,9 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$PythonPath,
     [string]$EnvironmentFile,
+    [string]$LogDirectory,
+    [string]$BackupDirectory,
+    [string]$PgBin,
     [switch]$ConfirmRegistration
 )
 
@@ -27,8 +30,18 @@ $envArguments = if ($EnvironmentFile) {
 } else {
     ""
 }
+$logDirectory = if ($LogDirectory) { $LogDirectory } else { Join-Path $root "logs" }
+$backupDirectory = if ($BackupDirectory) { $BackupDirectory } else { Join-Path $root "backups" }
+$logArguments = "-LogDirectory `"$logDirectory`""
+$backupArguments = @(
+    "-BackupDirectory"
+    "`"$backupDirectory`""
+)
+if ($PgBin) {
+    $backupArguments += @("-PgBin", "`"$PgBin`"")
+}
 
-$apiAction = New-ScheduledTaskAction -Execute "pwsh.exe" `
+$apiAction = New-ScheduledTaskAction -Execute "powershell.exe" `
     -Argument (@(
         $common
         "`"$apiScript`""
@@ -37,8 +50,9 @@ $apiAction = New-ScheduledTaskAction -Execute "pwsh.exe" `
         "-PythonPath"
         "`"$PythonPath`""
         $envArguments
+        $logArguments
     ) -join " ")
-$schedulerAction = New-ScheduledTaskAction -Execute "pwsh.exe" `
+$schedulerAction = New-ScheduledTaskAction -Execute "powershell.exe" `
     -Argument (@(
         $common
         "`"$schedulerScript`""
@@ -47,15 +61,15 @@ $schedulerAction = New-ScheduledTaskAction -Execute "pwsh.exe" `
         "-PythonPath"
         "`"$PythonPath`""
         $envArguments
+        $logArguments
     ) -join " ")
-$rotationAction = New-ScheduledTaskAction -Execute "pwsh.exe" `
+$rotationAction = New-ScheduledTaskAction -Execute "powershell.exe" `
     -Argument (@(
         $common
         "`"$rotationScript`""
-        "-LogDirectory"
-        "`"$(Join-Path $root 'logs')`""
+        $logArguments
     ) -join " ")
-$backupAction = New-ScheduledTaskAction -Execute "pwsh.exe" `
+$backupAction = New-ScheduledTaskAction -Execute "powershell.exe" `
     -Argument (@(
         $common
         "`"$backupScript`""
@@ -64,6 +78,7 @@ $backupAction = New-ScheduledTaskAction -Execute "pwsh.exe" `
         "-PythonPath"
         "`"$PythonPath`""
         $envArguments
+        $backupArguments
     ) -join " ")
 
 $startup = New-ScheduledTaskTrigger -AtStartup

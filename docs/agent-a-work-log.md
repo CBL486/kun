@@ -13,7 +13,7 @@
 ## 2026-11-01 staging 最新状态
 
 - B0～B13 已全部通过 A 验收并合并。
-- 最新完整测试：**178 passed**，七日 E2E 通过，成本对账通过。
+- 最新完整测试：**179 passed**，七日 E2E 通过，成本对账通过。
 - 隔离 SQLite staging 通过；隔离 PostgreSQL schema 4、备份恢复通过。
 - API 的 timeline、memory、OpenAPI、室内图、Spine 和留言持久化烟测通过。
 - DeepSeek `deepseek-flash` live smoke 通过；usage 已写入账本。

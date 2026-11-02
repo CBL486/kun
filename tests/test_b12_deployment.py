@@ -113,6 +113,7 @@ def test_release_build_is_complete_and_excludes_sensitive_files(tmp_path) -> Non
     assert "rpg_deploy/__main__.py" in paths
     assert "rpg_deploy/release.py" in paths
     assert "scripts/write_runtime_env.py" in paths
+    assert "deploy/windows/run_module.py" in paths
     assert "docs/staging-validation-v1.md" in paths
     assert "docs/staging-evidence-v1.json" in paths
     assert "docs/deepseek-production-v1.md" in paths
@@ -152,6 +153,25 @@ def test_server_extra_declares_async_and_sync_postgres_drivers() -> None:
     server = payload["project"]["optional-dependencies"]["server"]
     assert any(dep.startswith("asyncpg") for dep in server)
     assert any(dep.startswith("psycopg[binary]") for dep in server)
+
+
+def test_windows_deployment_uses_server_powershell_and_module_runner() -> None:
+    windows = ROOT / "deploy" / "windows"
+    for name in (
+        "Start-AIWorldApi.ps1",
+        "Start-AIWorldScheduler.ps1",
+        "Invoke-AIWorldBackup.ps1",
+    ):
+        assert "run_module.py" in (windows / name).read_text(encoding="utf-8")
+    register = (windows / "Register-AIWorldTasks.ps1").read_text(encoding="utf-8")
+    assert 'powershell.exe' in register
+    assert 'pwsh.exe' not in register
+    runtime_env = (ROOT / "scripts" / "write_runtime_env.py").read_text(
+        encoding="utf-8"
+    )
+    assert "AIWORLD_SCHEDULER_DATABASE_URL" in runtime_env
+    assert "AIWORLD_BACKUP_DATABASE_URL" in runtime_env
+    assert "C:\\AIWorld\\config\\production.env" in runtime_env
 
 def test_release_verifier_detects_tampering(tmp_path) -> None:
     output = tmp_path / "tampered-release"
