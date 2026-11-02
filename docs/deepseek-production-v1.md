@@ -2,7 +2,7 @@
 
 日期：2026-11-02
 
-状态：代码与运行配置已就绪，等待真实 API Key 完成 live smoke
+状态：隔离 staging live smoke 已通过，生产 `.env` 已准备（未重启服务、未切换 current）
 
 ## 1. 选型
 
@@ -51,7 +51,7 @@ C:\AIWorld\data\secrets\deepseek_api_key.txt
 
 该文件只允许 `Administrator` 和 `SYSTEM` 读取。不得放入仓库、日志、发布包或聊天记录。
 
-## 4. Staging smoke
+## 4. Staging live smoke 结果
 
 ```powershell
 python -m rpg_llm.smoke `
@@ -59,6 +59,11 @@ python -m rpg_llm.smoke `
   --budget-date "2026-11-02" `
   --output "C:\AIWorld\staging\evidence\deepseek-smoke.json"
 ```
+
+- 实测：`succeeded` / `run_mode=model` / `provider=deepseek` / `model=deepseek-flash`
+- 输入 112 tokens，输出 81 tokens，成本 `0.00094176 CNY`
+- 审核 `approved`，账本写入 1 条 usage 记录
+- 证据：`docs/deepseek-smoke-evidence-2026-11-02.json`
 
 要求：
 
@@ -81,6 +86,13 @@ AIWORLD_LLM_PROVIDER=mock
 
 - 回滚不修改数据库 schema，不删除既有 LLM 账本记录。
 
-## 6. 边界
+## 6. 生产环境准备
+
+- 生产 `.env` 已写入 DeepSeek provider、模型、价格版本和私有 API Key；
+- 修改前已备份到 `data/secrets/app-env-before-deepseek-*.env`；
+- 未重启生产 API/scheduler，未切换生产 `current`；
+- 证据见 `docs/production-env-deepseek-2026-11-02.json`。
+
+## 7. 边界
 
 主智能体的世界动作仍由规则规划器和世界引擎裁决；DeepSeek 负责生成公开文字与候选内容，不得直接提交世界事件、修改关系或写入记忆。

@@ -39,6 +39,7 @@ seed：`20261028`
 | API 烟测 | timeline、memory、OpenAPI、室内图、Spine、留言排队与持久化通过 |
 | release junction | A→B→A 切换和回滚通过 |
 | 发布工具自校验 | `issues=[]` |
+| DeepSeek live smoke | `succeeded`，112/81 tokens，0.00094176 CNY，审核通过 |
 
 ## 3. 本轮修复
 
@@ -52,7 +53,7 @@ seed：`20261028`
 - 安装正式服务器依赖时必须包含 `asyncpg` 与 `psycopg[binary]`；
 - Nginx/Caddy、域名、TLS、证书和公网访问策略实机验证；
 - staging 计划任务注册与自动恢复演练；
-- 真实 LLM/审核供应商、额度和故障切换；
+- 真实审核供应商和故障切换；
 - 生产前最新 PostgreSQL 备份与独立恢复窗口；
 - 14 天真实运行与 G3 指标。
 

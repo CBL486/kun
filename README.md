@@ -21,6 +21,7 @@
 - B12 发布包、代理/监控模板、健康检查和回滚配置已通过 A 复审，最终提交 `3643d83`。
 - B13 SQLite/PostgreSQL 备份恢复、发布证据、版本冻结和总交接已通过 A 复审，最终提交 `219ce66`。
 - A 侧隔离 staging 已通过：178 项测试、SQLite、PostgreSQL schema 4、备份恢复、API 烟测和 junction 回滚演练；记录见 `docs/staging-validation-v1.md`。
+- DeepSeek `deepseek-flash` live smoke 已通过：112/81 tokens，成本 0.00094176 CNY，审核通过；生产环境文件已准备但服务未重启。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B6 至 G3 执行计划见 `B6至G3执行计划书_V1.md`。
 - A 侧当前工作日志与续接手册见 `docs/agent-a-work-log.md`。

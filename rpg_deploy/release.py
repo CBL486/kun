@@ -38,6 +38,7 @@ INCLUDE_DIRS = (
 INCLUDE_FILES = (
     "README.md",
     "pyproject.toml",
+    "scripts/write_runtime_env.py",
     "requirements-b5.txt",
     "requirements-b6.txt",
     "docs/deployment-checklist.md",
@@ -55,6 +56,8 @@ INCLUDE_FILES = (
     "docs/staging-validation-v1.md",
     "docs/staging-evidence-v1.json",
     "docs/deepseek-production-v1.md",
+    "docs/deepseek-smoke-evidence-2026-11-02.json",
+    "docs/production-env-deepseek-2026-11-02.json",
 )
 EXCLUDED_PARTS = {
     ".git",

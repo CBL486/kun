@@ -16,11 +16,13 @@
 - 最新完整测试：**178 passed**，七日 E2E 通过，成本对账通过。
 - 隔离 SQLite staging 通过；隔离 PostgreSQL schema 4、备份恢复通过。
 - API 的 timeline、memory、OpenAPI、室内图、Spine 和留言持久化烟测通过。
+- DeepSeek `deepseek-flash` live smoke 通过；usage 已写入账本。
+- 生产 `.env` 已准备 DeepSeek 配置并完成备份；服务未重启、`current` 未切换。
 - release A→B→A junction 切换与回滚演练通过。
 - 已修复发布包缺少 `rpg_deploy`、缺少同步 PostgreSQL 驱动声明、运行时缓存误报和切换脚本校验器加载问题。
 - 详细记录见 `docs/staging-validation-v1.md` 与 `docs/staging-evidence-v1.json`。
 - 生产 `8080`、生产 PostgreSQL `55432`、生产计划任务和生产 `current` 均未改动。
-- 下一步：生产依赖安装、反向代理/TLS、staging 任务注册、真实模型/审核供应商和 14 天观察。
+- 下一步：生产依赖安装、反向代理/TLS、staging 任务注册、真实审核供应商和 14 天观察。
 
 ## 1. 给下一位 AI 的快速结论
 
@@ -231,10 +233,10 @@ docs/                契约、ADR、评审、交接和截图
 
 尚未完成：
 
-- B6/B7 当前版本尚未部署到生产服务器。
+- 当前 G2 候选版本尚未切换为生产 `current`。
 - 尚未配置正式的 Web 反向代理、域名、TLS 和公网访问策略。
-- 尚未接入真实 LLM、真实审核供应商和真实成本额度。
-- 尚未完成 staging 的 7 天压缩模拟和生产迁移演练。
+- DeepSeek `deepseek-flash` staging live smoke 已通过；真实审核供应商和生产额度仍待接入。
+- staging 的 SQLite、PostgreSQL、备份恢复、API 烟测和回滚演练已完成。
 - 尚未开始 14 天真实运行。
 
 服务器安全规则：

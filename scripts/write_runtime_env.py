@@ -19,7 +19,7 @@ def main() -> None:
     raw_deepseek_key = DEEPSEEK_KEY_PATH.read_text(encoding="utf-8").strip()
     if not raw_deepseek_key:
         raise ValueError(f"DeepSeek API key file is empty: {DEEPSEEK_KEY_PATH}")
-    deepseek_key = quote(raw_deepseek_key, safe="")
+    deepseek_key = raw_deepseek_key
     content = "\n".join(
         (
             "AIWORLD_ENVIRONMENT=production",

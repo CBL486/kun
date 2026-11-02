@@ -1,0 +1,41 @@
+{
+  "schema_version": "aiworld-production-env-deepseek-evidence-v1",
+  "checked_at": "2026-11-02T11:50:29.3381253+00:00",
+  "env_path": "C:\\AIWorld\\app\\.env",
+  "backup": "C:\\AIWorld\\data\\secrets\\app-env-before-deepseek-20261102T115024Z.env",
+  "variables": [
+    {
+      "name": "AIWORLD_LLM_PROVIDER",
+      "has_value": true
+    },
+    {
+      "name": "AIWORLD_LLM_BASE_URL",
+      "has_value": true
+    },
+    {
+      "name": "AIWORLD_LLM_MODEL",
+      "has_value": true
+    },
+    {
+      "name": "AIWORLD_LLM_API_KEY",
+      "has_value": true
+    },
+    {
+      "name": "AIWORLD_LLM_REVIEW_PROVIDER",
+      "has_value": true
+    },
+    {
+      "name": "AIWORLD_LLM_PRICE_VERSION",
+      "has_value": true
+    },
+    {
+      "name": "AIWORLD_LLM_MAX_COST_CNY",
+      "has_value": true
+    }
+  ],
+  "env_bytes": 462,
+  "upload": null,
+  "service_restarted": false,
+  "production_current_switched": false,
+  "note": "Only the private production environment file was prepared; no service restart or release switch was performed."
+}
