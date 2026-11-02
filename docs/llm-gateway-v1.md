@@ -138,3 +138,10 @@ pwsh -NoProfile -File scripts/run-b9-audit.ps1 `
 - 真实 API Key 只能由 A 通过环境变量配置，不进入仓库或日志；
 - B9 不连接真实供应商、不执行部署；
 - 真实供应商的计费请求 ID、价格版本、审核策略和超时参数仍需 A 在 staging 确认。
+
+## 10. DeepSeek 真实接入
+
+- 生产默认模型已切换为 `deepseek-flash`；
+- provider、模型、价格版本、预算和密钥文件规范见 `docs/deepseek-production-v1.md`；
+- live 验证命令为 `python -m rpg_llm.smoke`；
+- 无 API Key 或供应商异常时继续使用规则降级，不阻断世界运行。

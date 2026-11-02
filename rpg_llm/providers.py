@@ -82,11 +82,18 @@ class OpenAICompatibleProvider:
         api_key: str | None = None,
         client: httpx.Client | None = None,
         timeout_seconds: float = 30.0,
+        provider_name: str | None = None,
+        json_mode: bool = False,
+        extra_body: dict[str, Any] | None = None,
     ):
         self.base_url = base_url.rstrip("/")
         self.model = model
         self._api_key = api_key or os.environ.get("AIWORLD_LLM_API_KEY")
         self.client = client or httpx.Client(timeout=timeout_seconds)
+        if provider_name:
+            self.provider_name = provider_name
+        self.json_mode = json_mode
+        self.extra_body = dict(extra_body or {})
 
     @property
     def available(self) -> bool:
@@ -95,6 +102,14 @@ class OpenAICompatibleProvider:
     def complete(self, request: ProviderRequest) -> ProviderResponse:
         if not self._api_key:
             raise ProviderUnavailable()
+        payload: dict[str, Any] = {
+            "model": self.model,
+            "messages": [{"role": "user", "content": request.prompt}],
+            "max_tokens": request.max_output_tokens,
+        }
+        if self.json_mode:
+            payload["response_format"] = {"type": "json_object"}
+        payload.update(self.extra_body)
         try:
             response = self.client.post(
                 f"{self.base_url}/chat/completions",
@@ -102,11 +117,7 @@ class OpenAICompatibleProvider:
                     "Authorization": f"Bearer {self._api_key}",
                     "Idempotency-Key": request.request_id,
                 },
-                json={
-                    "model": self.model,
-                    "messages": [{"role": "user", "content": request.prompt}],
-                    "max_tokens": request.max_output_tokens,
-                },
+                json=payload,
             )
         except httpx.TimeoutException as error:
             raise ProviderError(
@@ -176,8 +187,13 @@ class OpenAICompatibleProvider:
                 try:
                     parsed = json.loads(stripped)
                     if isinstance(parsed, dict):
-                        structured = parsed
-                        text = parsed.get("text", stripped)
+                        if request.template_id == "action_candidate":
+                            structured = parsed
+                            text = parsed.get("text", stripped)
+                        elif request.template_id == "daily_share":
+                            text = parsed
+                        else:
+                            text = parsed.get("text", stripped)
                 except json.JSONDecodeError:
                     pass
         usage = payload.get("usage", {})

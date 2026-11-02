@@ -54,6 +54,7 @@ INCLUDE_FILES = (
     "docs/release-evidence.json",
     "docs/staging-validation-v1.md",
     "docs/staging-evidence-v1.json",
+    "docs/deepseek-production-v1.md",
 )
 EXCLUDED_PARTS = {
     ".git",

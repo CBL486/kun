@@ -114,6 +114,7 @@ def test_release_build_is_complete_and_excludes_sensitive_files(tmp_path) -> Non
     assert "rpg_deploy/release.py" in paths
     assert "docs/staging-validation-v1.md" in paths
     assert "docs/staging-evidence-v1.json" in paths
+    assert "docs/deepseek-production-v1.md" in paths
     assert not any(path.startswith("tests/") for path in paths)
     assert not any(path.startswith("out/") for path in paths)
     assert not any(name in {".env", ".env.local"} for name in paths)

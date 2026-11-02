@@ -81,6 +81,13 @@ PRICE_VERSIONS = {
         version="mock-price-b9-2026-11-01",
         input_cny_per_million=Decimal("4"),
         output_cny_per_million=Decimal("16"),
-    )
+    ),
+    # Peak official USD pricing converted conservatively at 7.2 CNY/USD.
+    # deepseek-flash: $0.30/M cache-miss input, $1.20/M output.
+    "deepseek-flash-peak-cny-2026-11-02": PriceVersion(
+        version="deepseek-flash-peak-cny-2026-11-02",
+        input_cny_per_million=Decimal("2.16"),
+        output_cny_per_million=Decimal("8.64"),
+    ),
 }
 DEFAULT_PRICE_VERSION = "mock-price-b9-2026-11-01"
