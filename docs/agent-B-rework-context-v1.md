@@ -1,6 +1,6 @@
 # Agent B 产品重构上下文审计 V1
 
-状态：待 Agent A 执行 Gate 0 审查
+状态：Gate 0 已通过；2026-11-06 补充可复现证据
 
 日期：2026-11-06
 
@@ -30,10 +30,32 @@ B0，未访问生产服务器、生产环境文件、API Key、数据库密码�
 git fetch origin --prune
 git rev-parse origin/main
 git status --short --branch
+git diff --name-status origin/main...HEAD
+git diff --check
 ```
 
 任务书中的编写时基线 `d0bff85` 已过期；本轮的权威基线是重新 fetch 后取得的
 `46df378`。
+
+R0 审查时实际证据：
+
+```text
+git rev-parse origin/main
+46df3780f06b1131f26ba43dfab91889adf8d909
+
+git diff --name-status origin/main...6b670b937ea7f4bd4506b66a2701dde50bb91094
+A docs/agent-B-rework-context-v1.md
+
+git diff --check
+无输出
+
+工作树
+仅 docs/agent-B-rework-context-v1.md
+
+origin/main
+B 未直接修改；A 随后以 848a73ac8efb80c92500b7e7a5d1b004a6aedf65
+合并 R0 与 Gate 0 决策
+```
 
 ## 2. 必读材料与阅读结果
 
@@ -98,25 +120,14 @@ README.md
 tests/test_memory.py
 ```
 
-这些文件当前不在本仓库，也未在以下本机常用目录中找到包含 `bot_core` 或
-`self_model.py` 的项目：
+当前执行环境未找到 QQ 项目。A 已在 Gate 0 提供仓库内参考摘要
+`docs/qq-memory-reference-v1.md`，并确认后续以该摘要为可用参考，不再把“无法
+访问 QQ 源码”作为 R5/R6/R8 的阻塞理由。
 
-```text
-C:\Users\chen\Desktop
-C:\Users\chen\Documents
-C:\Users\chen\Downloads
-C:\Users\chen\source
-C:\Users\chen\OneDrive
-D:\chen
-D:\Codex交付
-D:\电脑管家迁移文件
-D:\新建文件夹
-D:\U
-D:\AgentReach
-```
-
-因此本报告没有声称已经阅读 QQ 参考实现。R5、R6、R8 的具体接口只能依据任务书摘录，
-需要 A 在 Gate 0 提供 QQ 项目的本地路径、仓库地址或固定提交。
+已在 Gate 0 后读取该摘要。R5 开始前将另写设计记录，明确采用 QQ 项目的记忆分层、
+关系小幅变化、`SelfState`、私有心流和低频自主活动思路，拒绝 QQ 协议端、消息分条、
+表情/语音能力、提示词原文和真实用户数据。若后续执行环境可访问 QQ 源码，再按 A
+给出的固定项目路径核对实现细节。
 
 ## 3. 当前主线已有内容
 
@@ -270,7 +281,7 @@ max_items / max_tokens 预算
 | R5 事件、好感度、连续记忆、情绪 | `memory_core` 可复用；无玩家关系/情绪 schema | 需在现有记忆核心上扩展，不能恢复旧 QQ/学校共租户 |
 | R6 自我认知与人设演化 | 无自我叙事、习惯、价值观权重或变化日志 | 依赖 R4/R5，不能由 LLM 直接改写 baseline |
 | R7 每日学校与隐藏学习 | 七日剧情含课堂/学习动作，但没有每日 30 分钟会话与持久预算 | 需定义虚拟时间、任务幂等和成本上限 |
-| R8 受控媒体观察 | 无媒体接口、审核后记忆或频率控制 | QQ 参考源码未找到，需 A 提供后才应按其边界设计 |
+| R8 受控媒体观察 | 无媒体接口、审核后记忆或频率控制 | 依据 `docs/qq-memory-reference-v1.md` 的边界设计，不复制 QQ 业务代码 |
 | R9 集成与证据 | 现有 183 项基线与发布门禁通过 | Gate 0 通过后才能设计新 E2E，不能把旧门禁当新验收 |
 
 ## 6. 已知风险与契约冲突
@@ -282,12 +293,14 @@ max_items / max_tokens 预算
    停机补课、聊天回应和 presence 恢复都缺少权威语义。
 3. 当前 `surface="school"` 是项目已冻结的兼容值，不代表恢复旧 QQ/学校记忆租户。
    R5 若改为 `world` 必须提供枚举迁移和兼容策略。
-4. B7/B7.5 的验收记录明确接受了“玩家可移动、只有 idle/walk、日记/记忆公开”的
-   旧限制；新产品要求会主动推翻这些验收结论，需 A 确认契约升级。
+4. B7/B7.5 的“玩家可移动、只有 idle/walk、日记/记忆公开”限制已由 Gate 0 明确
+   作废。后续以玩家只读观察、公开 API 不含日记/记忆、presence 权威移动和正式
+   动画为验收依据。
 5. `memory_core` 的锁定和强化属于记忆强度语义，不可直接当作好感度或情绪值使用。
 6. SQLite 与 PostgreSQL 双后端必须同时迁移、回滚并验证；新增 schema 不能只做
    SQLite 本地实现。
-7. QQ 参考实现当前不可读取，R6/R8 的复用边界尚未审计。
+7. 当前使用 A 提交的 QQ 参考摘要；R5 前必须记录采用和拒绝的具体模式，R6/R8
+   仍需在各自设计文档中沿用同一边界。
 8. 当前系统消息仍可能把“队列确认”呈现成角色回复，R1/R5 集成时需要明确区分
    observer 留言、世界事件与角色实际回应。
 
@@ -313,6 +326,9 @@ max_items / max_tokens 预算
    的仓库地址或固定提交、审核规则、缓存期限和真实网络测试边界也需提供。
 10. 角色世界内主观体验与系统安全边界的可执行话术规范是什么？尤其需要冻结
     “被问是否 AI”“被要求无条件服从/改人设”和极端安全场景的处理方式。
+
+以上问题已由 A 在 `docs/review-result-R0-product-rework.md` 的 D1～D10 决策冻结；
+本节保留为 R0 历史记录。
 
 ## 8. 基线测试结果
 
@@ -358,8 +374,8 @@ PowerShell：pwsh 7.6.5
 - 接受实际基线 `46df378` 和独立分支 `codex/product-r0-context`；
 - 确认 B 没有重做 B0、没有修改生产；
 - 回答或接受第 7 节的契约决策；
-- 提供 QQ 参考项目位置，或明确允许在缺失该参考时继续设计；
-- 批准旧 B6/B7 验收限制被新产品要求替换。
+- 使用 `docs/qq-memory-reference-v1.md` 作为 QQ 设计参考；
+- 旧 B6/B7 验收限制已作废，不再作为新需求的阻断理由。
 
 本轮未实现 presence、启动页、Persona、新记忆 schema、学校、媒体观察或发布候选，
 也未开始 R1。
