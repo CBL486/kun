@@ -1,0 +1,52 @@
+{
+  "schema_version": "aiworld-staging-evidence-v1",
+  "date": "2026-11-02",
+  "candidate_version": "0.1.0-g2-rc1",
+  "database_schema_version": 4,
+  "seed": 20261028,
+  "production_touched": true,
+  "tests": {
+    "pytest_passed": 179,
+    "seven_day_e2e": "passed",
+    "seven_day_events": 49,
+    "seven_day_errors": 0,
+    "seven_day_warnings": 1,
+    "cost_bill_matches": true
+  },
+  "staging": {
+    "sqlite": "passed",
+    "postgresql": "passed",
+    "postgres_backup_restore": "passed",
+    "api_smoke": "passed",
+    "release_junction_rollback": "passed",
+    "release_verification_issues": [],
+    "deepseek_live_smoke": "passed"
+  },
+  "fixes": [
+    "include rpg_deploy in release package",
+    "declare psycopg binary server dependency",
+    "ignore generated Python cache files during release verification",
+    "load bundled release verifier explicitly in switch script"
+  ],
+  "remaining": [
+    "production dependency installation",
+    "reverse proxy, DNS, TLS and certificate validation",
+    "staging scheduled task registration and recovery drill",
+    "real external review provider integration",
+    "production release switch and backup window",
+    "14-day production observation"
+  ],
+  "deepseek": {
+    "provider": "deepseek",
+    "model": "deepseek-flash",
+    "run_mode": "model",
+    "input_tokens": 112,
+    "output_tokens": 81,
+    "cost_cny": "0.00094176",
+    "review_status": "approved",
+    "evidence": "docs/deepseek-smoke-evidence-2026-11-02.json"
+  },
+  "production_scope": "environment file prepared only; no service restart or current switch",
+  "production_llm_env_prepared": true,
+  "production_llm_env_evidence": "docs/production-env-deepseek-2026-11-02.json"
+}

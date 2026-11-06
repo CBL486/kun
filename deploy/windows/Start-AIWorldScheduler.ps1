@@ -2,7 +2,8 @@ param(
     [string]$RootPath,
     [string]$PythonPath = "python",
     [string]$EnvironmentFile,
-    [string]$WorkerId = "scheduler-1"
+    [string]$WorkerId = "scheduler-1",
+    [string]$LogDirectory
 )
 
 $ErrorActionPreference = "Stop"
@@ -13,11 +14,15 @@ $databaseUrl = $env:AIWORLD_SCHEDULER_DATABASE_URL
 if (-not $databaseUrl) {
     throw "AIWORLD_SCHEDULER_DATABASE_URL is required"
 }
-$logDirectory = Join-Path $root "logs"
+if (-not $LogDirectory) {
+    $LogDirectory = Join-Path $root "logs"
+}
+$logDirectory = $LogDirectory
 New-Item -ItemType Directory -Force -Path $logDirectory | Out-Null
 Set-Location $root
+$env:AIWORLD_ROOT = $root
 
-& $PythonPath -m rpg_scheduler run `
+& $PythonPath (Join-Path $PSScriptRoot "run_module.py") rpg_scheduler run `
     --url $databaseUrl `
     --worker-id $WorkerId `
     --poll-interval 1 `

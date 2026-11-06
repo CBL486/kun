@@ -20,6 +20,7 @@ INCLUDE_DIRS = (
     "rpg_npc",
     "rpg_orm",
     "rpg_quality",
+    "rpg_deploy",
     "rpg_release",
     "rpg_scheduler",
     "rpg_sim",
@@ -37,6 +38,7 @@ INCLUDE_DIRS = (
 INCLUDE_FILES = (
     "README.md",
     "pyproject.toml",
+    "scripts/write_runtime_env.py",
     "requirements-b5.txt",
     "requirements-b6.txt",
     "docs/deployment-checklist.md",
@@ -51,6 +53,11 @@ INCLUDE_FILES = (
     "docs/production-actions-checklist.md",
     "docs/release-freeze-v1.json",
     "docs/release-evidence.json",
+    "docs/staging-validation-v1.md",
+    "docs/staging-evidence-v1.json",
+    "docs/deepseek-production-v1.md",
+    "docs/deepseek-smoke-evidence-2026-11-02.json",
+    "docs/production-env-deepseek-2026-11-02.json",
 )
 EXCLUDED_PARTS = {
     ".git",
@@ -218,6 +225,7 @@ def verify_release(release: Path) -> list[str]:
         for path in release.rglob("*")
         if path.is_file()
         and path.name not in {"RELEASE_MANIFEST.json", "checksums.sha256"}
+        and not _runtime_generated(path)
     }
     for unexpected in sorted(actual - listed):
         issues.append(f"unlisted:{unexpected}")
@@ -230,6 +238,10 @@ def verify_release(release: Path) -> list[str]:
         if manifest.get("package_sha256") != expected_package_hash:
             issues.append("package_sha256")
     return issues
+
+
+def _runtime_generated(path: Path) -> bool:
+    return "__pycache__" in path.parts or path.suffix.lower() == ".pyc"
 
 
 def _forbidden_release_path(path: Path) -> bool:

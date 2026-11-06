@@ -21,6 +21,7 @@ dependencies = [
 dev = ["pytest>=8,<10"]
 server = [
   "asyncpg>=0.30,<1",
+  "psycopg[binary]>=3.3,<4",
   "apscheduler>=3.11,<4",
   "embedded-postgres>=18.6,<19",
 ]

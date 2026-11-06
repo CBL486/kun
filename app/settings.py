@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     scheduler_database_url: str | None = None
     backup_directory: str | None = None
     log_level: str = "INFO"
-    llm_model: str = "deepseek-chat"
+    llm_model: str = "deepseek-flash"
 
     model_config = SettingsConfigDict(
         env_prefix="AIWORLD_",

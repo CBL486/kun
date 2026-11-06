@@ -19,7 +19,8 @@ if (-not (Test-Path -LiteralPath $parent)) {
     throw "Current link parent directory is missing"
 }
 
-$verifyOutput = & $PythonPath -m rpg_deploy verify --release $release
+$verifyBootstrap = "import sys; sys.path.insert(0, r'$release'); from rpg_deploy.__main__ import main; raise SystemExit(main())"
+$verifyOutput = & $PythonPath -c $verifyBootstrap verify --release $release
 if ($LASTEXITCODE -ne 0) {
     throw "Release verification failed: $verifyOutput"
 }

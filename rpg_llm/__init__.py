@@ -10,9 +10,11 @@ from .models import (
 from .pricing import PriceVersion
 from .providers import MockProvider, OpenAICompatibleProvider
 from .review import MockReviewAdapter, RemoteReviewAdapter
+from .runtime import LlmRuntimeConfig, build_gateway
 
 __all__ = [
     "LlmGateway",
+    "LlmRuntimeConfig",
     "LlmRequest",
     "MockProvider",
     "MockReviewAdapter",
@@ -21,5 +23,6 @@ __all__ = [
     "ProviderRequest",
     "ProviderResponse",
     "RemoteReviewAdapter",
+    "build_gateway",
     "ReviewDecision",
 ]

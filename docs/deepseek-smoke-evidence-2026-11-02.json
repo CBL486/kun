@@ -1,0 +1,70 @@
+{
+  "schema_version": "aiworld-deepseek-smoke-evidence-v1",
+  "date": "2026-11-02",
+  "environment": "isolated-staging",
+  "runtime": {
+    "provider": "deepseek",
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-flash",
+    "price_version": "deepseek-flash-peak-cny-2026-11-02",
+    "review_provider": "local",
+    "api_key_configured": true
+  },
+  "result": {
+    "status": "succeeded",
+    "run_mode": "model",
+    "provider": "deepseek",
+    "model": "deepseek-flash",
+    "review": {
+      "status": "approved",
+      "provider": "mock-review",
+      "policy_version": "mvp-content-b9-v1",
+      "reason_code": null,
+      "review_id": "a62d55741fb769fa"
+    },
+    "usage": {
+      "input_tokens": 112,
+      "output_tokens": 81,
+      "review_calls": 1,
+      "cost_cny": "0.00094176",
+      "price_version": "deepseek-flash-peak-cny-2026-11-02"
+    },
+    "latency_ms": 1285.413,
+    "text": {
+      "event": [
+        "清晨的操场完成了例行检查。",
+        "食堂公布了当天的公开菜单。",
+        "图书馆延长了晚间开放时间。"
+      ],
+      "feeling": "今天的小镇节奏平稳，操场检查、菜单公布和图书馆延时都带来一种有序而便利的感觉。",
+      "reflection": "这些公开事项显示日常运转正常，图书馆延时也为晚间活动提供了更多便利。"
+    }
+  },
+  "audit": {
+    "budget_date": "2026-11-02",
+    "usage": {
+      "calls": 1,
+      "review_calls": 1,
+      "input_tokens": 112,
+      "output_tokens": 81,
+      "cost_cny": "0.00094176"
+    },
+    "records": [
+      {
+        "usage_id": "usage_28b4dea45c10caef",
+        "operation_id": "deepseek-live-20261102T114651Z",
+        "attempt_id": "attempt_9037d1652df06a4e",
+        "provider_request_id": "4d6f4e66-5a21-405c-bfdc-429fa56909f1",
+        "provider": "deepseek",
+        "model": "deepseek-flash",
+        "input_tokens": 112,
+        "output_tokens": 81,
+        "review_calls": 1,
+        "cost_cny": "0.00094176",
+        "price_version": "deepseek-flash-peak-cny-2026-11-02",
+        "created_at": "2026-11-02 11:46:54.679173+00:00"
+      }
+    ]
+  },
+  "production_touched": false
+}

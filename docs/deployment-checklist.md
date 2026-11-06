@@ -67,10 +67,14 @@ deploy/reverse-proxy/Caddyfile.template
 ## 4. 注册 Windows 任务
 
 ```powershell
-pwsh -NoProfile -File deploy/windows/Register-AIWorldTasks.ps1 `
-  -RootPath "D:\AIWorld\current" `
-  -PythonPath "D:\AIWorld\runtime\Python312\python.exe" `
-  -EnvironmentFile "D:\AIWorld\config\production.env" `
+powershell.exe -NoProfile -ExecutionPolicy Bypass `
+  -File deploy/windows/Register-AIWorldTasks.ps1 `
+  -RootPath "C:\AIWorld\current" `
+  -PythonPath "C:\AIWorld\runtime\Python312\python.exe" `
+  -EnvironmentFile "C:\AIWorld\config\production.env" `
+  -LogDirectory "C:\AIWorld\logs" `
+  -BackupDirectory "C:\AIWorld\backups" `
+  -PgBin "C:\AIWorld\runtime\Python312\Lib\site-packages\embedded_postgres\pginstall\bin" `
   -ConfirmRegistration
 ```
 
@@ -134,3 +138,11 @@ pwsh -NoProfile -File deploy/windows/Unregister-AIWorldTasks.ps1 `
 
 按 `docs/rollback-runbook.md` 执行。数据库 schema 回滚独立于应用目录回滚，必须先确认
 备份和兼容性，不允许把应用切换当作数据库回滚。
+
+## 9. 配置 DeepSeek
+
+1. 将 API Key 写入服务器私有文件 `C:\AIWorld\data\secrets\deepseek_api_key.txt`；
+2. 运行 `scripts/write_runtime_env.py` 生成生产环境文件；
+3. 执行 `python -m rpg_llm.smoke`；
+4. 确认 `provider=deepseek`、`model=deepseek-flash`、`run_mode=model`；
+5. 任一项不满足时，保持 `AIWORLD_LLM_PROVIDER=mock`，不得进入生产发布。
