@@ -1,0 +1,75 @@
+{
+  "schema_version": "aiworld-production-api-recovery-v1",
+  "checked_at": "2026-11-06T09:02:06Z",
+  "root_cause": "Windows PowerShell 5.1 treated uvicorn native stderr INFO output as a terminating NativeCommandError because ErrorActionPreference was Stop.",
+  "current_release": "C:\\AIWorld\\releases\\0.1.0-g2-rc2-20261103_aiworld_release_20261103",
+  "prepared_release": {
+    "path": "C:\\AIWorld\\releases\\0.1.0-g2-rc3-20261106",
+    "version": "0.1.0-g2-rc3",
+    "files": 188,
+    "package_sha256": "e44dc22142b8a7accdc2932a8b28b0ceaaf13b6648b00296fccaad1b8bd7f35c",
+    "verify_issues": [],
+    "temporary_fixed_script_included": false
+  },
+  "tasks": {
+    "api": {
+      "state": "Running",
+      "last_result": 267009
+    },
+    "scheduler": {
+      "state": "Running",
+      "last_result": 267009
+    },
+    "backup": {
+      "state": "Ready",
+      "last_result": 0
+    }
+  },
+  "api": {
+    "listen": "127.0.0.1:8080",
+    "pid": 2892,
+    "parent_process": "powershell.exe:3488",
+    "http": {
+      "/health": 200,
+      "/ready": 200,
+      "/world": 200,
+      "/agent": 200,
+      "/metrics": 200
+    }
+  },
+  "metrics": {
+    "aiworld_database_ready": 1,
+    "aiworld_scheduler_database_configured": 1,
+    "aiworld_scheduler_pending_due": 0,
+    "aiworld_scheduler_delayed": 0,
+    "aiworld_scheduler_leased": 0,
+    "aiworld_scheduler_expired_leases": 0,
+    "backup_age_seconds_at_check": 55013.248
+  },
+  "scheduler": {
+    "pid": 268,
+    "parent_process": "powershell.exe:604"
+  },
+  "deepseek_smoke": {
+    "server_evidence_path": "C:\\AIWorld\\logs\\deepseek-smoke-20261106.json",
+    "live": true,
+    "provider": "deepseek",
+    "model": "deepseek-flash",
+    "run_mode": "model",
+    "status": "succeeded",
+    "input_tokens": 112,
+    "output_tokens": 81,
+    "review_calls": 1,
+    "cost_cny": 0.00121824
+  },
+  "backup_check": {
+    "task_result": 0,
+    "newest_dump": "aiworld-20261106T090204Z.dump",
+    "newest_manifest": "aiworld-20261106T090204Z.dump.json",
+    "completed_at": "2026-11-06T09:02:06Z"
+  },
+  "notes": [
+    "No secret values are included.",
+    "Current rc2 files were hot-fixed for emergency recovery; use the verified rc3 directory for the next cutover."
+  ]
+}

@@ -63,3 +63,50 @@ A diagnostic `Start-Transcript` line was prepended to
 - `C:\AIWorld\logs\api.log` has not received a new startup record, so the current failure is still before Python logging.
 
 Do not mark G2 complete until the API is listening and health/readiness checks pass.
+
+## Resolution (2026-11-06)
+
+The production API and scheduler are live again. The root cause was not the
+environment file or the release contents: Windows PowerShell 5.1 converts
+native stderr output into `NativeCommandError` records while
+`$ErrorActionPreference` is `Stop`. Uvicorn writes normal `INFO` records to
+stderr, so the launcher terminated immediately after the server process started.
+
+Recovery performed:
+
+- Scoped `$ErrorActionPreference = "Continue"` to the native Python service
+  invocation in the API, scheduler and backup launchers.
+- Restored the `AIWorld-API` task to the official `Start-AIWorldApi.ps1` with
+  explicit `-RootPath`, `-PythonPath`, `-EnvironmentFile` and `-LogDirectory`
+  arguments.
+- Re-ran the API task and confirmed it remains in the `Running` state with the
+  Python process parented by the task's PowerShell process.
+- Started the scheduler task and confirmed the same managed process structure.
+- Ran the production DeepSeek smoke successfully.
+- Built and verified a clean `0.1.0-g2-rc3` release directory from the patched
+  source. The temporary `.fixed.ps1` recovery file is excluded.
+
+Live verification:
+
+- `AIWorld-API`: `Running`, last result `267009` (task still running).
+- API listener: `127.0.0.1:8080`, PID `2892`.
+- `/health`, `/ready`, `/world`, `/agent`, `/metrics`: HTTP `200`.
+- Metrics: database ready `1`, scheduler configured `1`, pending/delayed/leased
+  and expired-lease counts all `0`.
+- `AIWorld-Scheduler`: `Running`, last result `267009`.
+- `AIWorld-Backup`: manual run completed with result `0`; a new verified dump and
+  manifest were created at `2026-11-06 17:02:06 +08:00`.
+- DeepSeek smoke: `live=true`, `provider=deepseek`, `model=deepseek-flash`,
+  `run_mode=model`, `status=succeeded`, `112` input / `81` output tokens,
+  cost `0.00121824 CNY`.
+
+Prepared release:
+
+- `C:\AIWorldeleases\0.1.0-g2-rc3-20261106`
+- `188` files, `rpg_deploy verify` returned no issues.
+- Package checksum:
+  `e44dc22142b8a7accdc2932a8b28b0ceaaf13b6648b00296fccaad1b8bd7f35c`
+
+`C:\AIWorld\current` still points at the hot-fixed rc2 release; the clean rc3
+directory is ready for the next maintenance-window cutover. Do not treat the rc2
+manifest as immutable after the emergency script repair.
