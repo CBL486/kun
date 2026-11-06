@@ -4,7 +4,7 @@ $ErrorActionPreference = "Stop"
 if (-not $ConfirmRemoval) {
     throw "Set -ConfirmRemoval to unregister AI World tasks"
 }
-foreach ($name in "AIWorld-API", "AIWorld-Scheduler", "AIWorld-Backup", "AIWorld-LogRotation") {
+foreach ($name in "AIWorld-API", "AIWorld-Scheduler", "AIWorld-Backup", "AIWorld-LogRotation", "AIWorld-Monitor") {
     $task = Get-ScheduledTask -TaskName $name -ErrorAction SilentlyContinue
     if ($task) {
         Stop-ScheduledTask -TaskName $name -ErrorAction SilentlyContinue

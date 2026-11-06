@@ -162,6 +162,20 @@ def test_windows_service_scripts_do_not_stop_on_native_stderr() -> None:
         assert "$serviceExitCode = $LASTEXITCODE" in script
 
 
+def test_windows_monitor_outputs_g3_evidence_and_is_registered() -> None:
+    windows = ROOT / "deploy" / "windows"
+    monitor = (windows / "AIWorld-Monitor.ps1").read_text(encoding="utf-8")
+    register = (windows / "Register-AIWorldTasks.ps1").read_text(encoding="utf-8")
+    unregister = (windows / "Unregister-AIWorldTasks.ps1").read_text(
+        encoding="utf-8"
+    )
+    assert "monitor-latest.json" in monitor
+    assert "monitor-history.ndjson" in monitor
+    assert "run_module.py" in monitor
+    assert "AIWorld-Monitor" in register
+    assert "AIWorld-Monitor" in unregister
+
+
 def test_health_check_uses_release_module_runner_for_scheduler() -> None:
     script = (ROOT / "deploy" / "windows" / "health-check.ps1").read_text(
         encoding="utf-8"

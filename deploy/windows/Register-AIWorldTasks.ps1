@@ -25,6 +25,7 @@ $apiScript = Join-Path $PSScriptRoot "Start-AIWorldApi.ps1"
 $schedulerScript = Join-Path $PSScriptRoot "Start-AIWorldScheduler.ps1"
 $backupScript = Join-Path $PSScriptRoot "Invoke-AIWorldBackup.ps1"
 $rotationScript = Join-Path $PSScriptRoot "Rotate-AIWorldLogs.ps1"
+$monitorScript = Join-Path $PSScriptRoot "AIWorld-Monitor.ps1"
 $envArguments = if ($EnvironmentFile) {
     "-EnvironmentFile `"$EnvironmentFile`""
 } else {
@@ -81,11 +82,35 @@ $backupAction = New-ScheduledTaskAction -Execute "powershell.exe" `
         $backupArguments
     ) -join " ")
 
+$monitorAction = New-ScheduledTaskAction -Execute "powershell.exe" `
+    -Argument (@(
+        $common
+        "`"$monitorScript`""
+        "-BaseUrl"
+        "`"http://127.0.0.1:8080`""
+        "-ReleaseRoot"
+        "`"$root`""
+        $envArguments
+        "-PythonPath"
+        "`"$PythonPath`""
+        "-BackupDirectory"
+        "`"$backupDirectory`""
+        $logArguments
+    ) -join " ")
+
 $startup = New-ScheduledTaskTrigger -AtStartup
+$monitorTrigger = New-ScheduledTaskTrigger -Once `
+    -At (Get-Date).AddMinutes(1) `
+    -RepetitionInterval (New-TimeSpan -Minutes 5) `
+    -RepetitionDuration (New-TimeSpan -Days 3650)
 $daily = New-ScheduledTaskTrigger -Daily -At "03:30"
 $principal = New-ScheduledTaskPrincipal `
     -UserId $env:USERNAME `
     -LogonType S4U `
+    -RunLevel Highest
+$monitorPrincipal = New-ScheduledTaskPrincipal `
+    -UserId "SYSTEM" `
+    -LogonType ServiceAccount `
     -RunLevel Highest
 $settings = New-ScheduledTaskSettingsSet `
     -RestartCount 5 `
@@ -117,5 +142,11 @@ Register-ScheduledTask -TaskName "AIWorld-Backup" `
     -Principal $principal `
     -Settings $settings `
     -Force | Out-Null
+Register-ScheduledTask -TaskName "AIWorld-Monitor" `
+    -Action $monitorAction `
+    -Trigger $monitorTrigger `
+    -Principal $monitorPrincipal `
+    -Settings $settings `
+    -Force | Out-Null
 
-Write-Output "Registered AIWorld-API, AIWorld-Scheduler, AIWorld-Backup and AIWorld-LogRotation"
+Write-Output "Registered AIWorld-API, AIWorld-Scheduler, AIWorld-Backup, AIWorld-LogRotation and AIWorld-Monitor"
