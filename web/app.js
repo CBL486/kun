@@ -2,8 +2,6 @@ const state = {
   world: null,
   agent: null,
   timeline: null,
-  memory: null,
-  memoryLimit: 20,
 };
 
 const BUILDING_ASSETS = {
@@ -59,15 +57,6 @@ const BUILDING_LAYOUT = {
   loc_shop: { x: 2010, y: 504, width: 180, height: 268 },
 };
 
-const LOCATION_STARTS = {
-  loc_dorm: { x: 430, y: 338 },
-  loc_classroom: { x: 960, y: 338 },
-  loc_library: { x: 1510, y: 338 },
-  loc_canteen: { x: 530, y: 456 },
-  loc_river: { x: 1120, y: 724 },
-  loc_shop: { x: 2120, y: 456 },
-};
-
 const PORTRAITS = {
   char_lin_cheng: "lin_cheng",
   npc_chen: "chen_lan",
@@ -90,6 +79,7 @@ const elements = {
   currentLocation: document.querySelector("#current-location"),
   worldName: document.querySelector("#world-name"),
   worldClock: document.querySelector("#world-clock"),
+  presenceStatus: document.querySelector("#presence-status"),
   locations: document.querySelector("#map-locations"),
   mapBuildings: document.querySelector("#map-buildings"),
   previewIdentity: document.querySelector("#preview-identity"),
@@ -103,10 +93,6 @@ const elements = {
   chatSubmit: document.querySelector("#chat-submit"),
   chatStatus: document.querySelector("#chat-status"),
   chatLog: document.querySelector("#chat-log"),
-  diary: document.querySelector("#diary-list"),
-  memory: document.querySelector("#memory-list"),
-  memoryFilter: document.querySelector("#memory-filter"),
-  memoryMore: document.querySelector("#memory-more"),
   locationDialog: document.querySelector("#location-dialog"),
   locationDialogClose: document.querySelector("#location-dialog-close"),
   locationDialogTitle: document.querySelector("#location-dialog-title"),
@@ -118,11 +104,22 @@ const elements = {
 
 const mapState = {
   initialized: false,
-  active: new Set(),
+  hasPresence: false,
   x: 278,
   y: 386,
+  targetX: 278,
+  targetY: 386,
+  cameraX: 0,
+  cameraY: 0,
+  viewportWidth: 0,
+  viewportHeight: 0,
   lastFrame: 0,
   nearestLocationId: null,
+  presenceRevision: -1,
+  frameHandle: null,
+  reducedMotion: window.matchMedia?.(
+    "(prefers-reduced-motion: reduce)",
+  ).matches ?? false,
 };
 
 async function fetchJSON(url, options = {}) {
@@ -330,33 +327,96 @@ function closeLocationDialog() {
   document.body.classList.remove("has-open-location");
 }
 
-function setMapPlayerPosition(x, y) {
-  mapState.x = Math.max(0, Math.min(MAP_WORLD.width - MAP_WORLD.playerWidth, x));
-  mapState.y = Math.max(0, Math.min(MAP_WORLD.height - MAP_WORLD.playerHeight, y));
-  elements.mapPlayer.style.left = `${mapState.x}px`;
-  elements.mapPlayer.style.top = `${mapState.y}px`;
+function clampPlayerPosition(x, y) {
+  return {
+    x: Math.max(0, Math.min(MAP_WORLD.width - MAP_WORLD.playerWidth, x)),
+    y: Math.max(0, Math.min(MAP_WORLD.height - MAP_WORLD.playerHeight, y)),
+  };
+}
+
+function renderMapPlayerPosition() {
+  elements.mapPlayer.style.setProperty("--player-x", `${mapState.x}px`);
+  elements.mapPlayer.style.setProperty("--player-y", `${mapState.y}px`);
 }
 
 function clampCamera(value, viewport, world) {
-  return Math.max(0, Math.min(world - viewport, value));
+  return Math.max(0, Math.min(Math.max(0, world - viewport), value));
 }
 
-function updateMapCamera() {
-  if (!elements.mapStage || !elements.worldPlane) return;
-  const viewportWidth = elements.mapStage.clientWidth;
-  const viewportHeight = elements.mapStage.clientHeight;
-  const cameraX = clampCamera(
-    mapState.x - viewportWidth * 0.62,
-    viewportWidth,
+function resizeMapViewport() {
+  if (!elements.mapStage) return;
+  mapState.viewportWidth = elements.mapStage.clientWidth;
+  mapState.viewportHeight = elements.mapStage.clientHeight;
+  if (!mapState.initialized || !mapState.viewportWidth || !mapState.viewportHeight) {
+    return;
+  }
+  mapState.cameraX = clampCamera(
+    mapState.cameraX,
+    mapState.viewportWidth,
     MAP_WORLD.width,
   );
-  const cameraY = clampCamera(
-    mapState.y - viewportHeight * 0.72,
-    viewportHeight,
+  mapState.cameraY = clampCamera(
+    mapState.cameraY,
+    mapState.viewportHeight,
     MAP_WORLD.height,
   );
+  updateMapCamera(0, true);
+}
+
+function deadzoneCamera(
+  playerCenter,
+  camera,
+  viewport,
+  worldSize,
+  ratio = 0.15,
+) {
+  const deadzone = viewport * ratio;
+  const center = camera + viewport / 2;
+  let desired = camera;
+  if (playerCenter < center - deadzone) {
+    desired = playerCenter - viewport / 2 + deadzone;
+  } else if (playerCenter > center + deadzone) {
+    desired = playerCenter - viewport / 2 - deadzone;
+  }
+  return clampCamera(desired, viewport, worldSize);
+}
+
+function updateMapCamera(elapsed, snap = false) {
+  if (
+    !elements.mapStage
+    || !elements.worldPlane
+    || !mapState.viewportWidth
+    || !mapState.viewportHeight
+  ) {
+    return;
+  }
+  const playerCenterX = mapState.x + MAP_WORLD.playerWidth / 2;
+  const playerCenterY = mapState.y + MAP_WORLD.playerHeight / 2;
+  const desiredX = deadzoneCamera(
+    playerCenterX,
+    mapState.cameraX,
+    mapState.viewportWidth,
+    MAP_WORLD.width,
+  );
+  const desiredY = deadzoneCamera(
+    playerCenterY,
+    mapState.cameraY,
+    mapState.viewportHeight,
+    MAP_WORLD.height,
+  );
+  const factor = snap || mapState.reducedMotion
+    ? 1
+    : 1 - Math.exp(-Math.max(0, elapsed) * 9);
+  mapState.cameraX += (desiredX - mapState.cameraX) * factor;
+  mapState.cameraY += (desiredY - mapState.cameraY) * factor;
+  if (Math.abs(desiredX - mapState.cameraX) < 0.1) {
+    mapState.cameraX = desiredX;
+  }
+  if (Math.abs(desiredY - mapState.cameraY) < 0.1) {
+    mapState.cameraY = desiredY;
+  }
   elements.worldPlane.style.transform =
-    `translate3d(${-cameraX}px, ${-cameraY}px, 0)`;
+    `translate3d(${-mapState.cameraX}px, ${-mapState.cameraY}px, 0)`;
 }
 
 function updateMapViewLabel(locations) {
@@ -387,68 +447,111 @@ function updateMapViewLabel(locations) {
     : "夜色落在小镇的屋檐上，远处只剩几盏还亮着的灯。";
 }
 
-function initializeMapPlayer(worldPayload) {
-  const { world, locations } = worldPayload;
-  if (!mapState.initialized) {
-    const start =
-      LOCATION_STARTS[world.current_location_id] || LOCATION_STARTS.loc_dorm;
-    setMapPlayerPosition(start.x, start.y);
-    mapState.initialized = true;
+function setPresenceStatus(presence) {
+  if (!presence) {
+    elements.presenceStatus.textContent = "角色信号不可用";
+    return;
   }
-  updateMapCamera();
-  updateMapViewLabel(locations);
+  const labels = {
+    idle: "停留",
+    walk: "自主移动中",
+    enter_place: "进入地点",
+    sit: "坐下",
+    study: "学习",
+    talk: "交谈",
+  };
+  elements.presenceStatus.textContent =
+    labels[presence.animation] || "观察中";
+}
+
+function applyAgentPresence(presence) {
+  if (!presence) {
+    mapState.hasPresence = false;
+    elements.mapPlayer.hidden = true;
+    setPresenceStatus(null);
+    return false;
+  }
+  if (
+    mapState.initialized
+    && presence.revision <= mapState.presenceRevision
+  ) {
+    return false;
+  }
+  const target = clampPlayerPosition(presence.x, presence.y);
+  mapState.targetX = target.x;
+  mapState.targetY = target.y;
+  mapState.presenceRevision = presence.revision;
+  mapState.hasPresence = true;
+  elements.mapPlayer.hidden = false;
+  if (!mapState.initialized) {
+    mapState.x = target.x;
+    mapState.y = target.y;
+    renderMapPlayerPosition();
+    mapState.initialized = true;
+    resizeMapViewport();
+    mapState.cameraX = clampCamera(
+      mapState.x + MAP_WORLD.playerWidth / 2 - mapState.viewportWidth / 2,
+      mapState.viewportWidth,
+      MAP_WORLD.width,
+    );
+    mapState.cameraY = clampCamera(
+      mapState.y + MAP_WORLD.playerHeight / 2 - mapState.viewportHeight / 2,
+      mapState.viewportHeight,
+      MAP_WORLD.height,
+    );
+    updateMapCamera(0, true);
+  }
+  window.qingheSpinePlayer?.setFacing(presence.facing === "left" ? -1 : 1);
+  window.qingheSpinePlayer?.setAnimation(
+    presence.moving && presence.animation === "walk" ? "walk" : "idle",
+  );
+  elements.mapPlayer.classList.toggle("is-moving", presence.moving);
+  setPresenceStatus(presence);
+  return true;
+}
+
+function initializeMapPlayer(worldPayload) {
+  applyAgentPresence(worldPayload.agent_presence);
+  if (state.world) updateMapViewLabel(state.world.locations);
   document.body.dataset.mapReady = "true";
 }
 
-function blockedByBuilding(nextX, nextY) {
-  return Object.values(BUILDING_LAYOUT).some(
-    (building) =>
-      nextX + MAP_WORLD.playerWidth > building.x + 4 &&
-      nextX < building.x + building.width - 4 &&
-      nextY + MAP_WORLD.playerHeight > building.y + 8 &&
-      nextY < building.y + building.height,
-  );
-}
-
 function mapAnimationFrame(timestamp) {
+  mapState.frameHandle = null;
+  if (document.hidden) return;
   if (!mapState.lastFrame) mapState.lastFrame = timestamp;
   const elapsed = Math.min((timestamp - mapState.lastFrame) / 1000, 0.05);
   mapState.lastFrame = timestamp;
-  let horizontal = 0;
-  let vertical = 0;
-  if (mapState.active.has("left")) horizontal -= 1;
-  if (mapState.active.has("right")) horizontal += 1;
-  if (mapState.active.has("up")) vertical -= 1;
-  if (mapState.active.has("down")) vertical += 1;
-
-  if (horizontal || vertical) {
-    const length = Math.hypot(horizontal, vertical);
-    const step = MAP_WORLD.speed * elapsed;
-    const deltaX = (horizontal / length) * step;
-    const deltaY = (vertical / length) * step;
-    const nextX = mapState.x + deltaX;
-    const nextY = mapState.y + deltaY;
-    if (!blockedByBuilding(nextX, mapState.y)) {
-      mapState.x = nextX;
+  if (mapState.hasPresence) {
+    const factor = mapState.reducedMotion
+      ? 1
+      : 1 - Math.exp(-elapsed * 12);
+    mapState.x += (mapState.targetX - mapState.x) * factor;
+    mapState.y += (mapState.targetY - mapState.y) * factor;
+    if (Math.abs(mapState.targetX - mapState.x) < 0.05) {
+      mapState.x = mapState.targetX;
     }
-    if (!blockedByBuilding(mapState.x, nextY)) {
-      mapState.y = nextY;
+    if (Math.abs(mapState.targetY - mapState.y) < 0.05) {
+      mapState.y = mapState.targetY;
     }
-    setMapPlayerPosition(mapState.x, mapState.y);
-    updateMapCamera();
+    renderMapPlayerPosition();
+    updateMapCamera(elapsed);
     if (state.world) updateMapViewLabel(state.world.locations);
-    if (horizontal) {
-      window.qingheSpinePlayer?.setFacing(horizontal);
-    }
   }
-  elements.mapPlayer.classList.toggle(
-    "is-moving",
-    Boolean(horizontal || vertical),
-  );
-  window.qingheSpinePlayer?.setAnimation(
-    horizontal || vertical ? "walk" : "idle",
-  );
-  requestAnimationFrame(mapAnimationFrame);
+  mapState.frameHandle = requestAnimationFrame(mapAnimationFrame);
+}
+
+function startMapAnimation() {
+  if (document.hidden || mapState.frameHandle !== null) return;
+  mapState.lastFrame = 0;
+  mapState.frameHandle = requestAnimationFrame(mapAnimationFrame);
+}
+
+function stopMapAnimation() {
+  if (mapState.frameHandle === null) return;
+  cancelAnimationFrame(mapState.frameHandle);
+  mapState.frameHandle = null;
+  mapState.lastFrame = 0;
 }
 
 function renderAgent(agentPayload) {
@@ -566,40 +669,6 @@ function renderTimeline(timelinePayload) {
   });
 }
 
-function renderMemory(memoryPayload) {
-  state.memory = memoryPayload;
-  elements.memory.replaceChildren();
-  if (!memoryPayload.items.length) {
-    elements.memory.append(emptyState("还没有可展示的记忆", "安全摘要会逐步积累。"));
-  } else {
-    memoryPayload.items.forEach((item) => {
-      const card = createElement("article", "memory-card");
-      card.append(
-        createElement("span", "memory-category", item.category),
-        createElement("h3", "", formatDate(item.date)),
-        createElement("p", "", item.summary),
-      );
-      elements.memory.append(card);
-    });
-  }
-  elements.memoryMore.hidden = !memoryPayload.next_cursor;
-
-  elements.diary.replaceChildren();
-  if (!memoryPayload.diary_summaries.length) {
-    elements.diary.append(emptyState("还没有日记摘要", "目前没有可公开的安全摘要。"));
-  } else {
-    memoryPayload.diary_summaries.forEach((diary) => {
-      const card = createElement("article", "diary-card");
-      card.append(
-        createElement("time", "", formatDate(diary.date)),
-        createElement("h3", "", "一周里的一段记录"),
-        createElement("p", "", diary.summary),
-      );
-      elements.diary.append(card);
-    });
-  }
-}
-
 function emptyState(title, copy) {
   const card = createElement("div", "empty-card");
   card.append(createElement("h3", "", title), createElement("p", "", copy));
@@ -643,16 +712,14 @@ async function loadDashboard() {
   setLoading(true);
   clearConnectionError();
   try {
-    const [world, agent, timeline, memory] = await Promise.all([
+    const [world, agent, timeline] = await Promise.all([
       fetchJSON("/world"),
       fetchJSON("/agent"),
       fetchJSON("/timeline?limit=50"),
-      fetchJSON("/memory?limit=20"),
     ]);
     renderWorld(world);
     renderAgent(agent);
     renderTimeline(timeline);
-    renderMemory(memory);
     document.body.dataset.ready = "true";
   } catch (error) {
     showConnectionError(error);
@@ -666,61 +733,45 @@ document.querySelectorAll("[data-view]").forEach((button) => {
   button.addEventListener("click", () => showView(button.dataset.view));
 });
 
-const MOVE_KEYS = {
-  ArrowUp: "up",
-  KeyW: "up",
-  ArrowDown: "down",
-  KeyS: "down",
-  ArrowLeft: "left",
-  KeyA: "left",
-  ArrowRight: "right",
-  KeyD: "right",
-};
-
-function canMoveMap() {
-  return (
-    !document.querySelector("#view-map").hidden
-    && !elements.locationDialog.open
-    && !["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName)
-  );
+async function refreshWorldPresence() {
+  if (document.hidden || !state.world) return;
+  try {
+    const worldPayload = await fetchJSON("/world");
+    const nextRevision = worldPayload.world.state_revision;
+    const currentRevision = state.world.world.state_revision;
+    if (nextRevision <= currentRevision) return;
+    state.world = worldPayload;
+    elements.worldName.textContent = worldPayload.world.name;
+    elements.currentLocation.textContent =
+      `${worldPayload.world.current_location_name} · 当前`;
+    elements.worldClock.textContent =
+      `${formatDate(worldPayload.world.current_date)} ${worldPayload.world.current_time}`;
+    document.querySelectorAll(".map-building").forEach((building) => {
+      building.classList.toggle(
+        "is-current",
+        building.dataset.location === worldPayload.world.current_location_id,
+      );
+    });
+    applyAgentPresence(worldPayload.agent_presence);
+    updateMapViewLabel(worldPayload.locations);
+    clearConnectionError();
+  } catch (error) {
+    showConnectionError(error);
+  }
 }
 
-window.addEventListener("keydown", (event) => {
-  const direction = MOVE_KEYS[event.code];
-  if (!direction || !canMoveMap()) return;
-  event.preventDefault();
-  mapState.active.add(direction);
-});
-
-window.addEventListener("keyup", (event) => {
-  const direction = MOVE_KEYS[event.code];
-  if (direction) mapState.active.delete(direction);
-});
-
-window.addEventListener("blur", () => {
-  mapState.active.clear();
-});
-
-document.querySelectorAll("[data-move]").forEach((button) => {
-  const direction = button.dataset.move;
-  const stop = () => {
-    mapState.active.delete(direction);
-    button.classList.remove("is-pressed");
-  };
-  button.addEventListener("pointerdown", (event) => {
-    event.preventDefault();
-    button.setPointerCapture(event.pointerId);
-    mapState.active.add(direction);
-    button.classList.add("is-pressed");
-  });
-  button.addEventListener("pointerup", stop);
-  button.addEventListener("pointercancel", stop);
-  button.addEventListener("lostpointercapture", stop);
-});
-
-window.addEventListener("resize", updateMapCamera);
+window.addEventListener("resize", resizeMapViewport);
 window.qingheSpinePlayer?.initialize();
-requestAnimationFrame(mapAnimationFrame);
+startMapAnimation();
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    stopMapAnimation();
+  } else {
+    startMapAnimation();
+    refreshWorldPresence();
+  }
+});
+window.setInterval(refreshWorldPresence, 5000);
 
 elements.locationDialogClose.addEventListener("click", closeLocationDialog);
 elements.locationDialog.addEventListener("close", () => {
@@ -773,35 +824,15 @@ elements.chatForm.addEventListener("submit", async (event) => {
   }
 });
 
-elements.memoryFilter.addEventListener("change", async () => {
-  const kind = elements.memoryFilter.value;
-  const query = new URLSearchParams({ limit: String(state.memoryLimit) });
-  if (kind) query.set("kind", kind);
-  try {
-    renderMemory(await fetchJSON(`/memory?${query.toString()}`));
-  } catch (error) {
-    showConnectionError(error);
-  }
-});
-
-elements.memoryMore.addEventListener("click", async () => {
-  state.memoryLimit = Math.min(50, state.memoryLimit + 20);
-  const kind = elements.memoryFilter.value;
-  const query = new URLSearchParams({ limit: String(state.memoryLimit) });
-  if (kind) query.set("kind", kind);
-  try {
-    renderMemory(await fetchJSON(`/memory?${query.toString()}`));
-  } catch (error) {
-    showConnectionError(error);
-  }
-});
-
 document.querySelectorAll("img").forEach((image) => {
   image.addEventListener("error", () => {
     image.hidden = true;
   });
 });
 
-const initialView = location.hash.replace("#", "") || "map";
+const requestedView = location.hash.replace("#", "");
+const initialView = ["map", "character", "timeline", "chat", "settings"].includes(
+  requestedView,
+) ? requestedView : "map";
 showView(initialView, false);
 loadDashboard();

@@ -92,9 +92,23 @@ def test_world_projection_exposes_frozen_public_fields(
     response = isolated_client.get("/world")
     assert response.status_code == 200
     payload = response.json()
-    assert payload["schema_version"] == "rpg-public-world-v1"
+    assert payload["schema_version"] == "rpg-public-world-v2"
     assert payload["world"]["world_id"] == "world_qinghe_v1"
     assert payload["world"]["name"] == "青禾镇"
+    assert payload["world"]["state_revision"] > 0
+    assert payload["world"]["updated_at"]
+    presence = payload["agent_presence"]
+    assert presence["character_id"] == "char_lin_cheng"
+    assert presence["revision"] == payload["world"]["state_revision"]
+    assert presence["facing"] in {"left", "right", "up", "down"}
+    assert presence["animation"] in {
+        "idle",
+        "walk",
+        "enter_place",
+        "sit",
+        "study",
+        "talk",
+    }
     assert len(payload["locations"]) == 6
     assert len(payload["people"]) == 5
     assert payload["observer_capabilities"]
@@ -172,26 +186,11 @@ def test_blocked_chat_uses_safe_error_envelope() -> None:
     assert "这是一条" not in response.text
 
 
-def test_memory_projection_has_sources_but_no_scores_or_private_content(
+def test_memory_and_diary_are_not_public(
     isolated_client: TestClient,
 ) -> None:
-    response = isolated_client.get("/memory", params={"limit": 20})
-    assert response.status_code == 200
-    payload = response.json()
-    assert payload["schema_version"] == "rpg-public-memory-v1"
-    assert payload["items"]
-    assert payload["diary_summaries"]
-    for item in payload["items"]:
-        assert item["summary"]
-        assert item["category"] in {"经历", "回顾", "关系", "偏好"}
-        assert "importance" not in item
-        assert "strength" not in item
-
-    filtered = isolated_client.get(
-        "/memory",
-        params={"kind": "经历", "limit": 5},
-    ).json()
-    assert all(item["category"] == "经历" for item in filtered["items"])
+    response = isolated_client.get("/memory")
+    assert response.status_code == 404
 
 
 def test_all_public_responses_do_not_expose_internal_fields(
@@ -203,7 +202,6 @@ def test_all_public_responses_do_not_expose_internal_fields(
         "/world",
         "/agent",
         "/timeline",
-        "/memory",
     ]
     forbidden = {
         "tick_id",
@@ -259,7 +257,6 @@ def test_openapi_freezes_paths_operations_and_response_schemas() -> None:
         "/agent",
         "/timeline",
         "/chat",
-        "/memory",
     }
     assert expected_paths <= set(schema["paths"])
     assert schema["info"]["version"] == APP_VERSION
@@ -276,18 +273,18 @@ def test_openapi_freezes_paths_operations_and_response_schemas() -> None:
         "getAgent",
         "getTimeline",
         "sendObserverMessage",
-        "getMemory",
     } <= operation_ids
     components = schema["components"]["schemas"]
     assert "WorldResponse" in components
     assert "AgentResponse" in components
-    assert "MemoryResponse" in components
+    assert "AgentPresence" in components
+    assert "MemoryResponse" not in components
     assert "APIErrorResponse" in components
 
 
 def test_checked_in_openapi_matches_runtime_schema() -> None:
     checked_in = json.loads(
-        Path("docs/openapi-v1.json").read_text(encoding="utf-8")
+        Path("docs/openapi-v2.json").read_text(encoding="utf-8")
     )
     assert checked_in == app.openapi()
 
@@ -297,8 +294,5 @@ def test_two_local_stores_are_deterministic() -> None:
     second = LocalWorldStore(reviewer=ApprovingReviewer())
     assert first.world().model_dump() == second.world().model_dump()
     assert first.timeline(limit=50).model_dump() == second.timeline(
-        limit=50
-    ).model_dump()
-    assert first.memory(limit=50).model_dump() == second.memory(
         limit=50
     ).model_dump()

@@ -90,10 +90,10 @@ GET /world
 GET /agent
 GET /timeline
 POST /chat
-GET /memory
 ```
 
-公开投影字段见 `docs/openapi-projection.md`，静态契约见 `docs/openapi-v1.json`。B6 只使用本地冻结场景和 mock，不连接生产环境。
+公开投影字段见 `docs/openapi-projection.md`，静态契约见 `docs/openapi-v2.json`。R1
+使用 `rpg-public-world-v2` 的只读 `agent_presence`，公开 API 不提供位置写入。
 
 ## B7 最小 RPG Web
 
@@ -101,7 +101,9 @@ GET /memory
 pwsh -NoProfile -File scripts/run-b7-web.ps1
 ```
 
-浏览器打开 `http://127.0.0.1:8080/`。页面包含小镇地图、角色卡、时间线、留言、日记摘要、记忆摘要和设置占位页。
+浏览器打开 `http://127.0.0.1:8080/`。页面包含小镇地图、角色卡、时间线和观察留言。
+玩家只能观察服务端 presence，不能使用键盘、按钮或点击地图移动角色。日记、记忆和
+学习笔记不属于公开 UI/API。
 
 ```powershell
 pwsh -NoProfile -File scripts/test-b7.ps1

@@ -157,7 +157,6 @@ def test_public_api_has_no_internal_fields() -> None:
             "/world": client.get("/world").json(),
             "/agent": client.get("/agent").json(),
             "/timeline": client.get("/timeline").json(),
-            "/memory": client.get("/memory").json(),
         }
     finally:
         client.close()

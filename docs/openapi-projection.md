@@ -1,12 +1,12 @@
-# B6 公开 API 与投影契约
+# 公开 API 与投影契约
 
-状态：生效契约（B6 冻结，B7 已按此验收通过）
+状态：生效契约（R1 升级为 world v2）
 
 日期：2026-10-28
 
 OpenAPI：`3.1.0`
 
-静态契约：[openapi-v1.json](openapi-v1.json)
+静态契约：[openapi-v2.json](openapi-v2.json)
 
 ## 1. 端点
 
@@ -18,22 +18,20 @@ OpenAPI：`3.1.0`
 | `GET /agent` | `getAgent` | 主智能体公开角色卡 |
 | `GET /timeline` | `getTimeline` | 公开事件与放学分享 |
 | `POST /chat` | `sendObserverMessage` | 提交受审核观察者留言 |
-| `GET /memory` | `getMemory` | 安全记忆摘要与日记摘要 |
 
 ## 2. 响应版本
 
 | Schema | 版本 |
 | --- | --- |
-| `WorldResponse` | `rpg-public-world-v1` |
+| `WorldResponse` | `rpg-public-world-v2` |
 | `AgentResponse` | `rpg-public-agent-v1` |
 | `TimelineResponse` | `rpg-public-timeline-v1` |
 | `ChatResponse` | `rpg-public-chat-v1` |
-| `MemoryResponse` | `rpg-public-memory-v1` |
 | `APIErrorResponse` | `rpg-error-v1` |
 
 字段删除、重命名或语义变化必须升级对应版本。新增可选字段可以保持版本，但 B7 必须以响应模型为唯一字段来源。
 
-## 3. B7 可用字段
+## 3. 观察者可用字段
 
 ### 世界
 
@@ -45,6 +43,18 @@ world.current_date
 world.current_time
 world.current_location_id
 world.current_location_name
+world.state_revision
+world.updated_at
+agent_presence.character_id
+agent_presence.x
+agent_presence.y
+agent_presence.location_id
+agent_presence.facing
+agent_presence.animation
+agent_presence.speed
+agent_presence.moving
+agent_presence.updated_at
+agent_presence.revision
 locations[].location_id
 locations[].name
 locations[].kind
@@ -60,7 +70,9 @@ people[].location_name
 observer_capabilities[]
 ```
 
-`location_id` 和 `location_name` 在人物离开公开地点时可以为 `null`。前端必须显示“当前不在公开地点”，不能推测位置。
+`location_id` 和 `location_name` 在人物离开公开地点时可以为 `null`。前端必须显示
+“当前不在公开地点”，不能推测位置。`agent_presence` 是服务端权威只读投影；
+公开 API 不提供位置写入端点。
 
 ### 角色卡
 
@@ -100,19 +112,8 @@ next_cursor
 
 ### 记忆和日记
 
-```text
-memory_id
-date
-category
-summary
-source_item_id
-diary_summaries[].diary_id
-diary_summaries[].date
-diary_summaries[].summary
-next_cursor
-```
-
-不返回记忆分数、强度、情绪权重、作用域、去重键或完整私有记忆。
+`/memory` 已从公开 API 移除。记忆、日记和学习笔记只能由服务端内部模块、管理员
+CLI 或测试工具访问，不进入玩家 UI 或公开响应。
 
 ### 观察者留言
 
@@ -199,7 +200,7 @@ X-Request-ID: <uuid>
 
 ## 8. Mock 边界
 
-- 世界数据来自冻结 `seed=20261028` 的本地七日场景；
+- 世界数据来自冻结 `seed=20261028` 的本地七日场景，R1 为其增加只读 presence；
 - 观察者回复来自 mock LLM；
 - 留言审核来自 mock 审核器；
 - 留言只进入待处理队列，不直接创建世界事件；

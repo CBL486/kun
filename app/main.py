@@ -23,7 +23,6 @@ from app.api_models import (
     ChatRequest,
     ChatResponse,
     HealthResponse,
-    MemoryResponse,
     ReadyResponse,
     TimelineResponse,
     WorldResponse,
@@ -37,7 +36,7 @@ from rpg_scheduler import PersistentMessageQueue, SchedulerRepository
 
 APP_NAME = "AI World"
 APP_VERSION = "0.1.0"
-PUBLIC_API_VERSION = "v1"
+PUBLIC_API_VERSION = "v2"
 WEB_ROOT = Path(__file__).resolve().parents[1] / "web"
 ASSET_ROOT = Path(__file__).resolve().parents[1] / "assets"
 
@@ -239,20 +238,6 @@ def create_app(
         limit: int = Query(default=20, ge=1, le=50),
     ) -> TimelineResponse:
         return local_world.timeline(cursor=cursor, limit=limit)
-
-    @application.get(
-        "/memory",
-        response_model=MemoryResponse,
-        operation_id="getMemory",
-        tags=["memory"],
-    )
-    async def get_memory(
-        kind: Literal["经历", "回顾", "关系", "偏好"] | None = Query(
-            default=None
-        ),
-        limit: int = Query(default=20, ge=1, le=50),
-    ) -> MemoryResponse:
-        return local_world.memory(kind=kind, limit=limit)
 
     @application.post(
         "/chat",

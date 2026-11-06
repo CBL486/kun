@@ -528,10 +528,12 @@ a:focus-visible {
   z-index: 7;
   width: 36px;
   height: 54px;
-  top: 402px;
-  left: 240px;
+  top: 0;
+  left: 0;
   filter: drop-shadow(0 4px 0 rgba(25, 34, 20, 0.28));
   transform-origin: 50% 100%;
+  transform: translate3d(var(--player-x, 278px), var(--player-y, 386px), 0);
+  will-change: transform;
 }
 
 .map-player-canvas,
@@ -548,8 +550,15 @@ a:focus-visible {
   object-fit: contain;
 }
 
-.map-player.is-moving {
+.map-player.is-moving .map-player-canvas,
+.map-player.is-moving .map-player-fallback {
   animation: player-step 260ms steps(2, end) infinite;
+}
+
+.presence-status {
+  color: #9cced0;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
 }
 
 @keyframes player-step {
@@ -1555,7 +1564,7 @@ a:focus-visible {
     bottom: max(10px, env(safe-area-inset-bottom));
     left: 10px;
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     padding: 7px;
     background: rgba(22, 60, 59, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.13);
@@ -1884,7 +1893,7 @@ body {
   left: auto;
   display: grid;
   width: min(720px, calc(100vw - 24px));
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   padding: 5px;
   background: rgba(3, 8, 8, 0.94);
   border: 1px solid rgba(205, 193, 142, 0.32);
