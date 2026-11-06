@@ -119,5 +119,14 @@
     "No project domain or DNS control is available on the Windows host.",
     "No public reverse-proxy/TLS certificate is installed on the Windows host; upstream port 80 is a separate nginx returning 404 and port 443 is closed.",
     "External content-review vendor credentials are not configured; review remains local."
-  ]
+  ],
+  "public_port_probe": {
+    "checked_at": "2026-11-06T10:01:28Z",
+    "local_test_listener_started": true,
+    "external_http_status": 404,
+    "external_server_header": "nginx",
+    "external_response_was_local_test_marker": false,
+    "external_https_port_open": false,
+    "conclusion": "External port 80 is terminated by a separate upstream nginx and is not forwarded to this Windows host; port 443 is not exposed."
+  }
 }
