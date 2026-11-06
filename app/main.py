@@ -22,9 +22,13 @@ from app.api_models import (
     APIErrorResponse,
     ChatRequest,
     ChatResponse,
+    DeepSeekKeyRequest,
     HealthResponse,
     MemoryResponse,
     ReadyResponse,
+    SetupCompleteRequest,
+    SetupStatusResponse,
+    SetupValidationResponse,
     TimelineResponse,
     WorldResponse,
 )
@@ -32,6 +36,7 @@ from app.db import database_ready
 from app.local_state import LocalWorldStore, PublicProjectionError
 from app.metrics import MetricsRegistry
 from app.settings import settings
+from app.setup import DeepSeekSetupStore, DeepSeekValidator, SetupError
 from rpg_orm.migrations import create_database_engine
 from rpg_scheduler import PersistentMessageQueue, SchedulerRepository
 
@@ -47,6 +52,9 @@ def create_app(
     store: LocalWorldStore | None = None,
     message_store: PersistentMessageQueue | None = None,
     readiness_check: Callable[[], Awaitable[bool]] | None = None,
+    setup_store: DeepSeekSetupStore | None = None,
+    setup_validator: DeepSeekValidator | None = None,
+    setup_gate: bool = False,
 ) -> FastAPI:
     if store is None and message_store is None:
         if settings.scheduler_database_url:
@@ -54,6 +62,8 @@ def create_app(
                 create_database_engine(settings.scheduler_database_url)
             )
     local_world = store or LocalWorldStore(message_store=message_store)
+    local_setup = setup_store or DeepSeekSetupStore.from_settings(settings)
+    local_validator = setup_validator or DeepSeekValidator()
     application = FastAPI(
         title=APP_NAME,
         version=APP_VERSION,
@@ -66,6 +76,8 @@ def create_app(
     application.state.message_store = message_store
     application.state.readiness_check = readiness_check
     application.state.metrics = MetricsRegistry()
+    application.state.setup_store = local_setup
+    application.state.setup_validator = local_validator
 
     @application.middleware("http")
     async def public_api_headers(request: Request, call_next):
@@ -158,6 +170,18 @@ def create_app(
             details=safe_details,
         )
 
+    @application.exception_handler(SetupError)
+    async def setup_error_handler(
+        request: Request,
+        error: SetupError,
+    ) -> JSONResponse:
+        return _error_response(
+            request,
+            status_code=error.status_code,
+            code=error.code,
+            message=str(error),
+        )
+
     @application.exception_handler(HTTPException)
     async def http_error_handler(
         request: Request,
@@ -228,6 +252,68 @@ def create_app(
         return local_world.agent(person_id)
 
     @application.get(
+        "/api/setup/status",
+        response_model=SetupStatusResponse,
+        operation_id="getSetupStatus",
+        tags=["setup"],
+    )
+    async def get_setup_status() -> SetupStatusResponse:
+        return SetupStatusResponse(**local_setup.status().to_dict())
+
+    @application.post(
+        "/api/setup/deepseek/validate",
+        response_model=SetupValidationResponse,
+        operation_id="validateDeepSeekKey",
+        tags=["setup"],
+    )
+    async def validate_deepseek_key(
+        body: DeepSeekKeyRequest,
+    ) -> SetupValidationResponse:
+        local_setup.validate_key(
+            body.api_key.get_secret_value(),
+            local_validator,
+        )
+        return SetupValidationResponse(valid=True, provider="deepseek")
+
+    @application.post(
+        "/api/setup/deepseek/save",
+        response_model=SetupStatusResponse,
+        operation_id="saveDeepSeekKey",
+        tags=["setup"],
+    )
+    async def save_deepseek_key(
+        body: DeepSeekKeyRequest,
+    ) -> SetupStatusResponse:
+        status = local_setup.save_key(
+            body.api_key.get_secret_value(),
+            local_validator,
+        )
+        return SetupStatusResponse(**status.to_dict())
+
+    @application.post(
+        "/api/setup/complete",
+        response_model=SetupStatusResponse,
+        operation_id="completeSetup",
+        tags=["setup"],
+    )
+    async def complete_setup(
+        body: SetupCompleteRequest,
+    ) -> SetupStatusResponse:
+        status = local_setup.complete(
+            use_default_persona=body.use_default_persona,
+        )
+        return SetupStatusResponse(**status.to_dict())
+
+    @application.post(
+        "/api/setup/deepseek/clear",
+        response_model=SetupStatusResponse,
+        operation_id="clearDeepSeekKey",
+        tags=["setup"],
+    )
+    async def clear_deepseek_key() -> SetupStatusResponse:
+        return SetupStatusResponse(**local_setup.clear_key().to_dict())
+
+    @application.get(
         "/timeline",
         response_model=TimelineResponse,
         operation_id="getTimeline",
@@ -273,7 +359,13 @@ def create_app(
 
         @application.get("/", include_in_schema=False)
         async def web_index() -> FileResponse:
+            if setup_gate and not local_setup.status().world_ready:
+                return FileResponse(WEB_ROOT / "setup.html")
             return FileResponse(WEB_ROOT / "index.html")
+
+        @application.get("/setup", include_in_schema=False)
+        async def setup_page() -> FileResponse:
+            return FileResponse(WEB_ROOT / "setup.html")
 
     if ASSET_ROOT.is_dir():
         application.mount(
@@ -307,4 +399,4 @@ def _error_response(
     return JSONResponse(status_code=status_code, content=payload)
 
 
-app = create_app()
+app = create_app(setup_gate=True)

@@ -9,7 +9,7 @@ from app.main import app
 
 
 def main() -> int:
-    output = Path(__file__).resolve().parents[1] / "docs" / "openapi-v1.json"
+    output = Path(__file__).resolve().parents[1] / "docs" / "openapi-v2.json"
     output.write_text(
         json.dumps(app.openapi(), ensure_ascii=False, indent=2, sort_keys=True)
         + "\n",

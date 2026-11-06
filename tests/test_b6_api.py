@@ -287,7 +287,7 @@ def test_openapi_freezes_paths_operations_and_response_schemas() -> None:
 
 def test_checked_in_openapi_matches_runtime_schema() -> None:
     checked_in = json.loads(
-        Path("docs/openapi-v1.json").read_text(encoding="utf-8")
+        Path("docs/openapi-v2.json").read_text(encoding="utf-8")
     )
     assert checked_in == app.openapi()
 

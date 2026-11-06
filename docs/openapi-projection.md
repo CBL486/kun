@@ -6,7 +6,7 @@
 
 OpenAPI：`3.1.0`
 
-静态契约：[openapi-v1.json](openapi-v1.json)
+静态契约：[openapi-v2.json](openapi-v2.json)
 
 ## 1. 端点
 
@@ -19,6 +19,11 @@ OpenAPI：`3.1.0`
 | `GET /timeline` | `getTimeline` | 公开事件与放学分享 |
 | `POST /chat` | `sendObserverMessage` | 提交受审核观察者留言 |
 | `GET /memory` | `getMemory` | 安全记忆摘要与日记摘要 |
+| `GET /api/setup/status` | `getSetupStatus` | 读取脱敏启动状态 |
+| `POST /api/setup/deepseek/validate` | `validateDeepSeekKey` | 只校验 Key，不保存 |
+| `POST /api/setup/deepseek/save` | `saveDeepSeekKey` | 校验并保存私有 Key |
+| `POST /api/setup/complete` | `completeSetup` | 完成默认人设启动 |
+| `POST /api/setup/deepseek/clear` | `clearDeepSeekKey` | 清除 Key，不清空世界 |
 
 ## 2. 响应版本
 
@@ -125,6 +130,20 @@ next_cursor
 ```
 
 响应只返回留言 ID、排队状态、已审核的可见留言和安全回复。
+
+### 启动状态
+
+`GET /api/setup/status` 只返回：
+
+```text
+configured
+provider
+key_hint
+persona_configured
+world_ready
+```
+
+Key 只通过请求体提交一次。响应、日志、浏览器存储和 URL 不包含完整 Key。
 
 ## 4. 禁止字段
 

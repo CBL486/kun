@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, SecretStr
 
 
 class HealthResponse(BaseModel):
@@ -135,6 +135,31 @@ class ChatResponse(BaseModel):
     status: Literal["queued"]
     visible_message: str
     reply: str
+
+
+class DeepSeekKeyRequest(BaseModel):
+    api_key: SecretStr = Field(
+        min_length=12,
+        max_length=256,
+        description="只提交一次，服务端不会回显完整 Key。",
+    )
+
+
+class SetupCompleteRequest(BaseModel):
+    use_default_persona: bool = True
+
+
+class SetupStatusResponse(BaseModel):
+    configured: bool
+    provider: Literal["deepseek"]
+    key_hint: str | None
+    persona_configured: bool
+    world_ready: bool
+
+
+class SetupValidationResponse(BaseModel):
+    valid: Literal[True]
+    provider: Literal["deepseek"]
 
 
 class APIErrorDetail(BaseModel):

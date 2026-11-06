@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#071719">
+    <meta
+      name="description"
+      content="AI World 启动设置：配置 DeepSeek Key 后进入青禾镇。"
+    >
+    <title>AI World 启动设置</title>
+    <link rel="icon" href="/static/assets/placeholders/event.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/static/setup.css">
+  </head>
+  <body>
+    <main class="setup-shell">
+      <section class="setup-intro" aria-labelledby="setup-title">
+        <p class="eyebrow">AI WORLD · FIRST CONTACT</p>
+        <h1 id="setup-title">在进入青禾镇之前</h1>
+        <p class="lead">
+          这是一次本地/测试模式启动。你的 DeepSeek Key 只保存在本机服务端，
+          不会写入浏览器存储、网址、日志或页面截图。
+        </p>
+        <ol class="setup-steps">
+          <li><span>01</span> 配置 DeepSeek Key</li>
+          <li><span>02</span> 校验账户可用性</li>
+          <li><span>03</span> 选择默认人设并进入世界</li>
+        </ol>
+        <p class="mode-note">
+          当前连接未配置公网 HTTPS，因此只适合本机或受信任的测试环境。
+        </p>
+      </section>
+
+      <section class="setup-card" aria-labelledby="key-heading">
+        <div class="card-heading">
+          <div>
+            <p class="eyebrow">DEEPSEEK ACCESS</p>
+            <h2 id="key-heading">连接模型服务</h2>
+          </div>
+          <button
+            id="help-button"
+            class="help-button"
+            type="button"
+            aria-label="打开 DeepSeek Key 获取教程"
+          >?</button>
+        </div>
+
+        <div id="setup-status" class="status-box" role="status" aria-live="polite">
+          正在读取设置状态…
+        </div>
+
+        <form id="key-form" class="key-form">
+          <label for="deepseek-key">DeepSeek API Key</label>
+          <div class="key-row">
+            <input
+              id="deepseek-key"
+              name="api_key"
+              type="password"
+              minlength="12"
+              maxlength="256"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+              placeholder="sk-..."
+              required
+            >
+            <button id="validate-button" class="button secondary" type="button">
+              仅校验
+            </button>
+          </div>
+          <p class="field-hint">
+            提交后输入框会立即清空。页面只显示类似 <code>sk-...A1B2</code> 的掩码。
+          </p>
+          <button id="save-button" class="button primary" type="submit">
+            保存并继续
+          </button>
+        </form>
+
+        <div id="configured-panel" class="configured-panel" hidden>
+          <p id="configured-copy"></p>
+          <div class="configured-actions">
+            <button id="continue-button" class="button primary" type="button">
+              进入青禾镇
+            </button>
+            <button id="replace-button" class="button secondary" type="button">
+              替换 Key
+            </button>
+            <button id="clear-button" class="danger-button" type="button">
+              清除 Key
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="help-dialog" class="help-dialog" aria-labelledby="help-title">
+      <button id="help-close" class="dialog-close" type="button" aria-label="关闭教程">
+        关闭
+      </button>
+      <p class="eyebrow">GETTING STARTED</p>
+      <h2 id="help-title">获取 DeepSeek Key</h2>
+      <ol>
+        <li>打开 DeepSeek 开放平台并登录。</li>
+        <li>进入 API Key 管理页面，创建一个新的 Key。</li>
+        <li>确认账户余额和调用额度。</li>
+        <li>复制 Key，粘贴回启动页。</li>
+        <li>Key 会保存在本机服务端私有目录，不会公开。</li>
+      </ol>
+      <p>
+        常见错误：Key 无效、账户没有余额、网络超时或当前账户没有 API 权限。
+      </p>
+      <a
+        href="https://platform.deepseek.com/api_keys"
+        target="_blank"
+        rel="noopener noreferrer"
+      >打开 DeepSeek 开放平台</a>
+    </dialog>
+
+    <script src="/static/setup.js" defer></script>
+  </body>
+</html>

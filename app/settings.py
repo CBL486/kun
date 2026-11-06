@@ -15,6 +15,8 @@ class Settings(BaseSettings):
     database_url: str = "sqlite+aiosqlite:///./data/local.sqlite3"
     scheduler_database_url: str | None = None
     backup_directory: str | None = None
+    setup_directory: str | None = None
+    enforce_setup_acl: bool = True
     log_level: str = "INFO"
     llm_model: str = "deepseek-flash"
 
