@@ -162,6 +162,14 @@ def test_windows_service_scripts_do_not_stop_on_native_stderr() -> None:
         assert "$serviceExitCode = $LASTEXITCODE" in script
 
 
+def test_windows_service_tasks_wait_for_database_startup() -> None:
+    register = (
+        ROOT / "deploy" / "windows" / "Register-AIWorldTasks.ps1"
+    ).read_text(encoding="utf-8")
+    assert "-AtStartup -RandomDelay" in register
+    assert "-StartWhenAvailable" in register
+
+
 def test_windows_monitor_outputs_g3_evidence_and_is_registered() -> None:
     windows = ROOT / "deploy" / "windows"
     monitor = (windows / "AIWorld-Monitor.ps1").read_text(encoding="utf-8")

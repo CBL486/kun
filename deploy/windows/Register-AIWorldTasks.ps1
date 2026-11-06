@@ -98,7 +98,7 @@ $monitorAction = New-ScheduledTaskAction -Execute "powershell.exe" `
         $logArguments
     ) -join " ")
 
-$startup = New-ScheduledTaskTrigger -AtStartup
+$startup = New-ScheduledTaskTrigger -AtStartup -RandomDelay (New-TimeSpan -Seconds 45)
 $monitorTrigger = New-ScheduledTaskTrigger -Once `
     -At (Get-Date).AddMinutes(1) `
     -RepetitionInterval (New-TimeSpan -Minutes 5) `
@@ -113,6 +113,7 @@ $monitorPrincipal = New-ScheduledTaskPrincipal `
     -LogonType ServiceAccount `
     -RunLevel Highest
 $settings = New-ScheduledTaskSettingsSet `
+    -StartWhenAvailable `
     -RestartCount 5 `
     -RestartInterval (New-TimeSpan -Minutes 1) `
     -MultipleInstances IgnoreNew `
