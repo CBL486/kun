@@ -22,9 +22,13 @@ New-Item -ItemType Directory -Force -Path $logDirectory | Out-Null
 Set-Location $root
 $env:AIWORLD_ROOT = $root
 
+$serviceErrorActionPreference = $ErrorActionPreference
+$ErrorActionPreference = "Continue"
 & $PythonPath (Join-Path $PSScriptRoot "run_module.py") rpg_scheduler run `
     --url $databaseUrl `
     --worker-id $WorkerId `
     --poll-interval 1 `
     *>> (Join-Path $logDirectory "scheduler.log")
-exit $LASTEXITCODE
+$serviceExitCode = $LASTEXITCODE
+$ErrorActionPreference = $serviceErrorActionPreference
+exit $serviceExitCode

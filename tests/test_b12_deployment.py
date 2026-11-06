@@ -148,6 +148,20 @@ def test_release_verifier_ignores_runtime_generated_python_files(tmp_path) -> No
     assert verify_release(output) == []
 
 
+def test_windows_service_scripts_do_not_stop_on_native_stderr() -> None:
+    windows = ROOT / "deploy" / "windows"
+    for name in (
+        "Start-AIWorldApi.ps1",
+        "Start-AIWorldScheduler.ps1",
+        "Invoke-AIWorldBackup.ps1",
+    ):
+        script = (windows / name).read_text(encoding="utf-8")
+        native_call = script.index("& $PythonPath")
+        continue_switch = script.index('$ErrorActionPreference = "Continue"')
+        assert continue_switch < native_call
+        assert "$serviceExitCode = $LASTEXITCODE" in script
+
+
 def test_server_extra_declares_async_and_sync_postgres_drivers() -> None:
     payload = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
     server = payload["project"]["optional-dependencies"]["server"]

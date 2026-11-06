@@ -29,15 +29,19 @@ New-Item -ItemType Directory -Force -Path $logDirectory | Out-Null
 Set-Location $root
 $env:AIWORLD_ROOT = $root
 
+$serviceErrorActionPreference = $ErrorActionPreference
+$ErrorActionPreference = "Continue"
 & $PythonPath (Join-Path $PSScriptRoot "run_module.py") rpg_release backup `
     --url $databaseUrl `
     --output $output `
     --pg-bin $PgBin `
     *>> (Join-Path $logDirectory "backup.log")
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
+$serviceExitCode = $LASTEXITCODE
+if ($serviceExitCode -eq 0) {
+    & $PythonPath (Join-Path $PSScriptRoot "run_module.py") rpg_release verify-backup `
+        --backup $output `
+        *>> (Join-Path $logDirectory "backup.log")
+    $serviceExitCode = $LASTEXITCODE
 }
-& $PythonPath (Join-Path $PSScriptRoot "run_module.py") rpg_release verify-backup `
-    --backup $output `
-    *>> (Join-Path $logDirectory "backup.log")
-exit $LASTEXITCODE
+$ErrorActionPreference = $serviceErrorActionPreference
+exit $serviceExitCode
