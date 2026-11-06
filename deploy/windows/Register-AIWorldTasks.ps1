@@ -105,8 +105,8 @@ $monitorTrigger = New-ScheduledTaskTrigger -Once `
     -RepetitionDuration (New-TimeSpan -Days 3650)
 $daily = New-ScheduledTaskTrigger -Daily -At "03:30"
 $principal = New-ScheduledTaskPrincipal `
-    -UserId $env:USERNAME `
-    -LogonType S4U `
+    -UserId "SYSTEM" `
+    -LogonType ServiceAccount `
     -RunLevel Highest
 $monitorPrincipal = New-ScheduledTaskPrincipal `
     -UserId "SYSTEM" `
