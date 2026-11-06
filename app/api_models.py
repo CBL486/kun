@@ -35,6 +35,28 @@ class WorldInfo(BaseModel):
     current_time: str
     current_location_id: str
     current_location_name: str
+    state_revision: int
+    updated_at: str
+
+
+class AgentPresence(BaseModel):
+    character_id: str
+    x: float
+    y: float
+    location_id: str
+    facing: Literal["left", "right", "up", "down"]
+    animation: Literal[
+        "idle",
+        "walk",
+        "enter_place",
+        "sit",
+        "study",
+        "talk",
+    ]
+    speed: float
+    moving: bool
+    updated_at: str
+    revision: int
 
 
 class PublicPerson(BaseModel):
@@ -47,8 +69,9 @@ class PublicPerson(BaseModel):
 
 
 class WorldResponse(BaseModel):
-    schema_version: Literal["rpg-public-world-v1"]
+    schema_version: Literal["rpg-public-world-v2"]
     world: WorldInfo
+    agent_presence: AgentPresence | None
     locations: list[PublicLocation]
     people: list[PublicPerson]
     observer_capabilities: list[str]

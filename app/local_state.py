@@ -13,6 +13,7 @@ from rpg_sim.scenario import LOCATIONS, MAIN_ID, SEED, location_is_open
 from rpg_sim.simulator import SevenDaySimulator
 
 from .api_models import (
+    AgentPresence,
     AgentResponse,
     AgentView,
     ChatResponse,
@@ -28,6 +29,25 @@ from .api_models import (
     WorldInfo,
     WorldResponse,
 )
+
+PRESENCE_STARTS = {
+    "loc_dorm": (430.0, 338.0),
+    "loc_classroom": (960.0, 338.0),
+    "loc_library": (1510.0, 338.0),
+    "loc_canteen": (530.0, 456.0),
+    "loc_river": (1120.0, 724.0),
+    "loc_shop": (2120.0, 456.0),
+}
+
+FACING_VALUES = {"left", "right", "up", "down"}
+ANIMATION_VALUES = {
+    "idle",
+    "walk",
+    "enter_place",
+    "sit",
+    "study",
+    "talk",
+}
 
 
 class PublicProjectionError(RuntimeError):
@@ -69,6 +89,8 @@ class LocalWorldStore:
             self.shares = list(self.simulator.daily_shares)
             self.memories = list(self.simulator.memories)
             self.diaries = list(self.simulator.diary_records)
+            self._state_revision = int(self.state["state_version"])
+            self._presence = self._initial_presence()
             if self.message_store:
                 self._public_messages = self.message_store.list_messages()
                 self._message_counter = len(self._public_messages)
@@ -87,7 +109,7 @@ class LocalWorldStore:
             for npc_id in self.state["npc_ids"]:
                 people.append(self._person(npc_id))
             return WorldResponse(
-                schema_version="rpg-public-world-v1",
+                schema_version="rpg-public-world-v2",
                 world=WorldInfo(
                     world_id=self.state["world_id"],
                     name=self.state["name"],
@@ -96,16 +118,101 @@ class LocalWorldStore:
                     current_time=self.state["logical_time"][11:16],
                     current_location_id=character["location_id"],
                     current_location_name=LOCATIONS[character["location_id"]]["name"],
+                    state_revision=self._state_revision,
+                    updated_at=self._presence["updated_at"],
                 ),
+                agent_presence=AgentPresence(**self._presence),
                 locations=locations,
                 people=people,
                 observer_capabilities=[
-                    "查看世界与公开时间线",
-                    "查看角色卡与安全记忆摘要",
+                    "以只读上帝视角查看世界、角色位置与公开时间线",
+                    "查看角色卡",
                     "发送受审核留言",
                     "请求角色在下一个合法时段回应",
                 ],
             )
+
+    def update_agent_presence(
+        self,
+        *,
+        location_id: str | None = None,
+        x: float | None = None,
+        y: float | None = None,
+        facing: str = "right",
+        animation: str = "idle",
+        speed: float = 0.0,
+        moving: bool = False,
+        updated_at: str | None = None,
+        revision: int | None = None,
+    ) -> AgentPresence:
+        """Internal/test adapter used by agent actions, never by public writes."""
+        with self._lock:
+            if facing not in FACING_VALUES:
+                raise PublicProjectionError(
+                    "invalid_presence",
+                    "角色朝向无效",
+                )
+            if animation not in ANIMATION_VALUES:
+                raise PublicProjectionError(
+                    "invalid_presence",
+                    "角色动画无效",
+                )
+            if speed < 0:
+                raise PublicProjectionError(
+                    "invalid_presence",
+                    "角色速度不能为负数",
+                )
+            target_location = (
+                location_id
+                or self._presence["location_id"]
+                or self.state["characters"][MAIN_ID]["location_id"]
+            )
+            if target_location not in PRESENCE_STARTS:
+                raise PublicProjectionError(
+                    "invalid_presence",
+                    "角色位置不属于当前世界",
+                )
+            default_x, default_y = PRESENCE_STARTS[target_location]
+            next_revision = (
+                self._state_revision + 1 if revision is None else revision
+            )
+            if next_revision <= self._state_revision:
+                raise PublicProjectionError(
+                    "stale_presence_revision",
+                    "presence revision 不能回退",
+                    status_code=409,
+                )
+            self._state_revision = next_revision
+            self._presence = {
+                "character_id": MAIN_ID,
+                "x": round(default_x if x is None else float(x), 3),
+                "y": round(default_y if y is None else float(y), 3),
+                "location_id": target_location,
+                "facing": facing,
+                "animation": animation,
+                "speed": round(float(speed), 3),
+                "moving": bool(moving),
+                "updated_at": updated_at or self.state["logical_time"],
+                "revision": self._state_revision,
+            }
+            self.state["characters"][MAIN_ID]["location_id"] = target_location
+            return AgentPresence(**self._presence)
+
+    def _initial_presence(self) -> dict[str, Any]:
+        location_id = self.state["characters"][MAIN_ID]["location_id"]
+        x, y = PRESENCE_STARTS.get(location_id, PRESENCE_STARTS["loc_dorm"])
+        return {
+            "character_id": MAIN_ID,
+            "x": x,
+            "y": y,
+            "location_id": location_id,
+            "facing": "right",
+            "animation": "idle",
+            "speed": 0.0,
+            "moving": False,
+            "updated_at": self.state["logical_time"],
+            "revision": self._state_revision,
+        }
 
     def agent(self, person_id: str = MAIN_ID) -> AgentResponse:
         if person_id != MAIN_ID:

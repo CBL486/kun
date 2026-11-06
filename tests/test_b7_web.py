@@ -43,8 +43,6 @@ def test_required_views_and_navigation_are_present(client: TestClient) -> None:
         "character",
         "timeline",
         "chat",
-        "diary",
-        "memory",
         "settings",
     ):
         assert f'data-view-panel="{view}"' in html
@@ -54,11 +52,11 @@ def test_required_views_and_navigation_are_present(client: TestClient) -> None:
         "角色卡",
         "已经发生的事",
         "给林澄留言",
-        "日记摘要",
-        "记忆摘要",
         "观察设置",
     ):
         assert copy in html
+    assert "日记摘要" not in html
+    assert "记忆摘要" not in html
 
 
 def test_loading_empty_network_and_review_states_have_interfaces(
@@ -115,7 +113,7 @@ def test_responsive_desktop_and_mobile_layouts_are_defined() -> None:
     assert "grid-template-columns: var(--sidebar)" in css
     assert "@media (max-width: 760px)" in css
     assert ".mobile-nav" in css
-    assert "grid-template-columns: repeat(7, 1fr)" in css
+    assert "grid-template-columns: repeat(5, 1fr)" in css
     assert "env(safe-area-inset-bottom)" in css
     assert "aspect-ratio: 16 / 9" in css
     assert ".world-plane" in css
@@ -128,8 +126,9 @@ def test_responsive_desktop_and_mobile_layouts_are_defined() -> None:
 
 def test_frontend_uses_only_frozen_public_api_fields() -> None:
     javascript = Path("web/app.js").read_text(encoding="utf-8")
-    for endpoint in ("/world", "/agent", "/timeline", "/chat", "/memory"):
+    for endpoint in ("/world", "/agent", "/timeline", "/chat"):
         assert endpoint in javascript
+    assert "/memory" not in javascript
     forbidden = (
         "importance",
         "emotional_weight",
@@ -142,23 +141,23 @@ def test_frontend_uses_only_frozen_public_api_fields() -> None:
     assert "innerHTML" not in javascript
 
 
-def test_observer_loop_can_reach_world_character_chat_diary_and_memory(
+def test_observer_loop_can_reach_world_character_and_chat(
     client: TestClient,
 ) -> None:
     world = client.get("/world")
     agent = client.get("/agent")
     chat = client.post("/chat", json={"message": "今天的校刊任务进展怎么样？"})
-    memory = client.get("/memory", params={"limit": 20})
-
     assert world.status_code == 200
     assert agent.status_code == 200
     assert chat.status_code == 200
-    assert memory.status_code == 200
+    assert client.get("/memory").status_code == 404
     assert world.json()["world"]["name"] == "青禾镇"
+    assert world.json()["schema_version"] == "rpg-public-world-v2"
+    assert world.json()["agent_presence"]["revision"] == world.json()["world"][
+        "state_revision"
+    ]
     assert agent.json()["agent"]["name"] == "林澄"
     assert chat.json()["status"] == "queued"
-    assert memory.json()["diary_summaries"]
-    assert memory.json()["items"]
 
 
 def test_b75_component_interfaces_are_reserved() -> None:
@@ -180,7 +179,8 @@ def test_b75_component_interfaces_are_reserved() -> None:
     assert "window.qingheSpinePlayer?.initialize()" in Path(
         "web/app.js"
     ).read_text(encoding="utf-8")
-    assert 'data-move="right"' in html
+    assert "data-move" not in html
+    assert "MOVE_KEYS" not in Path("web/app.js").read_text(encoding="utf-8")
     assert 'id="location-dialog"' in html
     assert 'class="interior-scene"' in html
     assert "/assets/assets/" not in html

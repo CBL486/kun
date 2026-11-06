@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#163c3b">
     <meta
       name="description"
-      content="青禾镇观察者界面：查看主智能体、小镇公开时间线、分享、日记和记忆摘要。"
+      content="青禾镇观察者界面：从上帝视角观察主智能体和小镇公开时间线。"
     >
     <title>青禾镇观察站</title>
     <link rel="icon" href="/static/assets/placeholders/event.svg" type="image/svg+xml">
@@ -59,12 +59,6 @@
           <button class="nav-item" type="button" data-view="chat">
             <img class="nav-mark" src="/assets/icons/chat.png" alt="">观察留言
           </button>
-          <button class="nav-item" type="button" data-view="diary">
-            <img class="nav-mark" src="/assets/icons/diary.png" alt="">日记摘要
-          </button>
-          <button class="nav-item" type="button" data-view="memory">
-            <img class="nav-mark" src="/assets/icons/memory.png" alt="">记忆摘要
-          </button>
           <button class="nav-item" type="button" data-view="settings">
             <img class="nav-mark" src="/assets/icons/settings.png" alt="">设置
           </button>
@@ -91,8 +85,7 @@
             <article class="map-card game-screen">
               <div
                 class="map-art world-map-stage"
-                tabindex="0"
-                aria-label="青禾镇横向地图，可使用方向键或 WASD 移动视野"
+                aria-label="青禾镇横向地图，只能观察角色自主行动"
               >
                 <div id="world-plane" class="world-plane">
                   <img
@@ -130,15 +123,9 @@
                   <span>QINGHE TOWN</span>
                   <strong id="map-view-label">视野 · 宿舍</strong>
                   <time id="world-clock" class="time-label"></time>
+                  <span id="presence-status" class="presence-status">等待角色信号</span>
                 </div>
                 <div class="map-compass" aria-hidden="true">N</div>
-                <div class="map-controls" aria-label="地图移动">
-                  <button type="button" data-move="up" aria-label="向上移动">↑</button>
-                  <button type="button" data-move="left" aria-label="向左移动">←</button>
-                  <button type="button" data-move="down" aria-label="向下移动">↓</button>
-                  <button type="button" data-move="right" aria-label="向右移动">→</button>
-                </div>
-                <p class="map-move-hint">方向键 / WASD 移动</p>
                 <div class="scene-dialogue">
                   <div class="dialogue-portrait" aria-hidden="true">
                     <img
@@ -262,43 +249,6 @@
           </div>
         </section>
 
-        <section id="view-diary" class="view-panel" data-view-panel="diary" hidden>
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">PRIVATE NOTE · SAFE SUMMARY</p>
-              <h2>日记摘要</h2>
-            </div>
-            <span class="status-chip status-chip-soft">仅摘要</span>
-          </div>
-          <p class="intro-copy">
-            这里只展示审核后的安全摘要，不展示完整私密记忆或角色内心原文。
-          </p>
-          <div id="diary-list" class="diary-list" aria-live="polite"></div>
-        </section>
-
-        <section id="view-memory" class="view-panel" data-view-panel="memory" hidden>
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">MEMORY MOSAIC</p>
-              <h2>记忆摘要</h2>
-            </div>
-            <label class="select-label">
-              类型
-              <select id="memory-filter">
-                <option value="">全部</option>
-                <option value="经历">经历</option>
-                <option value="回顾">回顾</option>
-                <option value="关系">关系</option>
-                <option value="偏好">偏好</option>
-              </select>
-            </label>
-          </div>
-          <div id="memory-list" class="memory-grid" aria-live="polite"></div>
-          <button id="memory-more" class="button button-secondary" type="button" hidden>
-            加载更多
-          </button>
-        </section>
-
         <section id="view-settings" class="view-panel" data-view-panel="settings" hidden>
           <div class="section-heading">
             <div>
@@ -363,12 +313,6 @@
       </button>
       <button type="button" data-view="chat">
         <img src="/assets/icons/chat.png" alt=""><span>留言</span>
-      </button>
-      <button type="button" data-view="diary">
-        <img src="/assets/icons/diary.png" alt=""><span>日记</span>
-      </button>
-      <button type="button" data-view="memory">
-        <img src="/assets/icons/memory.png" alt=""><span>记忆</span>
       </button>
       <button type="button" data-view="settings">
         <img src="/assets/icons/settings.png" alt=""><span>设置</span>
