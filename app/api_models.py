@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, SecretStr
 
 
 class HealthResponse(BaseModel):
@@ -158,6 +158,78 @@ class ChatResponse(BaseModel):
     status: Literal["queued"]
     visible_message: str
     reply: str
+
+
+class DeepSeekKeyRequest(BaseModel):
+    api_key: SecretStr = Field(
+        min_length=12,
+        max_length=256,
+        description="只提交一次，服务端不会回显完整 Key。",
+    )
+
+
+class SetupCompleteRequest(BaseModel):
+    pass
+
+
+class SetupStatusResponse(BaseModel):
+    configured: bool
+    provider: Literal["deepseek"]
+    key_hint: str | None
+    persona_configured: bool
+    world_ready: bool
+
+
+class SetupValidationResponse(BaseModel):
+    valid: Literal[True]
+    provider: Literal["deepseek"]
+
+
+class PersonaBaselineInput(BaseModel):
+    name: str = Field(min_length=1, max_length=24)
+    pronouns: str = Field(min_length=1, max_length=8)
+    age: int = Field(ge=18, le=120)
+    appearance: str = Field(min_length=1, max_length=500)
+    identity: str = Field(min_length=1, max_length=500)
+    speech_style: str = Field(min_length=1, max_length=300)
+    traits: list[str] = Field(min_length=1, max_length=8)
+    values: list[str] = Field(min_length=1, max_length=8)
+    interests: list[str] = Field(min_length=1, max_length=12)
+    initial_goals: list[str] = Field(min_length=1, max_length=8)
+    boundaries: list[str] = Field(min_length=1, max_length=12)
+    relationship_to_player: str = Field(min_length=1, max_length=300)
+
+
+class PersonaBaselineView(PersonaBaselineInput):
+    persona_id: str
+    is_default: bool
+    revision: int
+    updated_at: str
+
+
+class PersonaStateView(BaseModel):
+    baseline_persona_id: str
+    self_narrative: str
+    behavior_habits: list[dict[str, Any]]
+    value_weights: dict[str, float]
+    interests: list[str]
+    active_goals: list[str]
+    change_log: list[dict[str, Any]]
+    updated_at: str
+
+
+class PersonaResponse(BaseModel):
+    schema_version: Literal["rpg-persona-v1"]
+    baseline_revision: int
+    baseline: PersonaBaselineView
+    state: PersonaStateView
+
+
+class PersonaStatusResponse(BaseModel):
+    configured: bool
+    revision: int
+    name: str | None
+    is_default: bool
 
 
 class APIErrorDetail(BaseModel):

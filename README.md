@@ -92,8 +92,27 @@ GET /timeline
 POST /chat
 ```
 
-公开投影字段见 `docs/openapi-projection.md`，静态契约见 `docs/openapi-v2.json`。R1
-使用 `rpg-public-world-v2` 的只读 `agent_presence`，公开 API 不提供位置写入。
+启动配置：
+
+```text
+GET  /api/setup/status
+POST /api/setup/deepseek/validate
+POST /api/setup/deepseek/save
+POST /api/setup/complete
+POST /api/setup/deepseek/clear
+GET  /api/persona/status
+GET  /api/persona
+POST /api/persona/default
+PUT  /api/persona/baseline
+```
+
+首次进入时 `/` 返回启动设置页。Key 只写入服务端私有目录，浏览器不保存完整 Key。
+默认或自定义 PersonaBaseline 保存在服务端独立目录，人物基础 revision 更新不会
+重置世界、关系、记忆或位置。详细契约见 `docs/setup-deepseek-v1.md` 和
+`docs/persona-v1.md`。
+
+公开投影字段见 `docs/openapi-projection.md`，静态契约见 `docs/openapi-v2.json`。
+R1 使用 `rpg-public-world-v2` 的只读 `agent_presence`，公开 API 不提供位置写入。
 
 ## B7 最小 RPG Web
 

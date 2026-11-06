@@ -238,6 +238,24 @@
         "title": "ChatResponse",
         "type": "object"
       },
+      "DeepSeekKeyRequest": {
+        "properties": {
+          "api_key": {
+            "description": "只提交一次，服务端不会回显完整 Key。",
+            "format": "password",
+            "maxLength": 256,
+            "minLength": 12,
+            "title": "Api Key",
+            "type": "string",
+            "writeOnly": true
+          }
+        },
+        "required": [
+          "api_key"
+        ],
+        "title": "DeepSeekKeyRequest",
+        "type": "object"
+      },
       "GoalView": {
         "properties": {
           "due_date": {
@@ -296,6 +314,367 @@
           "version"
         ],
         "title": "HealthResponse",
+        "type": "object"
+      },
+      "PersonaBaselineInput": {
+        "properties": {
+          "age": {
+            "maximum": 120.0,
+            "minimum": 18.0,
+            "title": "Age",
+            "type": "integer"
+          },
+          "appearance": {
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Appearance",
+            "type": "string"
+          },
+          "boundaries": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 12,
+            "minItems": 1,
+            "title": "Boundaries",
+            "type": "array"
+          },
+          "identity": {
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Identity",
+            "type": "string"
+          },
+          "initial_goals": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 8,
+            "minItems": 1,
+            "title": "Initial Goals",
+            "type": "array"
+          },
+          "interests": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 12,
+            "minItems": 1,
+            "title": "Interests",
+            "type": "array"
+          },
+          "name": {
+            "maxLength": 24,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "pronouns": {
+            "maxLength": 8,
+            "minLength": 1,
+            "title": "Pronouns",
+            "type": "string"
+          },
+          "relationship_to_player": {
+            "maxLength": 300,
+            "minLength": 1,
+            "title": "Relationship To Player",
+            "type": "string"
+          },
+          "speech_style": {
+            "maxLength": 300,
+            "minLength": 1,
+            "title": "Speech Style",
+            "type": "string"
+          },
+          "traits": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 8,
+            "minItems": 1,
+            "title": "Traits",
+            "type": "array"
+          },
+          "values": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 8,
+            "minItems": 1,
+            "title": "Values",
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "pronouns",
+          "age",
+          "appearance",
+          "identity",
+          "speech_style",
+          "traits",
+          "values",
+          "interests",
+          "initial_goals",
+          "boundaries",
+          "relationship_to_player"
+        ],
+        "title": "PersonaBaselineInput",
+        "type": "object"
+      },
+      "PersonaBaselineView": {
+        "properties": {
+          "age": {
+            "maximum": 120.0,
+            "minimum": 18.0,
+            "title": "Age",
+            "type": "integer"
+          },
+          "appearance": {
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Appearance",
+            "type": "string"
+          },
+          "boundaries": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 12,
+            "minItems": 1,
+            "title": "Boundaries",
+            "type": "array"
+          },
+          "identity": {
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Identity",
+            "type": "string"
+          },
+          "initial_goals": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 8,
+            "minItems": 1,
+            "title": "Initial Goals",
+            "type": "array"
+          },
+          "interests": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 12,
+            "minItems": 1,
+            "title": "Interests",
+            "type": "array"
+          },
+          "is_default": {
+            "title": "Is Default",
+            "type": "boolean"
+          },
+          "name": {
+            "maxLength": 24,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "persona_id": {
+            "title": "Persona Id",
+            "type": "string"
+          },
+          "pronouns": {
+            "maxLength": 8,
+            "minLength": 1,
+            "title": "Pronouns",
+            "type": "string"
+          },
+          "relationship_to_player": {
+            "maxLength": 300,
+            "minLength": 1,
+            "title": "Relationship To Player",
+            "type": "string"
+          },
+          "revision": {
+            "title": "Revision",
+            "type": "integer"
+          },
+          "speech_style": {
+            "maxLength": 300,
+            "minLength": 1,
+            "title": "Speech Style",
+            "type": "string"
+          },
+          "traits": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 8,
+            "minItems": 1,
+            "title": "Traits",
+            "type": "array"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string"
+          },
+          "values": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 8,
+            "minItems": 1,
+            "title": "Values",
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "pronouns",
+          "age",
+          "appearance",
+          "identity",
+          "speech_style",
+          "traits",
+          "values",
+          "interests",
+          "initial_goals",
+          "boundaries",
+          "relationship_to_player",
+          "persona_id",
+          "is_default",
+          "revision",
+          "updated_at"
+        ],
+        "title": "PersonaBaselineView",
+        "type": "object"
+      },
+      "PersonaResponse": {
+        "properties": {
+          "baseline": {
+            "$ref": "#/components/schemas/PersonaBaselineView"
+          },
+          "baseline_revision": {
+            "title": "Baseline Revision",
+            "type": "integer"
+          },
+          "schema_version": {
+            "const": "rpg-persona-v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/PersonaStateView"
+          }
+        },
+        "required": [
+          "schema_version",
+          "baseline_revision",
+          "baseline",
+          "state"
+        ],
+        "title": "PersonaResponse",
+        "type": "object"
+      },
+      "PersonaStateView": {
+        "properties": {
+          "active_goals": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Active Goals",
+            "type": "array"
+          },
+          "baseline_persona_id": {
+            "title": "Baseline Persona Id",
+            "type": "string"
+          },
+          "behavior_habits": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Behavior Habits",
+            "type": "array"
+          },
+          "change_log": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Change Log",
+            "type": "array"
+          },
+          "interests": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Interests",
+            "type": "array"
+          },
+          "self_narrative": {
+            "title": "Self Narrative",
+            "type": "string"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string"
+          },
+          "value_weights": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Value Weights",
+            "type": "object"
+          }
+        },
+        "required": [
+          "baseline_persona_id",
+          "self_narrative",
+          "behavior_habits",
+          "value_weights",
+          "interests",
+          "active_goals",
+          "change_log",
+          "updated_at"
+        ],
+        "title": "PersonaStateView",
+        "type": "object"
+      },
+      "PersonaStatusResponse": {
+        "properties": {
+          "configured": {
+            "title": "Configured",
+            "type": "boolean"
+          },
+          "is_default": {
+            "title": "Is Default",
+            "type": "boolean"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "revision": {
+            "title": "Revision",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "configured",
+          "revision",
+          "name",
+          "is_default"
+        ],
+        "title": "PersonaStatusResponse",
         "type": "object"
       },
       "PublicLocation": {
@@ -436,6 +815,72 @@
           "recent_context"
         ],
         "title": "RelationshipView",
+        "type": "object"
+      },
+      "SetupCompleteRequest": {
+        "properties": {},
+        "title": "SetupCompleteRequest",
+        "type": "object"
+      },
+      "SetupStatusResponse": {
+        "properties": {
+          "configured": {
+            "title": "Configured",
+            "type": "boolean"
+          },
+          "key_hint": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Key Hint"
+          },
+          "persona_configured": {
+            "title": "Persona Configured",
+            "type": "boolean"
+          },
+          "provider": {
+            "const": "deepseek",
+            "title": "Provider",
+            "type": "string"
+          },
+          "world_ready": {
+            "title": "World Ready",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "configured",
+          "provider",
+          "key_hint",
+          "persona_configured",
+          "world_ready"
+        ],
+        "title": "SetupStatusResponse",
+        "type": "object"
+      },
+      "SetupValidationResponse": {
+        "properties": {
+          "provider": {
+            "const": "deepseek",
+            "title": "Provider",
+            "type": "string"
+          },
+          "valid": {
+            "const": true,
+            "title": "Valid",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "valid",
+          "provider"
+        ],
+        "title": "SetupValidationResponse",
         "type": "object"
       },
       "TimelineItem": {
@@ -730,6 +1175,285 @@
         "summary": "Get Agent",
         "tags": [
           "world"
+        ]
+      }
+    },
+    "/api/persona": {
+      "get": {
+        "operationId": "getPersona",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonaResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get Persona",
+        "tags": [
+          "persona"
+        ]
+      }
+    },
+    "/api/persona/baseline": {
+      "put": {
+        "operationId": "replacePersonaBaseline",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonaBaselineInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonaResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Replace Persona Baseline",
+        "tags": [
+          "persona"
+        ]
+      }
+    },
+    "/api/persona/default": {
+      "post": {
+        "operationId": "useDefaultPersona",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonaResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Use Default Persona",
+        "tags": [
+          "persona"
+        ]
+      }
+    },
+    "/api/persona/status": {
+      "get": {
+        "operationId": "getPersonaStatus",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonaStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Persona Status",
+        "tags": [
+          "persona"
+        ]
+      }
+    },
+    "/api/setup/complete": {
+      "post": {
+        "operationId": "completeSetup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetupCompleteRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetupStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Complete Setup",
+        "tags": [
+          "setup"
+        ]
+      }
+    },
+    "/api/setup/deepseek/clear": {
+      "post": {
+        "operationId": "clearDeepSeekKey",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetupStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Clear Deepseek Key",
+        "tags": [
+          "setup"
+        ]
+      }
+    },
+    "/api/setup/deepseek/save": {
+      "post": {
+        "operationId": "saveDeepSeekKey",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeepSeekKeyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetupStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Save Deepseek Key",
+        "tags": [
+          "setup"
+        ]
+      }
+    },
+    "/api/setup/deepseek/validate": {
+      "post": {
+        "operationId": "validateDeepSeekKey",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeepSeekKeyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetupValidationResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Validate Deepseek Key",
+        "tags": [
+          "setup"
+        ]
+      }
+    },
+    "/api/setup/status": {
+      "get": {
+        "operationId": "getSetupStatus",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetupStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Setup Status",
+        "tags": [
+          "setup"
         ]
       }
     },

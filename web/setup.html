@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#071719">
+    <meta
+      name="description"
+      content="AI World 启动设置：配置 DeepSeek Key 后进入青禾镇。"
+    >
+    <title>AI World 启动设置</title>
+    <link rel="icon" href="/static/assets/placeholders/event.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/static/setup.css">
+  </head>
+  <body>
+    <main class="setup-shell">
+      <section class="setup-intro" aria-labelledby="setup-title">
+        <p class="eyebrow">AI WORLD · FIRST CONTACT</p>
+        <h1 id="setup-title">在进入青禾镇之前</h1>
+        <p class="lead">
+          这是一次本地/测试模式启动。你的 DeepSeek Key 只保存在本机服务端，
+          不会写入浏览器存储、网址、日志或页面截图。
+        </p>
+        <ol class="setup-steps">
+          <li><span>01</span> 配置 DeepSeek Key</li>
+          <li><span>02</span> 校验账户可用性</li>
+          <li><span>03</span> 选择默认人设并进入世界</li>
+        </ol>
+        <p class="mode-note">
+          当前连接未配置公网 HTTPS，因此只适合本机或受信任的测试环境。
+        </p>
+      </section>
+
+      <section class="setup-card" aria-labelledby="key-heading">
+        <div class="card-heading">
+          <div>
+            <p class="eyebrow">DEEPSEEK ACCESS</p>
+            <h2 id="key-heading">连接模型服务</h2>
+          </div>
+          <button
+            id="help-button"
+            class="help-button"
+            type="button"
+            aria-label="打开 DeepSeek Key 获取教程"
+          >?</button>
+        </div>
+
+        <div id="setup-status" class="status-box" role="status" aria-live="polite">
+          正在读取设置状态…
+        </div>
+
+        <form id="key-form" class="key-form">
+          <label for="deepseek-key">DeepSeek API Key</label>
+          <div class="key-row">
+            <input
+              id="deepseek-key"
+              name="api_key"
+              type="password"
+              minlength="12"
+              maxlength="256"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+              placeholder="sk-..."
+              required
+            >
+            <button id="validate-button" class="button secondary" type="button">
+              仅校验
+            </button>
+          </div>
+          <p class="field-hint">
+            提交后输入框会立即清空。页面只显示类似 <code>sk-...A1B2</code> 的掩码。
+          </p>
+          <button id="save-button" class="button primary" type="submit">
+            保存并继续
+          </button>
+        </form>
+
+        <div id="configured-panel" class="configured-panel" hidden>
+          <p id="configured-copy"></p>
+          <div class="configured-actions">
+            <button id="continue-button" class="button primary" type="button">
+              进入青禾镇
+            </button>
+            <button id="replace-button" class="button secondary" type="button">
+              替换 Key
+            </button>
+            <button id="clear-button" class="danger-button" type="button">
+              清除 Key
+            </button>
+          </div>
+        </div>
+
+        <section id="persona-panel" class="persona-panel" aria-labelledby="persona-heading" hidden>
+          <div class="persona-heading">
+            <div>
+              <p class="eyebrow">PERSONA BASELINE</p>
+              <h2 id="persona-heading">选择角色人设</h2>
+            </div>
+            <span id="persona-revision" class="persona-revision"></span>
+          </div>
+          <div id="persona-summary" class="persona-summary" hidden></div>
+          <p id="persona-status" class="persona-status" role="status" aria-live="polite">
+            请选择默认人设，或创建一个原创角色。
+          </p>
+          <div id="persona-actions" class="persona-actions">
+            <button id="default-persona-button" class="button primary" type="button">
+              使用默认人设
+            </button>
+            <button id="custom-persona-button" class="button secondary" type="button">
+              自定义人设
+            </button>
+            <button id="replace-persona-button" class="button secondary" type="button" hidden>
+              替换人设
+            </button>
+          </div>
+
+          <form id="persona-form" class="persona-form" hidden>
+            <div class="persona-grid two">
+              <label>
+                名字
+                <input id="persona-name" name="name" maxlength="24" required>
+              </label>
+              <label>
+                代词
+                <input id="persona-pronouns" name="pronouns" maxlength="8" required>
+              </label>
+            </div>
+            <label>
+              年龄（仅限成年人设）
+              <input id="persona-age" name="age" type="number" min="18" max="120" required>
+            </label>
+            <label>
+              外观
+              <textarea id="persona-appearance" name="appearance" rows="2" maxlength="500" required></textarea>
+            </label>
+            <label>
+              身份与世界位置
+              <textarea id="persona-identity" name="identity" rows="2" maxlength="500" required></textarea>
+            </label>
+            <label>
+              说话风格
+              <textarea id="persona-speech" name="speech_style" rows="2" maxlength="300" required></textarea>
+            </label>
+            <div class="persona-grid two">
+              <label>
+                性格特征（逗号分隔）
+                <input id="persona-traits" name="traits" required>
+              </label>
+              <label>
+                价值取向（逗号分隔）
+                <input id="persona-values" name="values" required>
+              </label>
+            </div>
+            <div class="persona-grid two">
+              <label>
+                兴趣（逗号分隔）
+                <input id="persona-interests" name="interests" required>
+              </label>
+              <label>
+                初始目标（逗号分隔）
+                <input id="persona-goals" name="initial_goals" required>
+              </label>
+            </div>
+            <label>
+              边界（逗号分隔）
+              <input id="persona-boundaries" name="boundaries" required>
+            </label>
+            <label>
+              与观察者的关系
+              <input id="persona-relationship" name="relationship_to_player" maxlength="300" required>
+            </label>
+            <p class="field-hint">
+              人设会影响长期行为与表达，但不会让角色无条件服从。替换基础人设会创建新
+              revision，并保留当前世界、关系、记忆和位置。
+            </p>
+            <div id="persona-form-status" class="status-box" role="status" aria-live="polite"></div>
+            <div class="configured-actions">
+              <button id="save-persona-button" class="button primary" type="submit">
+                保存自定义人设
+              </button>
+              <button id="cancel-persona-button" class="button secondary" type="button">
+                取消
+              </button>
+            </div>
+          </form>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="help-dialog" class="help-dialog" aria-labelledby="help-title">
+      <button id="help-close" class="dialog-close" type="button" aria-label="关闭教程">
+        关闭
+      </button>
+      <p class="eyebrow">GETTING STARTED</p>
+      <h2 id="help-title">获取 DeepSeek Key</h2>
+      <ol>
+        <li>打开 DeepSeek 开放平台并登录。</li>
+        <li>进入 API Key 管理页面，创建一个新的 Key。</li>
+        <li>确认账户余额和调用额度。</li>
+        <li>复制 Key，粘贴回启动页。</li>
+        <li>Key 会保存在本机服务端私有目录，不会公开。</li>
+      </ol>
+      <p>
+        常见错误：Key 无效、账户没有余额、网络超时或当前账户没有 API 权限。
+      </p>
+      <a
+        href="https://platform.deepseek.com/api_keys"
+        target="_blank"
+        rel="noopener noreferrer"
+      >打开 DeepSeek 开放平台</a>
+    </dialog>
+
+    <script src="/static/setup.js" defer></script>
+  </body>
+</html>
