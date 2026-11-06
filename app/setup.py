@@ -203,7 +203,7 @@ class DeepSeekSetupStore:
             )
             return self.status()
 
-    def complete(self, *, use_default_persona: bool = True) -> SetupStatus:
+    def complete(self, *, persona_configured: bool) -> SetupStatus:
         with self._file_lock():
             status = self.status()
             if not status.configured:
@@ -212,11 +212,15 @@ class DeepSeekSetupStore:
                     "请先保存有效的 DeepSeek Key",
                     status_code=409,
                 )
+            if not persona_configured:
+                raise SetupError(
+                    "persona_not_configured",
+                    "请先选择默认人设或保存自定义人设",
+                    status_code=409,
+                )
             state = self._read_state()
-            if use_default_persona:
-                state["persona_configured"] = True
-                state["persona_mode"] = "default"
-            state["world_ready"] = bool(state.get("persona_configured"))
+            state["persona_configured"] = True
+            state["world_ready"] = True
             state["completed_at"] = _utc_now()
             self._atomic_write(
                 self.state_path,

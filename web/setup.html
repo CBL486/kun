@@ -90,6 +90,101 @@
             </button>
           </div>
         </div>
+
+        <section id="persona-panel" class="persona-panel" aria-labelledby="persona-heading" hidden>
+          <div class="persona-heading">
+            <div>
+              <p class="eyebrow">PERSONA BASELINE</p>
+              <h2 id="persona-heading">选择角色人设</h2>
+            </div>
+            <span id="persona-revision" class="persona-revision"></span>
+          </div>
+          <div id="persona-summary" class="persona-summary" hidden></div>
+          <p id="persona-status" class="persona-status" role="status" aria-live="polite">
+            请选择默认人设，或创建一个原创角色。
+          </p>
+          <div id="persona-actions" class="persona-actions">
+            <button id="default-persona-button" class="button primary" type="button">
+              使用默认人设
+            </button>
+            <button id="custom-persona-button" class="button secondary" type="button">
+              自定义人设
+            </button>
+            <button id="replace-persona-button" class="button secondary" type="button" hidden>
+              替换人设
+            </button>
+          </div>
+
+          <form id="persona-form" class="persona-form" hidden>
+            <div class="persona-grid two">
+              <label>
+                名字
+                <input id="persona-name" name="name" maxlength="24" required>
+              </label>
+              <label>
+                代词
+                <input id="persona-pronouns" name="pronouns" maxlength="8" required>
+              </label>
+            </div>
+            <label>
+              年龄（仅限成年人设）
+              <input id="persona-age" name="age" type="number" min="18" max="120" required>
+            </label>
+            <label>
+              外观
+              <textarea id="persona-appearance" name="appearance" rows="2" maxlength="500" required></textarea>
+            </label>
+            <label>
+              身份与世界位置
+              <textarea id="persona-identity" name="identity" rows="2" maxlength="500" required></textarea>
+            </label>
+            <label>
+              说话风格
+              <textarea id="persona-speech" name="speech_style" rows="2" maxlength="300" required></textarea>
+            </label>
+            <div class="persona-grid two">
+              <label>
+                性格特征（逗号分隔）
+                <input id="persona-traits" name="traits" required>
+              </label>
+              <label>
+                价值取向（逗号分隔）
+                <input id="persona-values" name="values" required>
+              </label>
+            </div>
+            <div class="persona-grid two">
+              <label>
+                兴趣（逗号分隔）
+                <input id="persona-interests" name="interests" required>
+              </label>
+              <label>
+                初始目标（逗号分隔）
+                <input id="persona-goals" name="initial_goals" required>
+              </label>
+            </div>
+            <label>
+              边界（逗号分隔）
+              <input id="persona-boundaries" name="boundaries" required>
+            </label>
+            <label>
+              与观察者的关系
+              <input id="persona-relationship" name="relationship_to_player" maxlength="300" required>
+            </label>
+            <p class="field-hint">
+              人设会影响长期行为与表达，但不会让角色无条件服从。替换基础人设会创建新
+              revision，并保留当前世界、关系、记忆和位置。
+            </p>
+            <div id="persona-form-status" class="status-box" role="status" aria-live="polite"></div>
+            <div class="configured-actions">
+              <button id="save-persona-button" class="button primary" type="submit">
+                保存自定义人设
+              </button>
+              <button id="cancel-persona-button" class="button secondary" type="button">
+                取消
+              </button>
+            </div>
+          </form>
+        </section>
       </section>
     </main>
 

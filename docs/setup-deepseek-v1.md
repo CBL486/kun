@@ -12,7 +12,7 @@
   -> 输入 DeepSeek Key
   -> 可选“仅校验”
   -> 保存（服务端再校验一次）
-  -> 选择默认人设
+  -> 选择默认人设或填写自定义人设
   -> 进入青禾镇
 ```
 
@@ -30,7 +30,7 @@ POST /api/setup/deepseek/clear
 ```
 
 `validate` 不保存；`save` 先校验再原子写入。`complete` 在没有 Key 时返回
-`409 deepseek_not_configured`。
+`409 deepseek_not_configured`，没有人设时返回 `409 persona_not_configured`。
 
 稳定错误码：
 
@@ -88,7 +88,7 @@ docs/screenshots/r3-setup-mobile.png
 
 ## 6. 已知限制
 
-- R3 的“默认人设”是占位完成状态，R4 将保存实际 PersonaBaseline；
+- R4 已将占位完成状态替换为真实 PersonaBaseline；
 - R3 分支尚未与 R1 的观察者 Web 合并；
 - 生产反向代理必须额外拒绝外部访问 `/api/setup/*` 和 `/setup`，或由 A 配置
   管理员鉴权；

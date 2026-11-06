@@ -16,6 +16,7 @@ class Settings(BaseSettings):
     scheduler_database_url: str | None = None
     backup_directory: str | None = None
     setup_directory: str | None = None
+    persona_directory: str | None = None
     enforce_setup_acl: bool = True
     log_level: str = "INFO"
     llm_model: str = "deepseek-flash"

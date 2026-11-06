@@ -14,6 +14,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 body {
   min-height: 100vh;
   margin: 0;
@@ -234,6 +238,90 @@ button:disabled {
   gap: 10px;
 }
 
+.persona-panel {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.persona-heading {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.persona-heading h2 {
+  margin-bottom: 10px;
+}
+
+.persona-revision {
+  color: var(--accent);
+  font-family: Consolas, monospace;
+  font-size: 0.74rem;
+}
+
+.persona-summary {
+  margin: 12px 0 18px;
+  padding: 15px;
+  color: #dbe6df;
+  background: rgba(3, 12, 13, 0.58);
+  border-left: 2px solid var(--accent);
+  line-height: 1.7;
+}
+
+.persona-summary strong {
+  color: var(--accent-strong);
+}
+
+.persona-status {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.persona-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.persona-form {
+  display: grid;
+  gap: 14px;
+}
+
+.persona-form label {
+  display: grid;
+  gap: 7px;
+  color: #d9e2dc;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.persona-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.persona-grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.persona-form textarea {
+  min-width: 0;
+  padding: 12px 14px;
+  color: var(--ink);
+  background: #061315;
+  border: 1px solid rgba(180, 222, 212, 0.28);
+  font: inherit;
+  resize: vertical;
+}
+
+.persona-form .status-box {
+  margin: 0;
+}
+
 .help-dialog {
   width: min(620px, calc(100vw - 28px));
   padding: 30px;
@@ -283,6 +371,10 @@ button:disabled {
   }
 
   .key-row {
+    grid-template-columns: 1fr;
+  }
+
+  .persona-grid.two {
     grid-template-columns: 1fr;
   }
 }

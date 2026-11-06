@@ -28,6 +28,7 @@ from .api_models import (
     WorldInfo,
     WorldResponse,
 )
+from .persona import PersonaStore
 
 
 class PublicProjectionError(RuntimeError):
@@ -44,11 +45,13 @@ class LocalWorldStore:
         seed: int = SEED,
         reviewer: MockReviewer | None = None,
         message_store: PersistentMessageQueue | None = None,
+        persona_store: PersonaStore | None = None,
     ):
         self.seed = seed
         self.llm = MockLLM(seed)
         self.reviewer = reviewer or MockReviewer()
         self.message_store = message_store
+        self.persona_store = persona_store
         self._lock = threading.RLock()
         self._public_messages: list[dict[str, Any]] = []
         self._message_counter = 0
@@ -116,6 +119,7 @@ class LocalWorldStore:
             )
         with self._lock:
             character = self.state["characters"][MAIN_ID]
+            persona = self._persona_baseline()
             goal = character["goals"]["goal_finish_feature"]
             relationships = []
             for npc_id in self.state["npc_ids"]:
@@ -135,9 +139,9 @@ class LocalWorldStore:
                 schema_version="rpg-public-agent-v1",
                 agent=AgentView(
                     person_id=MAIN_ID,
-                    name=character["display_name"],
-                    age=character["age"],
-                    identity=character["identity"],
+                    name=persona["name"] if persona else character["display_name"],
+                    age=persona["age"] if persona else character["age"],
+                    identity=persona["identity"] if persona else character["identity"],
                     location_id=character["location_id"],
                     location_name=LOCATIONS[character["location_id"]]["name"],
                     mood_label=self._mood_label(character),
@@ -327,11 +331,12 @@ class LocalWorldStore:
             else self.state["npcs"][person_id]
         )
         location_id = source["location_id"]
+        persona = self._persona_baseline() if person_id == MAIN_ID else None
         return PublicPerson(
             person_id=person_id,
-            name=source["display_name"],
+            name=persona["name"] if persona else source["display_name"],
             role="主智能体" if person_id == MAIN_ID else "小镇居民",
-            identity=source["identity"],
+            identity=persona["identity"] if persona else source["identity"],
             location_id=location_id,
             location_name=LOCATIONS[location_id]["name"]
             if location_id in LOCATIONS
@@ -407,9 +412,18 @@ class LocalWorldStore:
 
     def _display_name(self, person_id: str) -> str:
         if person_id == MAIN_ID:
+            persona = self._persona_baseline()
+            if persona:
+                return persona["name"]
             return self.state["characters"][MAIN_ID]["display_name"]
         npc = self.state["npcs"].get(person_id)
         return npc["display_name"] if npc else "小镇居民"
+
+    def _persona_baseline(self) -> dict[str, Any] | None:
+        if not self.persona_store:
+            return None
+        bundle = self.persona_store.get()
+        return bundle["baseline"] if bundle else None
 
     def _known_person(self, person_id: str) -> bool:
         return person_id == MAIN_ID or person_id in self.state["npcs"]

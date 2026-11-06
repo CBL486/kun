@@ -24,6 +24,10 @@ OpenAPI：`3.1.0`
 | `POST /api/setup/deepseek/save` | `saveDeepSeekKey` | 校验并保存私有 Key |
 | `POST /api/setup/complete` | `completeSetup` | 完成默认人设启动 |
 | `POST /api/setup/deepseek/clear` | `clearDeepSeekKey` | 清除 Key，不清空世界 |
+| `GET /api/persona/status` | `getPersonaStatus` | 读取人设配置状态 |
+| `GET /api/persona` | `getPersona` | 读取基线与当前状态摘要 |
+| `POST /api/persona/default` | `useDefaultPersona` | 使用默认原创人设 |
+| `PUT /api/persona/baseline` | `replacePersonaBaseline` | 创建新的自定义基础人设 |
 
 ## 2. 响应版本
 
@@ -144,6 +148,12 @@ world_ready
 ```
 
 Key 只通过请求体提交一次。响应、日志、浏览器存储和 URL 不包含完整 Key。
+
+### Persona
+
+玩家只可写 `PersonaBaseline`，不能直接修改 `PersonaState`。每次替换基础人设都会
+创建新的 `baseline_revision`；默认保留当前世界、关系、记忆和位置。响应包含玩家
+可编辑的基础字段、当前自我叙事、习惯、兴趣和 change log，不包含系统提示词。
 
 ## 4. 禁止字段
 

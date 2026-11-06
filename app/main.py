@@ -24,6 +24,11 @@ from app.api_models import (
     ChatResponse,
     DeepSeekKeyRequest,
     HealthResponse,
+    PersonaBaselineInput,
+    PersonaBaselineView,
+    PersonaResponse,
+    PersonaStateView,
+    PersonaStatusResponse,
     MemoryResponse,
     ReadyResponse,
     SetupCompleteRequest,
@@ -35,6 +40,7 @@ from app.api_models import (
 from app.db import database_ready
 from app.local_state import LocalWorldStore, PublicProjectionError
 from app.metrics import MetricsRegistry
+from app.persona import PersonaError, PersonaStore
 from app.settings import settings
 from app.setup import DeepSeekSetupStore, DeepSeekValidator, SetupError
 from rpg_orm.migrations import create_database_engine
@@ -54,6 +60,7 @@ def create_app(
     readiness_check: Callable[[], Awaitable[bool]] | None = None,
     setup_store: DeepSeekSetupStore | None = None,
     setup_validator: DeepSeekValidator | None = None,
+    persona_store: PersonaStore | None = None,
     setup_gate: bool = False,
 ) -> FastAPI:
     if store is None and message_store is None:
@@ -61,9 +68,13 @@ def create_app(
             message_store = PersistentMessageQueue(
                 create_database_engine(settings.scheduler_database_url)
             )
-    local_world = store or LocalWorldStore(message_store=message_store)
     local_setup = setup_store or DeepSeekSetupStore.from_settings(settings)
     local_validator = setup_validator or DeepSeekValidator()
+    local_persona = persona_store or PersonaStore.from_settings(settings)
+    local_world = store or LocalWorldStore(
+        message_store=message_store,
+        persona_store=local_persona,
+    )
     application = FastAPI(
         title=APP_NAME,
         version=APP_VERSION,
@@ -78,6 +89,22 @@ def create_app(
     application.state.metrics = MetricsRegistry()
     application.state.setup_store = local_setup
     application.state.setup_validator = local_validator
+    application.state.persona_store = local_persona
+
+    def combined_setup_status() -> SetupStatusResponse:
+        setup_status = local_setup.status()
+        persona_status = local_persona.status()
+        return SetupStatusResponse(
+            configured=setup_status.configured,
+            provider=setup_status.provider,
+            key_hint=setup_status.key_hint,
+            persona_configured=persona_status["configured"],
+            world_ready=bool(
+                setup_status.configured
+                and setup_status.world_ready
+                and persona_status["configured"]
+            ),
+        )
 
     @application.middleware("http")
     async def public_api_headers(request: Request, call_next):
@@ -182,6 +209,18 @@ def create_app(
             message=str(error),
         )
 
+    @application.exception_handler(PersonaError)
+    async def persona_error_handler(
+        request: Request,
+        error: PersonaError,
+    ) -> JSONResponse:
+        return _error_response(
+            request,
+            status_code=error.status_code,
+            code=error.code,
+            message=str(error),
+        )
+
     @application.exception_handler(HTTPException)
     async def http_error_handler(
         request: Request,
@@ -258,7 +297,7 @@ def create_app(
         tags=["setup"],
     )
     async def get_setup_status() -> SetupStatusResponse:
-        return SetupStatusResponse(**local_setup.status().to_dict())
+        return combined_setup_status()
 
     @application.post(
         "/api/setup/deepseek/validate",
@@ -288,7 +327,13 @@ def create_app(
             body.api_key.get_secret_value(),
             local_validator,
         )
-        return SetupStatusResponse(**status.to_dict())
+        return SetupStatusResponse(
+            configured=status.configured,
+            provider=status.provider,
+            key_hint=status.key_hint,
+            persona_configured=local_persona.status()["configured"],
+            world_ready=False,
+        )
 
     @application.post(
         "/api/setup/complete",
@@ -299,10 +344,10 @@ def create_app(
     async def complete_setup(
         body: SetupCompleteRequest,
     ) -> SetupStatusResponse:
-        status = local_setup.complete(
-            use_default_persona=body.use_default_persona,
+        local_setup.complete(
+            persona_configured=local_persona.status()["configured"],
         )
-        return SetupStatusResponse(**status.to_dict())
+        return combined_setup_status()
 
     @application.post(
         "/api/setup/deepseek/clear",
@@ -311,7 +356,49 @@ def create_app(
         tags=["setup"],
     )
     async def clear_deepseek_key() -> SetupStatusResponse:
-        return SetupStatusResponse(**local_setup.clear_key().to_dict())
+        local_setup.clear_key()
+        return combined_setup_status()
+
+    @application.get(
+        "/api/persona/status",
+        response_model=PersonaStatusResponse,
+        operation_id="getPersonaStatus",
+        tags=["persona"],
+    )
+    async def get_persona_status() -> PersonaStatusResponse:
+        return PersonaStatusResponse(**local_persona.status())
+
+    @application.get(
+        "/api/persona",
+        response_model=PersonaResponse,
+        operation_id="getPersona",
+        tags=["persona"],
+        responses={404: {"model": APIErrorResponse}},
+    )
+    async def get_persona() -> PersonaResponse:
+        return _persona_response(local_persona)
+
+    @application.post(
+        "/api/persona/default",
+        response_model=PersonaResponse,
+        operation_id="useDefaultPersona",
+        tags=["persona"],
+    )
+    async def use_default_persona() -> PersonaResponse:
+        local_persona.use_default()
+        return _persona_response(local_persona)
+
+    @application.put(
+        "/api/persona/baseline",
+        response_model=PersonaResponse,
+        operation_id="replacePersonaBaseline",
+        tags=["persona"],
+    )
+    async def replace_persona_baseline(
+        body: PersonaBaselineInput,
+    ) -> PersonaResponse:
+        local_persona.save_custom(body.model_dump())
+        return _persona_response(local_persona)
 
     @application.get(
         "/timeline",
@@ -359,7 +446,7 @@ def create_app(
 
         @application.get("/", include_in_schema=False)
         async def web_index() -> FileResponse:
-            if setup_gate and not local_setup.status().world_ready:
+            if setup_gate and not combined_setup_status().world_ready:
                 return FileResponse(WEB_ROOT / "setup.html")
             return FileResponse(WEB_ROOT / "index.html")
 
@@ -400,3 +487,19 @@ def _error_response(
 
 
 app = create_app(setup_gate=True)
+
+
+def _persona_response(persona_store: PersonaStore) -> PersonaResponse:
+    bundle = persona_store.get()
+    if not bundle:
+        raise PersonaError(
+            "persona_not_configured",
+            "尚未配置角色人设",
+            status_code=404,
+        )
+    return PersonaResponse(
+        schema_version="rpg-persona-v1",
+        baseline_revision=bundle["baseline_revision"],
+        baseline=PersonaBaselineView(**bundle["baseline"]),
+        state=PersonaStateView(**bundle["state"]),
+    )

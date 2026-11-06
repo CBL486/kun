@@ -101,10 +101,16 @@ POST /api/setup/deepseek/validate
 POST /api/setup/deepseek/save
 POST /api/setup/complete
 POST /api/setup/deepseek/clear
+GET  /api/persona/status
+GET  /api/persona
+POST /api/persona/default
+PUT  /api/persona/baseline
 ```
 
 首次进入时 `/` 返回启动设置页。Key 只写入服务端私有目录，浏览器不保存完整 Key。
-详细契约见 `docs/setup-deepseek-v1.md`。
+默认或自定义 PersonaBaseline 保存在服务端独立目录，人物基础 revision 更新不会
+重置世界、关系、记忆或位置。详细契约见 `docs/setup-deepseek-v1.md` 和
+`docs/persona-v1.md`。
 
 公开投影字段见 `docs/openapi-projection.md`，静态契约见 `docs/openapi-v1.json`。B6 只使用本地冻结场景和 mock，不连接生产环境。
 

@@ -9,6 +9,7 @@ from fastapi.testclient import TestClient
 
 from app.local_state import LocalWorldStore
 from app.main import create_app
+from app.persona import PersonaStore
 from app.setup import DeepSeekSetupStore, DeepSeekValidator, SetupError
 
 TEST_KEY = "sk-test-r3-secret-ABCD"
@@ -68,6 +69,7 @@ def make_client(
             readiness_check=ready_true,
             setup_store=setup_store,
             setup_validator=validator,
+            persona_store=PersonaStore(setup_store.root.parent / "persona"),
             setup_gate=True,
         )
     )
@@ -79,7 +81,7 @@ def test_setup_store_persists_private_key_and_mask(tmp_path) -> None:
 
     first = store.save_key(TEST_KEY, validator)
     reloaded = make_store(tmp_path).status()
-    completed = store.complete()
+    completed = store.complete(persona_configured=True)
 
     assert validator.keys == [TEST_KEY]
     assert first.configured is True
@@ -140,7 +142,16 @@ def test_setup_flow_gates_root_without_echoing_key(tmp_path) -> None:
 
         completed = client.post(
             "/api/setup/complete",
-            json={"use_default_persona": True},
+            json={},
+        )
+        assert completed.status_code == 409
+        assert completed.json()["error"]["code"] == "persona_not_configured"
+
+        persona = client.post("/api/persona/default", json={})
+        assert persona.status_code == 200
+        completed = client.post(
+            "/api/setup/complete",
+            json={},
         )
         assert completed.status_code == 200
         assert completed.json()["world_ready"] is True
@@ -220,7 +231,7 @@ def test_setup_lock_busy_is_typed(tmp_path) -> None:
     lock_path.write_text("busy", encoding="utf-8")
     try:
         with pytest.raises(SetupError) as caught:
-            store.complete()
+            store.complete(persona_configured=True)
         assert caught.value.code == "setup_lock_busy"
     finally:
         lock_path.unlink(missing_ok=True)
