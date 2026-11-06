@@ -22,6 +22,10 @@ New-Item -ItemType Directory -Force -Path $logDirectory | Out-Null
 Set-Location $root
 $env:AIWORLD_ROOT = $root
 
+if ($databaseUrl -match "@([^:/]+):([0-9]+)/") {
+    Wait-AIWorldTcpPort -HostName $matches[1] -Port ([int]$matches[2])
+}
+
 $serviceErrorActionPreference = $ErrorActionPreference
 $ErrorActionPreference = "Continue"
 & $PythonPath (Join-Path $PSScriptRoot "run_module.py") rpg_scheduler run `

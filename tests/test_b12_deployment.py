@@ -163,10 +163,13 @@ def test_windows_service_scripts_do_not_stop_on_native_stderr() -> None:
 
 
 def test_windows_service_tasks_wait_for_database_startup() -> None:
-    register = (
-        ROOT / "deploy" / "windows" / "Register-AIWorldTasks.ps1"
-    ).read_text(encoding="utf-8")
-    assert "-AtStartup -RandomDelay" in register
+    windows = ROOT / "deploy" / "windows"
+    common = (windows / "AIWorld.Common.ps1").read_text(encoding="utf-8")
+    register = (windows / "Register-AIWorldTasks.ps1").read_text(encoding="utf-8")
+    assert "function Wait-AIWorldTcpPort" in common
+    for name in ("Start-AIWorldApi.ps1", "Start-AIWorldScheduler.ps1"):
+        script = (windows / name).read_text(encoding="utf-8")
+        assert "Wait-AIWorldTcpPort" in script
     assert "-StartWhenAvailable" in register
 
 

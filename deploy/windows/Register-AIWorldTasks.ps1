@@ -98,7 +98,7 @@ $monitorAction = New-ScheduledTaskAction -Execute "powershell.exe" `
         $logArguments
     ) -join " ")
 
-$startup = New-ScheduledTaskTrigger -AtStartup -RandomDelay (New-TimeSpan -Seconds 45)
+$startup = New-ScheduledTaskTrigger -AtStartup
 $monitorTrigger = New-ScheduledTaskTrigger -Once `
     -At (Get-Date).AddMinutes(1) `
     -RepetitionInterval (New-TimeSpan -Minutes 5) `
