@@ -162,6 +162,17 @@ def test_windows_service_scripts_do_not_stop_on_native_stderr() -> None:
         assert "$serviceExitCode = $LASTEXITCODE" in script
 
 
+def test_health_check_uses_release_module_runner_for_scheduler() -> None:
+    script = (ROOT / "deploy" / "windows" / "health-check.ps1").read_text(
+        encoding="utf-8"
+    )
+    native_call = script.index("& $PythonPath")
+    continue_switch = script.index('$ErrorActionPreference = "Continue"')
+    assert continue_switch < native_call
+    assert '"run_module.py"' in script
+    assert "$schedulerExitCode = $LASTEXITCODE" in script
+
+
 def test_server_extra_declares_async_and_sync_postgres_drivers() -> None:
     payload = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
     server = payload["project"]["optional-dependencies"]["server"]
@@ -175,6 +186,7 @@ def test_windows_deployment_uses_server_powershell_and_module_runner() -> None:
         "Start-AIWorldApi.ps1",
         "Start-AIWorldScheduler.ps1",
         "Invoke-AIWorldBackup.ps1",
+        "health-check.ps1",
     ):
         assert "run_module.py" in (windows / name).read_text(encoding="utf-8")
     register = (windows / "Register-AIWorldTasks.ps1").read_text(encoding="utf-8")

@@ -43,9 +43,14 @@ try {
 
 if ($SchedulerDatabaseUrl) {
     try {
-        $schedulerJson = & $PythonPath -m rpg_scheduler status `
+        $schedulerErrorActionPreference = $ErrorActionPreference
+        $ErrorActionPreference = "Continue"
+        $schedulerJson = & $PythonPath (Join-Path $PSScriptRoot "run_module.py") `
+            rpg_scheduler status `
             --url $SchedulerDatabaseUrl
-        if ($LASTEXITCODE -ne 0) {
+        $schedulerExitCode = $LASTEXITCODE
+        $ErrorActionPreference = $schedulerErrorActionPreference
+        if ($schedulerExitCode -ne 0) {
             throw "scheduler status command failed"
         }
         $result.scheduler_checked = $true
