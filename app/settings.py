@@ -20,6 +20,8 @@ class Settings(BaseSettings):
     persona_directory: str | None = None
     world_clock_directory: str | None = None
     world_tick_minutes: int = 10
+    media_daily_limit: int = 2
+    media_token_budget: int = 600
     enforce_setup_acl: bool = True
     log_level: str = "INFO"
     llm_model: str = "deepseek-flash"

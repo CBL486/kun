@@ -1,0 +1,36 @@
+{
+  "schema_version": "aiworld-r8-evidence-v1",
+  "network_mode": "fixture",
+  "first": {
+    "observation_id": "media_0cc3f522672e471b",
+    "status": "reviewed",
+    "summary": "我看到的是一段关于“公开视频：记忆与告别”的公开视频。它让我想到，理解一段表达不只在于知道内容，也在于体会它为什么被说出来。",
+    "emotional_valence": -0.1,
+    "memory_event_id": "evt_c67a57f45b70a356",
+    "blocked": false,
+    "replayed": false
+  },
+  "replay": {
+    "observation_id": "media_0cc3f522672e471b",
+    "status": "reviewed",
+    "summary": "我看到的是一段关于“公开视频：记忆与告别”的公开视频。它让我想到，理解一段表达不只在于知道内容，也在于体会它为什么被说出来。",
+    "emotional_valence": -0.1,
+    "memory_event_id": "evt_c67a57f45b70a356",
+    "blocked": false,
+    "replayed": true
+  },
+  "hot": {
+    "observation_id": "media_83c9af5ccdd25f56",
+    "status": "reviewed",
+    "summary": "我看到的是一段关于“公开视频：记忆与告别”的公开视频。它让我想到，理解一段表达不只在于知道内容，也在于体会它为什么被说出来。",
+    "emotional_valence": -0.1,
+    "memory_event_id": "evt_16f678211c7841e4",
+    "blocked": false,
+    "replayed": false
+  },
+  "event": {
+    "visibility": "private",
+    "source": "media",
+    "importance": 0.3
+  }
+}

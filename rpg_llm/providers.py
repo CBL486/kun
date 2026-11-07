@@ -57,6 +57,11 @@ class MockProvider:
                 "parameters": {},
                 "confidence": 0.7,
             }
+        elif request.template_id == "media_observation":
+            text = (
+                "这个公开视频让我想到，表达背后往往还有没有被说出的情绪。"
+            )
+            structured = None
         else:
             text = (
                 "留言已收下，会留到下一个合法时段再考虑回应。"

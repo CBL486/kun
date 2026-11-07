@@ -27,6 +27,8 @@ OpenAPI：`3.1.0`
 | `GET /api/persona` | `getPersona` | 读取基线与当前状态摘要 |
 | `POST /api/persona/default` | `useDefaultPersona` | 使用默认原创人设 |
 | `PUT /api/persona/baseline` | `replacePersonaBaseline` | 创建新的自定义基础人设 |
+| `POST /api/media/observe` | `observePublicMedia` | 观察用户提供的公开视频链接 |
+| `POST /api/media/bilibili/hot` | `observeBilibiliHot` | 从B站公开热门列表选择新视频 |
 
 ## 2. 响应版本
 
@@ -155,6 +157,12 @@ Key 只通过请求体提交一次。响应、日志、浏览器存储和 URL �
 玩家只可写 `PersonaBaseline`，不能直接修改 `PersonaState`。每次替换基础人设都会
 创建新的 `baseline_revision`；默认保留当前世界、关系、记忆和位置。响应包含玩家
 可编辑的基础字段、当前自我叙事、习惯、兴趣和 change log，不包含系统提示词。
+
+### 媒体观察
+
+只接受 `https` 的 B站/抖音公开视频链接。重定向后的最终域名必须仍在白名单内。
+观察结果只保存公开标题/简介摘要和一条私有低强度事件；不保存完整视频、登录
+Cookie、账号信息或互动动作。审核失败不写记忆。
 
 ## 4. 禁止字段
 

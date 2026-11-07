@@ -24,6 +24,9 @@ from app.api_models import (
     ChatResponse,
     DeepSeekKeyRequest,
     HealthResponse,
+    MediaHotRequest,
+    MediaObservationResponse,
+    MediaObserveRequest,
     PersonaBaselineInput,
     PersonaBaselineView,
     PersonaResponse,
@@ -38,6 +41,11 @@ from app.api_models import (
 )
 from app.db import database_ready
 from app.local_state import LocalWorldStore, PublicProjectionError
+from app.media_observer import (
+    GatewayMediaSummarizer,
+    MediaObservationError,
+    MediaObservationService,
+)
 from app.metrics import MetricsRegistry
 from app.persona import DatabasePersonaStore, PersonaError, PersonaStore
 from app.school import SchoolAutonomyService
@@ -45,6 +53,7 @@ from app.settings import settings
 from app.setup import DeepSeekSetupStore, DeepSeekValidator, SetupError
 from app.self_awareness import SelfAwarenessService
 from app.world_clock import WorldClockStore
+from rpg_llm.runtime import build_gateway
 from rpg_orm.migrations import create_database_engine
 from rpg_orm.product_repository import ProductRepository
 from rpg_scheduler import PersistentMessageQueue, SchedulerRepository
@@ -65,6 +74,7 @@ def create_app(
     setup_validator: DeepSeekValidator | None = None,
     persona_store: PersonaStore | None = None,
     setup_gate: bool = False,
+    media_service: MediaObservationService | None = None,
 ) -> FastAPI:
     if store is None and message_store is None:
         if settings.scheduler_database_url:
@@ -101,6 +111,18 @@ def create_app(
             local_persona.repository,
         )
         local_school = SchoolAutonomyService(local_persona.repository)
+    if media_service is not None:
+        local_media = media_service
+    elif isinstance(local_persona, DatabasePersonaStore):
+        gateway, _ = build_gateway(local_persona.repository.engine)
+        local_media = MediaObservationService(
+            local_persona.repository,
+            summarizer=GatewayMediaSummarizer(gateway),
+            daily_limit=settings.media_daily_limit,
+            token_budget=settings.media_token_budget,
+        )
+    else:
+        local_media = None
     local_world = store or LocalWorldStore(
         message_store=message_store,
         persona_store=local_persona,
@@ -125,6 +147,7 @@ def create_app(
     application.state.persona_store = local_persona
     application.state.self_awareness = local_self_awareness
     application.state.school_autonomy = local_school
+    application.state.media_observation = local_media
 
     def combined_setup_status() -> SetupStatusResponse:
         setup_status = local_setup.status()
@@ -145,7 +168,14 @@ def create_app(
     async def public_api_headers(request: Request, call_next):
         request.state.request_id = str(uuid.uuid4())
         started = time.perf_counter()
-        protected_paths = {"/world", "/agent", "/timeline", "/chat"}
+        protected_paths = {
+            "/world",
+            "/agent",
+            "/timeline",
+            "/chat",
+            "/api/media/observe",
+            "/api/media/bilibili/hot",
+        }
         path = request.url.path.rstrip("/") or "/"
         if setup_gate and path in protected_paths:
             setup_status = combined_setup_status()
@@ -271,6 +301,27 @@ def create_app(
         return _error_response(
             request,
             status_code=error.status_code,
+            code=error.code,
+            message=str(error),
+        )
+
+    @application.exception_handler(MediaObservationError)
+    async def media_error_handler(
+        request: Request,
+        error: MediaObservationError,
+    ) -> JSONResponse:
+        status_code = {
+            "media_daily_limit": 429,
+            "media_network_error": 503,
+            "media_hot_unavailable": 503,
+            "unsupported_media_url": 422,
+            "unsupported_media_provider": 422,
+            "media_access_denied": 422,
+            "media_unavailable": 503,
+        }.get(error.code, 502)
+        return _error_response(
+            request,
+            status_code=status_code,
             code=error.code,
             message=str(error),
         )
@@ -453,6 +504,45 @@ def create_app(
     ) -> PersonaResponse:
         local_persona.save_custom(body.model_dump())
         return _persona_response(local_persona)
+
+    @application.post(
+        "/api/media/observe",
+        response_model=MediaObservationResponse,
+        operation_id="observePublicMedia",
+        tags=["media"],
+    )
+    async def observe_public_media(
+        body: MediaObserveRequest,
+    ) -> MediaObservationResponse:
+        if local_media is None:
+            raise MediaObservationError(
+                "media_unavailable",
+                "媒体观察服务尚未配置",
+            )
+        return MediaObservationResponse(
+            **local_media.observe(
+                provider=body.provider,
+                url=body.url,
+            )
+        )
+
+    @application.post(
+        "/api/media/bilibili/hot",
+        response_model=MediaObservationResponse,
+        operation_id="observeBilibiliHot",
+        tags=["media"],
+    )
+    async def observe_bilibili_hot(
+        body: MediaHotRequest,
+    ) -> MediaObservationResponse:
+        if local_media is None:
+            raise MediaObservationError(
+                "media_unavailable",
+                "媒体观察服务尚未配置",
+            )
+        return MediaObservationResponse(
+            **local_media.observe_bilibili_hot(limit=body.limit)
+        )
 
     @application.get(
         "/timeline",
