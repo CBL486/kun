@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from sqlalchemy import Engine, select
+from sqlalchemy import Engine, func, select
 from sqlalchemy.orm import Session
 
 from rpg_sim.ids import stable_id
@@ -16,6 +16,7 @@ from rpg_storage.errors import StorageError
 from .migrations import migrate
 from .models import (
     EmotionStateRow,
+    MediaObservationRow,
     MemoryEventRow,
     PersonaBaselineRow,
     PersonaChangeLogRow,
@@ -74,6 +75,11 @@ class ProductRepository:
             session.add(row)
             session.flush()
             return self._event_dict(row)
+
+    def get_memory_event(self, event_id: str) -> dict[str, Any] | None:
+        with Session(self.engine) as session:
+            row = session.get(MemoryEventRow, event_id)
+            return self._event_dict(row) if row else None
 
     def apply_relationship(
         self,
@@ -455,6 +461,105 @@ class ProductRepository:
                 "credential_id": credential_id,
             }
 
+    def get_media_observation(
+        self,
+        *,
+        world_id: str,
+        url_hash: str,
+    ) -> dict[str, Any] | None:
+        with Session(self.engine) as session:
+            row = session.scalar(
+                select(MediaObservationRow).where(
+                    MediaObservationRow.world_id == world_id,
+                    MediaObservationRow.url_hash == url_hash,
+                )
+            )
+            return self._media_dict(row) if row else None
+
+    def count_media_observations_on_date(
+        self,
+        *,
+        world_id: str,
+        start_at: str,
+        end_at: str,
+    ) -> int:
+        with Session(self.engine) as session:
+            return int(
+                session.scalar(
+                    select(func.count())
+                    .select_from(MediaObservationRow)
+                    .where(
+                        MediaObservationRow.world_id == world_id,
+                        MediaObservationRow.created_at >= _datetime(start_at),
+                        MediaObservationRow.created_at < _datetime(end_at),
+                    )
+                )
+                or 0
+            )
+
+    def create_media_observation(
+        self,
+        *,
+        observation_id: str,
+        world_id: str,
+        character_id: str,
+        provider: str,
+        url_hash: str,
+        status: str,
+        summary: str,
+        emotional_valence: float,
+        created_at: str,
+        memory_event_id: str | None = None,
+    ) -> dict[str, Any]:
+        with Session(self.engine) as session, session.begin():
+            existing = session.scalar(
+                select(MediaObservationRow).where(
+                    MediaObservationRow.world_id == world_id,
+                    MediaObservationRow.url_hash == url_hash,
+                )
+            )
+            if existing:
+                return self._media_dict(existing)
+            row = MediaObservationRow(
+                observation_id=observation_id,
+                world_id=world_id,
+                character_id=character_id,
+                provider=provider,
+                url_hash=url_hash,
+                status=status,
+                summary=summary,
+                emotional_valence=emotional_valence,
+                memory_event_id=memory_event_id,
+                created_at=_datetime(created_at),
+            )
+            session.add(row)
+            session.flush()
+            return self._media_dict(row)
+
+    def update_media_observation(
+        self,
+        *,
+        observation_id: str,
+        status: str,
+        summary: str,
+        emotional_valence: float,
+        memory_event_id: str | None = None,
+    ) -> dict[str, Any]:
+        with Session(self.engine) as session, session.begin():
+            row = session.get(MediaObservationRow, observation_id)
+            if row is None:
+                raise StorageError(
+                    "media_observation_unknown",
+                    "媒体观察记录不存在",
+                )
+            row.status = status
+            row.summary = summary
+            row.emotional_valence = emotional_valence
+            if memory_event_id is not None:
+                row.memory_event_id = memory_event_id
+            session.flush()
+            return self._media_dict(row)
+
     def put_world_clock(
         self,
         *,
@@ -619,6 +724,21 @@ class ProductRepository:
             "compressed_ticks": row.compressed_ticks,
             "last_summary": row.last_summary,
             "updated_at": _iso(row.updated_at),
+        }
+
+    @staticmethod
+    def _media_dict(row: MediaObservationRow) -> dict[str, Any]:
+        return {
+            "observation_id": row.observation_id,
+            "world_id": row.world_id,
+            "character_id": row.character_id,
+            "provider": row.provider,
+            "url_hash": row.url_hash,
+            "status": row.status,
+            "summary": row.summary,
+            "emotional_valence": row.emotional_valence,
+            "memory_event_id": row.memory_event_id,
+            "created_at": _iso(row.created_at),
         }
 
 

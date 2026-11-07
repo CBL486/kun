@@ -185,6 +185,25 @@ class SetupValidationResponse(BaseModel):
     provider: Literal["deepseek"]
 
 
+class MediaObserveRequest(BaseModel):
+    provider: Literal["bilibili", "douyin"]
+    url: str = Field(min_length=12, max_length=2_048)
+
+
+class MediaHotRequest(BaseModel):
+    limit: int = Field(default=10, ge=1, le=20)
+
+
+class MediaObservationResponse(BaseModel):
+    observation_id: str
+    status: Literal["pending", "reviewing", "reviewed", "blocked", "failed"]
+    summary: str
+    emotional_valence: float
+    memory_event_id: str | None
+    blocked: bool
+    replayed: bool
+
+
 class PersonaBaselineInput(BaseModel):
     name: str = Field(min_length=1, max_length=24)
     pronouns: str = Field(min_length=1, max_length=8)

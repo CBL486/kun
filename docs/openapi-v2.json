@@ -316,6 +316,100 @@
         "title": "HealthResponse",
         "type": "object"
       },
+      "MediaHotRequest": {
+        "properties": {
+          "limit": {
+            "default": 10,
+            "maximum": 20.0,
+            "minimum": 1.0,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "title": "MediaHotRequest",
+        "type": "object"
+      },
+      "MediaObservationResponse": {
+        "properties": {
+          "blocked": {
+            "title": "Blocked",
+            "type": "boolean"
+          },
+          "emotional_valence": {
+            "title": "Emotional Valence",
+            "type": "number"
+          },
+          "memory_event_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Memory Event Id"
+          },
+          "observation_id": {
+            "title": "Observation Id",
+            "type": "string"
+          },
+          "replayed": {
+            "title": "Replayed",
+            "type": "boolean"
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "reviewing",
+              "reviewed",
+              "blocked",
+              "failed"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "summary": {
+            "title": "Summary",
+            "type": "string"
+          }
+        },
+        "required": [
+          "observation_id",
+          "status",
+          "summary",
+          "emotional_valence",
+          "memory_event_id",
+          "blocked",
+          "replayed"
+        ],
+        "title": "MediaObservationResponse",
+        "type": "object"
+      },
+      "MediaObserveRequest": {
+        "properties": {
+          "provider": {
+            "enum": [
+              "bilibili",
+              "douyin"
+            ],
+            "title": "Provider",
+            "type": "string"
+          },
+          "url": {
+            "maxLength": 2048,
+            "minLength": 12,
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "provider",
+          "url"
+        ],
+        "title": "MediaObserveRequest",
+        "type": "object"
+      },
       "PersonaBaselineInput": {
         "properties": {
           "age": {
@@ -1175,6 +1269,88 @@
         "summary": "Get Agent",
         "tags": [
           "world"
+        ]
+      }
+    },
+    "/api/media/bilibili/hot": {
+      "post": {
+        "operationId": "observeBilibiliHot",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MediaHotRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MediaObservationResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Observe Bilibili Hot",
+        "tags": [
+          "media"
+        ]
+      }
+    },
+    "/api/media/observe": {
+      "post": {
+        "operationId": "observePublicMedia",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MediaObserveRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MediaObservationResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Observe Public Media",
+        "tags": [
+          "media"
         ]
       }
     },

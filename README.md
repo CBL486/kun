@@ -162,6 +162,14 @@ Modern Interiors 的 Room Builder 墙面与地板，并以 AppleDog 免费商用
 - 资源清单见 `assets/characters/whale-girl/whale-girl-manifest.json`；
 - 设计与版权边界见 `docs/character-design-r2-v1.md`。
 
+## R8 受控媒体观察
+
+- 只接受 B站/抖音公开视频链接；
+- URL 跳转后再次校验平台白名单；
+- 默认每日 2 个视频、单次 600 token；
+- 只保存公开元数据摘要和私有低强度事件，不保存完整视频；
+- 不登录、不绕过会员/地区/DRM 限制，不进行点赞、评论、关注或私信。
+
 ## B8 调度与恢复
 
 ```powershell

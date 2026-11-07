@@ -74,6 +74,19 @@ PROMPT_TEMPLATES = {
             "可在 move、talk、study、rest、observe 中选择一个候选。"
         ),
     ),
+    "media_observation": PromptTemplate(
+        template_id="media_observation",
+        version="media-observation-v1",
+        system=(
+            "你是公开视频观察整理器。只根据给出的公开标题和简介，"
+            "生成角色世界内的主观感受与简短摘要。不声称看过完整视频，"
+            "不添加外部事实，不输出链接、账号或平台内部字段。"
+        ),
+        user_template=(
+            "平台：{provider}\n标题：{title}\n简介：{description}\n"
+            "输出不超过 240 字的感受与反思。"
+        ),
+    ),
 }
 
 

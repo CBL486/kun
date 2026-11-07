@@ -29,4 +29,9 @@ def rule_fallback(request: LlmRequest) -> tuple[Any, dict[str, Any] | None]:
                 "confidence": 0.5,
             },
         )
+    if request.template_id == "media_observation":
+        return (
+            "这个公开视频让我想到，表达背后往往还有没有被说出的情绪。",
+            None,
+        )
     return ("留言已收下，会留到下一个合法时段再考虑回应。", None)
