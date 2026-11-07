@@ -24,6 +24,16 @@
         "path": "assets/characters/whale-girl/sheets/stop-down.webp",
         "sha256": "9404d932dd513e40e44ae341a6c51ed56cb21346befe6016b9a73cf55653191a"
       },
+      "study": {
+        "bytes": 526,
+        "fps": 5.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 4,
+        "loop": true,
+        "path": "assets/characters/whale-girl/sheets/study-down.webp",
+        "sha256": "03602acee6f3074d7d709d2ec08875fe504197cd9619ded67f7c783127da20da"
+      },
       "turn": {
         "bytes": 838,
         "fps": 10.0,
@@ -65,6 +75,16 @@
         "loop": false,
         "path": "assets/characters/whale-girl/sheets/stop-left.webp",
         "sha256": "1d5f4680b371903bfcb65ede55f05b5c43b6523c630b686b66460d87a8db2272"
+      },
+      "study": {
+        "bytes": 538,
+        "fps": 5.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 4,
+        "loop": true,
+        "path": "assets/characters/whale-girl/sheets/study-left.webp",
+        "sha256": "d6ae4e6ab9dd85ee1d8d0282bfa7d6f7f4a67f4d947ad837a70fcc55bddb9cef"
       },
       "turn": {
         "bytes": 864,
@@ -108,6 +128,16 @@
         "path": "assets/characters/whale-girl/sheets/stop-right.webp",
         "sha256": "68cd94483508e5aac2c537d752f272f42046abdbd1a946ce0c76f6472f11984f"
       },
+      "study": {
+        "bytes": 540,
+        "fps": 5.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 4,
+        "loop": true,
+        "path": "assets/characters/whale-girl/sheets/study-right.webp",
+        "sha256": "0aa8b8d5c375c35e18a4120809f43b207e0f7aac3ba587060ce77fb1017e9ec2"
+      },
       "turn": {
         "bytes": 858,
         "fps": 10.0,
@@ -149,6 +179,16 @@
         "loop": false,
         "path": "assets/characters/whale-girl/sheets/stop-up.webp",
         "sha256": "33e233f0aa2aec1f4294a70616371d18b9892fa646b1066ede4eaa9971b35ef7"
+      },
+      "study": {
+        "bytes": 510,
+        "fps": 5.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 4,
+        "loop": true,
+        "path": "assets/characters/whale-girl/sheets/study-up.webp",
+        "sha256": "896c6a5b15402e60c489885641e0fb9832114d37d3ff43c4e4dad92ca4ce8a2b"
       },
       "turn": {
         "bytes": 826,

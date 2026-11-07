@@ -64,6 +64,7 @@ assets/characters/whale-girl/
     walk-{down,left,right,up}.webp   6 frames
     turn-{down,left,right,up}.webp   4 frames
     stop-{down,left,right,up}.webp   3 frames
+    study-{down,left,right,up}.webp  4 frames
 ```
 
 地图逻辑画布为 64×96，运行时显示为 48×72，最近邻采样。所有地图资源保持透明背景。
@@ -74,6 +75,7 @@ assets/characters/whale-girl/
 - `walk`：6 帧、9fps、循环步态；
 - `turn`：4 帧、10fps、播放一次后回 idle；
 - `stop`：3 帧、10fps、从移动过渡回 idle；
+- `study`：4 帧、5fps、低动作阅读/书写循环；
 - 四方向由 presence 的 `facing` 决定；
 - `moving=true` 且 `animation=walk` 才播放 walk；
 - 减少动态时固定 idle 首帧。
@@ -92,4 +94,4 @@ Manifest 记录每个文件的字节数和 SHA-256。标题、角色名、品牌
 
 - 原生脚本创作是几何化、轻量级像素风，不等同于高预算手绘动画；
 - 当前运行时使用精灵表替代 Spine；
-- `sit`、`study`、`talk` 目前回退到 idle，正式动作留给后续内容批次。
+- `sit`、`talk` 目前回退到 idle；`study` 已由 R7 正式接入学习状态。

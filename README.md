@@ -157,18 +157,27 @@ Modern Interiors 的 Room Builder 墙面与地板，并以 AppleDog 免费商用
 
 - 主视觉 1024×1024，表情差分 4 张；
 - 地图角色为 64×96 四方向精灵表；
-- idle 4 帧、walk 6 帧、turn 4 帧、stop 3 帧；
+- idle 4 帧、walk 6 帧、turn 4 帧、stop 3 帧、study 4 帧；
 - presence 的 `facing`、`moving`、`animation` 决定播放状态；
 - 资源清单见 `assets/characters/whale-girl/whale-girl-manifest.json`；
 - 设计与版权边界见 `docs/character-design-r2-v1.md`。
 
 ## R6 自我认知与人设演化
 
-- 正式事件驱动 PersonaState 小步变化；
-- Baseline 保持不可由模型覆盖；
+- 正式事件驱动 PersonaState 小幅变化；
+- Baseline 保持不可被模型覆盖；
 - 单次变化上限、6 小时冷却和 change log；
-- 系统安全策略独立于角色基础人设；
-- `/chat` 使用世界内角色回应，正常对话不插入系统式免责声明。
+- 系统安全策略独立于角色设定；
+- `/chat` 使用世界内角色回应，不插入系统式免责声明。
+
+## R7 学校与自主行动
+
+- 每天 09:00 后触发一次学校学习；
+- 角色先走到教学楼，再持续 30 分钟现实时间 `study` 状态；
+- 每会话最多一次学习反思，默认 1200 token 预算；
+- 学习笔记和 ReflectionEvent 只保存在私有侧；
+- 后台 `AIWorld-WorldTick` 接管时钟和学校状态推进；
+- R2 资源新增四方向 study 精灵动画。
 
 ## B8 调度与恢复
 

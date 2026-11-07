@@ -29,4 +29,9 @@ def rule_fallback(request: LlmRequest) -> tuple[Any, dict[str, Any] | None]:
                 "confidence": 0.5,
             },
         )
+    if request.template_id == "study_reflection":
+        return (
+            "今天的学习让我更愿意先听清楚，再理解自己的感受与边界。",
+            None,
+        )
     return ("留言已收下，会留到下一个合法时段再考虑回应。", None)

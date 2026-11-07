@@ -25,11 +25,12 @@ def test_whale_girl_manifest_has_all_required_deliverables() -> None:
     assert set(data["expressions"]) == {"calm", "happy", "low", "focus"}
     assert set(data["directions"]) == {"down", "left", "right", "up"}
     for direction in data["directions"].values():
-        assert set(direction) == {"idle", "walk", "turn", "stop"}
+        assert set(direction) == {"idle", "walk", "turn", "stop", "study"}
         assert direction["idle"]["frames"] == 4
         assert 4 <= direction["walk"]["frames"] <= 8
         assert direction["turn"]["frames"] >= 2
         assert direction["stop"]["frames"] >= 2
+        assert direction["study"]["frames"] >= 2
 
 
 def test_whale_girl_files_match_manifest_and_alpha_contract() -> None:

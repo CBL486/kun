@@ -22,6 +22,7 @@ from .models import (
     PersonaStateRow,
     RelationshipStateRow,
     SetupStateRow,
+    StudySessionRow,
     DeepSeekCredentialRow,
     WorldClockRow,
 )
@@ -173,6 +174,111 @@ class ProductRepository:
             row.updated_at = now
             session.flush()
             return self._emotion_dict(row)
+
+    def get_study_session(
+        self,
+        *,
+        world_id: str,
+        world_date: str,
+        character_id: str = "char_lin_cheng",
+    ) -> dict[str, Any] | None:
+        with Session(self.engine) as session:
+            row = session.scalar(
+                select(StudySessionRow).where(
+                    StudySessionRow.world_id == world_id,
+                    StudySessionRow.world_date == world_date,
+                    StudySessionRow.character_id == character_id,
+                )
+            )
+            return self._study_dict(row) if row else None
+
+    def create_study_session(
+        self,
+        *,
+        study_session_id: str,
+        world_id: str,
+        world_date: str,
+        character_id: str,
+        location_id: str,
+        started_at: str,
+        curriculum_id: str,
+        token_budget: int,
+        status: str = "scheduled",
+    ) -> dict[str, Any]:
+        with Session(self.engine) as session, session.begin():
+            existing = session.scalar(
+                select(StudySessionRow).where(
+                    StudySessionRow.world_id == world_id,
+                    StudySessionRow.world_date == world_date,
+                    StudySessionRow.character_id == character_id,
+                )
+            )
+            if existing:
+                return self._study_dict(existing)
+            row = StudySessionRow(
+                study_session_id=study_session_id,
+                world_id=world_id,
+                world_date=world_date,
+                character_id=character_id,
+                location_id=location_id,
+                started_at=_datetime(started_at),
+                ended_at=None,
+                curriculum_id=curriculum_id,
+                token_budget=token_budget,
+                input_tokens=0,
+                output_tokens=0,
+                status=status,
+                reflection_memory_id=None,
+            )
+            session.add(row)
+            session.flush()
+            return self._study_dict(row)
+
+    def update_study_session(
+        self,
+        *,
+        study_session_id: str,
+        status: str,
+        ended_at: str | None = None,
+        input_tokens: int | None = None,
+        output_tokens: int | None = None,
+        reflection_memory_id: str | None = None,
+    ) -> dict[str, Any]:
+        with Session(self.engine) as session, session.begin():
+            row = session.get(StudySessionRow, study_session_id)
+            if row is None:
+                raise StorageError("study_session_unknown", "学习会话不存在")
+            row.status = status
+            if ended_at:
+                row.ended_at = _datetime(ended_at)
+            if input_tokens is not None:
+                row.input_tokens = max(0, int(input_tokens))
+            if output_tokens is not None:
+                row.output_tokens = max(0, int(output_tokens))
+            if reflection_memory_id is not None:
+                row.reflection_memory_id = reflection_memory_id
+            session.flush()
+            return self._study_dict(row)
+
+    def mark_stale_study_sessions_missed(
+        self,
+        *,
+        world_id: str,
+        current_date: str,
+        ended_at: str,
+    ) -> int:
+        with Session(self.engine) as session, session.begin():
+            rows = session.scalars(
+                select(StudySessionRow).where(
+                    StudySessionRow.world_id == world_id,
+                    StudySessionRow.world_date < current_date,
+                    StudySessionRow.status.in_(("scheduled", "running")),
+                )
+            ).all()
+            for row in rows:
+                row.status = "missed"
+                row.ended_at = _datetime(ended_at)
+            return len(rows)
 
     def save_persona_bundle(
         self,
@@ -624,6 +730,24 @@ class ProductRepository:
             "compressed_ticks": row.compressed_ticks,
             "last_summary": row.last_summary,
             "updated_at": _iso(row.updated_at),
+        }
+
+    @staticmethod
+    def _study_dict(row: StudySessionRow) -> dict[str, Any]:
+        return {
+            "study_session_id": row.study_session_id,
+            "world_id": row.world_id,
+            "world_date": row.world_date,
+            "character_id": row.character_id,
+            "location_id": row.location_id,
+            "started_at": _iso(row.started_at),
+            "ended_at": _iso(row.ended_at) if row.ended_at else None,
+            "curriculum_id": row.curriculum_id,
+            "token_budget": row.token_budget,
+            "input_tokens": row.input_tokens,
+            "output_tokens": row.output_tokens,
+            "status": row.status,
+            "reflection_memory_id": row.reflection_memory_id,
         }
 
 
