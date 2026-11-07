@@ -57,7 +57,7 @@ setup_acl_failed
 - 文件通过临时文件加原子替换写入；
 - `.setup.lock` 提供单实例写入锁，超过 30 秒的陈旧锁可回收；
 - Windows 默认在首次保存前使用 `icacls` 移除继承权限，仅授权当前服务账户、
-  `SYSTEM` 和 `Administrators`；
+  `*S-1-5-32-544`（Administrators）和 `*S-1-5-18`（SYSTEM）；
 - ACL 设置失败时停止保存并返回 `setup_acl_failed`；
 - 清除 Key 不删除角色、关系、世界或 Persona 状态。
 

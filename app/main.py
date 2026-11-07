@@ -39,10 +39,12 @@ from app.api_models import (
 from app.db import database_ready
 from app.local_state import LocalWorldStore, PublicProjectionError
 from app.metrics import MetricsRegistry
-from app.persona import PersonaError, PersonaStore
+from app.persona import DatabasePersonaStore, PersonaError, PersonaStore
 from app.settings import settings
 from app.setup import DeepSeekSetupStore, DeepSeekValidator, SetupError
+from app.world_clock import WorldClockStore
 from rpg_orm.migrations import create_database_engine
+from rpg_orm.product_repository import ProductRepository
 from rpg_scheduler import PersistentMessageQueue, SchedulerRepository
 
 APP_NAME = "AI World"
@@ -69,10 +71,31 @@ def create_app(
             )
     local_setup = setup_store or DeepSeekSetupStore.from_settings(settings)
     local_validator = setup_validator or DeepSeekValidator()
-    local_persona = persona_store or PersonaStore.from_settings(settings)
+    if persona_store is not None:
+        local_persona = persona_store
+    elif setup_gate:
+        product_url = (
+            settings.product_database_url
+            or settings.scheduler_database_url
+            or "sqlite:///./data/local.sqlite3"
+        )
+        product_repository = ProductRepository(
+            create_database_engine(product_url)
+        )
+        local_persona = DatabasePersonaStore(product_repository)
+        legacy_json = (
+            Path(settings.persona_directory)
+            if settings.persona_directory
+            else Path.cwd() / "data" / "persona"
+        ) / "persona.json"
+        if local_persona.get() is None and legacy_json.is_file():
+            product_repository.migrate_persona_json(legacy_json)
+    else:
+        local_persona = PersonaStore.from_settings(settings)
     local_world = store or LocalWorldStore(
         message_store=message_store,
         persona_store=local_persona,
+        world_clock_store=WorldClockStore.from_settings(settings),
     )
     application = FastAPI(
         title=APP_NAME,

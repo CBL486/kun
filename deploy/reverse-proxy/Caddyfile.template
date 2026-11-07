@@ -8,6 +8,18 @@
     @metrics path /metrics
     respond @metrics 404
 
+    @setup_denied {
+        path /setup /api/setup/* /api/persona/*
+        not remote_ip 127.0.0.1 ::1 {$AIWORLD_ADMIN_CIDR}
+    }
+    respond @setup_denied 403
+
+    @setup_path path /setup /api/setup/* /api/persona/*
+    handle @setup_path {
+        header Cache-Control "no-store"
+        reverse_proxy 127.0.0.1:8080
+    }
+
     header {
         X-Content-Type-Options nosniff
         Referrer-Policy strict-origin-when-cross-origin

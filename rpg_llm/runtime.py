@@ -58,6 +58,15 @@ class LlmRuntimeConfig:
             )
         except InvalidOperation as error:
             raise ValueError("invalid AIWORLD_LLM_MAX_COST_CNY") from error
+        api_key = os.environ.get("AIWORLD_LLM_API_KEY") or None
+        key_file = os.environ.get("AIWORLD_LLM_API_KEY_FILE")
+        if not api_key and key_file:
+            try:
+                from pathlib import Path
+
+                api_key = Path(key_file).read_text(encoding="utf-8").strip() or None
+            except OSError:
+                api_key = None
         return cls(
             provider=provider,
             base_url=os.environ.get(
@@ -75,7 +84,7 @@ class LlmRuntimeConfig:
             ),
             max_cost_cny=max_cost,
             review_provider=review_provider,
-            api_key=os.environ.get("AIWORLD_LLM_API_KEY") or None,
+            api_key=api_key,
         )
 
     def safe_summary(self) -> dict[str, Any]:

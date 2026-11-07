@@ -30,6 +30,7 @@ from .api_models import (
     WorldResponse,
 )
 from .persona import PersonaStore
+from .world_clock import WorldClockStore
 
 PRESENCE_STARTS = {
     "loc_dorm": (430.0, 338.0),
@@ -66,12 +67,14 @@ class LocalWorldStore:
         reviewer: MockReviewer | None = None,
         message_store: PersistentMessageQueue | None = None,
         persona_store: PersonaStore | None = None,
+        world_clock_store: WorldClockStore | None = None,
     ):
         self.seed = seed
         self.llm = MockLLM(seed)
         self.reviewer = reviewer or MockReviewer()
         self.message_store = message_store
         self.persona_store = persona_store
+        self.world_clock_store = world_clock_store
         self._lock = threading.RLock()
         self._public_messages: list[dict[str, Any]] = []
         self._message_counter = 0
@@ -103,6 +106,15 @@ class LocalWorldStore:
 
     def world(self) -> WorldResponse:
         with self._lock:
+            clock = None
+            if self.world_clock_store:
+                clock = self.world_clock_store.advance_if_due(
+                    base_revision=int(self.state["state_version"]),
+                )
+                if int(clock["state_revision"]) > self._state_revision:
+                    self._state_revision = int(clock["state_revision"])
+                    self._presence["revision"] = self._state_revision
+                    self._presence["updated_at"] = clock["logical_time"]
             character = self.state["characters"][MAIN_ID]
             locations = [
                 self._location(location_id)
@@ -117,12 +129,24 @@ class LocalWorldStore:
                     world_id=self.state["world_id"],
                     name=self.state["name"],
                     timezone=self.state["timezone"],
-                    current_date=self.state["world_date"],
-                    current_time=self.state["logical_time"][11:16],
+                    current_date=(
+                        clock["logical_time"][:10]
+                        if clock
+                        else self.state["world_date"]
+                    ),
+                    current_time=(
+                        clock["logical_time"][11:16]
+                        if clock
+                        else self.state["logical_time"][11:16]
+                    ),
                     current_location_id=character["location_id"],
                     current_location_name=LOCATIONS[character["location_id"]]["name"],
                     state_revision=self._state_revision,
-                    updated_at=self._presence["updated_at"],
+                    updated_at=(
+                        clock["logical_time"]
+                        if clock
+                        else self._presence["updated_at"]
+                    ),
                 ),
                 agent_presence=AgentPresence(**self._presence),
                 locations=locations,

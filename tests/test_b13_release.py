@@ -129,7 +129,7 @@ def test_sqlite_backup_restore_preserves_key_rows(tmp_path) -> None:
         )
         after = inspect_database(f"sqlite:///{target.as_posix()}")
         assert result["verified"] is True
-        assert before["schema_version"] == after["schema_version"] == 4
+        assert before["schema_version"] == after["schema_version"] == 5
         assert before["key_counts"] == after["key_counts"]
         restored_engine = create_database_engine(
             f"sqlite:///{target.as_posix()}"
@@ -163,7 +163,7 @@ def test_backup_checksum_detects_tampering(tmp_path) -> None:
 def test_release_evidence_contains_reproducible_and_license_fields() -> None:
     evidence = build_release_evidence(ROOT)
     assert evidence["schema_version"] == "rpg-release-evidence-v1"
-    assert evidence["database_schema_version"] == 4
+    assert evidence["database_schema_version"] == 5
     assert evidence["e2e"]["status"] == "passed"
     assert evidence["cost"]["bill_matches"] is True
     assert evidence["assets"]["authorized"] is True

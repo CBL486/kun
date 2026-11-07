@@ -330,8 +330,8 @@ class DeepSeekSetupStore:
             )
         grants = [
             f"{user}:(OI)(CI)F",
-            "SYSTEM:(OI)(CI)F",
-            "Administrators:(OI)(CI)F",
+            "*S-1-5-32-544:(OI)(CI)F",
+            "*S-1-5-18:(OI)(CI)F",
         ]
         command = [
             "icacls",
