@@ -43,8 +43,8 @@ const SCENE_DIALOGUE = {
 const MAP_WORLD = {
   width: 2400,
   height: 900,
-  playerWidth: 36,
-  playerHeight: 54,
+  playerWidth: 48,
+  playerHeight: 72,
   speed: 170,
 };
 
@@ -116,6 +116,7 @@ const mapState = {
   lastFrame: 0,
   nearestLocationId: null,
   presenceRevision: -1,
+  presence: null,
   frameHandle: null,
   reducedMotion: window.matchMedia?.(
     "(prefers-reduced-motion: reduce)",
@@ -501,10 +502,7 @@ function applyAgentPresence(presence) {
     );
     updateMapCamera(0, true);
   }
-  window.qingheSpinePlayer?.setFacing(presence.facing === "left" ? -1 : 1);
-  window.qingheSpinePlayer?.setAnimation(
-    presence.moving && presence.animation === "walk" ? "walk" : "idle",
-  );
+  mapState.presence = presence;
   elements.mapPlayer.classList.toggle("is-moving", presence.moving);
   setPresenceStatus(presence);
   return true;
@@ -536,6 +534,11 @@ function mapAnimationFrame(timestamp) {
     }
     renderMapPlayerPosition();
     updateMapCamera(elapsed);
+    window.qingheCharacterPlayer?.update(
+      elapsed * 1000,
+      mapState.presence,
+      mapState.reducedMotion,
+    );
     if (state.world) updateMapViewLabel(state.world.locations);
   }
   mapState.frameHandle = requestAnimationFrame(mapAnimationFrame);
@@ -633,6 +636,9 @@ function renderAgent(agentPayload) {
 }
 
 function portraitPath(personId) {
+  if (personId === "char_lin_cheng") {
+    return "/assets/characters/whale-girl/portraits/lin-cheng-calm.png";
+  }
   const name = PORTRAITS[personId] || "lin_cheng";
   return `/assets/portraits/${name}.webp`;
 }
@@ -761,7 +767,7 @@ async function refreshWorldPresence() {
 }
 
 window.addEventListener("resize", resizeMapViewport);
-window.qingheSpinePlayer?.initialize();
+window.qingheCharacterPlayer?.initialize();
 startMapAnimation();
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {

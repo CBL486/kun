@@ -152,6 +152,15 @@ pwsh -NoProfile -File scripts/test-b75.ps1 -Rebuild
 Modern Interiors 的 Room Builder 墙面与地板，并以 AppleDog 免费商用素材
 补充宿舍和书院细节。原始压缩包均不入库。
 
+## R2 原创蓝鲸少女
+
+- 主视觉 1024×1024，表情差分 4 张；
+- 地图角色为 64×96 四方向精灵表；
+- idle 4 帧、walk 6 帧、turn 4 帧、stop 3 帧；
+- presence 的 `facing`、`moving`、`animation` 决定播放状态；
+- 资源清单见 `assets/characters/whale-girl/whale-girl-manifest.json`；
+- 设计与版权边界见 `docs/character-design-r2-v1.md`。
+
 ## B8 调度与恢复
 
 ```powershell

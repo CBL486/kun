@@ -453,71 +453,6 @@ a:focus-visible {
   content: "";
 }
 
-.map-controls {
-  position: absolute;
-  z-index: 11;
-  right: 14px;
-  bottom: 15px;
-  display: grid;
-  grid-template-columns: repeat(3, 29px);
-  grid-template-rows: repeat(2, 27px);
-  gap: 3px;
-}
-
-.map-controls button {
-  display: grid;
-  padding: 0;
-  color: #fff3cc;
-  background: rgba(31, 63, 44, 0.92);
-  border: 2px solid #d4b769;
-  border-radius: 2px;
-  box-shadow: 2px 2px 0 rgba(25, 37, 22, 0.28);
-  place-items: center;
-  font-family: "Segoe UI Symbol", sans-serif;
-  font-size: 0.85rem;
-  line-height: 1;
-}
-
-.map-controls button:hover,
-.map-controls button.is-pressed {
-  color: #26331f;
-  background: #f0d47e;
-}
-
-.map-controls button[data-move="up"] {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.map-controls button[data-move="left"] {
-  grid-column: 1;
-  grid-row: 2;
-}
-
-.map-controls button[data-move="down"] {
-  grid-column: 2;
-  grid-row: 2;
-}
-
-.map-controls button[data-move="right"] {
-  grid-column: 3;
-  grid-row: 2;
-}
-
-.map-move-hint {
-  position: absolute;
-  z-index: 10;
-  right: 16px;
-  bottom: 78px;
-  margin: 0;
-  padding: 3px 6px;
-  color: rgba(255, 246, 211, 0.82);
-  background: rgba(27, 56, 40, 0.8);
-  font-family: "Microsoft YaHei", sans-serif;
-  font-size: 0.58rem;
-  letter-spacing: 0.04em;
-}
-
 .map-buildings {
   position: absolute;
   inset: 0;
@@ -526,8 +461,8 @@ a:focus-visible {
 .map-player {
   position: absolute;
   z-index: 7;
-  width: 36px;
-  height: 54px;
+  width: 48px;
+  height: 72px;
   top: 0;
   left: 0;
   filter: drop-shadow(0 4px 0 rgba(25, 34, 20, 0.28));
@@ -536,35 +471,32 @@ a:focus-visible {
   will-change: transform;
 }
 
-.map-player-canvas,
+.map-player-sprite,
 .map-player-fallback {
   display: block;
-  width: 36px;
-  height: 54px;
+  width: 48px;
+  height: 72px;
   image-rendering: pixelated;
 }
 
+.map-player-sprite,
 .map-player-fallback {
   position: absolute;
   inset: 0;
-  object-fit: contain;
 }
 
-.map-player.is-moving .map-player-canvas,
-.map-player.is-moving .map-player-fallback {
-  animation: player-step 260ms steps(2, end) infinite;
+.map-player-sprite {
+  background-repeat: no-repeat;
+}
+
+.map-player-fallback {
+  object-fit: contain;
 }
 
 .presence-status {
   color: #9cced0;
   font-size: 0.72rem;
   letter-spacing: 0.08em;
-}
-
-@keyframes player-step {
-  50% {
-    transform: translateY(-3px);
-  }
 }
 
 .map-building {
@@ -1506,15 +1438,6 @@ a:focus-visible {
     font-size: 0.56rem;
   }
 
-  .map-controls {
-    right: 9px;
-    bottom: 10px;
-  }
-
-  .map-move-hint {
-    display: none;
-  }
-
   .location-dialog {
     width: calc(100vw - 18px);
     max-height: calc(100vh - 18px);
@@ -1860,31 +1783,6 @@ body {
   line-height: 1.7;
 }
 
-.map-controls {
-  right: 16px;
-  bottom: 120px;
-}
-
-.map-controls button {
-  color: #d9d2b6;
-  background: rgba(2, 6, 6, 0.72);
-  border: 1px solid rgba(206, 193, 145, 0.46);
-  box-shadow: none;
-}
-
-.map-controls button:hover,
-.map-controls button.is-pressed {
-  color: #171a13;
-  background: #d9cc91;
-}
-
-.map-move-hint {
-  right: 16px;
-  bottom: 198px;
-  color: rgba(225, 218, 194, 0.66);
-  background: rgba(2, 6, 6, 0.6);
-}
-
 .mobile-nav {
   position: fixed;
   z-index: 50;
@@ -2129,18 +2027,6 @@ body {
     line-height: 1.4;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-  }
-
-  .map-controls {
-    right: 8px;
-    bottom: 80px;
-    grid-template-columns: repeat(3, 24px);
-    grid-template-rows: repeat(2, 22px);
-  }
-
-  .map-controls button {
-    border-width: 1px;
-    font-size: 0.68rem;
   }
 
   .mobile-nav {

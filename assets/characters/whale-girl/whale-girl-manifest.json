@@ -1,0 +1,244 @@
+{
+  "author": "Agent B / project-original pixel art",
+  "character_id": "char_lin_cheng",
+  "creation_route": "native-pixel-authoring",
+  "directions": {
+    "down": {
+      "idle": {
+        "bytes": 736,
+        "fps": 5.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 4,
+        "loop": true,
+        "path": "assets/characters/whale-girl/sheets/idle-down.webp",
+        "sha256": "2d50777837e4ea3d74950b863c11174bfefb82834bb4ca524009df5f2f535156"
+      },
+      "stop": {
+        "bytes": 596,
+        "fps": 10.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 3,
+        "loop": false,
+        "path": "assets/characters/whale-girl/sheets/stop-down.webp",
+        "sha256": "9404d932dd513e40e44ae341a6c51ed56cb21346befe6016b9a73cf55653191a"
+      },
+      "turn": {
+        "bytes": 838,
+        "fps": 10.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 4,
+        "loop": false,
+        "path": "assets/characters/whale-girl/sheets/turn-down.webp",
+        "sha256": "7616fbbfddb583176a0d09c3572abef9dae07109ed126420c380b7d87ca5e6bf"
+      },
+      "walk": {
+        "bytes": 1014,
+        "fps": 9.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 6,
+        "loop": true,
+        "path": "assets/characters/whale-girl/sheets/walk-down.webp",
+        "sha256": "5db0a0ce064f16ad7b5a4738742fc8a47d8fc353f03da512b5c919df2ee0d127"
+      }
+    },
+    "left": {
+      "idle": {
+        "bytes": 760,
+        "fps": 5.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 4,
+        "loop": true,
+        "path": "assets/characters/whale-girl/sheets/idle-left.webp",
+        "sha256": "8ad25de3d347ec6e227e27ddbae90f845568c7d5a3fe34d139f231306170f231"
+      },
+      "stop": {
+        "bytes": 616,
+        "fps": 10.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 3,
+        "loop": false,
+        "path": "assets/characters/whale-girl/sheets/stop-left.webp",
+        "sha256": "1d5f4680b371903bfcb65ede55f05b5c43b6523c630b686b66460d87a8db2272"
+      },
+      "turn": {
+        "bytes": 864,
+        "fps": 10.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 4,
+        "loop": false,
+        "path": "assets/characters/whale-girl/sheets/turn-left.webp",
+        "sha256": "1902d09e91e97c34164904d4e132ba7d622cff08fb2859cc331eb67ea736a3af"
+      },
+      "walk": {
+        "bytes": 1054,
+        "fps": 9.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 6,
+        "loop": true,
+        "path": "assets/characters/whale-girl/sheets/walk-left.webp",
+        "sha256": "e2c6667b2922b19225645a69cb38f4aa6598e051b65c3348d06b9354a7dc49a2"
+      }
+    },
+    "right": {
+      "idle": {
+        "bytes": 756,
+        "fps": 5.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 4,
+        "loop": true,
+        "path": "assets/characters/whale-girl/sheets/idle-right.webp",
+        "sha256": "bcd47052f4d92d12ef78d4951c43e0532879176fc98543cca99369960c42a9a4"
+      },
+      "stop": {
+        "bytes": 610,
+        "fps": 10.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 3,
+        "loop": false,
+        "path": "assets/characters/whale-girl/sheets/stop-right.webp",
+        "sha256": "68cd94483508e5aac2c537d752f272f42046abdbd1a946ce0c76f6472f11984f"
+      },
+      "turn": {
+        "bytes": 858,
+        "fps": 10.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 4,
+        "loop": false,
+        "path": "assets/characters/whale-girl/sheets/turn-right.webp",
+        "sha256": "36b9cef496f38b255e325e44d4f5a764f7d274eaafc3d1eb94afd497e851ef2f"
+      },
+      "walk": {
+        "bytes": 1040,
+        "fps": 9.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 6,
+        "loop": true,
+        "path": "assets/characters/whale-girl/sheets/walk-right.webp",
+        "sha256": "4be7acb95f657ad6b7fb9bf053328b9333a82a5e6bb2cbfc7b0910cb817bfbc1"
+      }
+    },
+    "up": {
+      "idle": {
+        "bytes": 728,
+        "fps": 5.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 4,
+        "loop": true,
+        "path": "assets/characters/whale-girl/sheets/idle-up.webp",
+        "sha256": "5c141919638f8e4216fcfb4360ca90b4d476f344b0bafbf546c3eb0b3b225de6"
+      },
+      "stop": {
+        "bytes": 590,
+        "fps": 10.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 3,
+        "loop": false,
+        "path": "assets/characters/whale-girl/sheets/stop-up.webp",
+        "sha256": "33e233f0aa2aec1f4294a70616371d18b9892fa646b1066ede4eaa9971b35ef7"
+      },
+      "turn": {
+        "bytes": 826,
+        "fps": 10.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 4,
+        "loop": false,
+        "path": "assets/characters/whale-girl/sheets/turn-up.webp",
+        "sha256": "579c96cd49d234c90ef72ae8ce3bc97d8d80d326ab662be6daab37cd81519547"
+      },
+      "walk": {
+        "bytes": 994,
+        "fps": 9.0,
+        "frame_height": 96,
+        "frame_width": 64,
+        "frames": 6,
+        "loop": true,
+        "path": "assets/characters/whale-girl/sheets/walk-up.webp",
+        "sha256": "a4a27690fc392b56ba6bdffbe7f6bb0c2c8d40c234a711b806878fa1028a6893"
+      }
+    }
+  },
+  "expressions": {
+    "calm": {
+      "bytes": 4182,
+      "path": "assets/characters/whale-girl/portraits/lin-cheng-calm.png",
+      "sha256": "389b64631b4137a3a0dabe88304cd3346ef056082b530894520d6a9eccd1d9df"
+    },
+    "focus": {
+      "bytes": 4236,
+      "path": "assets/characters/whale-girl/portraits/lin-cheng-focus.png",
+      "sha256": "4ea3b9fec63133358471567e8474b7d39a4807aa2196b25d5dac94d229effdcd"
+    },
+    "happy": {
+      "bytes": 4278,
+      "path": "assets/characters/whale-girl/portraits/lin-cheng-happy.png",
+      "sha256": "c7196849ff9189c2b31cc8f425afff3dd24ff2a2013e9d2fb579750930f050d5"
+    },
+    "low": {
+      "bytes": 4220,
+      "path": "assets/characters/whale-girl/portraits/lin-cheng-low.png",
+      "sha256": "b4bed8eb739450fa8adcd7ac3a31380ee4e2c641231f38d9f5eb5ee125b01dea"
+    }
+  },
+  "hero_portrait": {
+    "bytes": 9627,
+    "path": "assets/characters/whale-girl/portraits/lin-cheng-hero.png",
+    "sha256": "eafb994006fbae0b8ce2b8d7262b3243ac3f122164839cbe66c9d3eea81b883f",
+    "size": [
+      1024,
+      1024
+    ]
+  },
+  "license": "project-original",
+  "logical_canvas": {
+    "height": 96,
+    "width": 64
+  },
+  "name": "林澄",
+  "original_pixel_used": true,
+  "palette": {
+    "blush": "#e99ba4",
+    "coat": "#183d55",
+    "coat_light": "#2d6177",
+    "deep": "#0d2d42",
+    "dress": "#a8e8e5",
+    "eye": "#092332",
+    "fin": "#75d8d8",
+    "fin_light": "#c9fbf1",
+    "hair": "#174d70",
+    "hair_light": "#2e7d9e",
+    "outline": "#06171f",
+    "skin": "#f0c7b8",
+    "skin_shadow": "#d79d92",
+    "white": "#e9fffb"
+  },
+  "runtime_display": {
+    "height": 72,
+    "width": 48
+  },
+  "schema_version": "rpg-whale-girl-assets-v1",
+  "source_reference": "taskbook abstract blue-whale direction only",
+  "static_fallback": {
+    "bytes": 974,
+    "path": "assets/characters/whale-girl/lin-cheng-map.png",
+    "sha256": "83af8e6aa4ca843f91495c853cbcdfbd051f84dea7d1144ade8300fbae4162c1",
+    "size": [
+      64,
+      96
+    ]
+  }
+}

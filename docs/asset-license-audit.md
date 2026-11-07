@@ -57,3 +57,13 @@ AppleDog 的 Modern Interior Tileset 由公开页面提供为免费商用素材�
 
 Spine Trial 可以用于本地预览，但不能保存项目或导出动画资源。正式发布前必须
 使用项目所有者持有的 Spine Editor 正式许可证重新保存和导出角色工程。
+
+## 5. R2 原创蓝鲸少女
+
+`assets/characters/whale-girl/` 由本项目像素脚本原创绘制：
+
+- 作者：Agent B / project-original pixel art；
+- 许可证：project-original；
+- 不包含第三方原始图片、视频帧、Cosplayer 截图或声音；
+- 每个运行时文件的 SHA-256 记录在 `whale-girl-manifest.json`；
+- 色板、轮廓和动画说明见 `docs/character-design-r2-v1.md`。
