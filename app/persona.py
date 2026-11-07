@@ -212,7 +212,12 @@ class PersonaStore:
             ),
             "behavior_habits": [],
             "value_weights": {
-                value: 0.6 for value in baseline["values"]
+                **{
+                    "honesty": 0.6,
+                    "curiosity": 0.6,
+                    "self_protection": 0.55,
+                },
+                **{value: 0.6 for value in baseline["values"]},
             },
             "interests": list(baseline["interests"]),
             "active_goals": list(baseline["initial_goals"]),

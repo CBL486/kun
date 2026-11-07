@@ -814,7 +814,11 @@ elements.chatForm.addEventListener("submit", async (event) => {
       body: JSON.stringify({ message }),
     });
     appendChatMessage(response.visible_message, "observer", "已排队");
-    appendChatMessage(response.reply, "resident", "系统答复");
+    appendChatMessage(
+      response.reply,
+      "resident",
+      `${state.agent?.agent?.name || "角色"}回应`,
+    );
     elements.chatMessage.value = "";
     elements.chatCounter.textContent = "0 / 280";
     elements.chatStatus.textContent = "留言已排队，不会立即改变世界。";

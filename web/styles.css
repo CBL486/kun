@@ -1070,6 +1070,7 @@ a:focus-visible {
   max-width: 78%;
   margin: 0 0 13px;
   padding: 11px 14px;
+  color: #0d2223;
   background: var(--forest-soft);
   border-radius: 16px 16px 16px 4px;
 }

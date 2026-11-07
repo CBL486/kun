@@ -30,6 +30,7 @@ from .api_models import (
     WorldResponse,
 )
 from .persona import PersonaStore
+from .self_awareness import SelfAwarenessService
 from .world_clock import WorldClockStore
 
 PRESENCE_STARTS = {
@@ -68,6 +69,7 @@ class LocalWorldStore:
         message_store: PersistentMessageQueue | None = None,
         persona_store: PersonaStore | None = None,
         world_clock_store: WorldClockStore | None = None,
+        self_awareness_service: SelfAwarenessService | None = None,
     ):
         self.seed = seed
         self.llm = MockLLM(seed)
@@ -75,6 +77,7 @@ class LocalWorldStore:
         self.message_store = message_store
         self.persona_store = persona_store
         self.world_clock_store = world_clock_store
+        self.self_awareness_service = self_awareness_service
         self._lock = threading.RLock()
         self._public_messages: list[dict[str, Any]] = []
         self._message_counter = 0
@@ -418,15 +421,26 @@ class LocalWorldStore:
             "observer_message_ack",
             {"message_id": message_id},
         )
+        in_world_reply = None
+        if self.self_awareness_service:
+            try:
+                in_world_reply = self.self_awareness_service.reply_in_world(
+                    normalized
+                )["reply"]
+            except Exception:
+                in_world_reply = None
         return ChatResponse(
             schema_version="rpg-public-chat-v1",
             message_id=message_id,
             status="queued",
             visible_message=normalized,
             reply=(
-                "留言已收下，会留到下一个合法时段再考虑回应。"
-                if generated.text.startswith("mock-observer_message_ack-")
-                else generated.text
+                in_world_reply
+                or (
+                    "留言已收下，会留到下一个合法时段再考虑回应。"
+                    if generated.text.startswith("mock-observer_message_ack-")
+                    else generated.text
+                )
             ),
         )
 
