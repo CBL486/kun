@@ -104,18 +104,16 @@
                     role="img"
                     aria-label="林澄在地图上移动"
                   >
-                    <canvas
-                      id="map-player-canvas"
-                      class="map-player-canvas"
-                      width="96"
-                      height="140"
-                    ></canvas>
+                    <div
+                      id="map-player-sprite"
+                      class="map-player-sprite"
+                      hidden
+                    ></div>
                     <img
                       id="map-player-fallback"
                       class="map-player-fallback"
-                      src="/assets/characters/lin_cheng.webp"
+                      src="/assets/characters/whale-girl/lin-cheng-map.png"
                       alt=""
-                      hidden
                     >
                   </div>
                 </div>
@@ -129,7 +127,7 @@
                 <div class="scene-dialogue">
                   <div class="dialogue-portrait" aria-hidden="true">
                     <img
-                      src="/assets/portraits/lin_cheng.webp"
+                      src="/assets/characters/whale-girl/portraits/lin-cheng-calm.png"
                       alt=""
                     >
                   </div>
@@ -160,7 +158,7 @@
               </div>
               <div class="portrait portrait-large">
                 <img
-                  src="/assets/portraits/lin_cheng.webp"
+                  src="/assets/characters/whale-girl/portraits/lin-cheng-calm.png"
                   alt="林澄像素头像"
                 >
                 <span>澄</span>
@@ -319,8 +317,7 @@
       </button>
     </nav>
 
-    <script src="/static/vendor/spine-webgl.min.js" defer></script>
-    <script src="/static/spine-player.js" defer></script>
+    <script src="/static/character-player.js" defer></script>
     <script src="/static/app.js" defer></script>
   </body>
 </html>

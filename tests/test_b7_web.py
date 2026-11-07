@@ -75,6 +75,7 @@ def test_static_assets_and_placeholder_fallback_exist(client: TestClient) -> Non
     for path in (
         "/static/styles.css",
         "/static/app.js",
+        "/static/character-player.js",
         "/static/spine-player.js",
         "/static/vendor/spine-webgl.min.js",
         "/static/vendor/SPINE-RUNTIMES-LICENSE.txt",
@@ -94,6 +95,12 @@ def test_static_assets_and_placeholder_fallback_exist(client: TestClient) -> Non
         "/assets/interiors/shop.webp",
         "/assets/portraits/lin_cheng.webp",
         "/assets/characters/lin_cheng.webp",
+        "/assets/characters/whale-girl/whale-girl-manifest.json",
+        "/assets/characters/whale-girl/lin-cheng-map.png",
+        "/assets/characters/whale-girl/portraits/lin-cheng-hero.png",
+        "/assets/characters/whale-girl/portraits/lin-cheng-calm.png",
+        "/assets/characters/whale-girl/sheets/idle-down.webp",
+        "/assets/characters/whale-girl/sheets/walk-right.webp",
         "/assets/spine/lin_cheng.json",
         "/assets/spine/lin_cheng.atlas",
         "/assets/spine/lin_cheng.png",
@@ -168,15 +175,16 @@ def test_b75_component_interfaces_are_reserved() -> None:
     assert 'class="nav-mark"' in html
     assert ".location-card" in css
     assert ".timeline-item" in css
-    assert ".memory-card" in css
+    assert "[data-move]" not in css
+    assert ".map-controls" not in css
+    assert ".map-move-hint" not in css
     assert "/assets/maps/town-map-world.webp" in html
-    assert "/assets/portraits/lin_cheng.webp" in html
+    assert "/assets/characters/whale-girl/portraits/lin-cheng-calm.png" in html
     assert 'id="world-plane"' in html
     assert 'id="map-player"' in html
-    assert 'id="map-player-canvas"' in html
-    assert "/static/vendor/spine-webgl.min.js" in html
-    assert "/static/spine-player.js" in html
-    assert "window.qingheSpinePlayer?.initialize()" in Path(
+    assert 'id="map-player-sprite"' in html
+    assert "/static/character-player.js" in html
+    assert "window.qingheCharacterPlayer?.initialize()" in Path(
         "web/app.js"
     ).read_text(encoding="utf-8")
     assert "data-move" not in html
@@ -199,9 +207,12 @@ def test_b75_locations_open_their_matching_interior() -> None:
         assert f'{location_id}: "{interior}"' in javascript
     assert "openLocationDialog" in javascript
     assert "requestAnimationFrame(mapAnimationFrame)" in javascript
-    spine_javascript = Path("web/spine-player.js").read_text(encoding="utf-8")
-    assert 'spine.SpineCanvas' in spine_javascript
-    assert 'animationState.setAnimation(0, "idle", true)' in spine_javascript
+    character_javascript = Path("web/character-player.js").read_text(
+        encoding="utf-8"
+    )
+    assert "whale-girl-manifest.json" in character_javascript
+    assert 'begin("turn"' in character_javascript
+    assert 'begin("stop"' in character_javascript
     assert '"/assets/interiors/"' in javascript or "`/assets/interiors/" in javascript
 
 

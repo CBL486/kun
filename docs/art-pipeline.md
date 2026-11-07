@@ -109,6 +109,12 @@ Spine 4.3 格式兼容的骨架 JSON 生成，并使用官方 WebGL Runtime 渲�
 Spine Editor 许可证后，可将 `spine/lin_cheng/source/lin_cheng.json` 导入编辑器，
 保存为 `.spine` 项目并重新导出，不需要修改网页接入代码。
 
+### R2 运行时替代
+
+R2 新增四方向精灵表播放器 `web/character-player.js`。正式页面优先使用
+`assets/characters/whale-girl/` 下由本项目原创绘制的 idle/walk/turn/stop 动画；
+旧 Spine 文件和 Runtime 保留用于历史资源兼容，但不再作为主页面播放器。
+
 ## 6. 重建与验收
 
 测试默认只验证已提交资源，不依赖私密源素材：
