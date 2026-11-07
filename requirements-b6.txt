@@ -4,3 +4,4 @@ httpx>=0.28,<1
 pydantic-settings>=2.10,<3
 aiosqlite>=0.21,<1
 SQLAlchemy[asyncio]>=2,<3
+tzdata>=2025.2,<2027
