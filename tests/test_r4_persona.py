@@ -96,6 +96,8 @@ def test_custom_persona_revision_preserves_world_and_state(tmp_path) -> None:
     client = configured_client(tmp_path)
     try:
         default = client.post("/api/persona/default", json={}).json()
+        completed = client.post("/api/setup/complete", json={})
+        assert completed.status_code == 200
         before_state = copy.deepcopy(
             client.app.state.local_world.state,
         )

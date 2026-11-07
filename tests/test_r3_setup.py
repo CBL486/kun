@@ -114,6 +114,23 @@ def test_setup_api_requires_key_before_completion(tmp_path) -> None:
         client.close()
 
 
+def test_setup_gate_blocks_public_projection_routes(tmp_path) -> None:
+    client = make_client(make_store(tmp_path), FakeValidator())
+    try:
+        for path in ("/world", "/agent", "/timeline"):
+            response = client.get(path)
+            assert response.status_code == 409
+            assert response.json()["error"]["code"] == "setup_required"
+        response = client.post(
+            "/chat",
+            json={"message": "未配置时不能访问"},
+        )
+        assert response.status_code == 409
+        assert response.json()["error"]["code"] == "setup_required"
+    finally:
+        client.close()
+
+
 def test_setup_flow_gates_root_without_echoing_key(tmp_path) -> None:
     store = make_store(tmp_path)
     validator = FakeValidator()

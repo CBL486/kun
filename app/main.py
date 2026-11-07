@@ -109,6 +109,25 @@ def create_app(
     async def public_api_headers(request: Request, call_next):
         request.state.request_id = str(uuid.uuid4())
         started = time.perf_counter()
+        protected_paths = {"/world", "/agent", "/timeline", "/chat"}
+        path = request.url.path.rstrip("/") or "/"
+        if setup_gate and path in protected_paths:
+            setup_status = combined_setup_status()
+            if not setup_status.world_ready:
+                response = _error_response(
+                    request,
+                    status_code=409,
+                    code="setup_required",
+                    message="请先完成 DeepSeek Key 和人设设置",
+                )
+                application.state.metrics.observe(
+                    status_code=response.status_code,
+                    duration_seconds=time.perf_counter() - started,
+                )
+                response.headers["X-Request-ID"] = request.state.request_id
+                response.headers["X-Content-Type-Options"] = "nosniff"
+                response.headers["Cache-Control"] = "no-store"
+                return response
         response = await call_next(request)
         application.state.metrics.observe(
             status_code=response.status_code,
