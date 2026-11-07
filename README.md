@@ -157,10 +157,19 @@ Modern Interiors 的 Room Builder 墙面与地板，并以 AppleDog 免费商用
 
 - 主视觉 1024×1024，表情差分 4 张；
 - 地图角色为 64×96 四方向精灵表；
-- idle 4 帧、walk 6 帧、turn 4 帧、stop 3 帧；
+- idle 4 帧、walk 6 帧、turn 4 帧、stop 3 帧、study 4 帧；
 - presence 的 `facing`、`moving`、`animation` 决定播放状态；
 - 资源清单见 `assets/characters/whale-girl/whale-girl-manifest.json`；
 - 设计与版权边界见 `docs/character-design-r2-v1.md`。
+
+## R7 学校与自主行动
+
+- 每天 09:00 后最多一次学校学习；
+- 先走向教学楼，再持续 30 分钟现实时间 `study` 状态；
+- 每个会话最多一次学习反思生成，默认 1200 token 预算；
+- 学习笔记和 ReflectionEvent 均保持私有；
+- 后台 `AIWorld-WorldTick` 驱动时钟和学校状态机；
+- R2 资源新增四方向 study 精灵动画。
 
 ## B8 调度与恢复
 

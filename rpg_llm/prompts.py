@@ -74,6 +74,18 @@ PROMPT_TEMPLATES = {
             "可在 move、talk、study、rest、observe 中选择一个候选。"
         ),
     ),
+    "study_reflection": PromptTemplate(
+        template_id="study_reflection",
+        version="study-reflection-v1",
+        system=(
+            "你是学习反思整理器。只根据给出的公版主题摘要生成一段世界内第一人称"
+            "反思，不复制受版权保护的长文本，不添加外部事实，不修改人格或记忆。"
+        ),
+        user_template=(
+            "课程主题：{theme}\n安全摘要：{summary}\n"
+            "输出不超过 220 字的感受与反思。"
+        ),
+    ),
 }
 
 

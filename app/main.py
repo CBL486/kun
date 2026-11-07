@@ -40,6 +40,7 @@ from app.db import database_ready
 from app.local_state import LocalWorldStore, PublicProjectionError
 from app.metrics import MetricsRegistry
 from app.persona import DatabasePersonaStore, PersonaError, PersonaStore
+from app.school import SchoolAutonomyService
 from app.settings import settings
 from app.setup import DeepSeekSetupStore, DeepSeekValidator, SetupError
 from app.world_clock import WorldClockStore
@@ -92,10 +93,14 @@ def create_app(
             product_repository.migrate_persona_json(legacy_json)
     else:
         local_persona = PersonaStore.from_settings(settings)
+    local_school = None
+    if isinstance(local_persona, DatabasePersonaStore):
+        local_school = SchoolAutonomyService(local_persona.repository)
     local_world = store or LocalWorldStore(
         message_store=message_store,
         persona_store=local_persona,
         world_clock_store=WorldClockStore.from_settings(settings),
+        school_service=local_school,
     )
     application = FastAPI(
         title=APP_NAME,
@@ -112,6 +117,7 @@ def create_app(
     application.state.setup_store = local_setup
     application.state.setup_validator = local_validator
     application.state.persona_store = local_persona
+    application.state.school_autonomy = local_school
 
     def combined_setup_status() -> SetupStatusResponse:
         setup_status = local_setup.status()

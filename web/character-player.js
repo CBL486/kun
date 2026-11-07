@@ -104,8 +104,12 @@ const characterPlayer = (() => {
     const desiredDirection = allowedDirections.has(presence.facing)
       ? presence.facing
       : "down";
-    const desiredAction =
-      presence.moving && presence.animation === "walk" ? "walk" : "idle";
+    let desiredAction = "idle";
+    if (presence.moving && presence.animation === "walk") {
+      desiredAction = "walk";
+    } else if (["study", "sit"].includes(presence.animation)) {
+      desiredAction = "study";
+    }
     if (reducedMotion) {
       if (action !== "idle" || direction !== desiredDirection) {
         begin("idle", desiredDirection);

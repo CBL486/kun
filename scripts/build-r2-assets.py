@@ -20,6 +20,7 @@ ANIMATIONS = {
     "walk": (6, 9.0, True),
     "turn": (4, 10.0, False),
     "stop": (3, 10.0, False),
+    "study": (4, 5.0, True),
 }
 PALETTE = {
     "outline": "#06171f",
@@ -240,6 +241,13 @@ def draw_frame(
     if expression in {"happy", "focus"} and direction != "up":
         draw.point((cx - 8, top + 27), fill=blush)
         draw.point((cx + 8, top + 27), fill=blush)
+    if action == "study":
+        book_y = torso_top + 14
+        draw.rectangle((cx - 9, book_y, cx + 9, book_y + 7), fill=outline)
+        draw.rectangle((cx - 8, book_y + 1, cx, book_y + 6), fill=white)
+        draw.rectangle((cx + 1, book_y + 1, cx + 8, book_y + 6), fill=dress)
+        draw.line((cx - 13, torso_top + 18, cx - 8, book_y + 3), fill=skin, width=2)
+        draw.line((cx + 13, torso_top + 18, cx + 8, book_y + 3), fill=skin, width=2)
     return image
 
 

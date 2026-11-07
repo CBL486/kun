@@ -30,6 +30,7 @@ from .api_models import (
     WorldResponse,
 )
 from .persona import PersonaStore
+from .school import SchoolAutonomyService
 from .world_clock import WorldClockStore
 
 PRESENCE_STARTS = {
@@ -68,6 +69,7 @@ class LocalWorldStore:
         message_store: PersistentMessageQueue | None = None,
         persona_store: PersonaStore | None = None,
         world_clock_store: WorldClockStore | None = None,
+        school_service: SchoolAutonomyService | None = None,
     ):
         self.seed = seed
         self.llm = MockLLM(seed)
@@ -75,6 +77,7 @@ class LocalWorldStore:
         self.message_store = message_store
         self.persona_store = persona_store
         self.world_clock_store = world_clock_store
+        self.school_service = school_service
         self._lock = threading.RLock()
         self._public_messages: list[dict[str, Any]] = []
         self._message_counter = 0
@@ -115,6 +118,28 @@ class LocalWorldStore:
                     self._state_revision = int(clock["state_revision"])
                     self._presence["revision"] = self._state_revision
                     self._presence["updated_at"] = clock["logical_time"]
+            if self.school_service:
+                school_presence = self.school_service.presence_for_tick(
+                    logical_time=(
+                        clock["logical_time"]
+                        if clock
+                        else self.state["logical_time"]
+                    ),
+                    revision=(
+                        int(clock["state_revision"])
+                        if clock
+                        else self._state_revision
+                    ),
+                )
+                if school_presence:
+                    self._presence.update(school_presence)
+                    self._state_revision = max(
+                        self._state_revision,
+                        int(school_presence["revision"]),
+                    )
+                    self.state["characters"][MAIN_ID]["location_id"] = (
+                        school_presence["location_id"]
+                    )
             character = self.state["characters"][MAIN_ID]
             locations = [
                 self._location(location_id)

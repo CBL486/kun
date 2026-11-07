@@ -65,7 +65,7 @@ def test_world_tick_task_is_registered_for_ten_minutes() -> None:
     assert "AIWorld-WorldTick" in register
     assert "AIWorld-WorldTick" in unregister
     assert "New-TimeSpan -Minutes 10" in register
-    assert "app.world_clock" in tick
+    assert "app.world_tick" in tick
     assert "world-tick.log" in tick
 
 

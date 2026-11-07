@@ -44,6 +44,11 @@ class MockProvider:
                 "reflection": "先核对事实，再决定下一步。",
             }
             structured = None
+        elif request.template_id == "study_reflection":
+            text = (
+                "今天的学习让我更愿意先听清楚，再理解自己的感受与边界。"
+            )
+            structured = None
         elif request.template_id == "action_candidate":
             text = "按当前公开状态保持原计划。"
             structured = {

@@ -18,7 +18,7 @@ $env:AIWORLD_ROOT = $root
 
 $serviceErrorActionPreference = $ErrorActionPreference
 $ErrorActionPreference = "Continue"
-& $PythonPath (Join-Path $PSScriptRoot "run_module.py") app.world_clock `
+& $PythonPath (Join-Path $PSScriptRoot "run_module.py") app.world_tick `
     *>> (Join-Path $LogDirectory "world-tick.log")
 $serviceExitCode = $LASTEXITCODE
 $ErrorActionPreference = $serviceErrorActionPreference

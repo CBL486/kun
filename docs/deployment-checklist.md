@@ -95,7 +95,8 @@ AIWorld-Monitor
 AIWorld-WorldTick
 ```
 
-`AIWorld-WorldTick` 每 10 分钟持久化世界时间；该任务不调用模型。
+`AIWorld-WorldTick` 每 10 分钟持久化世界时间并推进学校状态机。每个自然日最多
+执行一次学习模型调用；其他 tick 不调用模型。
 
 环境文件只由 A 保存，不得放进 release 目录或源码仓库。
 
