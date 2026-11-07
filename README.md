@@ -162,6 +162,14 @@ Modern Interiors 的 Room Builder 墙面与地板，并以 AppleDog 免费商用
 - 资源清单见 `assets/characters/whale-girl/whale-girl-manifest.json`；
 - 设计与版权边界见 `docs/character-design-r2-v1.md`。
 
+## R6 自我认知与人设演化
+
+- 正式事件驱动 PersonaState 小步变化；
+- Baseline 保持不可由模型覆盖；
+- 单次变化上限、6 小时冷却和 change log；
+- 系统安全策略独立于角色基础人设；
+- `/chat` 使用世界内角色回应，正常对话不插入系统式免责声明。
+
 ## B8 调度与恢复
 
 ```powershell

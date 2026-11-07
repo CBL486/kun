@@ -75,6 +75,11 @@ class ProductRepository:
             session.flush()
             return self._event_dict(row)
 
+    def get_memory_event(self, event_id: str) -> dict[str, Any] | None:
+        with Session(self.engine) as session:
+            row = session.get(MemoryEventRow, event_id)
+            return self._event_dict(row) if row else None
+
     def apply_relationship(
         self,
         *,
