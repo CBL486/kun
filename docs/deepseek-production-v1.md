@@ -37,7 +37,7 @@
 AIWORLD_LLM_PROVIDER=deepseek
 AIWORLD_LLM_BASE_URL=https://api.deepseek.com
 AIWORLD_LLM_MODEL=deepseek-flash
-AIWORLD_LLM_API_KEY=<server-private-secret>
+AIWORLD_LLM_API_KEY_FILE=C:\AIWorld\data\setup\deepseek_api_key.txt
 AIWORLD_LLM_REVIEW_PROVIDER=local
 AIWORLD_LLM_PRICE_VERSION=deepseek-flash-peak-cny-2026-11-02
 AIWORLD_LLM_MAX_COST_CNY=0.10
@@ -46,7 +46,7 @@ AIWORLD_LLM_MAX_COST_CNY=0.10
 API Key 服务器私有文件：
 
 ```text
-C:\AIWorld\data\secrets\deepseek_api_key.txt
+C:\AIWorld\data\setup\deepseek_api_key.txt
 ```
 
 该文件只允许 `Administrator` 和 `SYSTEM` 读取。不得放入仓库、日志、发布包或聊天记录。

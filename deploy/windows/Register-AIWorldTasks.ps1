@@ -26,6 +26,7 @@ $schedulerScript = Join-Path $PSScriptRoot "Start-AIWorldScheduler.ps1"
 $backupScript = Join-Path $PSScriptRoot "Invoke-AIWorldBackup.ps1"
 $rotationScript = Join-Path $PSScriptRoot "Rotate-AIWorldLogs.ps1"
 $monitorScript = Join-Path $PSScriptRoot "AIWorld-Monitor.ps1"
+$worldTickScript = Join-Path $PSScriptRoot "Invoke-AIWorldWorldTick.ps1"
 $envArguments = if ($EnvironmentFile) {
     "-EnvironmentFile `"$EnvironmentFile`""
 } else {
@@ -97,6 +98,17 @@ $monitorAction = New-ScheduledTaskAction -Execute "powershell.exe" `
         "`"$backupDirectory`""
         $logArguments
     ) -join " ")
+$worldTickAction = New-ScheduledTaskAction -Execute "powershell.exe" `
+    -Argument (@(
+        $common
+        "`"$worldTickScript`""
+        "-RootPath"
+        "`"$root`""
+        "-PythonPath"
+        "`"$PythonPath`""
+        $envArguments
+        $logArguments
+    ) -join " ")
 
 $startup = New-ScheduledTaskTrigger -AtStartup
 $monitorTrigger = New-ScheduledTaskTrigger -Once `
@@ -104,6 +116,10 @@ $monitorTrigger = New-ScheduledTaskTrigger -Once `
     -RepetitionInterval (New-TimeSpan -Minutes 5) `
     -RepetitionDuration (New-TimeSpan -Days 3650)
 $daily = New-ScheduledTaskTrigger -Daily -At "03:30"
+$tickTrigger = New-ScheduledTaskTrigger -Once `
+    -At (Get-Date).AddMinutes(1) `
+    -RepetitionInterval (New-TimeSpan -Minutes 10) `
+    -RepetitionDuration (New-TimeSpan -Days 3650)
 $principal = New-ScheduledTaskPrincipal `
     -UserId "SYSTEM" `
     -LogonType ServiceAccount `
@@ -149,5 +165,11 @@ Register-ScheduledTask -TaskName "AIWorld-Monitor" `
     -Principal $monitorPrincipal `
     -Settings $settings `
     -Force | Out-Null
+Register-ScheduledTask -TaskName "AIWorld-WorldTick" `
+    -Action $worldTickAction `
+    -Trigger $tickTrigger `
+    -Principal $principal `
+    -Settings $settings `
+    -Force | Out-Null
 
-Write-Output "Registered AIWorld-API, AIWorld-Scheduler, AIWorld-Backup, AIWorld-LogRotation and AIWorld-Monitor"
+Write-Output "Registered AIWorld-API, AIWorld-Scheduler, AIWorld-Backup, AIWorld-LogRotation, AIWorld-Monitor and AIWorld-WorldTick"

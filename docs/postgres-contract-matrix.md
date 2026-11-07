@@ -1,10 +1,10 @@
 # SQLite / PostgreSQL 契约矩阵
 
-状态：B5 本地验证完成；B8/B9/B11 依次扩展到 version 4
+状态：B5 本地验证完成；R5 扩展到 version 5
 
 日期：2026-11-01
 
-当前 schema：`rpg_orm` version 4（B11 新增 LLM 成本归因表）
+当前 schema：`rpg_orm` version 5（R5 新增记忆事件、关系、情绪、Persona、学习和媒体观察）
 
 ## 1. 通用约定
 
@@ -35,6 +35,17 @@
 | `llm_operations` | JSON 文本 | JSONB | provider、model 和降级原因可空 | `operation_id` 主键 |
 | `llm_usage` | JSON / Numeric | JSONB / NUMERIC | 否 | `provider_request_id` 唯一；时间索引 |
 | `llm_cost_attributions` | TEXT / JSON 维度 | TEXT / JSONB 维度 | `event_id` 可空 | `usage_id` 主键；日期/事件/角色/接口索引 |
+| `memory_events` | JSON 文本 | JSONB | `location_id` 可空 | `(world_id, dedupe_key)` 唯一 |
+| `relationship_states` | REAL | DOUBLE PRECISION | `last_event_id` 可空 | 有向关系唯一 |
+| `emotion_states` | REAL | DOUBLE PRECISION | `last_event_id` 可空 | `(world_id, character_id)` 主键 |
+| `persona_baselines` | JSON 文本 | JSONB | 否 | `(persona_id, revision)`；角色 revision 唯一 |
+| `persona_states` | JSON 文本 | JSONB | 否 | `(world_id, character_id)` 主键 |
+| `persona_change_log` | TEXT / REAL | VARCHAR / DOUBLE PRECISION | `source_event_id` 可空 | change ID 主键；角色/时间索引 |
+| `study_sessions` | JSON 文本 | JSONB | `ended_at`、记忆 ID 可空 | 每天每角色唯一 |
+| `media_observations` | JSON 文本 | JSONB | 记忆 ID 可空 | `(world_id, url_hash)` 唯一 |
+| `setup_state` | JSON 文本 | JSONB | 完成时间可空 | `world_id` 主键 |
+| `deepseek_credentials` | TEXT | TEXT | 轮换时间可空 | `key_ref`/掩码，不存完整 Key |
+| `world_clock_states` | JSON 文本 | JSONB | 摘要可空 | `world_id` 主键 |
 
 ## 3. 核心映射
 
@@ -106,4 +117,4 @@ Postgres = 7dd8a4b34eb72b64c2766165ca7e589238f0fc4b6516886522f8cfb162a81f74
 - SQLite 仅用于本地单进程验证；
 - PostgreSQL 实连使用 `pgserver` 启动的临时隔离实例；
 - 不连接生产库，不读取生产账号；
-- 当前 `rpg_orm` schema 版本为 4，未来字段变化必须新增编号迁移和对应回滚脚本。
+- 当前 `rpg_orm` schema 版本为 5；R5 不允许无审查升级到 schema 6。

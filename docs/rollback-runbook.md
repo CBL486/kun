@@ -62,6 +62,10 @@ pwsh -NoProfile -File scripts/rollback-release.ps1 `
 - 恢复后运行 schema version、关键行数、外键和索引检查；
 - 数据库动作仅由 A 执行。
 
+当前产品重构 schema 为 5。schema 回滚会删除新增产品表；release 外部
+`C:\AIWorld\data` 中的 Key、Persona JSON 和世界时钟不在自动数据库回滚范围内，
+必须先单独备份并验证。
+
 ## 5. 回滚后验证
 
 ```powershell

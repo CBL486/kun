@@ -2,7 +2,7 @@
 
 状态：供 A 在生产环境执行；B 不执行本清单
 
-日期：2026-11-01
+日期：2026-11-07
 
 ## 1. 前置条件
 
@@ -47,7 +47,7 @@ python -m rpg_orm migrate --url $env:RPG_DATABASE_URL
 预期输出：
 
 ```json
-{"schema_version": 4}
+{"schema_version": 5}
 ```
 
 迁移可重复执行；再次执行不得产生重复表或重复版本记录。
@@ -60,13 +60,33 @@ python -m rpg_orm version --url $env:RPG_DATABASE_URL
 
 并由 A 在只读查询工具中确认：
 
-- `schema_versions` 最高版本为 4；
+- `schema_versions` 最高版本为 5；
 - `world_heads`、`world_versions`、`actions`、`events` 存在；
 - `memories`、`memory_projection_outbox`、`npc_memory_slots` 存在；
 - `scheduled_tasks`、`observer_messages` 存在；
 - `llm_operations`、`llm_usage`、`llm_cost_attributions` 存在；
+- `memory_events`、`relationship_states`、`emotion_states` 存在；
+- `persona_baselines`、`persona_states`、`persona_change_log` 存在；
+- `study_sessions`、`media_observations` 存在；
+- `setup_state`、`deepseek_credentials`、`world_clock_states` 存在；
 - 索引 `idx_memories_scope_state`、`idx_memories_source_event` 存在；
 - 应用 `/ready` 或等价数据库健康检查通过。
+
+旧 JSON 数据导入：
+
+```powershell
+python -m rpg_orm import-persona-json `
+  --url $env:RPG_DATABASE_URL `
+  --path "C:\AIWorld\data\persona\persona.json" `
+  --world-id world_qinghe_v1 `
+  --character-id char_lin_cheng
+python -m rpg_orm import-setup-json `
+  --url $env:RPG_DATABASE_URL `
+  --path "C:\AIWorld\data\setup" `
+  --world-id world_qinghe_v1
+```
+
+导入可重复执行。`deepseek_credentials` 只保存 `key_ref` 和掩码，不保存完整 Key。
 
 ## 6. 回滚
 

@@ -2,15 +2,17 @@
 
 状态：供 A 在 staging/生产执行；B 不执行部署
 
-日期：2026-11-01
+日期：2026-11-07
 
 ## 1. 发布前
 
 - [ ] 确认目标 commit 已通过 `scripts/test-all.ps1`；
 - [ ] 确认 B10 7 天 E2E 和 B11 成本矩阵通过；
 - [ ] 确认工作树干净且目标提交已推送；
-- [ ] 确认数据库 schema 版本为 4；
+- [ ] 确认数据库 schema 版本为 5；
 - [ ] 确认最近备份可恢复；
+- [ ] 确认生产目录位于 release 外部：`C:\AIWorld\data\setup`、
+      `C:\AIWorld\data\persona`、`C:\AIWorld\data\world`；
 - [ ] 在仓库外准备环境文件并设置最小 ACL；
 - [ ] 确认 `.env`、密钥、数据库文件和测试夹具不在发布包；
 - [ ] 确认素材授权和署名材料有效。
@@ -43,7 +45,8 @@ Nginx 主方案：
 deploy/reverse-proxy/nginx.conf.template
 ```
 
-替换 `__DOMAIN__`、`__TLS_CERT__`、`__TLS_KEY__` 后执行 A 控制的配置检查：
+替换 `__DOMAIN__`、`__TLS_CERT__`、`__TLS_KEY__`、`__ADMIN_CIDR__` 后执行 A
+控制的配置检查：
 
 ```text
 nginx -t
@@ -55,11 +58,14 @@ Caddy 备选：
 deploy/reverse-proxy/Caddyfile.template
 ```
 
-设置 `AIWORLD_DOMAIN` 后使用 `caddy validate`。
+设置 `AIWORLD_DOMAIN` 和 `AIWORLD_ADMIN_CIDR` 后使用 `caddy validate`。
 
 代理必须：
 
 - 外部拒绝 `/metrics`；
+- `/setup`、`/api/setup/*`、`/api/persona/*` 只允许本机或管理员网段，普通
+  观察者返回 403；
+- 设置路由必须返回 `Cache-Control: no-store`；
 - API 保持 `127.0.0.1:8080`；
 - 启用 HTTPS、安全响应头、请求 ID 和限流；
 - `/assets` 与 `/static` 使用版本化缓存策略。
@@ -85,9 +91,23 @@ AIWorld-API
 AIWorld-Scheduler
 AIWorld-Backup
 AIWorld-LogRotation
+AIWorld-Monitor
+AIWorld-WorldTick
 ```
 
+`AIWorld-WorldTick` 每 10 分钟持久化世界时间；该任务不调用模型。
+
 环境文件只由 A 保存，不得放进 release 目录或源码仓库。
+
+Windows 中文目标机必须实际执行并保存以下检查：
+
+```powershell
+icacls "C:\AIWorld\data\setup"
+icacls "C:\AIWorld\data\persona"
+icacls "C:\AIWorld\data\world"
+```
+
+权限应只包含服务账户、`*S-1-5-32-544` 和 `*S-1-5-18` 对应的主体。
 
 ## 5. 启动与检查
 
@@ -113,6 +133,8 @@ pwsh -NoProfile -File deploy/windows/health-check.ps1 `
 - `/metrics` 显示 `aiworld_database_ready 1`；
 - scheduler 无过期租约，积压低于阈值；
 - 最新数据库备份不超过 36 小时；
+- 切换两个 release 后 `C:\AIWorld\data` 下 Key、Persona 和世界时钟仍存在；
+- release verify 不出现 `data/`、日志、备份或运行时密钥；
 - 浏览器控制台无错误。
 
 ## 6. 监控与日志
@@ -141,8 +163,9 @@ pwsh -NoProfile -File deploy/windows/Unregister-AIWorldTasks.ps1 `
 
 ## 9. 配置 DeepSeek
 
-1. 将 API Key 写入服务器私有文件 `C:\AIWorld\data\secrets\deepseek_api_key.txt`；
-2. 运行 `scripts/write_runtime_env.py` 生成生产环境文件；
+1. 启动页将 API Key 写入 `C:\AIWorld\data\setup\deepseek_api_key.txt`；
+2. 生产环境设置
+   `AIWORLD_LLM_API_KEY_FILE=C:\AIWorld\data\setup\deepseek_api_key.txt`；
 3. 执行 `python -m rpg_llm.smoke`；
 4. 确认 `provider=deepseek`、`model=deepseek-flash`、`run_mode=model`；
 5. 任一项不满足时，保持 `AIWORLD_LLM_PROVIDER=mock`，不得进入生产发布。

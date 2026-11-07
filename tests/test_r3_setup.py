@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import os
+import subprocess
 from pathlib import Path
 
 import httpx
@@ -266,3 +268,19 @@ def test_setup_frontend_never_uses_browser_credential_storage() -> None:
     assert 'autocomplete="off"' in html
     assert "type=\"password\"" in html
     assert "DeepSeek Key" in javascript
+
+
+@pytest.mark.skipif(os.name != "nt", reason="Windows ACL integration test")
+def test_setup_acl_uses_sids_on_real_windows(tmp_path) -> None:
+    store = DeepSeekSetupStore(tmp_path / "private", secure_acl=True)
+    status = store.save_key(TEST_KEY, FakeValidator())
+    assert status.configured is True
+    result = subprocess.run(
+        ["icacls", str(store.root)],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert result.returncode == 0
+    assert "*S-1-5-32-544" in result.stdout or "BUILTIN\\Administrators" in result.stdout
+    assert "*S-1-5-18" in result.stdout or "NT AUTHORITY\\SYSTEM" in result.stdout
