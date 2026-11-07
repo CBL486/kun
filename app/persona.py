@@ -30,8 +30,8 @@ DEFAULT_PERSONA_FIELDS: dict[str, Any] = {
     "initial_goals": ["理解自己为什么生活在青禾镇"],
     "boundaries": [
         "不泄露他人私密记忆",
-        "不假装自己拥有现实身体经历",
-        "不诱导玩家把虚构关系当作现实替代",
+        "不替别人决定私事",
+        "不把未经核实的传闻当成事实",
     ],
     "relationship_to_player": "观察者与朋友，需要逐步建立信任",
     "is_default": True,
@@ -311,6 +311,115 @@ class PersonaStore:
                 "角色名称不能为空",
                 status_code=422,
             )
+
+
+class DatabasePersonaStore:
+    """Schema-5 Persona store used by the production application."""
+
+    def __init__(
+        self,
+        repository: Any,
+        *,
+        world_id: str = "world_qinghe_v1",
+        character_id: str = "char_lin_cheng",
+    ):
+        self.repository = repository
+        self.world_id = world_id
+        self.character_id = character_id
+
+    def status(self) -> dict[str, Any]:
+        bundle = self.get()
+        baseline = bundle["baseline"] if bundle else None
+        return {
+            "configured": baseline is not None,
+            "revision": bundle["baseline_revision"] if bundle else 0,
+            "name": baseline["name"] if baseline else None,
+            "is_default": bool(baseline.get("is_default")) if baseline else False,
+        }
+
+    def get(self) -> dict[str, Any] | None:
+        return self.repository.get_persona_bundle(
+            world_id=self.world_id,
+            character_id=self.character_id,
+        )
+
+    def use_default(self) -> dict[str, Any]:
+        return self._save(
+            deepcopy(DEFAULT_PERSONA_FIELDS),
+            source="default_persona",
+        )
+
+    def save_custom(self, fields: dict[str, Any]) -> dict[str, Any]:
+        normalized = {
+            key: value
+            for key, value in fields.items()
+            if key
+            in {
+                "name",
+                "pronouns",
+                "age",
+                "appearance",
+                "identity",
+                "speech_style",
+                "traits",
+                "values",
+                "interests",
+                "initial_goals",
+                "boundaries",
+                "relationship_to_player",
+            }
+        }
+        PersonaStore._validate_fields(normalized)
+        baseline = {
+            "persona_id": "persona_custom_"
+            + digest(canonical_json(normalized))[:12],
+            **normalized,
+            "is_default": False,
+        }
+        return self._save(baseline, source="player_custom_persona")
+
+    def _save(
+        self,
+        baseline: dict[str, Any],
+        *,
+        source: str,
+    ) -> dict[str, Any]:
+        current = self.get()
+        now = _utc_now()
+        revision = (
+            int(current["baseline_revision"]) + 1 if current else 1
+        )
+        baseline = {
+            **baseline,
+            "revision": revision,
+            "updated_at": now,
+        }
+        if current:
+            state = deepcopy(current["state"])
+            state["baseline_persona_id"] = baseline["persona_id"]
+            state["updated_at"] = now
+            state.setdefault("change_log", []).append(
+                {
+                    "changed_at": now,
+                    "dimension": "baseline_revision",
+                    "delta": 1,
+                    "source": source,
+                    "source_event_id": None,
+                    "evidence": f"人设基线更新到 revision {revision}",
+                }
+            )
+        else:
+            state = PersonaStore._initial_state(baseline, now)
+        self.repository.save_persona_bundle(
+            world_id=self.world_id,
+            character_id=self.character_id,
+            bundle={
+                "baseline_revision": revision,
+                "baseline": baseline,
+                "state": state,
+            },
+        )
+        return self.get()
 
 
 def _utc_now() -> str:

@@ -16,7 +16,7 @@ from sqlalchemy.orm import Session
 
 from .models import Base, SchemaVersionRow
 
-LATEST_SCHEMA_VERSION = 4
+LATEST_SCHEMA_VERSION = 5
 
 
 def create_database_engine(url: str, *, echo: bool = False) -> Engine:

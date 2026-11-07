@@ -14,9 +14,12 @@ class Settings(BaseSettings):
     environment: str = "development"
     database_url: str = "sqlite+aiosqlite:///./data/local.sqlite3"
     scheduler_database_url: str | None = None
+    product_database_url: str | None = None
     backup_directory: str | None = None
     setup_directory: str | None = None
     persona_directory: str | None = None
+    world_clock_directory: str | None = None
+    world_tick_minutes: int = 10
     enforce_setup_acl: bool = True
     log_level: str = "INFO"
     llm_model: str = "deepseek-flash"

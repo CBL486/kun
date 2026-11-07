@@ -100,7 +100,7 @@ def test_release_build_is_complete_and_excludes_sensitive_files(tmp_path) -> Non
         built_at="2026-11-01T00:00:00Z",
     )
     assert manifest["version"] == "0.1.0-test"
-    assert manifest["database_schema_version"] == 4
+    assert manifest["database_schema_version"] == 5
     on_disk = json.loads(
         (output / "RELEASE_MANIFEST.json").read_text(encoding="utf-8")
     )
