@@ -23,6 +23,8 @@
 - A 侧隔离 staging 已通过：179 项测试、SQLite、PostgreSQL、备份恢复、API 烟测
   和 junction 回滚演练；产品重构当前 schema 已升级为 5。
 - DeepSeek `deepseek-flash` live smoke 已通过：112/81 tokens，成本 0.00094176 CNY，审核通过；生产环境文件已准备但服务未重启。
+- R9 最终集成已接入生产 DeepSeek runtime；完整回归为 261 项测试通过，七日 E2E、
+  成本对账、config-check 和 release verify 均通过。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B6 至 G3 执行计划见 `B6至G3执行计划书_V1.md`。
 - A 侧当前工作日志与续接手册见 `docs/agent-a-work-log.md`。
@@ -168,7 +170,9 @@ Modern Interiors 的 Room Builder 墙面与地板，并以 AppleDog 免费商用
 - Baseline 保持不可被模型覆盖；
 - 单次变化上限、6 小时冷却和 change log；
 - 系统安全策略独立于角色设定；
-- `/chat` 使用世界内角色回应，不插入系统式免责声明。
+- `/chat` 公开语义为“审核后送达”，即时返回世界内角色回应；
+- 正常回应加载 PersonaBaseline、PersonaState、关系、情绪和有限近期记忆；
+- 模型审核、预算或 provider 失败时使用世界内安全 fallback，不插入系统式免责声明。
 
 ## R7 学校与自主行动
 
@@ -186,6 +190,21 @@ Modern Interiors 的 Room Builder 墙面与地板，并以 AppleDog 免费商用
 - 默认每天 2 个视频、最多 600 token；
 - 只保存公开元数据摘要和私有低强度事件，不保存完整视频；
 - 媒体内容不绕过会员/地区/DRM 限制，不自动点赞/评论/关注/私信。
+
+## R9 最终集成
+
+```powershell
+pwsh -NoProfile -File scripts/test-all.ps1
+python scripts/run_r9_chat_smoke.py --output docs/r9-chat-smoke.json
+python scripts/run_r9_schema_evidence.py
+python scripts/run_r9_public_media_smoke.py
+```
+
+R9 统一聊天“已送达 + 即时回应”语义，并让 `/chat` 通过既有 `LlmGateway` 使用
+生产 DeepSeek runtime、输出审核、每日预算、成本归集、重试和熔断。聊天不创建世界
+事件、关系变化或记忆；模型失败只返回安全规则文本。桌面和手机证据见
+`docs/screenshots/r9-chat-delivered-desktop.png` 与
+`docs/screenshots/r9-chat-delivered-mobile.png`。
 
 ## B8 调度与恢复
 

@@ -148,14 +148,14 @@ class ChatRequest(BaseModel):
     message: str = Field(
         min_length=1,
         max_length=280,
-        description="公开观察者留言，只作为待审核数据，不直接生成角色动作。",
+        description="公开观察者留言，经审核后由角色在世界内即时回应。",
     )
 
 
 class ChatResponse(BaseModel):
     schema_version: Literal["rpg-public-chat-v1"]
     message_id: str
-    status: Literal["queued"]
+    status: Literal["delivered"]
     visible_message: str
     reply: str
 

@@ -1,0 +1,15 @@
+{
+  "schema_version": "aiworld-r9-schema-evidence-v1",
+  "migrated_version": 5,
+  "persona_json_import": {
+    "revision": 2,
+    "baseline_name": "潮汐",
+    "change_log_rows": 1
+  },
+  "rollback": {
+    "schema_version": 0,
+    "table_count_before": 25,
+    "table_count_after": 0,
+    "tables_after": []
+  }
+}

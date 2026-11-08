@@ -62,9 +62,15 @@ class MockProvider:
                 "这个公开视频让我想到，表达背后往往还有没有被说出的情绪。"
             )
             structured = None
+        elif request.template_id == "persona_reply":
+            text = (
+                "我听见了。让我先按自己的方式想一想，再认真回答你。"
+                f"（mock-{digest([self.seed, request.request_id])[:8]}）"
+            )
+            structured = None
         else:
             text = (
-                "留言已收下，会留到下一个合法时段再考虑回应。"
+                "当前暂不能生成新的表达，继续使用安全规则。"
                 f"（mock-{digest([self.seed, request.request_id])[:8]}）"
             )
             structured = None

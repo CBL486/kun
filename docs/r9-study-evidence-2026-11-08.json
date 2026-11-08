@@ -1,0 +1,14 @@
+{
+  "schema_version": "aiworld-r9-study-evidence-v1",
+  "scheduled_status": "walking",
+  "running_status": "running",
+  "completed_status": "completed",
+  "replay_status": "completed",
+  "single_session_id": "study_0d66e3ac4e62bcef",
+  "token_budget": 1200,
+  "input_tokens": 80,
+  "output_tokens": 80,
+  "reflection_memory_id": "evt_052172cfb721df4f",
+  "reflection_event_count": 1,
+  "public_projection_contains_reflection": false
+}

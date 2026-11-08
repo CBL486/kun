@@ -53,6 +53,7 @@ from app.settings import settings
 from app.setup import DeepSeekSetupStore, DeepSeekValidator, SetupError
 from app.self_awareness import SelfAwarenessService
 from app.world_clock import WorldClockStore
+from rpg_llm.gateway import LlmGateway
 from rpg_llm.runtime import build_gateway
 from rpg_orm.migrations import create_database_engine
 from rpg_orm.product_repository import ProductRepository
@@ -75,6 +76,7 @@ def create_app(
     persona_store: PersonaStore | None = None,
     setup_gate: bool = False,
     media_service: MediaObservationService | None = None,
+    llm_gateway: LlmGateway | None = None,
 ) -> FastAPI:
     if store is None and message_store is None:
         if settings.scheduler_database_url:
@@ -104,20 +106,26 @@ def create_app(
             product_repository.migrate_persona_json(legacy_json)
     else:
         local_persona = PersonaStore.from_settings(settings)
+    local_llm_gateway = llm_gateway
+    if (
+        isinstance(local_persona, DatabasePersonaStore)
+        and local_llm_gateway is None
+    ):
+        local_llm_gateway, _ = build_gateway(local_persona.repository.engine)
     local_self_awareness = None
     local_school = None
     if isinstance(local_persona, DatabasePersonaStore):
         local_self_awareness = SelfAwarenessService(
             local_persona.repository,
+            gateway=local_llm_gateway,
         )
         local_school = SchoolAutonomyService(local_persona.repository)
     if media_service is not None:
         local_media = media_service
     elif isinstance(local_persona, DatabasePersonaStore):
-        gateway, _ = build_gateway(local_persona.repository.engine)
         local_media = MediaObservationService(
             local_persona.repository,
-            summarizer=GatewayMediaSummarizer(gateway),
+            summarizer=GatewayMediaSummarizer(local_llm_gateway),
             daily_limit=settings.media_daily_limit,
             token_budget=settings.media_token_budget,
         )
@@ -148,6 +156,7 @@ def create_app(
     application.state.self_awareness = local_self_awareness
     application.state.school_autonomy = local_school
     application.state.media_observation = local_media
+    application.state.llm_gateway = local_llm_gateway
 
     def combined_setup_status() -> SetupStatusResponse:
         setup_status = local_setup.status()

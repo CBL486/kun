@@ -337,7 +337,7 @@ def test_persistent_message_queue_survives_store_restart(tmp_path) -> None:
         response = first.chat("请记录今天的校刊进度。")
         second = LocalWorldStore(message_store=queue)
         messages = second.queued_messages()
-        assert response.status == "queued"
+        assert response.status == "delivered"
         assert len(messages) == 1
         assert messages[0]["message_id"] == response.message_id
         assert messages[0]["message"] == "请记录今天的校刊进度。"
