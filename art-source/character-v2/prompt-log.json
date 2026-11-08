@@ -1,0 +1,57 @@
+{
+  "schema_version": "rpg-character-v2-prompt-log-v1",
+  "tool": "xiaoyunque",
+  "starting_credits": 1478,
+  "spent_credits": 4,
+  "remaining_credits": 1474,
+  "gate_caps": {
+    "art_v2_00a": 50,
+    "gate_a": 120,
+    "gate_b": 300,
+    "gate_c": 280,
+    "gate_d": 280,
+    "gate_e1": 120,
+    "gate_e2": 100,
+    "rework_reserve": 250
+  },
+  "hard_limits": {
+    "before_gate_b": 470,
+    "before_gate_d": 1030,
+    "before_gate_e2": 1250,
+    "reserve_requires_agent_a_approval": true
+  },
+  "generations": [
+    {
+      "id": "v2-00a-001",
+      "stage": "tool_smoke",
+      "prompt_id": "00a-main-v1",
+      "tool_model": "智能图片V2.5 Pro",
+      "seed": null,
+      "credits": 2,
+      "output": "art-source/character-v2/candidates/00a-001.png",
+      "derived_outputs": [
+        "art-source/character-v2/candidates/00a-001-alpha.png"
+      ],
+      "sha256": "6ecae91cf13aab60a12a1fa76507c6813bda000867bba8faeef9537bba8cf437",
+      "derived_sha256": [
+        "d951bb4b62f15611847daa4b1900f967608e520309c6b712f495ddd835df0f20"
+      ],
+      "accepted": false,
+      "evidence_use": true,
+      "rejection_reason": "仅用于 00A 能力验证，不作为正式美术候选；直接生成的“透明背景”实际为棋盘格 RGB，需使用平台抠图生成 RGBA。"
+    },
+    {
+      "id": "v2-00a-002",
+      "stage": "reference_consistency",
+      "prompt_id": "00a-reference-happy-v1",
+      "tool_model": "智能图片V2.5 Pro",
+      "seed": null,
+      "credits": 2,
+      "output": "art-source/character-v2/candidates/00a-002-preview.png",
+      "sha256": "a1bce24da62f8220b755f30a5dc09dfe17fc4cdbbdf93833065d1c3746327b72",
+      "accepted": false,
+      "evidence_use": true,
+      "rejection_reason": "仅用于 00A 参考一致性验证，不作为正式美术候选。"
+    }
+  ]
+}

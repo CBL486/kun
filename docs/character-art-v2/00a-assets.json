@@ -1,0 +1,54 @@
+{
+  "schema_version": "aiworld-character-00a-evidence-v1",
+  "original": {
+    "file": "art-source/character-v2/candidates/00a-001.png",
+    "bytes": 1510398,
+    "sha256": "6ecae91cf13aab60a12a1fa76507c6813bda000867bba8faeef9537bba8cf437",
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha_extrema": null,
+    "alpha_zero_pixels": 0,
+    "alpha_partial_pixels": 0,
+    "has_aigc_metadata": true
+  },
+  "transparent": {
+    "file": "art-source/character-v2/candidates/00a-001-alpha.png",
+    "bytes": 1034343,
+    "sha256": "d951bb4b62f15611847daa4b1900f967608e520309c6b712f495ddd835df0f20",
+    "format": "PNG",
+    "mode": "RGBA",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_zero_pixels": 635414,
+    "alpha_partial_pixels": 286845,
+    "has_aigc_metadata": true
+  },
+  "reference_variation": {
+    "file": "art-source/character-v2/candidates/00a-002-preview.png",
+    "bytes": 304729,
+    "sha256": "a1bce24da62f8220b755f30a5dc09dfe17fc4cdbbdf93833065d1c3746327b72",
+    "format": "PNG",
+    "mode": "RGBA",
+    "size": [
+      480,
+      480
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_zero_pixels": 132933,
+    "alpha_partial_pixels": 77072,
+    "has_aigc_metadata": true
+  }
+}
