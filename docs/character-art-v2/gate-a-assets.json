@@ -1,0 +1,154 @@
+{
+  "schema_version": "aiworld-character-gate-a-evidence-v1",
+  "directions": {
+    "a": {
+      "name": "深海童话装饰系",
+      "palette": [
+        "#07182D",
+        "#0D2C4A",
+        "#174B73",
+        "#267E9E",
+        "#54D0D5",
+        "#A7F4E8",
+        "#EEFBF7",
+        "#F0C7B8",
+        "#D0AE65"
+      ],
+      "assets": [
+        {
+          "file": "art-source/character-v2/candidates/gate-a/a-thumb-01.png",
+          "bytes": 1907090,
+          "sha256": "f8fcd0d8ff5285255e5110ca89d86788ecc1e59dc89392e0699e6c065b8ee424",
+          "size": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "has_aigc_metadata": true
+        },
+        {
+          "file": "art-source/character-v2/candidates/gate-a/a-thumb-02.png",
+          "bytes": 1397198,
+          "sha256": "eb3b474ec2e659e56163793b11c63dcd814550dfd3c340ff646f4eba2e76428e",
+          "size": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "has_aigc_metadata": true
+        },
+        {
+          "file": "art-source/character-v2/candidates/gate-a/a-hero.png",
+          "bytes": 1834378,
+          "sha256": "200dbed06722c4d50a6ee5057d888e74bba12de5e122ec2ad2ce8e3fc90e33b6",
+          "size": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "has_aigc_metadata": true
+        }
+      ]
+    },
+    "b": {
+      "name": "海玻璃学院轻量像素",
+      "palette": [
+        "#071B2E",
+        "#0A314B",
+        "#155A72",
+        "#2C8C9C",
+        "#69D3D1",
+        "#B9F2E7",
+        "#F6FFFC",
+        "#F2CDBD",
+        "#D8AA65"
+      ],
+      "assets": [
+        {
+          "file": "art-source/character-v2/candidates/gate-a/b-thumb-01.png",
+          "bytes": 827397,
+          "sha256": "8cc5e08af97049a76aef4893d6634202b820fa29f3e91502a7271dbab23d895f",
+          "size": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "has_aigc_metadata": true
+        },
+        {
+          "file": "art-source/character-v2/candidates/gate-a/b-thumb-02.png",
+          "bytes": 957040,
+          "sha256": "f2967474123ed03247d3dd336ba596610d515ce831dfc6f82c050cdb0f6fea15",
+          "size": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "has_aigc_metadata": true
+        },
+        {
+          "file": "art-source/character-v2/candidates/gate-a/b-hero.png",
+          "bytes": 1420594,
+          "sha256": "d81a84c895f3166124d85bae1deca36d7e185f4f5656670af771ecf7fffe3f58",
+          "size": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "has_aigc_metadata": true
+        }
+      ]
+    },
+    "c": {
+      "name": "潮汐复古海报像素",
+      "palette": [
+        "#050915",
+        "#0A1832",
+        "#133B61",
+        "#1C7186",
+        "#45CAD0",
+        "#C8FFF5",
+        "#F2C5B6",
+        "#C79D57"
+      ],
+      "assets": [
+        {
+          "file": "art-source/character-v2/candidates/gate-a/c-thumb-01.png",
+          "bytes": 1072752,
+          "sha256": "4fcabb4b98d7186674204fb00e7171404225dbeacd81eaf9329c41bad4f6e38d",
+          "size": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "has_aigc_metadata": true
+        },
+        {
+          "file": "art-source/character-v2/candidates/gate-a/c-thumb-02.png",
+          "bytes": 1983379,
+          "sha256": "a5fe413697ff244f10271663319f4de2bdbc633a36e72007baa289a41379b687",
+          "size": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "has_aigc_metadata": true
+        },
+        {
+          "file": "art-source/character-v2/candidates/gate-a/c-hero.png",
+          "bytes": 1661493,
+          "sha256": "bc8201e99bf54f17a692af094f088c6b48bf9599207e3028a70cd025586b0bce",
+          "size": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "has_aigc_metadata": true
+        }
+      ]
+    }
+  },
+  "contact_sheet": "docs/character-art-v2/gate-a-contact-sheet.png",
+  "map_comparison": "docs/character-art-v2/gate-a-map-comparison.png",
+  "palette_sheet": "docs/character-art-v2/gate-a-palettes.png"
+}
