@@ -87,13 +87,14 @@ key_leak=false
 ## 5. 完整验证
 
 ```text
-pytest：253 passed, 9 skipped, 1 warning
+pytest：262 passed, 1 warning
 七日 E2E：passed，49 events，0 errors，1 warning
 成本对账：bill_matches=true
 config-check：issues=[]
 release build：231 files
 release verify：issues=[]
-package_sha256：3e12fecdd9276dc7cb71bd5b3d7585b87908e1ed2e0dd951866365a7d58e0871
+package_sha256：b0ca4026f8463842d8c077794c92be16cdfee834dece0828cec2016b042e384c
+构建提交：150acb066fc9afac8e7094b0649c0288868a63cf
 ```
 
 setup 与 R9 定向回归：19 passed

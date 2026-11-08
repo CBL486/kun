@@ -96,7 +96,7 @@ pwsh -NoProfile -File scripts/test-all.ps1
 结果：
 
 ```text
-pytest: 253 passed, 9 skipped, 1 warning
+pytest: 262 passed, 1 warning
 七日 E2E: passed, 49 events, 0 errors, 1 quality warning
 成本对账: bill_matches=true, cost_cny=0.36320000
 config-check: issues=[]
