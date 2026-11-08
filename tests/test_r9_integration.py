@@ -37,8 +37,9 @@ class FakeValidator:
 
 
 class CapturingProvider:
-    def __init__(self, text: str):
+    def __init__(self, text: str, input_tokens: int = 80):
         self.text = text
+        self.input_tokens = input_tokens
         self.prompts: list[str] = []
 
     def complete(self, request: ProviderRequest) -> ProviderResponse:
@@ -46,7 +47,7 @@ class CapturingProvider:
         return ProviderResponse(
             text=self.text,
             structured_candidate=None,
-            input_tokens=80,
+            input_tokens=self.input_tokens,
             output_tokens=24,
             provider="deepseek",
             model="deepseek-flash",
@@ -173,12 +174,35 @@ def test_chat_uses_persona_gateway_and_never_writes_world_state(tmp_path) -> Non
         assert "旧书区聊过鲸歌" in prompt
         assert "开始熟悉" in prompt
         assert "心情明朗" in prompt
+        assert "没有对应近期经历" in prompt
+        assert "不要编造具体回忆" in prompt
         assert "sk-test-r9-secret-ABCD" not in prompt
         assert "系统安全策略" not in payload["reply"]
         assert _world_write_counts(engine, repository) == before
         usage = LlmRepository(engine).list_usage()
         assert len(usage) == 1
         assert usage[0]["operation_id"] == payload["message_id"]
+    finally:
+        client.close()
+        engine.dispose()
+
+
+def test_chinese_prompt_usage_is_not_rejected_by_character_estimate(tmp_path) -> None:
+    provider = CapturingProvider("我听见了，潮汐会把话慢慢带回来。", input_tokens=350)
+    engine, repository, client = _make_environment(tmp_path, provider)
+    try:
+        response = client.post(
+            "/chat",
+            json={"message": "你还记得旧书区的谈话吗？"},
+        )
+        assert response.status_code == 200
+        payload = response.json()
+        assert payload["status"] == "delivered"
+        assert payload["reply"] == provider.text
+        operation = LlmRepository(engine).get_operation(payload["message_id"])
+        assert operation is not None
+        assert operation["status"] == "succeeded"
+        assert operation["run_mode"] == "model"
     finally:
         client.close()
         engine.dispose()

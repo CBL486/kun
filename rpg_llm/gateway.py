@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import threading
 import time
 from copy import deepcopy
@@ -34,6 +35,12 @@ STRUCTURED_ALLOWED_KEYS = {
     "tone",
     "confidence",
 }
+
+
+def _estimate_tokens(text: str) -> int:
+    chinese = sum(1 for char in text if "\u4e00" <= char <= "\u9fff")
+    remaining = len(text) - chinese
+    return max(1, chinese + math.ceil(remaining / 4))
 
 
 class LlmGateway:
@@ -117,7 +124,7 @@ class LlmGateway:
             )
         prompt = template.render(request.variables)
         audit = prompt_audit(template, prompt)
-        estimated_input = max(1, len(prompt) // 4)
+        estimated_input = _estimate_tokens(prompt)
         if estimated_input > self.budget_policy.max_input_tokens_per_call:
             return self._save_fallback(
                 request,
@@ -271,7 +278,7 @@ class LlmGateway:
             and not set(response.structured_candidate) <= STRUCTURED_ALLOWED_KEYS
         )
         token_limit_exceeded = (
-            response.input_tokens > estimated_input + 100
+            response.input_tokens > self.budget_policy.max_input_tokens_per_call
             or response.output_tokens > worst_output
         )
         if (

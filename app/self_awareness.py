@@ -352,7 +352,9 @@ class SelfAwarenessService:
             f"与当前观察者的关系：{relationship_text}\n"
             f"当前主观状态：{emotion_text}\n"
             "可自然回想的近期经历：\n"
-            f"{memory_text}"
+            f"{memory_text}\n"
+            "记忆约束：没有对应近期经历时，不要声称记得具体事件；"
+            "可以说一时想不起或询问对方。"
         )
 
     def _generate_reply(
