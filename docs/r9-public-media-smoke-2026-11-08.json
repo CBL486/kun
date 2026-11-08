@@ -1,0 +1,20 @@
+{
+  "schema_version": "aiworld-r9-public-media-smoke-v1",
+  "network_mode": "public_og_read_only",
+  "credentials_sent": false,
+  "automatic_interactions": false,
+  "observation": {
+    "observation_id": "media_75edc499316d9ffd",
+    "status": "reviewed",
+    "summary": "我看到的是一段关于“【官方 MV】Never Gonna Give You Up - Rick Astley_哔哩哔哩_bilibili”的公开视频。它让我想到，理解一段表达不只在于知道内容，也在于体会它为什么被说出来。",
+    "emotional_valence": 0.0,
+    "memory_event_id": "evt_437e9b419744d146",
+    "blocked": false,
+    "replayed": false
+  },
+  "memory_event": {
+    "visibility": "private",
+    "source": "media",
+    "importance": 0.3
+  }
+}

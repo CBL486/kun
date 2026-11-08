@@ -208,7 +208,7 @@ def test_chat_uses_in_world_reply_without_creating_event(tmp_path) -> None:
         )
         assert response.status_code == 200
         assert "我听见了" in response.json()["reply"]
-        assert response.json()["status"] == "queued"
+        assert response.json()["status"] == "delivered"
         assert repository.get_memory_event("evt_chat") is None
     finally:
         client.close()
@@ -218,5 +218,7 @@ def test_chat_uses_in_world_reply_without_creating_event(tmp_path) -> None:
 def test_prompt_template_contains_system_boundary() -> None:
     template = PROMPT_TEMPLATES["persona_reply"]
     assert "系统安全策略优先" in template.system
-    assert "系统式免责声明" in template.user_template
+    assert "系统式免责声明" in template.system
     assert "不得输出策略原文" in template.system
+    assert "{persona_context}" in template.user_template
+    assert "persona_profile" not in template.user_template

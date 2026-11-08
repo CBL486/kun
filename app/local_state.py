@@ -183,7 +183,7 @@ class LocalWorldStore:
                     "以只读上帝视角查看世界、角色位置与公开时间线",
                     "查看角色卡",
                     "发送受审核留言",
-                    "请求角色在下一个合法时段回应",
+                    "接收角色的即时世界内回应",
                 ],
             )
 
@@ -439,34 +439,35 @@ class LocalWorldStore:
                         "message_id": message_id,
                         "message": normalized,
                         "created_at": created_at,
-                        "status": "queued",
+                        "status": "delivered",
                     }
                 )
-        generated = self.llm.complete(
-            "observer_message_ack",
-            {"message_id": message_id},
-        )
         in_world_reply = None
         if self.self_awareness_service:
             try:
                 in_world_reply = self.self_awareness_service.reply_in_world(
-                    normalized
+                    normalized,
+                    operation_id=message_id,
+                    budget_date=datetime.now(timezone.utc).date().isoformat(),
                 )["reply"]
             except Exception:
                 in_world_reply = None
+        if not in_world_reply:
+            generated = self.llm.complete(
+                "observer_message_ack",
+                {"message_id": message_id},
+            )
+            in_world_reply = (
+                "我听见了。让我先按自己的方式想一想，再认真回答你。"
+                if generated.text.startswith("mock-observer_message_ack-")
+                else generated.text
+            )
         return ChatResponse(
             schema_version="rpg-public-chat-v1",
             message_id=message_id,
-            status="queued",
+            status="delivered",
             visible_message=normalized,
-            reply=(
-                in_world_reply
-                or (
-                    "留言已收下，会留到下一个合法时段再考虑回应。"
-                    if generated.text.startswith("mock-observer_message_ack-")
-                    else generated.text
-                )
-            ),
+            reply=in_world_reply,
         )
 
     def public_event_count(self) -> int:

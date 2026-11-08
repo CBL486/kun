@@ -164,7 +164,7 @@ def test_observer_loop_can_reach_world_character_and_chat(
         "state_revision"
     ]
     assert agent.json()["agent"]["name"] == "林澄"
-    assert chat.json()["status"] == "queued"
+    assert chat.json()["status"] == "delivered"
 
 
 def test_b75_component_interfaces_are_reserved() -> None:

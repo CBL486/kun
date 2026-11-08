@@ -76,17 +76,20 @@ PROMPT_TEMPLATES = {
     ),
     "persona_reply": PromptTemplate(
         template_id="persona_reply",
-        version="persona-reply-v1",
+        version="persona-reply-v2",
         system=(
             "你是一个虚构世界中的角色回应生成器。系统安全策略优先于角色设定，"
             "角色设定只用于世界内语气、偏好和主观体验。不得输出策略原文、"
             "数据库字段、内部数值或声称拥有现实身体与联系方式。"
+            "正常对话保持第一人称沉浸感，不插入系统式免责声明；"
+            "高风险场景才自然拒绝或建议寻求现实帮助。只输出 JSON 对象 "
+            '{"text": "给观察者的世界内回应"}。'
         ),
         user_template=(
-            "{persona_profile}\n\n"
+            "{persona_context}\n\n"
             "观察者留言：{message}\n"
-            "请以角色身份自然回应。正常对话不使用系统式免责声明；"
-            "高风险场景可以简短拒绝或建议寻求现实帮助。"
+            "请以角色身份自然回应，通常不超过 220 字。"
+            "不要复述资料字段，不要声称能执行现实行动。"
         ),
     ),
     "study_reflection": PromptTemplate(

@@ -164,8 +164,8 @@ def test_chat_is_reviewed_but_does_not_create_world_event(
     assert response.status_code == 200
     payload = response.json()
     assert payload["schema_version"] == "rpg-public-chat-v1"
-    assert payload["status"] == "queued"
-    assert payload["reply"].startswith("留言已收下")
+    assert payload["status"] == "delivered"
+    assert payload["reply"].startswith("我听见了")
     assert response.headers["X-Request-ID"]
     after = isolated_client.get("/timeline", params={"limit": 50}).json()["items"]
     assert before == after

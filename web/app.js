@@ -805,15 +805,15 @@ elements.chatForm.addEventListener("submit", async (event) => {
   const message = elements.chatMessage.value.trim();
   if (!message) return;
   elements.chatSubmit.disabled = true;
-  elements.chatSubmit.textContent = "审核中…";
+  elements.chatSubmit.textContent = "审核并送达中…";
   elements.chatStatus.classList.remove("is-error");
-  elements.chatStatus.textContent = "正在提交并检查留言…";
+  elements.chatStatus.textContent = "正在审核并送达留言…";
   try {
     const response = await fetchJSON("/chat", {
       method: "POST",
       body: JSON.stringify({ message }),
     });
-    appendChatMessage(response.visible_message, "observer", "已排队");
+    appendChatMessage(response.visible_message, "observer", "已送达");
     appendChatMessage(
       response.reply,
       "resident",
@@ -821,7 +821,8 @@ elements.chatForm.addEventListener("submit", async (event) => {
     );
     elements.chatMessage.value = "";
     elements.chatCounter.textContent = "0 / 280";
-    elements.chatStatus.textContent = "留言已排队，不会立即改变世界。";
+    elements.chatStatus.textContent =
+      "留言已送达。林澄的回应不会直接改变世界、关系或人格。";
   } catch (error) {
     elements.chatStatus.classList.add("is-error");
     elements.chatStatus.textContent =

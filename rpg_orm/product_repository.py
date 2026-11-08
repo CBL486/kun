@@ -82,6 +82,59 @@ class ProductRepository:
             row = session.get(MemoryEventRow, event_id)
             return self._event_dict(row) if row else None
 
+    def list_recent_memory_events(
+        self,
+        *,
+        world_id: str,
+        character_id: str,
+        limit: int = 5,
+    ) -> list[dict[str, Any]]:
+        with Session(self.engine) as session:
+            rows = session.scalars(
+                select(MemoryEventRow)
+                .where(
+                    MemoryEventRow.world_id == world_id,
+                    MemoryEventRow.actor_id == character_id,
+                )
+                .order_by(
+                    MemoryEventRow.occurred_at.desc(),
+                    MemoryEventRow.event_id.desc(),
+                )
+                .limit(max(0, min(limit, 20)))
+            ).all()
+            return [self._event_dict(row) for row in rows]
+
+    def get_relationship(
+        self,
+        *,
+        world_id: str,
+        from_character_id: str,
+        to_character_id: str,
+    ) -> dict[str, Any] | None:
+        with Session(self.engine) as session:
+            row = session.scalar(
+                select(RelationshipStateRow).where(
+                    RelationshipStateRow.world_id == world_id,
+                    RelationshipStateRow.from_character_id
+                    == from_character_id,
+                    RelationshipStateRow.to_character_id == to_character_id,
+                )
+            )
+            return self._relationship_dict(row) if row else None
+
+    def get_emotion(
+        self,
+        *,
+        world_id: str,
+        character_id: str,
+    ) -> dict[str, Any] | None:
+        with Session(self.engine) as session:
+            row = session.get(
+                EmotionStateRow,
+                (world_id, character_id),
+            )
+            return self._emotion_dict(row) if row else None
+
     def apply_relationship(
         self,
         *,
