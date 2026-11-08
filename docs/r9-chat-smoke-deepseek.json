@@ -1,0 +1,13 @@
+{
+  "schema_version": "aiworld-r9-chat-smoke-v1",
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "api_key_configured": true,
+  "reply_kind": "model",
+  "reply": "我听见了。让我先按自己的方式想一想，再认真回答你。",
+  "operation": {
+    "status": "succeeded",
+    "run_mode": "model",
+    "degradation_reason": null
+  }
+}

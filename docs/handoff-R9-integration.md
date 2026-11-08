@@ -1,16 +1,18 @@
 # R9 最终集成交接
 
 任务 ID：R9  
-状态：代码与生产候选验证完成，等待 A 执行授权环境的真实 DeepSeek smoke 和生产部署  
+状态：代码、真实 DeepSeek smoke 和 A 最终验收完成；等待 staging/生产部署
 日期：2026-11-08
 
 ## 1. 分支与提交
 
-- 分支：`codex/product-r9-integration`
+- B 分支：`codex/product-r9-integration`
+- A 验收分支：`codex/gate-r9-review`
 - 基线：`296ceee58fb360f640191759e70a26ef1497b043`
 - 功能提交：`06b22de`
-- 交接提交：本文件所在提交
-- `main` 未修改，生产任务未注册，生产目录未触碰
+- 交接提交：`c3f9436`
+- A 最终修复：中文 token 估算与记忆幻觉约束
+- 生产任务未注册，生产目录未触碰
 
 ## 2. 改动文件
 
@@ -94,7 +96,7 @@ pwsh -NoProfile -File scripts/test-all.ps1
 结果：
 
 ```text
-pytest: 261 passed, 1 warning
+pytest: 253 passed, 9 skipped, 1 warning
 七日 E2E: passed, 49 events, 0 errors, 1 quality warning
 成本对账: bill_matches=true, cost_cny=0.36320000
 config-check: issues=[]
@@ -108,13 +110,15 @@ JavaScript syntax check: passed
 
 `tests/test_r9_integration.py` 覆盖：
 
+- 中文 prompt 不再被“字符数 / 4”低估并误触发预算拒绝；
 - Persona、关系、情绪和近期事件进入模型上下文；
 - `/chat` 状态为 `delivered`；
 - 成功调用写 usage，但不写事件、关系或情绪；
 - provider 不可用返回安全 fallback，operation 为 `fallback`，无 usage；
 - 模型输出审核拒绝时不泄漏被拒文本，operation 为 `blocked`；
 - 预算拒绝不调用 provider、无 usage，只返回安全 fallback；
-- 页面和 OpenAPI 不再出现公开“排队”语义。
+- 页面和 OpenAPI 不再出现公开“排队”语义；
+- prompt 明确禁止在没有上下文证据时编造具体回忆。
 
 ## 5. 截图与证据
 
@@ -159,19 +163,21 @@ python scripts/run_r9_chat_smoke.py
 docs/r9-chat-smoke-fake-2026-11-08.json
 ```
 
-真实 DeepSeek chat smoke：`not_run: authorized test credential required`。
+真实 DeepSeek chat smoke 已由 A 执行并通过：
 
-当前执行环境没有获授权的测试 Key，以下命令留给 A 在 staging 执行：
-
-```powershell
-$env:AIWORLD_LLM_PROVIDER = "deepseek"
-$env:AIWORLD_LLM_API_KEY_FILE = "C:\AIWorld\data\setup\deepseek_api_key.txt"
-python scripts/run_r9_chat_smoke.py `
-  --output docs/r9-chat-smoke-deepseek.json
+```text
+docs/r9-chat-smoke-deepseek.json
+provider=deepseek
+model=deepseek-flash
+api_key_configured=true
+reply_kind=model
+operation.status=succeeded
+operation.run_mode=model
+degradation_reason=null
 ```
 
-该结果必须检查 `reply_kind=model`、`operation.status=succeeded`、
-`operation.run_mode=model`，并人工确认无系统免责声明、完整 Key、prompt 或内部字段。
+该 smoke 首次暴露了中文 prompt token 低估问题；修复后重新执行通过。证据文件经检查
+不包含完整 Key、prompt 或 usage 内部字段。
 
 ## 7. R7 学习与预算
 
@@ -235,7 +241,7 @@ rollback -> schema 0, tables 25 -> 0
 
 ## 10. 已知风险
 
-- 当前环境未执行真实 DeepSeek persona chat smoke；fake 与故障矩阵已通过；
+- DeepSeek smoke 已通过，但生产服务器仍需使用服务器自己的 Key 再执行一次部署后 smoke；
 - B站热门 API 可能受网络、地区或反爬策略影响，必须保持安全失败；
 - 默认聊天单日预算沿用 `LlmGateway` 的每日硬上限，达到上限后会返回安全 fallback；
 - `AIWorld-WorldTick` 仍需 A 在目标机注册并观察 10 分钟节奏；
@@ -244,12 +250,12 @@ rollback -> schema 0, tables 25 -> 0
 
 ## 11. 需要 A 执行或决策
 
-1. 在授权 staging 使用有效 DeepSeek Key 执行 persona chat smoke，并补
-   `docs/r9-chat-smoke-deepseek.json`。
-2. 验证保存 Key、重启、清除 Key 后重新门禁，以及日志、浏览器存储和响应中均无完整
-   Key。
-3. 在目标 Windows 机验证 setup ACL 和 release 外数据目录持久性。
-4. 注册并确认 `AIWorld-WorldTick` 为 10 分钟节奏。
-5. 执行生产 schema 5 迁移、Persona JSON 导入和基于备份的回滚演练。
-6. 重试一次真实 B站公开热门接口；失败时确认不写记忆且页面安全降级。
-7. 部署候选完成后进行最终产品验收；B 本轮到此停止。
+1. 在 staging 验证保存 Key、重启、清除 Key 后重新门禁，以及日志、浏览器存储和
+   响应中均无完整 Key。
+2. 在目标 Windows 机验证 setup ACL 和 release 外数据目录持久性。
+3. 注册并确认 `AIWorld-WorldTick` 为 10 分钟节奏。
+4. 执行生产 schema 5 迁移、Persona JSON 导入和基于备份的回滚演练。
+5. 重试一次真实 B站公开热门接口；失败时确认不写记忆且页面安全降级。
+6. 部署新 release 后使用生产服务器 Key 执行一次 chat smoke。
+7. 重新启动 G3 14 天观察；当前旧 rc7 观察不计入新版本。
+8. 完成公开入口代理保护验证后，再决定是否进入公开试用。

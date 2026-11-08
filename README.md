@@ -23,7 +23,7 @@
 - A 侧隔离 staging 已通过：179 项测试、SQLite、PostgreSQL、备份恢复、API 烟测
   和 junction 回滚演练；产品重构当前 schema 已升级为 5。
 - DeepSeek `deepseek-flash` live smoke 已通过：112/81 tokens，成本 0.00094176 CNY，审核通过；生产环境文件已准备但服务未重启。
-- R9 最终集成已接入生产 DeepSeek runtime；完整回归为 261 项测试通过，七日 E2E、
+- R9 最终集成已接入生产 DeepSeek runtime；完整回归为 253 项通过、9 项跳过，七日 E2E、
   成本对账、config-check 和 release verify 均通过。
 - Agent B 当前执行版任务书见 `协作Agent_B_RPG世界详细任务单_V6.md`。
 - B6 至 G3 执行计划见 `B6至G3执行计划书_V1.md`。
