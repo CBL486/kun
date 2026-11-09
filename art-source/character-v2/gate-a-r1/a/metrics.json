@@ -27,89 +27,89 @@
   ],
   "baseline_y": 88,
   "bbox": [
-    12,
-    15,
-    245,
-    91
+    13,
+    17,
+    244,
+    89
   ],
   "semi_transparent_pixels": 0,
   "anti_aliased_pixels": 0,
   "frames": [
     {
       "direction": "down",
-      "sha256": "3f9b5529e2ed7e12f499158b2c0a689ff07efc8b2ed829e9328e9e746b560508",
+      "sha256": "80ae9abf730235d24cbd5d9750d3ba7649b58bbf1a1ab9b503feeb66e7d1b423",
       "bbox": [
-        12,
-        15,
-        53,
-        91
+        13,
+        17,
+        52,
+        89
       ],
       "character_bbox": [
-        12,
-        15,
-        53,
-        88
+        13,
+        17,
+        52,
+        89
       ],
-      "character_height": 73,
-      "character_width": 41,
-      "opaque_pixels": 2171
+      "character_height": 72,
+      "character_width": 39,
+      "opaque_pixels": 2179
     },
     {
       "direction": "left",
-      "sha256": "170e92b54705143cfc51389130193ba1d40716743c9d63028ed983d77a498bac",
+      "sha256": "de0bb3a4522e87085264bfae13583c824566ad5ec9a0c06498ee1d26ab17db31",
       "bbox": [
         13,
-        15,
-        53,
-        91
+        17,
+        52,
+        89
       ],
       "character_bbox": [
         13,
-        15,
-        53,
-        88
+        17,
+        52,
+        89
       ],
-      "character_height": 73,
-      "character_width": 40,
-      "opaque_pixels": 2009
+      "character_height": 72,
+      "character_width": 39,
+      "opaque_pixels": 2044
     },
     {
       "direction": "right",
-      "sha256": "16a286577bdfcaf1e63eaa3bbbc9a6f833f0d17420952cd64aad8c6dfa95dce5",
+      "sha256": "c150c0ab1a51aafdc531f7eabcd3f582e5061c481f20bf1c937b6e6b075601d9",
       "bbox": [
-        12,
-        15,
-        50,
-        91
+        13,
+        17,
+        52,
+        89
       ],
       "character_bbox": [
-        12,
-        15,
-        50,
-        88
+        13,
+        17,
+        52,
+        89
       ],
-      "character_height": 73,
-      "character_width": 38,
-      "opaque_pixels": 2001
+      "character_height": 72,
+      "character_width": 39,
+      "opaque_pixels": 2068
     },
     {
       "direction": "up",
-      "sha256": "5af0452867743fa8dc1317a74f4025dbefd4b527c47de436137c2bb5181d6f27",
+      "sha256": "0d3a73a563bfeba703478197b5b55e80af3d6a1dfd21ad716ba8d399be016082",
       "bbox": [
-        12,
-        15,
-        53,
-        91
+        13,
+        17,
+        52,
+        89
       ],
       "character_bbox": [
-        12,
-        15,
-        53,
-        88
+        13,
+        17,
+        52,
+        89
       ],
-      "character_height": 73,
-      "character_width": 41,
-      "opaque_pixels": 2185
+      "character_height": 72,
+      "character_width": 39,
+      "opaque_pixels": 2167
     }
   ]
 }

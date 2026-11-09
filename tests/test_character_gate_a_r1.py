@@ -42,7 +42,7 @@ def test_gate_a_r1_packages_are_native_pixel_assets() -> None:
         with Image.open(package / "hero-reference.png") as hero:
             assert hero.size == (1024, 1024)
             assert hero.mode == "RGB"
-            assert "TC260:AIGC" in hero.info.get(
+            assert "TC260:AIGC" not in hero.info.get(
                 "XML:com.adobe.xmp",
                 "",
             )
@@ -92,6 +92,9 @@ def test_gate_a_r1_packages_are_native_pixel_assets() -> None:
         assert metrics["directions"] == list(DIRECTIONS)
         assert metrics["semi_transparent_pixels"] == 0
         assert metrics["anti_aliased_pixels"] == 0
+        for direction in metrics["frames"]:
+            assert 32 <= direction["character_width"] <= 40
+            assert 64 <= direction["character_height"] <= 72
 
 
 def test_gate_a_r1_map_screenshots_cover_every_direction() -> None:

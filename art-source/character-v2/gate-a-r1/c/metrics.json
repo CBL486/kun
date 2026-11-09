@@ -13,8 +13,8 @@
     48,
     72
   ],
-  "colors": 21,
-  "opaque_colors": 20,
+  "colors": 23,
+  "opaque_colors": 22,
   "alpha_values": [
     0,
     255
@@ -28,88 +28,88 @@
   "baseline_y": 88,
   "bbox": [
     12,
-    15,
-    245,
-    91
+    17,
+    244,
+    89
   ],
   "semi_transparent_pixels": 0,
   "anti_aliased_pixels": 0,
   "frames": [
     {
       "direction": "down",
-      "sha256": "7ce54d11ec2235f6433d2ed92d0f1e0ddea84b7bf8febdcb8efc1c261e89a900",
+      "sha256": "62229d1efa992f4b40d93a581125da5f83b0e0e49fba840c951910afa777e789",
       "bbox": [
         12,
-        15,
-        53,
-        91
+        17,
+        52,
+        89
       ],
       "character_bbox": [
         12,
-        15,
-        53,
-        88
+        17,
+        52,
+        89
       ],
-      "character_height": 73,
-      "character_width": 41,
-      "opaque_pixels": 2191
+      "character_height": 72,
+      "character_width": 40,
+      "opaque_pixels": 2336
     },
     {
       "direction": "left",
-      "sha256": "e761f5be6d8b4e2dff533f9f94a14c646c2e6880e878e03a21b6655da974b087",
+      "sha256": "d2ae075085ae6a70c4791431d95fbca8c4c6120e353b29da1a19fc290ca41949",
       "bbox": [
         12,
-        15,
-        53,
-        91
+        17,
+        52,
+        89
       ],
       "character_bbox": [
         12,
-        15,
-        53,
-        88
+        17,
+        52,
+        89
       ],
-      "character_height": 73,
-      "character_width": 41,
-      "opaque_pixels": 2038
+      "character_height": 72,
+      "character_width": 40,
+      "opaque_pixels": 2271
     },
     {
       "direction": "right",
-      "sha256": "2846ed7be04beddcfff8d98a23d71ae361737f919b3ee094d71d1acb82429980",
+      "sha256": "6eab3e7b2efd7e32478f32aad7113b3a55c90a7f88ff8d33b8a20c6a93735d9d",
       "bbox": [
         12,
-        15,
-        51,
-        91
+        17,
+        52,
+        89
       ],
       "character_bbox": [
         12,
-        15,
-        51,
-        88
+        17,
+        52,
+        89
       ],
-      "character_height": 73,
-      "character_width": 39,
-      "opaque_pixels": 2044
+      "character_height": 72,
+      "character_width": 40,
+      "opaque_pixels": 2339
     },
     {
       "direction": "up",
-      "sha256": "7bf3c8e869d12cf683d332f1cda73c8096a2e3fabe4f55c6c70472bf6a9d0de2",
+      "sha256": "35d359a798d1ea7102ba32c55b8ea9c605e2e4d735d793113132dee4af275810",
       "bbox": [
         12,
-        15,
-        53,
-        91
+        17,
+        52,
+        89
       ],
       "character_bbox": [
         12,
-        15,
-        53,
-        88
+        17,
+        52,
+        89
       ],
-      "character_height": 73,
-      "character_width": 41,
-      "opaque_pixels": 2202
+      "character_height": 72,
+      "character_width": 40,
+      "opaque_pixels": 2320
     }
   ]
 }
