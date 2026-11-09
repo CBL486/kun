@@ -1,0 +1,115 @@
+{
+  "style": "b",
+  "name": "海玻璃学院",
+  "sheet_size": [
+    256,
+    96
+  ],
+  "frame_size": [
+    64,
+    96
+  ],
+  "runtime_size": [
+    48,
+    72
+  ],
+  "colors": 21,
+  "opaque_colors": 20,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "directions": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "baseline_y": 88,
+  "bbox": [
+    12,
+    15,
+    245,
+    91
+  ],
+  "semi_transparent_pixels": 0,
+  "anti_aliased_pixels": 0,
+  "frames": [
+    {
+      "direction": "down",
+      "sha256": "dc3083831a12365b6f63c17c3ed0abebbe01a50e0a61a321cf9ba21b3e72ca13",
+      "bbox": [
+        12,
+        15,
+        53,
+        91
+      ],
+      "character_bbox": [
+        12,
+        15,
+        53,
+        88
+      ],
+      "character_height": 73,
+      "character_width": 41,
+      "opaque_pixels": 2101
+    },
+    {
+      "direction": "left",
+      "sha256": "89862a9f4158ec7008c4117d62931f861999cf26e07e15fc86c10a8cd9ce826b",
+      "bbox": [
+        17,
+        15,
+        53,
+        91
+      ],
+      "character_bbox": [
+        17,
+        15,
+        53,
+        88
+      ],
+      "character_height": 73,
+      "character_width": 36,
+      "opaque_pixels": 1910
+    },
+    {
+      "direction": "right",
+      "sha256": "b914af847fb5d00afc9ee409ec92c2ccaf5599def5bb01352656e4d046c2ec76",
+      "bbox": [
+        12,
+        15,
+        49,
+        91
+      ],
+      "character_bbox": [
+        12,
+        15,
+        49,
+        88
+      ],
+      "character_height": 73,
+      "character_width": 37,
+      "opaque_pixels": 1914
+    },
+    {
+      "direction": "up",
+      "sha256": "1a31a6e908e86d7eff47481c2f438b12e03ac467150298ebafcbe15ac4021bb9",
+      "bbox": [
+        12,
+        15,
+        53,
+        91
+      ],
+      "character_bbox": [
+        12,
+        15,
+        53,
+        88
+      ],
+      "character_height": 73,
+      "character_width": 41,
+      "opaque_pixels": 2108
+    }
+  ]
+}

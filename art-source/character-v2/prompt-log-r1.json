@@ -1,0 +1,59 @@
+{
+  "schema_version": "rpg-character-v2-prompt-log-r1-v1",
+  "tool": "xiaoyunque",
+  "baseline_commit": "6a6a3c9065da1c116a9940e7cc69c0da0e79527c",
+  "historical_credit_record": {
+    "source_branch": "origin/codex/character-art-v2",
+    "source_path": "art-source/character-v2/prompt-log.json",
+    "starting_credits": 1478,
+    "spent_credits": 24,
+    "remaining_credits": 1454,
+    "art_v2_00a_spent": 4,
+    "gate_a_spent_before_r1": 20
+  },
+  "r1_gate_a_cap": {
+    "allocated": 120,
+    "spent_before_r1": 24,
+    "maximum_additional": 96
+  },
+  "r1_local_authoring": {
+    "credits": 0,
+    "outputs": [
+      "art-source/character-v2/gate-a-r1/a/sprite-4dir.png",
+      "art-source/character-v2/gate-a-r1/b/sprite-4dir.png",
+      "art-source/character-v2/gate-a-r1/c/sprite-4dir.png"
+    ],
+    "note": "原生像素四方向、色板、指标和地图截图均在本机绘制或采集，不消耗小云雀积分。"
+  },
+  "r1_reference_generations": [
+    {
+      "id": "v2-gate-a-r1-a-reference",
+      "direction": "a",
+      "output": "art-source/character-v2/gate-a-r1/a/hero-reference.png",
+      "credits": null,
+      "accepted": false,
+      "usage": "reference_only",
+      "note": "导出文件未包含平台账单字段；不得按 0 积分记账，其余额必须由账号所有者核对小云雀账单后补齐。"
+    },
+    {
+      "id": "v2-gate-a-r1-b-reference",
+      "direction": "b",
+      "output": "art-source/character-v2/gate-a-r1/b/hero-reference.png",
+      "credits": null,
+      "accepted": false,
+      "usage": "reference_only",
+      "note": "导出文件未包含平台账单字段；不得按 0 积分记账，其余额必须由账号所有者核对小云雀账单后补齐。"
+    },
+    {
+      "id": "v2-gate-a-r1-c-reference",
+      "direction": "c",
+      "output": "art-source/character-v2/gate-a-r1/c/hero-reference.png",
+      "credits": null,
+      "accepted": false,
+      "usage": "reference_only",
+      "note": "导出文件未包含平台账单字段；不得按 0 积分记账，其余额必须由账号所有者核对小云雀账单后补齐。"
+    }
+  ],
+  "credit_reconciliation_required": true,
+  "selected_direction": null
+}
