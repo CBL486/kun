@@ -1,0 +1,16 @@
+{
+  "schema_version": "rpg-character-v2-prompt-log-r2-v1",
+  "tool": "native-pixel-authoring",
+  "baseline_commit": "aa2c908",
+  "historical_gate_a_spent": 24,
+  "remaining_before_r2": 1454,
+  "r2_spent": 0,
+  "r2_outputs": [
+    "art-source/character-v2/gate-a-r2/a",
+    "art-source/character-v2/gate-a-r2/b",
+    "art-source/character-v2/gate-a-r2/c"
+  ],
+  "creation_route": "manual-pixel-matrix",
+  "note": "Gate A R2 不调用图像模型。角色由逐像素字符矩阵编译，参考板和轮廓图只由最终矩阵生成，不消耗小云雀积分。",
+  "selected_direction": null
+}

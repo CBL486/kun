@@ -1,0 +1,119 @@
+{
+  "schema_version": "rpg-character-v2-asset-map-v1",
+  "status": "gate-a-r2-frozen-pending-review",
+  "character_id": "char_lin_cheng",
+  "logical_canvas": {
+    "width": 64,
+    "height": 96,
+    "baseline_y": 88
+  },
+  "runtime_display": {
+    "width": 48,
+    "height": 72,
+    "sampling": "nearest"
+  },
+  "directions": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "gate_a_candidates": {
+    "a": "art-source/character-v2/gate-a-r2/a",
+    "b": "art-source/character-v2/gate-a-r2/b",
+    "c": "art-source/character-v2/gate-a-r2/c"
+  },
+  "source_format": {
+    "image": "PNG RGBA indexed-color source",
+    "matrix": "64x96 UTF-8 character matrix",
+    "palette": "JSON symbol-to-HEX map"
+  },
+  "actions": {
+    "idle": {
+      "frames": 4,
+      "fps": 5.0,
+      "loop": true
+    },
+    "walk": {
+      "frames": 6,
+      "fps": 9.0,
+      "loop": true
+    },
+    "turn": {
+      "frames": 4,
+      "fps": 10.0,
+      "loop": false
+    },
+    "stop": {
+      "frames": 3,
+      "fps": 10.0,
+      "loop": false
+    },
+    "study": {
+      "frames": 4,
+      "fps": 5.0,
+      "loop": true
+    },
+    "sit": {
+      "frames": 4,
+      "fps": 4.0,
+      "loop": true
+    },
+    "talk": {
+      "frames": 4,
+      "fps": 6.0,
+      "loop": true
+    }
+  },
+  "runtime_paths": {
+    "manifest": "assets/characters/whale-girl/whale-girl-manifest.json",
+    "static_fallback": "assets/characters/whale-girl/lin-cheng-map.png",
+    "hero_portrait": "assets/characters/whale-girl/portraits/lin-cheng-hero.png",
+    "direction_sheet_pattern": "assets/characters/whale-girl/sheets/{action}-{direction}.webp",
+    "expression_pattern": "assets/characters/whale-girl/portraits/lin-cheng-{expression}.png"
+  },
+  "expressions": {
+    "calm": "assets/characters/whale-girl/portraits/lin-cheng-calm.png",
+    "happy": "assets/characters/whale-girl/portraits/lin-cheng-happy.png",
+    "low": "assets/characters/whale-girl/portraits/lin-cheng-low.png",
+    "focus": "assets/characters/whale-girl/portraits/lin-cheng-focus.png",
+    "tired": "assets/characters/whale-girl/portraits/lin-cheng-tired.png",
+    "curious": "assets/characters/whale-girl/portraits/lin-cheng-curious.png",
+    "shy": "assets/characters/whale-girl/portraits/lin-cheng-shy.png"
+  },
+  "mood_portraits": {
+    "平静": "calm",
+    "专注": "focus",
+    "有些疲惫": "low",
+    "心情不错": "happy",
+    "需要休息": "tired"
+  },
+  "expression_fallback": "calm",
+  "ui_crops": {
+    "character_card": {
+      "width": 112,
+      "height": 112,
+      "focus": "head-and-shoulders"
+    },
+    "avatar_96": {
+      "width": 96,
+      "height": 96,
+      "focus": "eyes-fins-collar"
+    },
+    "dialogue_desktop": {
+      "width": 58,
+      "height": 64,
+      "focus": "face-and-left-fin"
+    },
+    "dialogue_mobile": {
+      "width": 40,
+      "height": 47,
+      "focus": "eyes-mouth-fin"
+    }
+  },
+  "rollback": {
+    "source_branch": "origin/main",
+    "baseline_commit": "aa2c908",
+    "instructions": "在合并前资源未替换；任何失败候选直接丢弃 R2 分支，不修改运行时 manifest。"
+  }
+}

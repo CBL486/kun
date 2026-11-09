@@ -1,0 +1,122 @@
+{
+  "style": "c",
+  "name": "潮汐图形",
+  "creation_route": "manual-pixel-matrix",
+  "source_matrix": {
+    "down": "art-source/character-v2/gate-a-r2/c/source/down.txt",
+    "left": "art-source/character-v2/gate-a-r2/c/source/left.txt",
+    "right": "art-source/character-v2/gate-a-r2/c/source/right.txt",
+    "up": "art-source/character-v2/gate-a-r2/c/source/up.txt"
+  },
+  "sheet_size": [
+    256,
+    96
+  ],
+  "frame_size": [
+    64,
+    96
+  ],
+  "runtime_size": [
+    48,
+    72
+  ],
+  "colors": 22,
+  "opaque_colors": 21,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "directions": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "baseline_y": 88,
+  "bbox": [
+    13,
+    17,
+    245,
+    89
+  ],
+  "semi_transparent_pixels": 0,
+  "anti_aliased_pixels": 0,
+  "frames": [
+    {
+      "direction": "down",
+      "sha256": "9efda484e3b28ccf9b92b26e44ff4ae34450e0f2bf119f4d7daa9930132260e4",
+      "bbox": [
+        13,
+        17,
+        53,
+        89
+      ],
+      "character_bbox": [
+        13,
+        17,
+        53,
+        89
+      ],
+      "character_height": 72,
+      "character_width": 40,
+      "opaque_pixels": 2250
+    },
+    {
+      "direction": "left",
+      "sha256": "b6244a5e940ae8f6ac2a9223d38b9a32f0bf937b6870a53d1812d5948a6f79f4",
+      "bbox": [
+        13,
+        17,
+        53,
+        89
+      ],
+      "character_bbox": [
+        13,
+        17,
+        53,
+        89
+      ],
+      "character_height": 72,
+      "character_width": 40,
+      "opaque_pixels": 2187
+    },
+    {
+      "direction": "right",
+      "sha256": "36673cc7b7e61ae192415534d325858f4cfb8b1f88864ef67e011fa3befd0320",
+      "bbox": [
+        13,
+        17,
+        53,
+        89
+      ],
+      "character_bbox": [
+        13,
+        17,
+        53,
+        89
+      ],
+      "character_height": 72,
+      "character_width": 40,
+      "opaque_pixels": 2229
+    },
+    {
+      "direction": "up",
+      "sha256": "67b615af74f69dae892d5ab87aac9a4dae34bdd3059ae7040263d262a1e110de",
+      "bbox": [
+        13,
+        17,
+        53,
+        89
+      ],
+      "character_bbox": [
+        13,
+        17,
+        53,
+        89
+      ],
+      "character_height": 72,
+      "character_width": 40,
+      "opaque_pixels": 2210
+    }
+  ]
+}

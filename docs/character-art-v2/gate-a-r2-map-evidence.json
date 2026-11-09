@@ -1,0 +1,801 @@
+{
+  "schema_version": "rpg-character-gate-a-r2-map-evidence-v1",
+  "page": "web/index.html",
+  "server_route": "/",
+  "runtime_display": [
+    48,
+    72
+  ],
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "styles": [
+    "a",
+    "b",
+    "c"
+  ],
+  "directions": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "evidence": [
+    {
+      "style": "a",
+      "viewport": "desktop",
+      "direction": "down",
+      "path": "art-source/character-v2/gate-a-r2/a/map-desktop-down.png",
+      "canonical_path": "art-source/character-v2/gate-a-r2/a/map-desktop.png",
+      "size": [
+        1440,
+        1000
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 535,
+        "top": 407.0625,
+        "right": 583,
+        "bottom": 479.0625,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 104,
+        "top": 96.5625,
+        "right": 1336,
+        "bottom": 789.5625
+      },
+      "console_errors": []
+    },
+    {
+      "style": "a",
+      "viewport": "desktop",
+      "direction": "left",
+      "path": "art-source/character-v2/gate-a-r2/a/map-desktop-left.png",
+      "canonical_path": null,
+      "size": [
+        1440,
+        1000
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 535,
+        "top": 407.0625,
+        "right": 583,
+        "bottom": 479.0625,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 104,
+        "top": 96.5625,
+        "right": 1336,
+        "bottom": 789.5625
+      },
+      "console_errors": []
+    },
+    {
+      "style": "a",
+      "viewport": "desktop",
+      "direction": "right",
+      "path": "art-source/character-v2/gate-a-r2/a/map-desktop-right.png",
+      "canonical_path": null,
+      "size": [
+        1440,
+        1000
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 535,
+        "top": 407.0625,
+        "right": 583,
+        "bottom": 479.0625,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 104,
+        "top": 96.5625,
+        "right": 1336,
+        "bottom": 789.5625
+      },
+      "console_errors": []
+    },
+    {
+      "style": "a",
+      "viewport": "desktop",
+      "direction": "up",
+      "path": "art-source/character-v2/gate-a-r2/a/map-desktop-up.png",
+      "canonical_path": null,
+      "size": [
+        1440,
+        1000
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 535,
+        "top": 407.0625,
+        "right": 583,
+        "bottom": 479.0625,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 104,
+        "top": 96.5625,
+        "right": 1336,
+        "bottom": 789.5625
+      },
+      "console_errors": []
+    },
+    {
+      "style": "a",
+      "viewport": "mobile",
+      "direction": "down",
+      "path": "art-source/character-v2/gate-a-r2/a/map-mobile-down.png",
+      "canonical_path": "art-source/character-v2/gate-a-r2/a/map-mobile.png",
+      "size": [
+        390,
+        844
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 171,
+        "top": 178.296875,
+        "right": 219,
+        "bottom": 250.296875,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 8,
+        "top": 109.296875,
+        "right": 382,
+        "bottom": 319.671875
+      },
+      "console_errors": []
+    },
+    {
+      "style": "a",
+      "viewport": "mobile",
+      "direction": "left",
+      "path": "art-source/character-v2/gate-a-r2/a/map-mobile-left.png",
+      "canonical_path": null,
+      "size": [
+        390,
+        844
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 171,
+        "top": 178.296875,
+        "right": 219,
+        "bottom": 250.296875,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 8,
+        "top": 109.296875,
+        "right": 382,
+        "bottom": 319.671875
+      },
+      "console_errors": []
+    },
+    {
+      "style": "a",
+      "viewport": "mobile",
+      "direction": "right",
+      "path": "art-source/character-v2/gate-a-r2/a/map-mobile-right.png",
+      "canonical_path": null,
+      "size": [
+        390,
+        844
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 171,
+        "top": 178.296875,
+        "right": 219,
+        "bottom": 250.296875,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 8,
+        "top": 109.296875,
+        "right": 382,
+        "bottom": 319.671875
+      },
+      "console_errors": []
+    },
+    {
+      "style": "a",
+      "viewport": "mobile",
+      "direction": "up",
+      "path": "art-source/character-v2/gate-a-r2/a/map-mobile-up.png",
+      "canonical_path": null,
+      "size": [
+        390,
+        844
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 171,
+        "top": 178.296875,
+        "right": 219,
+        "bottom": 250.296875,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 8,
+        "top": 109.296875,
+        "right": 382,
+        "bottom": 319.671875
+      },
+      "console_errors": []
+    },
+    {
+      "style": "b",
+      "viewport": "desktop",
+      "direction": "down",
+      "path": "art-source/character-v2/gate-a-r2/b/map-desktop-down.png",
+      "canonical_path": "art-source/character-v2/gate-a-r2/b/map-desktop.png",
+      "size": [
+        1440,
+        1000
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 535,
+        "top": 407.0625,
+        "right": 583,
+        "bottom": 479.0625,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 104,
+        "top": 96.5625,
+        "right": 1336,
+        "bottom": 789.5625
+      },
+      "console_errors": []
+    },
+    {
+      "style": "b",
+      "viewport": "desktop",
+      "direction": "left",
+      "path": "art-source/character-v2/gate-a-r2/b/map-desktop-left.png",
+      "canonical_path": null,
+      "size": [
+        1440,
+        1000
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 535,
+        "top": 407.0625,
+        "right": 583,
+        "bottom": 479.0625,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 104,
+        "top": 96.5625,
+        "right": 1336,
+        "bottom": 789.5625
+      },
+      "console_errors": []
+    },
+    {
+      "style": "b",
+      "viewport": "desktop",
+      "direction": "right",
+      "path": "art-source/character-v2/gate-a-r2/b/map-desktop-right.png",
+      "canonical_path": null,
+      "size": [
+        1440,
+        1000
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 535,
+        "top": 407.0625,
+        "right": 583,
+        "bottom": 479.0625,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 104,
+        "top": 96.5625,
+        "right": 1336,
+        "bottom": 789.5625
+      },
+      "console_errors": []
+    },
+    {
+      "style": "b",
+      "viewport": "desktop",
+      "direction": "up",
+      "path": "art-source/character-v2/gate-a-r2/b/map-desktop-up.png",
+      "canonical_path": null,
+      "size": [
+        1440,
+        1000
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 535,
+        "top": 407.0625,
+        "right": 583,
+        "bottom": 479.0625,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 104,
+        "top": 96.5625,
+        "right": 1336,
+        "bottom": 789.5625
+      },
+      "console_errors": []
+    },
+    {
+      "style": "b",
+      "viewport": "mobile",
+      "direction": "down",
+      "path": "art-source/character-v2/gate-a-r2/b/map-mobile-down.png",
+      "canonical_path": "art-source/character-v2/gate-a-r2/b/map-mobile.png",
+      "size": [
+        390,
+        844
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 171,
+        "top": 178.296875,
+        "right": 219,
+        "bottom": 250.296875,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 8,
+        "top": 109.296875,
+        "right": 382,
+        "bottom": 319.671875
+      },
+      "console_errors": []
+    },
+    {
+      "style": "b",
+      "viewport": "mobile",
+      "direction": "left",
+      "path": "art-source/character-v2/gate-a-r2/b/map-mobile-left.png",
+      "canonical_path": null,
+      "size": [
+        390,
+        844
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 171,
+        "top": 178.296875,
+        "right": 219,
+        "bottom": 250.296875,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 8,
+        "top": 109.296875,
+        "right": 382,
+        "bottom": 319.671875
+      },
+      "console_errors": []
+    },
+    {
+      "style": "b",
+      "viewport": "mobile",
+      "direction": "right",
+      "path": "art-source/character-v2/gate-a-r2/b/map-mobile-right.png",
+      "canonical_path": null,
+      "size": [
+        390,
+        844
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 171,
+        "top": 178.296875,
+        "right": 219,
+        "bottom": 250.296875,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 8,
+        "top": 109.296875,
+        "right": 382,
+        "bottom": 319.671875
+      },
+      "console_errors": []
+    },
+    {
+      "style": "b",
+      "viewport": "mobile",
+      "direction": "up",
+      "path": "art-source/character-v2/gate-a-r2/b/map-mobile-up.png",
+      "canonical_path": null,
+      "size": [
+        390,
+        844
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 171,
+        "top": 178.296875,
+        "right": 219,
+        "bottom": 250.296875,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 8,
+        "top": 109.296875,
+        "right": 382,
+        "bottom": 319.671875
+      },
+      "console_errors": []
+    },
+    {
+      "style": "c",
+      "viewport": "desktop",
+      "direction": "down",
+      "path": "art-source/character-v2/gate-a-r2/c/map-desktop-down.png",
+      "canonical_path": "art-source/character-v2/gate-a-r2/c/map-desktop.png",
+      "size": [
+        1440,
+        1000
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 535,
+        "top": 407.0625,
+        "right": 583,
+        "bottom": 479.0625,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 104,
+        "top": 96.5625,
+        "right": 1336,
+        "bottom": 789.5625
+      },
+      "console_errors": []
+    },
+    {
+      "style": "c",
+      "viewport": "desktop",
+      "direction": "left",
+      "path": "art-source/character-v2/gate-a-r2/c/map-desktop-left.png",
+      "canonical_path": null,
+      "size": [
+        1440,
+        1000
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 535,
+        "top": 407.0625,
+        "right": 583,
+        "bottom": 479.0625,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 104,
+        "top": 96.5625,
+        "right": 1336,
+        "bottom": 789.5625
+      },
+      "console_errors": []
+    },
+    {
+      "style": "c",
+      "viewport": "desktop",
+      "direction": "right",
+      "path": "art-source/character-v2/gate-a-r2/c/map-desktop-right.png",
+      "canonical_path": null,
+      "size": [
+        1440,
+        1000
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 535,
+        "top": 407.0625,
+        "right": 583,
+        "bottom": 479.0625,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 104,
+        "top": 96.5625,
+        "right": 1336,
+        "bottom": 789.5625
+      },
+      "console_errors": []
+    },
+    {
+      "style": "c",
+      "viewport": "desktop",
+      "direction": "up",
+      "path": "art-source/character-v2/gate-a-r2/c/map-desktop-up.png",
+      "canonical_path": null,
+      "size": [
+        1440,
+        1000
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 535,
+        "top": 407.0625,
+        "right": 583,
+        "bottom": 479.0625,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 104,
+        "top": 96.5625,
+        "right": 1336,
+        "bottom": 789.5625
+      },
+      "console_errors": []
+    },
+    {
+      "style": "c",
+      "viewport": "mobile",
+      "direction": "down",
+      "path": "art-source/character-v2/gate-a-r2/c/map-mobile-down.png",
+      "canonical_path": "art-source/character-v2/gate-a-r2/c/map-mobile.png",
+      "size": [
+        390,
+        844
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 171,
+        "top": 178.296875,
+        "right": 219,
+        "bottom": 250.296875,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 8,
+        "top": 109.296875,
+        "right": 382,
+        "bottom": 319.671875
+      },
+      "console_errors": []
+    },
+    {
+      "style": "c",
+      "viewport": "mobile",
+      "direction": "left",
+      "path": "art-source/character-v2/gate-a-r2/c/map-mobile-left.png",
+      "canonical_path": null,
+      "size": [
+        390,
+        844
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 171,
+        "top": 178.296875,
+        "right": 219,
+        "bottom": 250.296875,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 8,
+        "top": 109.296875,
+        "right": 382,
+        "bottom": 319.671875
+      },
+      "console_errors": []
+    },
+    {
+      "style": "c",
+      "viewport": "mobile",
+      "direction": "right",
+      "path": "art-source/character-v2/gate-a-r2/c/map-mobile-right.png",
+      "canonical_path": null,
+      "size": [
+        390,
+        844
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 171,
+        "top": 178.296875,
+        "right": 219,
+        "bottom": 250.296875,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 8,
+        "top": 109.296875,
+        "right": 382,
+        "bottom": 319.671875
+      },
+      "console_errors": []
+    },
+    {
+      "style": "c",
+      "viewport": "mobile",
+      "direction": "up",
+      "path": "art-source/character-v2/gate-a-r2/c/map-mobile-up.png",
+      "canonical_path": null,
+      "size": [
+        390,
+        844
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "background_size": "48px 72px",
+      "image_rendering": "pixelated",
+      "player_bounds": {
+        "left": 171,
+        "top": 178.296875,
+        "right": 219,
+        "bottom": 250.296875,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 8,
+        "top": 109.296875,
+        "right": 382,
+        "bottom": 319.671875
+      },
+      "console_errors": []
+    }
+  ],
+  "source_root": "art-source/character-v2/gate-a-r2"
+}

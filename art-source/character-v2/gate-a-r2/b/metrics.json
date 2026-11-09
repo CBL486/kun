@@ -1,0 +1,122 @@
+{
+  "style": "b",
+  "name": "海玻璃学院",
+  "creation_route": "manual-pixel-matrix",
+  "source_matrix": {
+    "down": "art-source/character-v2/gate-a-r2/b/source/down.txt",
+    "left": "art-source/character-v2/gate-a-r2/b/source/left.txt",
+    "right": "art-source/character-v2/gate-a-r2/b/source/right.txt",
+    "up": "art-source/character-v2/gate-a-r2/b/source/up.txt"
+  },
+  "sheet_size": [
+    256,
+    96
+  ],
+  "frame_size": [
+    64,
+    96
+  ],
+  "runtime_size": [
+    48,
+    72
+  ],
+  "colors": 21,
+  "opaque_colors": 20,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "directions": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "baseline_y": 88,
+  "bbox": [
+    13,
+    17,
+    244,
+    89
+  ],
+  "semi_transparent_pixels": 0,
+  "anti_aliased_pixels": 0,
+  "frames": [
+    {
+      "direction": "down",
+      "sha256": "d3845001072729a3d32ae9017dacb8354bf4df61c8c06dfda77ab3cad34367cb",
+      "bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_height": 72,
+      "character_width": 39,
+      "opaque_pixels": 1849
+    },
+    {
+      "direction": "left",
+      "sha256": "5cec5a3b0351ead10c754a2e05c24d25ee8456ef63aaebb995e1ffb2bbacaac6",
+      "bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_height": 72,
+      "character_width": 39,
+      "opaque_pixels": 1814
+    },
+    {
+      "direction": "right",
+      "sha256": "b1edc6ef25b1ccbd2a84900902149497c412dae1c89145738188b07a6394611d",
+      "bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_height": 72,
+      "character_width": 39,
+      "opaque_pixels": 1835
+    },
+    {
+      "direction": "up",
+      "sha256": "9a5b0247ba94c7031b2ff2b3f55394a0311020b34048d272efe5e8a82494c486",
+      "bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_height": 72,
+      "character_width": 39,
+      "opaque_pixels": 1808
+    }
+  ]
+}

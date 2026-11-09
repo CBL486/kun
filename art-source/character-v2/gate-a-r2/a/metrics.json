@@ -1,0 +1,122 @@
+{
+  "style": "a",
+  "name": "叙事长外套",
+  "creation_route": "manual-pixel-matrix",
+  "source_matrix": {
+    "down": "art-source/character-v2/gate-a-r2/a/source/down.txt",
+    "left": "art-source/character-v2/gate-a-r2/a/source/left.txt",
+    "right": "art-source/character-v2/gate-a-r2/a/source/right.txt",
+    "up": "art-source/character-v2/gate-a-r2/a/source/up.txt"
+  },
+  "sheet_size": [
+    256,
+    96
+  ],
+  "frame_size": [
+    64,
+    96
+  ],
+  "runtime_size": [
+    48,
+    72
+  ],
+  "colors": 21,
+  "opaque_colors": 20,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "directions": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "baseline_y": 88,
+  "bbox": [
+    13,
+    17,
+    244,
+    89
+  ],
+  "semi_transparent_pixels": 0,
+  "anti_aliased_pixels": 0,
+  "frames": [
+    {
+      "direction": "down",
+      "sha256": "4f69d0eca72d718abbab63ff965c1a23d1a2e917bb998b798e0a759cde6f80f2",
+      "bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_height": 72,
+      "character_width": 39,
+      "opaque_pixels": 2093
+    },
+    {
+      "direction": "left",
+      "sha256": "1ebcfb2ab99b97eed99401fdeee1081fb4187bb946536274e409693aadb15c1f",
+      "bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_height": 72,
+      "character_width": 39,
+      "opaque_pixels": 2013
+    },
+    {
+      "direction": "right",
+      "sha256": "d15983f444fa569611e5d9b317b43f96d1cf49d50f9fc2ec2a7625778de09424",
+      "bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_height": 72,
+      "character_width": 39,
+      "opaque_pixels": 2064
+    },
+    {
+      "direction": "up",
+      "sha256": "8036eefb40e3360dcfc6e10f5b83f50a375789f56c9cab5ce56a2fba7eb88cf0",
+      "bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_bbox": [
+        13,
+        17,
+        52,
+        89
+      ],
+      "character_height": 72,
+      "character_width": 39,
+      "opaque_pixels": 2064
+    }
+  ]
+}
