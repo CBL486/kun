@@ -1,0 +1,115 @@
+{
+  "style": "a",
+  "name": "深海童话",
+  "sheet_size": [
+    256,
+    96
+  ],
+  "frame_size": [
+    64,
+    96
+  ],
+  "runtime_size": [
+    48,
+    72
+  ],
+  "colors": 23,
+  "opaque_colors": 22,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "directions": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "baseline_y": 88,
+  "bbox": [
+    12,
+    15,
+    245,
+    91
+  ],
+  "semi_transparent_pixels": 0,
+  "anti_aliased_pixels": 0,
+  "frames": [
+    {
+      "direction": "down",
+      "sha256": "3f9b5529e2ed7e12f499158b2c0a689ff07efc8b2ed829e9328e9e746b560508",
+      "bbox": [
+        12,
+        15,
+        53,
+        91
+      ],
+      "character_bbox": [
+        12,
+        15,
+        53,
+        88
+      ],
+      "character_height": 73,
+      "character_width": 41,
+      "opaque_pixels": 2171
+    },
+    {
+      "direction": "left",
+      "sha256": "170e92b54705143cfc51389130193ba1d40716743c9d63028ed983d77a498bac",
+      "bbox": [
+        13,
+        15,
+        53,
+        91
+      ],
+      "character_bbox": [
+        13,
+        15,
+        53,
+        88
+      ],
+      "character_height": 73,
+      "character_width": 40,
+      "opaque_pixels": 2009
+    },
+    {
+      "direction": "right",
+      "sha256": "16a286577bdfcaf1e63eaa3bbbc9a6f833f0d17420952cd64aad8c6dfa95dce5",
+      "bbox": [
+        12,
+        15,
+        50,
+        91
+      ],
+      "character_bbox": [
+        12,
+        15,
+        50,
+        88
+      ],
+      "character_height": 73,
+      "character_width": 38,
+      "opaque_pixels": 2001
+    },
+    {
+      "direction": "up",
+      "sha256": "5af0452867743fa8dc1317a74f4025dbefd4b527c47de436137c2bb5181d6f27",
+      "bbox": [
+        12,
+        15,
+        53,
+        91
+      ],
+      "character_bbox": [
+        12,
+        15,
+        53,
+        88
+      ],
+      "character_height": 73,
+      "character_width": 41,
+      "opaque_pixels": 2185
+    }
+  ]
+}

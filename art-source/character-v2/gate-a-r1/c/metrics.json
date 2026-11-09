@@ -1,0 +1,115 @@
+{
+  "style": "c",
+  "name": "潮汐海报",
+  "sheet_size": [
+    256,
+    96
+  ],
+  "frame_size": [
+    64,
+    96
+  ],
+  "runtime_size": [
+    48,
+    72
+  ],
+  "colors": 21,
+  "opaque_colors": 20,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "directions": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "baseline_y": 88,
+  "bbox": [
+    12,
+    15,
+    245,
+    91
+  ],
+  "semi_transparent_pixels": 0,
+  "anti_aliased_pixels": 0,
+  "frames": [
+    {
+      "direction": "down",
+      "sha256": "7ce54d11ec2235f6433d2ed92d0f1e0ddea84b7bf8febdcb8efc1c261e89a900",
+      "bbox": [
+        12,
+        15,
+        53,
+        91
+      ],
+      "character_bbox": [
+        12,
+        15,
+        53,
+        88
+      ],
+      "character_height": 73,
+      "character_width": 41,
+      "opaque_pixels": 2191
+    },
+    {
+      "direction": "left",
+      "sha256": "e761f5be6d8b4e2dff533f9f94a14c646c2e6880e878e03a21b6655da974b087",
+      "bbox": [
+        12,
+        15,
+        53,
+        91
+      ],
+      "character_bbox": [
+        12,
+        15,
+        53,
+        88
+      ],
+      "character_height": 73,
+      "character_width": 41,
+      "opaque_pixels": 2038
+    },
+    {
+      "direction": "right",
+      "sha256": "2846ed7be04beddcfff8d98a23d71ae361737f919b3ee094d71d1acb82429980",
+      "bbox": [
+        12,
+        15,
+        51,
+        91
+      ],
+      "character_bbox": [
+        12,
+        15,
+        51,
+        88
+      ],
+      "character_height": 73,
+      "character_width": 39,
+      "opaque_pixels": 2044
+    },
+    {
+      "direction": "up",
+      "sha256": "7bf3c8e869d12cf683d332f1cda73c8096a2e3fabe4f55c6c70472bf6a9d0de2",
+      "bbox": [
+        12,
+        15,
+        53,
+        91
+      ],
+      "character_bbox": [
+        12,
+        15,
+        53,
+        88
+      ],
+      "character_height": 73,
+      "character_width": 41,
+      "opaque_pixels": 2202
+    }
+  ]
+}
