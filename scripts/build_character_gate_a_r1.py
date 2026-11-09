@@ -8,6 +8,14 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
+from character_gate_a_r1_art import (
+    STYLE_NAMES,
+    build_frame as build_native_frame,
+    build_palette_image,
+    build_reference_board,
+    palette as render_palette,
+)
+
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_ROOT = ROOT / "art-source" / "character-v2" / "gate-a-r1"
@@ -448,38 +456,11 @@ def draw_shadow(
 
 
 def draw_frame(style: str, direction: str) -> Image.Image:
-    colors = palette(style)
-    image = Image.new("RGBA", FRAME_SIZE, (0, 0, 0, 0))
-    draw = ImageDraw.Draw(image)
-    draw_shadow(draw, colors)
-    draw_back_hair(draw, style, direction, colors)
-    draw_legs_and_boots(draw, style, direction, colors)
-    if direction == "down":
-        draw_body_front(draw, style, colors)
-        draw_head_front(draw, style, colors)
-    elif direction in {"left", "right"}:
-        draw_body_side(draw, style, direction, colors)
-        draw_head_side(draw, style, direction, colors)
-    else:
-        draw_body_back(draw, style, colors)
-        draw_head_back(draw, style, colors)
-    draw_fins(draw, style, direction, colors)
-    draw_style_accents(draw, style, direction, colors)
-    return image
+    return build_native_frame(style, direction)
 
 
-def palette_image(style: str) -> Image.Image:
-    colors = list(STYLES[style]["colors"].items())
-    canvas = Image.new("RGB", (700, 160), "#081514")
-    draw = ImageDraw.Draw(canvas)
-    labels = _font(15)
-    for index, (name, value) in enumerate(colors):
-        x = 12 + (index % 7) * 98
-        y = 10 + (index // 7) * 73
-        draw.rectangle((x, y, x + 74, y + 40), fill=value, outline="#E7DDAA")
-        draw.text((x, y + 46), value.upper(), fill="#F5EAB8", font=labels)
-        draw.text((x, y + 59), name[:12], fill="#A7C6C1", font=labels)
-    return canvas
+def palette_image(sheet: Image.Image) -> Image.Image:
+    return build_palette_image(sheet)
 
 
 def _font(size: int) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
@@ -496,7 +477,7 @@ def metrics(style: str, sheet: Image.Image) -> dict:
     pixels = list(sheet.get_flattened_data())
     colors = sorted({pixel for pixel in pixels})
     alpha_values = sorted({pixel[3] for pixel in pixels})
-    shadow = palette(style)["shadow"]
+    shadow = render_palette(style)["shadow"]
     frame_data = []
     for index, direction in enumerate(DIRECTIONS):
         frame = sheet.crop((index * 64, 0, (index + 1) * 64, 96))
@@ -530,7 +511,7 @@ def metrics(style: str, sheet: Image.Image) -> dict:
         )
     return {
         "style": style,
-        "name": STYLES[style]["name"],
+        "name": STYLE_NAMES[style],
         "sheet_size": list(sheet.size),
         "frame_size": list(FRAME_SIZE),
         "runtime_size": list(RUNTIME_SIZE),
@@ -565,7 +546,11 @@ def main() -> None:
             output / "sprite-preview-4x.png",
             optimize=True,
         )
-        palette_image(style).save(output / "palette.png", optimize=True)
+        palette_image(sheet).save(output / "palette.png", optimize=True)
+        build_reference_board(style, sheet).save(
+            output / "hero-reference.png",
+            optimize=True,
+        )
         (output / "metrics.json").write_text(
             json.dumps(metrics(style, sheet), ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",

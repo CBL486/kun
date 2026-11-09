@@ -21,39 +21,45 @@
     "outputs": [
       "art-source/character-v2/gate-a-r1/a/sprite-4dir.png",
       "art-source/character-v2/gate-a-r1/b/sprite-4dir.png",
-      "art-source/character-v2/gate-a-r1/c/sprite-4dir.png"
+      "art-source/character-v2/gate-a-r1/c/sprite-4dir.png",
+      "art-source/character-v2/gate-a-r1/a/hero-reference.png",
+      "art-source/character-v2/gate-a-r1/b/hero-reference.png",
+      "art-source/character-v2/gate-a-r1/c/hero-reference.png"
     ],
-    "note": "原生像素四方向、色板、指标和地图截图均在本机绘制或采集，不消耗小云雀积分。"
+    "note": "原生像素四方向、参考板、色板、指标和地图截图均在本机绘制或采集，不消耗小云雀积分。"
   },
-  "r1_reference_generations": [
+  "r1_reference_boards": [
     {
       "id": "v2-gate-a-r1-a-reference",
       "direction": "a",
       "output": "art-source/character-v2/gate-a-r1/a/hero-reference.png",
-      "credits": null,
+      "credits": 0,
       "accepted": false,
       "usage": "reference_only",
-      "note": "导出文件未包含平台账单字段；不得按 0 积分记账，其余额必须由账号所有者核对小云雀账单后补齐。"
+      "creation_route": "native-pixel-authoring",
+      "note": "由同方向 64×96 四方向源图生成的 1024 参考板，不含 AIGC 角标或旧候选图。"
     },
     {
       "id": "v2-gate-a-r1-b-reference",
       "direction": "b",
       "output": "art-source/character-v2/gate-a-r1/b/hero-reference.png",
-      "credits": null,
+      "credits": 0,
       "accepted": false,
       "usage": "reference_only",
-      "note": "导出文件未包含平台账单字段；不得按 0 积分记账，其余额必须由账号所有者核对小云雀账单后补齐。"
+      "creation_route": "native-pixel-authoring",
+      "note": "由同方向 64×96 四方向源图生成的 1024 参考板，不含 AIGC 角标或旧候选图。"
     },
     {
       "id": "v2-gate-a-r1-c-reference",
       "direction": "c",
       "output": "art-source/character-v2/gate-a-r1/c/hero-reference.png",
-      "credits": null,
+      "credits": 0,
       "accepted": false,
       "usage": "reference_only",
-      "note": "导出文件未包含平台账单字段；不得按 0 积分记账，其余额必须由账号所有者核对小云雀账单后补齐。"
+      "creation_route": "native-pixel-authoring",
+      "note": "由同方向 64×96 四方向源图生成的 1024 参考板，不含 AIGC 角标或旧候选图。"
     }
   ],
-  "credit_reconciliation_required": true,
+  "credit_reconciliation_required": false,
   "selected_direction": null
 }
