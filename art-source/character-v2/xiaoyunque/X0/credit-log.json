@@ -1,0 +1,49 @@
+{
+  "schema_version": "rpg-character-xiaoyunque-x0-credit-log-v1",
+  "date": "2026-11-10",
+  "visible_starting_credits": 1390,
+  "spent_credits": 3,
+  "remaining_credits": 1387,
+  "x0_budget_limit": 100,
+  "status": "x0-pass-with-export-limitation",
+  "reference": {
+    "path": "art-source/character-v2/workbuddy/2026-11-10/lin-cheng-blue-fat-fish-approved-reference.png",
+    "sha256": "53435A18105C34843611EA6FAEFD7CD5BBBAFDEF5FD3A142BB4C711E6AF54306",
+    "width": 1024,
+    "height": 1024,
+    "usage": "visual-reference-only"
+  },
+  "generations": [
+    {
+      "id": "x0-test-01",
+      "started_at": "2026-11-10T22:09:12+08:00",
+      "completed_at": "2026-11-10T22:10:48+08:00",
+      "platform_model_name": "智能图片V2.5 Pro",
+      "internal_model_id": "gpt_image_2_5_sunburst",
+      "aspect_ratio": "1:1",
+      "requested_resolution": "2K",
+      "quality_preference": "轻度",
+      "credits": 3,
+      "platform_filename": "lincheng_x0_test.png",
+      "saved_preview": {
+        "path": "art-source/character-v2/xiaoyunque/X0/lincheng-x0-test-01-platform-480.png",
+        "width": 480,
+        "height": 480,
+        "sha256": "612F827D13757D4FA010B922E6CEBB226212ECB3F65A925327FA1944E7B0A68F"
+      },
+      "canvas_proof": {
+        "path": "art-source/character-v2/xiaoyunque/X0/lincheng-x0-test-01-canvas-proof.png",
+        "width": 1272,
+        "height": 620,
+        "sha256": "9232D1BA53F5BF705635CE85F854145E2489876361F289A270A16E699A94F8BE"
+      },
+      "export_limitation": "The platform download action did not produce the 2K original. pageAssets returned a security-check failure when fetching the original-image URL. The 480 preview is retained only as X0 evidence and must not be used as a runtime asset.",
+      "result": "pass-visual-capability-test"
+    }
+  ],
+  "aigc_marking": {
+    "retained_on_platform": true,
+    "project_page_marker": "包含 AI 生成内容",
+    "manual_removal_performed": false
+  }
+}
