@@ -1,0 +1,92 @@
+{
+  "schema_version": "rpg-character-r3-base-source-v1",
+  "source_pack": {
+    "id": "modern_interiors",
+    "name": "Modern Interiors",
+    "archive": "2104261.zip",
+    "archive_sha256": "8FE691CE84881936F6B7A25E15A9847A1BFD555D21984A99939EA930A52C4C91",
+    "license_status": "project-authorized"
+  },
+  "members": {
+    "body": {
+      "path": "Modern_Interiors/2_Characters/Character_Generator/Bodies/48x48/Body_2_48x48.png",
+      "sha256": "ee1d90c415bf0858ad378ed721e6124fd885275df26e50c91a1e7131f87c6743",
+      "role": "adult female body and standing proportions"
+    },
+    "outfit": {
+      "path": "Modern_Interiors/2_Characters/Character_Generator/Outfits/48x48/Outfit_17_Nurse_48x48.png",
+      "sha256": "cf3d0ea790f407194b40feee405faf919ad08da2fdb357f628f2158041fdefbc",
+      "role": "base outfit silhouette"
+    },
+    "hair": {
+      "path": "Modern_Interiors/2_Characters/Character_Generator/Hairstyles/48x48/Hairstyle_4_48x48_1.png",
+      "sha256": "d418aa6eef1e3bb111958a311dc2af5d07a7e89c76bec19331251e4f0c98dc62",
+      "role": "base hair silhouette"
+    },
+    "eyes": {
+      "path": "Modern_Interiors/2_Characters/Character_Generator/Eyes/48x48/Eyes_2_48x48.png",
+      "sha256": "af49a16aadbff654c7419869dc98577949a28a892851a04a5cedc6a9c6a7e5ad",
+      "role": "base face alignment"
+    }
+  },
+  "crop": {
+    "down": {
+      "source_frame": 3,
+      "box_48x96": [
+        144,
+        0,
+        192,
+        96
+      ]
+    },
+    "left": {
+      "source_frame": 2,
+      "box_48x96": [
+        96,
+        0,
+        144,
+        96
+      ]
+    },
+    "right": {
+      "source_frame": 0,
+      "box_48x96": [
+        0,
+        0,
+        48,
+        96
+      ]
+    },
+    "up": {
+      "source_frame": 1,
+      "box_48x96": [
+        48,
+        0,
+        96,
+        96
+      ]
+    }
+  },
+  "base_asset": {
+    "body": "Body_2_48x48.png",
+    "outfit": "Outfit_17_Nurse_48x48.png",
+    "hair": "Hairstyle_4_48x48_1.png",
+    "eyes": "Eyes_2_48x48.png"
+  },
+  "base_role": "adult female body, face proportions and neutral standing pose; hair, outfit colors, fins, tail and apron are Lin Cheng overlays",
+  "edits": [
+    "crop four source frames",
+    "compose licensed body, outfit, hair and eye layers",
+    "recolor the composed 15-color base",
+    "center 48x96 base frames in a 64x96 canvas",
+    "shift bottom to y=88 baseline",
+    "add long hair, fin ears, white apron and whale tail overlay pixels",
+    "do not re-create body or legs with geometry"
+  ],
+  "final_source_sha256": {
+    "down": "a0ba4cb428af76b6ee2fdfed699d66c48e6d7b5f3b77350212b16e539cd076c5",
+    "left": "e7d727c60441b25c3273a721defa25938b853919ab6e29c40ac056a8aebd7022",
+    "right": "31fc7ac498886e10de35810e4779d0b8f3616805e6e5a9915e193a55c433bff1",
+    "up": "69441528d216dbba1b13317456844d202a0479f3a4e8ee14bd6dddcfb8531661"
+  }
+}

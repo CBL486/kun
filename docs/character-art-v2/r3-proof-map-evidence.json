@@ -1,0 +1,61 @@
+{
+  "schema_version": "rpg-character-r3-map-evidence-v1",
+  "page": "web/index.html",
+  "source": "art-source/character-v2/r3-proof/source/down.png",
+  "evidence": [
+    {
+      "viewport": "desktop",
+      "path": "art-source/character-v2/r3-proof/map-desktop-down.png",
+      "size": [
+        1440,
+        1000
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "player_bounds": {
+        "left": 535,
+        "top": 407.0625,
+        "right": 583,
+        "bottom": 479.0625,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 104,
+        "top": 96.5625,
+        "right": 1336,
+        "bottom": 789.5625
+      },
+      "console_errors": []
+    },
+    {
+      "viewport": "mobile",
+      "path": "art-source/character-v2/r3-proof/map-mobile-down.png",
+      "size": [
+        390,
+        844
+      ],
+      "runtime_display": [
+        48,
+        72
+      ],
+      "player_bounds": {
+        "left": 171,
+        "top": 178.296875,
+        "right": 219,
+        "bottom": 250.296875,
+        "width": 48,
+        "height": 72
+      },
+      "stage_bounds": {
+        "left": 8,
+        "top": 109.296875,
+        "right": 382,
+        "bottom": 319.671875
+      },
+      "console_errors": []
+    }
+  ]
+}

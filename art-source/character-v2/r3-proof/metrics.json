@@ -1,0 +1,70 @@
+{
+  "schema_version": "rpg-character-r3-proof-metrics-v1",
+  "sheet_size": [
+    256,
+    96
+  ],
+  "frame_size": [
+    64,
+    96
+  ],
+  "runtime_size": [
+    48,
+    72
+  ],
+  "baseline_y": 88,
+  "creation_route": "authorized-base-overlay",
+  "colors": 21,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "anti_aliased_pixels": 0,
+  "directions": {
+    "down": {
+      "bbox": [
+        12,
+        21,
+        52,
+        88
+      ],
+      "character_width": 40,
+      "character_height": 67,
+      "sha256": "367438446e245566bb9e3f36a673e386f2fc04f61c45332f12452d76eac64658"
+    },
+    "left": {
+      "bbox": [
+        12,
+        21,
+        52,
+        88
+      ],
+      "character_width": 40,
+      "character_height": 67,
+      "sha256": "c27a6fdc7feee810987af649bcef0a67794683de37732b57311280c4926264fa"
+    },
+    "right": {
+      "bbox": [
+        12,
+        21,
+        52,
+        88
+      ],
+      "character_width": 40,
+      "character_height": 67,
+      "sha256": "cd6afbbc8d848a8bf32567f13640f3e593cc8a9bff4d7915b4a765d7face37bf"
+    },
+    "up": {
+      "bbox": [
+        12,
+        21,
+        52,
+        88
+      ],
+      "character_width": 40,
+      "character_height": 67,
+      "sha256": "32a42c89362e90fd36adbeb56ff1387f93a911c63bd06e747e2badcb2748275e"
+    }
+  }
+}
