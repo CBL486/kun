@@ -6,8 +6,11 @@
 
 ## 已选方向
 
-- `lin-cheng-b-round-whale-reference.png`：主参考，圆脸、蓝鲸鳍耳、深海蓝长发、海军蓝外套、冰白内搭、鲸尾腰扣。
-- `lin-cheng-a-storybook-reference.png`：辅助参考，主要用于像素语言、长外套层次和配色。
+状态更新：2026-11-10 17:41 的 `miora-brand-design + miora_edit_image` 结果已成为最终视觉母版。
+
+- `lin-cheng-blue-fat-fish-approved-reference.png`：**最终主参考**，蓝色大肥鱼少女：蓝发、鲸鳍耳、鲸尾、蓝白女仆/学院服装、圆脸大眼、像素化商业概念图。
+- `lin-cheng-b-round-whale-reference.png`：上一版圆润蓝鲸参考，保留用于比较。
+- `lin-cheng-a-storybook-reference.png`：辅助参考，主要用于长外套层次和像素语言。
 
 ## 淘汰方向
 
