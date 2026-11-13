@@ -1,0 +1,42 @@
+{
+  "schema_version": "rpg-character-pixellab-p0-credit-log-v1",
+  "date": "2026-11-13",
+  "tool": "PixelLab",
+  "mode": "Image to Pixel Art Standard",
+  "free_trial": {
+    "fast_generations_listed": 40,
+    "daily_slow_generations_after_fast": 5,
+    "credit_card_required": false
+  },
+  "visible_gallery_items": 2,
+  "purchases": 0,
+  "subscriptions": 0,
+  "p0_generation": {
+    "status": "conditional-pass",
+    "input": {
+      "path": "art-source/character-v2/pixellab/P0/inputs/lin-cheng-pixellab-reference-256.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "6C00714C5A243F6ED2E3EA6068A4AA0D8F4C7874FD27308BE08664B73A3124C1"
+    },
+    "output": {
+      "path": "art-source/character-v2/pixellab/P0/candidates/pixellab-p0-image-to-pixel-64.png",
+      "width": 64,
+      "height": 64,
+      "mode": "RGBA",
+      "colors": 206,
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "sha256": "A0B71A479FC47C6298A5863C96AA5DBD927A2E6009D814ABBF5182F6FB1BC970"
+    },
+    "platform_cost_label": "生成 · 1 代",
+    "findings": [
+      "reference upload succeeded",
+      "single full-body pixel character generated",
+      "fin ears, outfit, apron and whale tail remain readable",
+      "output is 64x64 rather than 64x96",
+      "background is opaque",
+      "palette has 206 colors and requires later deterministic quantization"
+    ]
+  }
+}
