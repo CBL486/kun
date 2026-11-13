@@ -1,0 +1,36 @@
+{
+  "schema_version": "rpg-character-pixellab-p1-credit-log-v1",
+  "date": "2026-11-13",
+  "tool": "PixelLab",
+  "branch": "codex/character-art-pixellab-p1",
+  "baseline": "a085e20d4baf644f6ee50091a4318b0a7e375fe8",
+  "free_trial": {
+    "fast_generations_listed": 40,
+    "daily_slow_generations_after_fast": 5,
+    "credit_card_required": false
+  },
+  "visible_gallery_items": 3,
+  "purchases": 0,
+  "subscriptions": 0,
+  "generations": [
+    {
+      "id": "p1-image-to-pixel-art",
+      "mode": "Image to Pixel Art Standard",
+      "input": "art-source/character-v2/pixellab/P1/input-2x3.png",
+      "input_size": [256, 384],
+      "output": "art-source/character-v2/pixellab/P1/generated-64x96.png",
+      "output_size": [64, 96],
+      "displayed_cost": "1 generation",
+      "credits_or_payment": 0,
+      "pro_subscription_required": false
+    }
+  ],
+  "four_direction": {
+    "status": "available-not-generated",
+    "mode": "PixelLab V3 Standard",
+    "displayed_cost": "8 generations",
+    "pro_subscription_required": false,
+    "paid": false,
+    "note": "The 4-direction workflow accepted a South reference and showed a 1/4 upload state. It was not submitted because P1 only required a static validation."
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "input_size": [
+    256,
+    384
+  ],
+  "generated_size": [
+    64,
+    96
+  ],
+  "cleaned_size": [
+    64,
+    96
+  ],
+  "runtime_size": [
+    48,
+    72
+  ],
+  "colors": 21,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "baseline_y": 88,
+  "opaque_bbox": [
+    11,
+    27,
+    61,
+    88
+  ],
+  "player_rect": {
+    "desktop": [48, 72],
+    "mobile": [48, 72]
+  },
+  "background_rgb": [
+    241,
+    233,
+    210
+  ],
+  "background_threshold": 30,
+  "console_errors": [],
+  "four_direction": {
+    "status": "available-not-generated",
+    "mode": "PixelLab V3 Standard",
+    "displayed_cost": "8 generations",
+    "pro_subscription_required": false,
+    "paid": false,
+    "note": "The four-direction workflow was reachable with a 1/4 reference upload. It was intentionally not submitted because P1 only required static validation."
+  }
+}

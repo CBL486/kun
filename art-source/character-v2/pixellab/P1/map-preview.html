@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PixelLab P1 地图尺寸预览</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { width: 100%; height: 100%; margin: 0; }
+      body {
+        overflow: hidden;
+        background: #151a22;
+        color: #f8f3df;
+        font-family: "Microsoft YaHei", sans-serif;
+      }
+      .app {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .map {
+        position: absolute;
+        inset: 0;
+        background-image: url("../../../../assets/maps/town-map-world.webp");
+        background-position: 50% 52%;
+        background-size: cover;
+        image-rendering: pixelated;
+      }
+      .map::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(to top, rgba(7, 15, 24, .68), transparent 42%),
+          radial-gradient(circle at 50% 54%, transparent 0 14%, rgba(5, 11, 20, .22) 55%);
+      }
+      .topbar {
+        position: absolute;
+        inset: 18px 18px auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        z-index: 3;
+      }
+      .brand, .status {
+        border: 1px solid rgba(255, 255, 255, .22);
+        background: rgba(10, 19, 29, .74);
+        backdrop-filter: blur(12px);
+        border-radius: 16px;
+        padding: 12px 16px;
+      }
+      .brand strong { color: #8be9e1; letter-spacing: .08em; }
+      .brand span { display: block; margin-top: 4px; color: #cbd3d7; font-size: 12px; }
+      .status { text-align: right; color: #e9dcc0; font-size: 13px; }
+      .player-zone {
+        position: absolute;
+        left: 54%;
+        top: 54%;
+        width: 48px;
+        height: 72px;
+        z-index: 2;
+        transform: translate(-50%, -100%);
+      }
+      .player-shadow {
+        position: absolute;
+        left: 50%;
+        bottom: -5px;
+        width: 42px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(2, 8, 13, .55);
+        transform: translateX(-50%);
+        filter: blur(2px);
+      }
+      #map-player-sprite {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 48px;
+        height: 72px;
+        object-fit: contain;
+        image-rendering: pixelated;
+      }
+      .nameplate {
+        position: absolute;
+        left: 50%;
+        top: -30px;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        padding: 5px 12px;
+        border-radius: 999px;
+        background: rgba(10, 19, 29, .82);
+        border: 1px solid rgba(139, 233, 225, .5);
+        color: #f8f3df;
+        font-size: 12px;
+      }
+      .guide {
+        position: absolute;
+        left: 18px;
+        bottom: 18px;
+        z-index: 3;
+        max-width: 420px;
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: rgba(10, 19, 29, .82);
+        border: 1px solid rgba(255, 255, 255, .2);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      .guide strong { color: #8be9e1; }
+      @media (max-width: 600px) {
+        .topbar { inset: 10px 10px auto; }
+        .brand, .status { padding: 9px 11px; border-radius: 12px; }
+        .brand span { font-size: 10px; }
+        .status { max-width: 165px; font-size: 11px; }
+        .player-zone { left: 50%; top: 56%; }
+        .guide { left: 10px; right: 10px; bottom: 10px; max-width: none; font-size: 11px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app" aria-label="PixelLab P1 地图尺寸预览">
+      <div class="map" role="img" aria-label="青禾镇像素地图"></div>
+      <header class="topbar">
+        <div class="brand">
+          <strong>青禾镇</strong>
+          <span>观察者 · 地图预览</span>
+        </div>
+        <div class="status">PixelLab P1<br>48 × 72 运行时尺寸</div>
+      </header>
+      <div id="map-player" class="player-zone" data-direction="down">
+        <span class="nameplate">林澄</span>
+        <span class="player-shadow"></span>
+        <img id="map-player-sprite" src="cleaned-64x96.png" alt="林澄 64×96 像素角色">
+      </div>
+      <aside class="guide">
+        <strong>P1 图形验收</strong><br>
+        原图 64×96，页面显示 48×72；仅为尺寸与可读性证明，不是最终运行时接入。
+      </aside>
+    </main>
+    <script>
+      const player = document.querySelector("#map-player-sprite");
+      player.addEventListener("load", () => {
+        const rect = player.getBoundingClientRect();
+        document.body.dataset.playerRect = `${Math.round(rect.width)}x${Math.round(rect.height)}`;
+      });
+    </script>
+  </body>
+</html>
