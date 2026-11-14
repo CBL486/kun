@@ -10,10 +10,19 @@
     "credits_or_payment": 0
   },
   "p2_1_four_direction": {
-    "status": "not-started",
+    "status": "generated-blocked-visual-review",
+    "mode": "Standard",
+    "camera_view": "high top-down",
+    "directions": 4,
     "displayed_cost": "8 generations",
     "pro_subscription_required": false,
-    "generations_used": 0
+    "generations_used": 8,
+    "submission_count": 1,
+    "output_size": "96x96 per direction",
+    "raw_spritesheet": "sprite-4dir-raw.png",
+    "raw_metadata": "sprite-4dir-raw.json",
+    "available_balance": null,
+    "balance_note": "The PixelLab account route presented a sign-in page; no login was attempted."
   },
   "purchases": 0,
   "subscriptions": 0,

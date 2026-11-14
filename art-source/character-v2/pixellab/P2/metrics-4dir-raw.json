@@ -1,0 +1,90 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-4dir-raw-audit-v1",
+  "status": "blocked",
+  "blocker": "north whale tail is not visibly readable",
+  "source_down": "art-source/character-v2/pixellab/P2/source-down.png",
+  "source_down_sha256": "59DBED82B0CB2E3FE5D1E55F7428CE1B139891D383943BC00DFFF2EBC745AF79",
+  "raw_sheet": "art-source/character-v2/pixellab/P2/sprite-4dir-raw.png",
+  "raw_sheet_sha256": "02B6C148B3139932F4D6B703F7E1B1C4B40ECAD557DE357B515912C533FEB65A",
+  "raw_metadata": "art-source/character-v2/pixellab/P2/sprite-4dir-raw.json",
+  "sheet_size": [
+    384,
+    96
+  ],
+  "cell_size": [
+    96,
+    96
+  ],
+  "direction_order": [
+    "south",
+    "west",
+    "east",
+    "north"
+  ],
+  "colors": 29,
+  "opaque_colors": 28,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "cells": {
+    "south": {
+      "bbox": [
+        27,
+        27,
+        77,
+        88
+      ],
+      "width": 50,
+      "height": 61
+    },
+    "west": {
+      "bbox": [
+        34,
+        26,
+        75,
+        90
+      ],
+      "width": 41,
+      "height": 64
+    },
+    "east": {
+      "bbox": [
+        22,
+        28,
+        63,
+        92
+      ],
+      "width": 41,
+      "height": 64
+    },
+    "north": {
+      "bbox": [
+        29,
+        26,
+        67,
+        90
+      ],
+      "width": 38,
+      "height": 64
+    }
+  },
+  "west_vs_flipped_east": {
+    "opaque_union_pixels": 1630,
+    "exact_matching_pixels": 464,
+    "exact_ratio": 0.284663
+  },
+  "visual_acceptance": {
+    "south": "pass",
+    "west": "pass",
+    "east": "pass",
+    "north_back_hair": "pass",
+    "north_back_clothing": "pass",
+    "north_whale_tail": "fail-not-readable"
+  },
+  "cleaned_asset_created": false,
+  "map_screenshots_created": false,
+  "generation_count": 1,
+  "animation_started": false
+}

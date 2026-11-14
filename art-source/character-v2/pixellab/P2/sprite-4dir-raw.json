@@ -1,0 +1,41 @@
+{
+  "character": {
+    "id": "40f3ee77-9f90-4e23-b119-c91a24efe478",
+    "name": "Idle",
+    "prompt": "Same blue-haired chibi whale-eared maid from the reference image. Navy blue bob hair, light blue whale-fin ears, white maid headband, navy-and-white dress, icy white apron, small whale tail with a visible waist clasp, and natural rose lips. Four cardinal views; preserve the exact proportions and outfit. Left and right must show real structural differences rather than mirrored poses.",
+    "size": {
+      "width": 96,
+      "height": 96
+    },
+    "directions": 4,
+    "view": "high top-down"
+  },
+  "spritesheet": {
+    "path": "Same_blue-haired_chibi_w-Idle.png",
+    "cell_size": {
+      "width": 96,
+      "height": 96
+    },
+    "sheet_size": {
+      "width": 384,
+      "height": 96
+    },
+    "columns": 4,
+    "pivot": "cell-center",
+    "rows": [
+      {
+        "row": 0,
+        "type": "rotations",
+        "frame_count": 4,
+        "directions": [
+          "south",
+          "west",
+          "east",
+          "north"
+        ]
+      }
+    ]
+  },
+  "export_version": "1.0",
+  "export_date": "2026-11-14T11:30:43.997147+00:00"
+}

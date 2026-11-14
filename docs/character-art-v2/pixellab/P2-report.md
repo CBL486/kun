@@ -4,6 +4,9 @@
 
 日期：2026-11-14
 
+后续记录：P2-1 已执行，但因背面鲸尾不可辨认而阻塞；详见
+`docs/character-art-v2/pixellab/P2-1-report.md`。
+
 执行人：Agent B
 
 审查人：Agent A
