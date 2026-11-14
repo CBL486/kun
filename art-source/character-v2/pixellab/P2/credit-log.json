@@ -1,0 +1,21 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-credit-log-v1",
+  "date": "2026-11-14",
+  "tool": "PixelLab",
+  "branch": "codex/character-art-pixellab-p2",
+  "baseline": "0a9e70b",
+  "p2_0_lip_fix": {
+    "status": "ready-for-a-review",
+    "generations_used": 0,
+    "credits_or_payment": 0
+  },
+  "p2_1_four_direction": {
+    "status": "not-started",
+    "displayed_cost": "8 generations",
+    "pro_subscription_required": false,
+    "generations_used": 0
+  },
+  "purchases": 0,
+  "subscriptions": 0,
+  "pro_used": false
+}

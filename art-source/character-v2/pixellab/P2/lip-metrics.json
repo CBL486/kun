@@ -1,0 +1,52 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-lip-v1",
+  "source": "art-source/character-v2/pixellab/P1/cleaned-64x96.png",
+  "source_sha256": "45E21D3EDABBB201239B359EAAFFDD9C74EC23A5584880914CA6FE10E178AA47",
+  "size": [
+    64,
+    96
+  ],
+  "lip_colors": [
+    "#B85F6C",
+    "#8D4654"
+  ],
+  "colors": 23,
+  "opaque_colors": 22,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "changed_region": "mouth-only",
+  "changed_pixels": 4,
+  "changed_bbox": [
+    29,
+    53,
+    32,
+    55
+  ],
+  "mouth_line": [
+    [
+      29,
+      53
+    ],
+    [
+      30,
+      53
+    ],
+    [
+      31,
+      53
+    ]
+  ],
+  "mouth_shadow": [
+    [
+      30,
+      54
+    ]
+  ],
+  "output": "art-source/character-v2/pixellab/P2/lip-fixed-64x96.png",
+  "output_sha256": "59DBED82B0CB2E3FE5D1E55F7428CE1B139891D383943BC00DFFF2EBC745AF79",
+  "preview": "art-source/character-v2/pixellab/P2/lip-fixed-preview-8x.png",
+  "preview_scale": 8
+}
