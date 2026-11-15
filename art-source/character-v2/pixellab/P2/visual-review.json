@@ -1,0 +1,18 @@
+{
+  "accepted": false,
+  "checks": {
+    "identity_matches_reference": "pass",
+    "down_direction": "pass",
+    "left_direction": "pass",
+    "right_direction": "pass",
+    "up_back_readable": "pass",
+    "north_tail_occlusion_expected": "pass",
+    "alpha_clean": "pass",
+    "palette_within_limit": "pass",
+    "foot_baseline_aligned": "pass",
+    "no_edge_clipping": "pass",
+    "map_readable_48x72": "pass",
+    "console_errors_zero": "pass"
+  },
+  "reviewer_notes": "B verified the 4x previews, transparent edges, four-direction map screenshots, 48x72 runtime rendering, a stable 0 px horizontal switch delta, and zero console errors. Final acceptance remains with Agent A and the user."
+}

@@ -1,0 +1,342 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-2-clean-v1",
+  "status": "ready-for-a-review",
+  "source_sheet": "art-source/character-v2/pixellab/P2/sprite-4dir-raw.png",
+  "source_sha256": "02B6C148B3139932F4D6B703F7E1B1C4B40ECAD557DE357B515912C533FEB65A",
+  "output_sheet": "art-source/character-v2/pixellab/P2/sprite-4dir-cleaned.png",
+  "sheet_size": [
+    256,
+    96
+  ],
+  "frame_size": [
+    64,
+    96
+  ],
+  "direction_order": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "crop_windows": {
+    "down": {
+      "source_direction": "south",
+      "crop_rect_in_source": [
+        20,
+        0,
+        84,
+        96
+      ],
+      "bbox_after_crop": [
+        7,
+        27,
+        57,
+        88
+      ],
+      "vertical_shift": 0
+    },
+    "left": {
+      "source_direction": "west",
+      "crop_rect_in_source": [
+        20,
+        0,
+        84,
+        96
+      ],
+      "bbox_after_crop": [
+        14,
+        26,
+        55,
+        90
+      ],
+      "vertical_shift": -2
+    },
+    "right": {
+      "source_direction": "east",
+      "crop_rect_in_source": [
+        20,
+        0,
+        84,
+        96
+      ],
+      "bbox_after_crop": [
+        2,
+        28,
+        43,
+        92
+      ],
+      "vertical_shift": -4
+    },
+    "up": {
+      "source_direction": "north",
+      "crop_rect_in_source": [
+        20,
+        0,
+        84,
+        96
+      ],
+      "bbox_after_crop": [
+        9,
+        26,
+        47,
+        90
+      ],
+      "vertical_shift": -2
+    }
+  },
+  "frame_vertical_shifts": {
+    "down": 0,
+    "left": -2,
+    "right": -4,
+    "up": -2
+  },
+  "frame_horizontal_alignment_shifts": {
+    "down": 0,
+    "left": -1,
+    "right": 0,
+    "up": 0
+  },
+  "foot_baseline_y": 88,
+  "foot_anchor_x": {
+    "down": 26.5,
+    "left": 28.5,
+    "right": 27.0,
+    "up": 28.0
+  },
+  "adjacent_foot_anchor_gaps": [
+    2.0,
+    1.5,
+    1.0
+  ],
+  "max_adjacent_foot_anchor_gap": 2.0,
+  "colors": 24,
+  "opaque_colors": 23,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "direction_bboxes": {
+    "down": [
+      7,
+      27,
+      57,
+      88
+    ],
+    "left": [
+      13,
+      24,
+      54,
+      88
+    ],
+    "right": [
+      2,
+      24,
+      43,
+      88
+    ],
+    "up": [
+      9,
+      24,
+      47,
+      88
+    ]
+  },
+  "edge_margins": {
+    "down": {
+      "left": 7,
+      "top": 27,
+      "right": 7,
+      "bottom": 8
+    },
+    "left": {
+      "left": 13,
+      "top": 24,
+      "right": 10,
+      "bottom": 8
+    },
+    "right": {
+      "left": 2,
+      "top": 24,
+      "right": 21,
+      "bottom": 8
+    },
+    "up": {
+      "left": 9,
+      "top": 24,
+      "right": 17,
+      "bottom": 8
+    }
+  },
+  "source_colors_before_palette_reduction": 29,
+  "color_merge_mapping": [
+    {
+      "from": "#BB6C79",
+      "to": "#B85F6C",
+      "pixels": 13
+    },
+    {
+      "from": "#A39BAF",
+      "to": "#B5A9BC",
+      "pixels": 19
+    },
+    {
+      "from": "#B1BEE0",
+      "to": "#BAC8DD",
+      "pixels": 61
+    },
+    {
+      "from": "#477FBC",
+      "to": "#3B76AE",
+      "pixels": 151
+    },
+    {
+      "from": "#151520",
+      "to": "#191927",
+      "pixels": 149
+    }
+  ],
+  "changed_pixels_by_palette_reduction": 393,
+  "semantic_colors": {
+    "skin_light": "#FAD4CA",
+    "skin_shadow": "#B5A9BC",
+    "hair_dark": "#0B123F",
+    "hair_mid": "#192A71",
+    "hair_highlight": "#2E558D",
+    "fin_ear_light": "#BAC8DD",
+    "outfit_dark": "#10192D",
+    "outfit_white": "#F5F4EA",
+    "apron_ice": "#E6E3E6",
+    "lip_main": "#B85F6C",
+    "lip_shadow": "#8D4654",
+    "whale_tail_dark": "#0F0E1A",
+    "whale_tail_highlight": "#3B76AE",
+    "outline_dark": "#000000"
+  },
+  "preview": "art-source/character-v2/pixellab/P2/sprite-preview-4x.png",
+  "checker_preview": "art-source/character-v2/pixellab/P2/sprite-preview-checker-4x.png",
+  "map_preview": "art-source/character-v2/pixellab/P2/map-preview-4dir.html",
+  "output_sha256": "ACFFDB829384987DA361150F82CC036F66C0847B16C81C55705061A4AFD55DB8",
+  "generation_count": 0,
+  "pixellab_calls": 0,
+  "map_evidence": {
+    "map_preview": "art-source/character-v2/pixellab/P2/map-preview-4dir.html",
+    "runtime_size": [
+      48,
+      72
+    ],
+    "desktop": {
+      "viewport": [
+        1440,
+        1000
+      ],
+      "screenshot": "art-source/character-v2/pixellab/P2/map-desktop-4dir.png",
+      "screenshot_size": [
+        1440,
+        1000
+      ],
+      "player_rect": [
+        48,
+        72
+      ],
+      "max_horizontal_delta": 0,
+      "direction_samples": [
+        {
+          "direction": "down",
+          "rect": [
+            754,
+            468,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "left",
+          "rect": [
+            754,
+            468,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "right",
+          "rect": [
+            754,
+            468,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "up",
+          "rect": [
+            754,
+            468,
+            48,
+            72
+          ]
+        }
+      ],
+      "console_errors": [],
+      "screenshot_sha256": "125DFA9840B8291F579809A5FEC797C78E6AE020F76966409ED8CE66D1706620"
+    },
+    "mobile": {
+      "viewport": [
+        390,
+        844
+      ],
+      "screenshot": "art-source/character-v2/pixellab/P2/map-mobile-4dir.png",
+      "screenshot_size": [
+        390,
+        844
+      ],
+      "player_rect": [
+        48,
+        72
+      ],
+      "max_horizontal_delta": 0,
+      "direction_samples": [
+        {
+          "direction": "down",
+          "rect": [
+            171,
+            401,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "left",
+          "rect": [
+            171,
+            401,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "right",
+          "rect": [
+            171,
+            401,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "up",
+          "rect": [
+            171,
+            401,
+            48,
+            72
+          ]
+        }
+      ],
+      "console_errors": [],
+      "screenshot_sha256": "03A8964F2695B2B0D29D93822CF6E24C9D0700A6D15C2D5EB45FE4A704950BF2"
+    },
+    "console_errors": []
+  }
+}

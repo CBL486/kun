@@ -1,0 +1,117 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-2-map-capture-v1",
+  "html": "art-source/character-v2/pixellab/P2/map-preview-4dir.html",
+  "desktop": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "screenshot": "art-source/character-v2/pixellab/P2/map-desktop-4dir.png",
+    "screenshot_size": [
+      1440,
+      1000
+    ],
+    "player_rect": [
+      48,
+      72
+    ],
+    "max_horizontal_delta": 0,
+    "direction_samples": [
+      {
+        "direction": "down",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "left",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "right",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "up",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      }
+    ],
+    "console_errors": [],
+    "screenshot_sha256": "125DFA9840B8291F579809A5FEC797C78E6AE020F76966409ED8CE66D1706620"
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "screenshot": "art-source/character-v2/pixellab/P2/map-mobile-4dir.png",
+    "screenshot_size": [
+      390,
+      844
+    ],
+    "player_rect": [
+      48,
+      72
+    ],
+    "max_horizontal_delta": 0,
+    "direction_samples": [
+      {
+        "direction": "down",
+        "rect": [
+          171,
+          401,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "left",
+        "rect": [
+          171,
+          401,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "right",
+        "rect": [
+          171,
+          401,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "up",
+        "rect": [
+          171,
+          401,
+          48,
+          72
+        ]
+      }
+    ],
+    "console_errors": [],
+    "screenshot_sha256": "03A8964F2695B2B0D29D93822CF6E24C9D0700A6D15C2D5EB45FE4A704950BF2"
+  },
+  "all_console_errors": []
+}

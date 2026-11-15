@@ -43,6 +43,18 @@
     "result_sha256": "D3624C5308AAC2797AB60141B2B2A0A200D3AECBEF3B93D879EE63AEA771AF0D",
     "outcome": "Whale-tail silhouette did not extend beyond the original dress."
   },
+  "p2_2_cleanup": {
+    "status": "ready-for-a-review",
+    "generation_submissions": 0,
+    "generations_used": 0,
+    "pixellab_calls": 0,
+    "output": "sprite-4dir-cleaned.png",
+    "output_sha256": "ACFFDB829384987DA361150F82CC036F66C0847B16C81C55705061A4AFD55DB8",
+    "colors": 24,
+    "alpha_values": [0, 255],
+    "sheet_size": [256, 96],
+    "frame_size": [64, 96]
+  },
   "purchases": 0,
   "subscriptions": 1,
   "pro_used": false
