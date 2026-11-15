@@ -1,0 +1,88 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3-audit-v1",
+  "status": "blocked",
+  "blockers": [
+    "no readable short legs in any direction",
+    "no distinct dark navy ankle boots",
+    "down and up do not show two separated legs"
+  ],
+  "source_sha256": "77FB41D39AC16C839246EAAA12FDEC438F270CCE76973FA7E1B20B70E333940B",
+  "output_sha256": "FA891F6C00D1F7B00E4DA26F5DEB4D013782E16C7202B7521282E62DD3C4D437",
+  "raw_sheet_sha256": "FA891F6C00D1F7B00E4DA26F5DEB4D013782E16C7202B7521282E62DD3C4D437",
+  "sheet_size": [
+    384,
+    96
+  ],
+  "frame_size": [
+    96,
+    96
+  ],
+  "direction_order": [
+    "south",
+    "west",
+    "east",
+    "north"
+  ],
+  "common_crop_window": null,
+  "direction_bboxes": {
+    "south": [
+      23,
+      27,
+      73,
+      88
+    ],
+    "west": [
+      28,
+      23,
+      76,
+      91
+    ],
+    "east": [
+      26,
+      26,
+      68,
+      94
+    ],
+    "north": [
+      29,
+      25,
+      73,
+      91
+    ]
+  },
+  "raw_bottom_contact_y": {
+    "south": 87,
+    "west": 90,
+    "east": 93,
+    "north": 90
+  },
+  "foot_baseline_y": null,
+  "foot_anchor_x": null,
+  "leg_visible_height_by_direction": {
+    "down": 0,
+    "left": 0,
+    "right": 0,
+    "up": 0
+  },
+  "boot_color": null,
+  "colors": 29,
+  "opaque_colors": 28,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "lip_colors": [
+    "#C97882",
+    "#A05D63"
+  ],
+  "lip_colors_present": {
+    "#C97882": true,
+    "#A05D63": true
+  },
+  "generation_submissions": 1,
+  "generations_used": 8,
+  "pixellab_calls": 1,
+  "animation_started": false,
+  "production_modified": false
+}

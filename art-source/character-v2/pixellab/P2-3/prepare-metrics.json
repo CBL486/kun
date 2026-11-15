@@ -1,0 +1,44 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3-prepare-v1",
+  "source": "art-source/character-v2/pixellab/P2/sprite-4dir-cleaned.png",
+  "source_sha256": "ACFFDB829384987DA361150F82CC036F66C0847B16C81C55705061A4AFD55DB8",
+  "output": "art-source/character-v2/pixellab/P2-3/input-down-soft-lips-64x96.png",
+  "output_sha256": "77FB41D39AC16C839246EAAA12FDEC438F270CCE76973FA7E1B20B70E333940B",
+  "size": [
+    64,
+    96
+  ],
+  "old_lip_colors": [
+    "#B85F6C",
+    "#8D4654"
+  ],
+  "new_lip_colors": [
+    "#C97882",
+    "#A05D63"
+  ],
+  "changed_pixels": [
+    [
+      25,
+      53
+    ],
+    [
+      26,
+      53
+    ],
+    [
+      27,
+      53
+    ],
+    [
+      26,
+      54
+    ]
+  ],
+  "changed_pixel_count": 4,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "generation_submissions": 0,
+  "pixellab_calls": 0
+}

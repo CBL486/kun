@@ -1,0 +1,22 @@
+{
+  "accepted": false,
+  "checks": {
+    "identity_matches_reference": "pass",
+    "down_direction": "fail-no-separated-legs",
+    "left_direction": "fail-no-readable-near-leg",
+    "right_direction": "fail-no-readable-near-leg",
+    "up_back_readable": "pass",
+    "north_tail_occlusion_expected": "pass",
+    "legs_and_boots_visible": "fail",
+    "two_legs_separated_front_back": "fail",
+    "left_right_real_side_legs": "fail",
+    "foot_baseline_aligned": "fail-not-cleaned",
+    "soft_lip_colors": "pass",
+    "alpha_clean": "pass",
+    "palette_within_limit": "fail-not-cleaned",
+    "no_edge_clipping": "fail-not-cleaned",
+    "map_readable_48x72": "not-run-generation-failed",
+    "console_errors_zero": "not-run-generation-failed"
+  },
+  "reviewer_notes": "The single authorized generation preserved identity and soft lip colors but still drew the character as a long-skirt silhouette. No valid technical cleanup or map pass was produced."
+}

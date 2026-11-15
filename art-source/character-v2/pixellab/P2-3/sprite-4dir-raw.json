@@ -1,0 +1,42 @@
+{
+  "character": {
+    "id": "b7e2cd64-af72-4f75-98a6-180c450bce4c",
+    "name": "Idle",
+    "prompt": "Same blue-haired chibi whale-eared maid, preserve face, navy bob hair, white headband, light-blue fin ears, navy-and-white outfit, ice-white apron, waist bow, small whale tail, and soft natural rose lips. Shorten the skirt hem enough to reveal two short legs and dark navy ankle boots. In the front and back views the two legs must be separated by a small transparent gap. In the left and right views show a readable near leg and a small portion of the far leg. Keep feet planted at the same baseline. Four cardinal views. Left and right must be real side poses, not mirrors. Pixel art, transparent background, 96x96 per direction.",
+    "size": {
+      "width": 96,
+      "height": 96
+    },
+    "template_id": "mannequin",
+    "directions": 4,
+    "view": "high top-down",
+    "created_at": "2026-11-15T09:15:39.668843+00:00"
+  },
+  "spritesheet": {
+    "cell_size": {
+      "width": 96,
+      "height": 96
+    },
+    "sheet_size": {
+      "width": 384,
+      "height": 96
+    },
+    "columns": 4,
+    "rows": [
+      {
+        "row": 0,
+        "type": "rotations",
+        "frame_count": 4,
+        "directions": [
+          "south",
+          "west",
+          "east",
+          "north"
+        ]
+      }
+    ]
+  },
+  "source_export": "PixelLab Standard four-direction ZIP export",
+  "export_version": "3.1",
+  "export_date": "2026-11-15T09:20:12.934755"
+}
