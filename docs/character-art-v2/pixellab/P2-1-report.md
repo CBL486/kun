@@ -4,6 +4,9 @@
 
 日期：2026-11-14
 
+后续记录：P2-1R 已按 A 指令完成一次 PixelLab 局部编辑尝试，但仍未补出
+鲸尾，详见 `docs/character-art-v2/pixellab/P2-1R-report.md`。
+
 执行人：Agent B
 
 审查人：Agent A

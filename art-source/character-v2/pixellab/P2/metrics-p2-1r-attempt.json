@@ -1,0 +1,51 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-1r-attempt-v1",
+  "status": "blocked",
+  "blocker": "north whale tail silhouette did not extend beyond the original dress",
+  "tool": "PixelLab Edit Image",
+  "model": "Standard",
+  "generation_count": 1,
+  "displayed_cost": "1 generation",
+  "image_size": [
+    96,
+    96
+  ],
+  "colors": 135,
+  "opaque_colors": 134,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "original_bbox": [
+    29,
+    26,
+    67,
+    90
+  ],
+  "result_bbox": [
+    29,
+    26,
+    67,
+    90
+  ],
+  "new_opaque_pixels": 1,
+  "removed_opaque_pixels": 0,
+  "color_changed_pixels": 1821,
+  "new_opaque_coordinates": [
+    [
+      59,
+      55
+    ]
+  ],
+  "tail_silhouette_extended": false,
+  "visual_acceptance": {
+    "back_hair": "pass",
+    "back_clothing": "pass",
+    "waist_bow": "pass",
+    "whale_tail": "fail-not-visible"
+  },
+  "result_sha256": "D3624C5308AAC2797AB60141B2B2A0A200D3AECBEF3B93D879EE63AEA771AF0D",
+  "cleaned_spritesheet_created": false,
+  "map_screenshots_created": false,
+  "animation_started": false
+}

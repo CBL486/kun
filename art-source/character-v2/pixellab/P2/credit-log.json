@@ -24,7 +24,26 @@
     "available_balance": null,
     "balance_note": "The PixelLab account route presented a sign-in page; no login was attempted."
   },
+  "membership": {
+    "tier": "Tier 1 Pixel Apprentice",
+    "status": "active",
+    "monthly_generation_limit": 2000,
+    "usage_before_p2_1r": "0 / 2000",
+    "renewal_day": "December 15"
+  },
+  "p2_1r_tail_edit": {
+    "status": "attempted-blocked",
+    "tool": "PixelLab Edit Image",
+    "model": "Standard",
+    "prompt": "Add one small deep-blue whale tail emerging from the lower-right edge of the dark navy dress, matching the whale tail in the reference character. Keep the back hair, white headband, navy-and-white outfit, pale apron bow, body pose, pixel style, and transparent background exactly unchanged.",
+    "displayed_cost": "1 generation",
+    "generation_submissions": 1,
+    "generations_used": 1,
+    "result": "north-tail-edit-attempt.png",
+    "result_sha256": "D3624C5308AAC2797AB60141B2B2A0A200D3AECBEF3B93D879EE63AEA771AF0D",
+    "outcome": "Whale-tail silhouette did not extend beyond the original dress."
+  },
   "purchases": 0,
-  "subscriptions": 0,
+  "subscriptions": 1,
   "pro_used": false
 }
