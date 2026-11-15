@@ -1,0 +1,48 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3r-audit-v1",
+  "status": "blocked",
+  "blocker": "masked result remains a continuous skirt silhouette without two readable separated legs",
+  "input": "art-source/character-v2/pixellab/P2-3R/input-down-soft-lips-64x96.png",
+  "input_sha256": "77FB41D39AC16C839246EAAA12FDEC438F270CCE76973FA7E1B20B70E333940B",
+  "mask": "art-source/character-v2/pixellab/P2-3R/down-lower-body-mask.png",
+  "mask_sha256": "D77F1B787C6A268B682354F6CAC16F3EF35593D6AC1757426C699DFB61B3D35D",
+  "mask_rect": [
+    14,
+    79,
+    46,
+    90
+  ],
+  "result": "art-source/character-v2/pixellab/P2-3R/down-masked-edit-raw.png",
+  "result_sha256": "2A400F3D27392F79316EC4D37AC82CDFBDCEF02D42AE1FCA8EC4ACD518F539C0",
+  "result_bbox": [
+    7,
+    27,
+    57,
+    87
+  ],
+  "changed_pixels_inside_mask": 212,
+  "changed_pixels_outside_mask": 0,
+  "removed_opaque_pixels_outside_mask": 0,
+  "added_opaque_pixels_outside_mask": 0,
+  "leg_visible_height": 0,
+  "two_legs_separated": false,
+  "boot_pixel_count": 0,
+  "boot_colors": [],
+  "lip_colors_present": {
+    "#C97882": true,
+    "#A05D63": true
+  },
+  "colors": 22,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "generation_submissions": 1,
+  "request_attempts": 2,
+  "rejected_validation_requests": 1,
+  "generations_used": 1,
+  "pixellab_calls": 1,
+  "animation_started": false,
+  "production_modified": false
+}

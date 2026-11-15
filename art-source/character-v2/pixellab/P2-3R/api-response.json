@@ -1,0 +1,7 @@
+{
+  "usage": {
+    "type": "generations",
+    "generations": 1
+  },
+  "output": "down-masked-edit-raw.png"
+}

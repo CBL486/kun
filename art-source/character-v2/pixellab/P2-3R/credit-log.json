@@ -1,0 +1,22 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3r-credit-log-v1",
+  "date": "2026-11-15",
+  "branch": "codex/character-art-pixellab-p2-3r",
+  "starting_commit": "0dfa3b4",
+  "endpoint": "POST /v2/inpaint",
+  "model_mode": "Classic",
+  "input_sha256": "77FB41D39AC16C839246EAAA12FDEC438F270CCE76973FA7E1B20B70E333940B",
+  "mask_sha256": "D77F1B787C6A268B682354F6CAC16F3EF35593D6AC1757426C699DFB61B3D35D",
+  "generation_submissions": 1,
+  "request_attempts": 2,
+  "rejected_validation_requests": 1,
+  "generations_used": 1,
+  "usage": {
+    "type": "generations",
+    "generations": 1
+  },
+  "purchases": 0,
+  "upgrades": 0,
+  "pro_used": false,
+  "status": "failed-visual-acceptance"
+}
