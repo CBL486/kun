@@ -1,0 +1,32 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3r3-visual-review-v1",
+  "status": "technical-pass-pending-user-confirmation",
+  "legs": {
+    "two_legs_separated": true,
+    "knee_to_ankle_taper": true,
+    "leg_gap_px": 6
+  },
+  "boots": {
+    "two_boots": true,
+    "cuff_visible": true,
+    "highlight_visible": true,
+    "sole_edges": [
+      88,
+      88
+    ]
+  },
+  "preserved": {
+    "face": true,
+    "soft_lips": true,
+    "arms": true,
+    "hands": true,
+    "hair": true,
+    "fin_ears": true,
+    "skirt": true,
+    "apron": true,
+    "whale_tail": true
+  },
+  "runtime_48x72_preview": "art-source/character-v2/pixellab/P2-3R3/runtime-48x72-preview-8x.png",
+  "user_confirmation": "pending",
+  "animation_authorized": false
+}

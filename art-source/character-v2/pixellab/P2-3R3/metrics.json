@@ -1,0 +1,1144 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3r3-leg-detail-v1",
+  "input": "art-source/character-v2/pixellab/P2-3R2/down-masked-edit-cleaned.png",
+  "input_sha256": "625D0B1E11686BC9BD9217BC20507F3D66CC295E569DCC7A05BB6D06A1D041B6",
+  "output": "art-source/character-v2/pixellab/P2-3R3/down-legs-microadjusted.png",
+  "output_sha256": "3FB4CBF62C854294220838E04C8DA3EDF9CE9E2C4CE5E354FB0843687F563683",
+  "allowed_regions": {
+    "left_leg_boot": [
+      19,
+      73,
+      29,
+      90
+    ],
+    "right_leg_boot": [
+      31,
+      73,
+      41,
+      90
+    ]
+  },
+  "changed_pixels_total": 62,
+  "changed_pixels_outside_allowed_regions": 0,
+  "changed_pixels_by_rule": {
+    "ankle_shadow": 4,
+    "boot_body": 28,
+    "boot_cuff": 12,
+    "boot_highlight": 2,
+    "boot_sole": 12,
+    "boot_toe": 4
+  },
+  "left_leg_width_by_row": {
+    "74": 0,
+    "75": 2,
+    "76": 6,
+    "77": 6,
+    "78": 5,
+    "79": 4,
+    "80": 4,
+    "81": 4
+  },
+  "right_leg_width_by_row": {
+    "74": 2,
+    "75": 5,
+    "76": 6,
+    "77": 6,
+    "78": 6,
+    "79": 5,
+    "80": 5,
+    "81": 4
+  },
+  "leg_components": [
+    {
+      "pixel_count": 39,
+      "bbox_half_open": [
+        32,
+        74,
+        38,
+        82
+      ]
+    },
+    {
+      "pixel_count": 31,
+      "bbox_half_open": [
+        20,
+        75,
+        26,
+        82
+      ]
+    }
+  ],
+  "leg_gap_px": 6,
+  "boot_cuff_pixels": 14,
+  "boot_highlight_pixels": 2,
+  "boot_sole_edges": [
+    88,
+    88
+  ],
+  "colors": 22,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "generation_submissions": 0,
+  "pixellab_calls": 0,
+  "animation_started": false,
+  "production_modified": false,
+  "changed_pixels": [
+    {
+      "x": 20,
+      "y": 82,
+      "rule": "boot_cuff",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "x": 20,
+      "y": 83,
+      "rule": "boot_body",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "x": 20,
+      "y": 84,
+      "rule": "boot_toe",
+      "before": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 20,
+      "y": 85,
+      "rule": "boot_toe",
+      "before": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "after": [
+        45,
+        71,
+        129,
+        255
+      ]
+    },
+    {
+      "x": 21,
+      "y": 83,
+      "rule": "boot_highlight",
+      "before": [
+        32,
+        40,
+        71,
+        255
+      ],
+      "after": [
+        129,
+        143,
+        176,
+        255
+      ]
+    },
+    {
+      "x": 21,
+      "y": 84,
+      "rule": "boot_body",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 21,
+      "y": 85,
+      "rule": "boot_body",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 21,
+      "y": 86,
+      "rule": "boot_body",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 21,
+      "y": 87,
+      "rule": "boot_sole",
+      "before": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 22,
+      "y": 82,
+      "rule": "boot_cuff",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 22,
+      "y": 87,
+      "rule": "boot_sole",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 23,
+      "y": 82,
+      "rule": "boot_cuff",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        26,
+        41,
+        78,
+        255
+      ]
+    },
+    {
+      "x": 23,
+      "y": 83,
+      "rule": "boot_body",
+      "before": [
+        32,
+        40,
+        71,
+        255
+      ],
+      "after": [
+        26,
+        41,
+        78,
+        255
+      ]
+    },
+    {
+      "x": 23,
+      "y": 84,
+      "rule": "boot_body",
+      "before": [
+        32,
+        40,
+        71,
+        255
+      ],
+      "after": [
+        26,
+        41,
+        78,
+        255
+      ]
+    },
+    {
+      "x": 23,
+      "y": 85,
+      "rule": "boot_body",
+      "before": [
+        26,
+        41,
+        78,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 23,
+      "y": 87,
+      "rule": "boot_sole",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 24,
+      "y": 82,
+      "rule": "boot_cuff",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 24,
+      "y": 83,
+      "rule": "boot_body",
+      "before": [
+        26,
+        41,
+        78,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 24,
+      "y": 84,
+      "rule": "boot_body",
+      "before": [
+        26,
+        41,
+        78,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 24,
+      "y": 87,
+      "rule": "boot_sole",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 25,
+      "y": 79,
+      "rule": "ankle_shadow",
+      "before": [
+        250,
+        212,
+        202,
+        255
+      ],
+      "after": [
+        181,
+        169,
+        188,
+        255
+      ]
+    },
+    {
+      "x": 25,
+      "y": 80,
+      "rule": "ankle_shadow",
+      "before": [
+        250,
+        212,
+        202,
+        255
+      ],
+      "after": [
+        181,
+        169,
+        188,
+        255
+      ]
+    },
+    {
+      "x": 25,
+      "y": 82,
+      "rule": "boot_cuff",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 25,
+      "y": 83,
+      "rule": "boot_body",
+      "before": [
+        26,
+        41,
+        78,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 25,
+      "y": 87,
+      "rule": "boot_sole",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 26,
+      "y": 82,
+      "rule": "boot_cuff",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        25,
+        25,
+        39,
+        255
+      ]
+    },
+    {
+      "x": 26,
+      "y": 83,
+      "rule": "boot_body",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        25,
+        25,
+        39,
+        255
+      ]
+    },
+    {
+      "x": 26,
+      "y": 84,
+      "rule": "boot_body",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 26,
+      "y": 85,
+      "rule": "boot_body",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 26,
+      "y": 86,
+      "rule": "boot_body",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 26,
+      "y": 87,
+      "rule": "boot_sole",
+      "before": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 32,
+      "y": 82,
+      "rule": "boot_cuff",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        25,
+        25,
+        39,
+        255
+      ]
+    },
+    {
+      "x": 32,
+      "y": 83,
+      "rule": "boot_body",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 32,
+      "y": 84,
+      "rule": "boot_body",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 32,
+      "y": 85,
+      "rule": "boot_body",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 32,
+      "y": 86,
+      "rule": "boot_body",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 32,
+      "y": 87,
+      "rule": "boot_sole",
+      "before": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 33,
+      "y": 82,
+      "rule": "boot_cuff",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 33,
+      "y": 85,
+      "rule": "boot_body",
+      "before": [
+        26,
+        41,
+        78,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 33,
+      "y": 87,
+      "rule": "boot_sole",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 34,
+      "y": 82,
+      "rule": "boot_cuff",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        26,
+        41,
+        78,
+        255
+      ]
+    },
+    {
+      "x": 34,
+      "y": 83,
+      "rule": "boot_body",
+      "before": [
+        26,
+        41,
+        78,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 34,
+      "y": 86,
+      "rule": "boot_body",
+      "before": [
+        32,
+        40,
+        71,
+        255
+      ],
+      "after": [
+        26,
+        41,
+        78,
+        255
+      ]
+    },
+    {
+      "x": 34,
+      "y": 87,
+      "rule": "boot_sole",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 35,
+      "y": 82,
+      "rule": "boot_cuff",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 35,
+      "y": 83,
+      "rule": "boot_highlight",
+      "before": [
+        32,
+        40,
+        71,
+        255
+      ],
+      "after": [
+        129,
+        143,
+        176,
+        255
+      ]
+    },
+    {
+      "x": 35,
+      "y": 84,
+      "rule": "boot_body",
+      "before": [
+        32,
+        40,
+        71,
+        255
+      ],
+      "after": [
+        26,
+        41,
+        78,
+        255
+      ]
+    },
+    {
+      "x": 35,
+      "y": 85,
+      "rule": "boot_body",
+      "before": [
+        32,
+        40,
+        71,
+        255
+      ],
+      "after": [
+        26,
+        41,
+        78,
+        255
+      ]
+    },
+    {
+      "x": 35,
+      "y": 86,
+      "rule": "boot_body",
+      "before": [
+        26,
+        41,
+        78,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 35,
+      "y": 87,
+      "rule": "boot_sole",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 36,
+      "y": 82,
+      "rule": "boot_cuff",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 36,
+      "y": 85,
+      "rule": "boot_body",
+      "before": [
+        25,
+        25,
+        39,
+        255
+      ],
+      "after": [
+        32,
+        40,
+        71,
+        255
+      ]
+    },
+    {
+      "x": 36,
+      "y": 87,
+      "rule": "boot_sole",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 37,
+      "y": 79,
+      "rule": "ankle_shadow",
+      "before": [
+        250,
+        212,
+        202,
+        255
+      ],
+      "after": [
+        181,
+        169,
+        188,
+        255
+      ]
+    },
+    {
+      "x": 37,
+      "y": 80,
+      "rule": "ankle_shadow",
+      "before": [
+        250,
+        212,
+        202,
+        255
+      ],
+      "after": [
+        181,
+        169,
+        188,
+        255
+      ]
+    },
+    {
+      "x": 37,
+      "y": 85,
+      "rule": "boot_body",
+      "before": [
+        32,
+        40,
+        71,
+        255
+      ],
+      "after": [
+        25,
+        25,
+        39,
+        255
+      ]
+    },
+    {
+      "x": 37,
+      "y": 86,
+      "rule": "boot_body",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 37,
+      "y": 87,
+      "rule": "boot_sole",
+      "before": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 38,
+      "y": 82,
+      "rule": "boot_cuff",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "x": 38,
+      "y": 83,
+      "rule": "boot_body",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "x": 38,
+      "y": 84,
+      "rule": "boot_toe",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        16,
+        25,
+        45,
+        255
+      ]
+    },
+    {
+      "x": 38,
+      "y": 85,
+      "rule": "boot_toe",
+      "before": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "after": [
+        45,
+        71,
+        129,
+        255
+      ]
+    }
+  ]
+}
