@@ -1,0 +1,66 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3r2-mask-v1",
+  "input": "art-source/character-v2/pixellab/P2-3R2/input-down-soft-lips-64x96.png",
+  "input_sha256": "77FB41D39AC16C839246EAAA12FDEC438F270CCE76973FA7E1B20B70E333940B",
+  "mask": "art-source/character-v2/pixellab/P2-3R2/down-lower-body-mask.png",
+  "mask_sha256": "72CBDB2C40088C3BE3F17173789D74861AD74B2A0DA8E4E0155BC66E427C825D",
+  "api_mask": "art-source/character-v2/pixellab/P2-3R2/down-lower-body-mask-api.png",
+  "api_mask_sha256": "E9F299BBAF56761A792373F92A0DD29CE4AFF8FBF23C9028E935F3B994930F55",
+  "mask_polygon": [
+    [
+      20,
+      66
+    ],
+    [
+      43,
+      66
+    ],
+    [
+      46,
+      73
+    ],
+    [
+      47,
+      85
+    ],
+    [
+      43,
+      90
+    ],
+    [
+      22,
+      90
+    ],
+    [
+      16,
+      85
+    ],
+    [
+      17,
+      73
+    ]
+  ],
+  "mask_bbox_half_open": [
+    16,
+    66,
+    48,
+    91
+  ],
+  "mask_visible_bounds_inclusive": [
+    16,
+    66,
+    47,
+    90
+  ],
+  "mask_size": [
+    64,
+    96
+  ],
+  "mask_height": 25,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "covered_pixels": 718,
+  "generation_submissions": 0
+}

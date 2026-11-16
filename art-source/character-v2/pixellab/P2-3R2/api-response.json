@@ -1,0 +1,12 @@
+{
+  "submitted_at": "2026-11-16T01:44:40.3490215Z",
+  "endpoint": "POST /v2/inpaint-v3",
+  "seed": 20261116,
+  "no_background": true,
+  "usage": null,
+  "status_code": 202,
+  "crop_to_mask": false,
+  "model": "Inpaint v3",
+  "status": "processing",
+  "background_job_id": "7f8271e5-b905-4f84-878a-3b6f20a78a07"
+}

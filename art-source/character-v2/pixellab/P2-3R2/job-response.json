@@ -1,0 +1,25 @@
+{
+  "job_id": "7f8271e5-b905-4f84-878a-3b6f20a78a07",
+  "job_status": "completed",
+  "usage": {
+    "type": "generations",
+    "generations": 10.0
+  },
+  "generation_id": "b99cae13-c6a5-4fcf-9702-d6454dd9a753",
+  "generation_mode": "inpainting_v3",
+  "billing_usage": {
+    "usd": 0.0,
+    "type": "generations",
+    "generations": 10
+  },
+  "billing_charged": true,
+  "seed": 20261116,
+  "image_width": 64,
+  "image_height": 96,
+  "quantized_width": 64,
+  "quantized_height": 96,
+  "original_image_n_colors": 1309,
+  "quantized_image_n_colors": 38,
+  "generation_started_at": "2026-11-16T09:44:46.291704+08:00",
+  "downloaded_output": "down-masked-edit-raw.png"
+}

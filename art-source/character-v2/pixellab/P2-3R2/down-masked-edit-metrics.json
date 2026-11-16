@@ -1,0 +1,210 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3r2-audit-v1",
+  "model": "PixelLab Inpaint v3",
+  "background_job_id": "7f8271e5-b905-4f84-878a-3b6f20a78a07",
+  "generation_id": "b99cae13-c6a5-4fcf-9702-d6454dd9a753",
+  "input": "art-source/character-v2/pixellab/P2-3R2/input-down-soft-lips-64x96.png",
+  "input_sha256": "77FB41D39AC16C839246EAAA12FDEC438F270CCE76973FA7E1B20B70E333940B",
+  "mask": "art-source/character-v2/pixellab/P2-3R2/down-lower-body-mask.png",
+  "mask_sha256": "72CBDB2C40088C3BE3F17173789D74861AD74B2A0DA8E4E0155BC66E427C825D",
+  "mask_bbox_half_open": [
+    16,
+    66,
+    48,
+    91
+  ],
+  "mask_height": 25,
+  "result": "art-source/character-v2/pixellab/P2-3R2/down-masked-edit-raw.png",
+  "result_sha256": "7AB1EF712E16F2E707A6D5CCEA4F0423629231D19D206B2DB5D41930EEB62A62",
+  "result_bbox": [
+    8,
+    15,
+    57,
+    88
+  ],
+  "cleaned_result": "art-source/character-v2/pixellab/P2-3R2/down-masked-edit-cleaned.png",
+  "cleaned_result_sha256": "625D0B1E11686BC9BD9217BC20507F3D66CC295E569DCC7A05BB6D06A1D041B6",
+  "cleaned_result_bbox": [
+    7,
+    27,
+    57,
+    88
+  ],
+  "changed_pixels_inside_mask": 586,
+  "changed_pixels_outside_mask": 0,
+  "raw_changed_pixels_outside_mask": 1576,
+  "raw_removed_opaque_pixels_outside_mask": 129,
+  "raw_added_opaque_pixels_outside_mask": 517,
+  "outside_mask_restored_from_input": 1576,
+  "palette_mapped_to_input_palette": true,
+  "skin_scan_crop": [
+    12,
+    72,
+    52,
+    90
+  ],
+  "skin_components": [
+    {
+      "pixel_count": 41,
+      "bbox_half_open": [
+        32,
+        74,
+        38,
+        82
+      ]
+    },
+    {
+      "pixel_count": 33,
+      "bbox_half_open": [
+        20,
+        75,
+        26,
+        82
+      ]
+    },
+    {
+      "pixel_count": 4,
+      "bbox_half_open": [
+        12,
+        76,
+        14,
+        79
+      ]
+    },
+    {
+      "pixel_count": 2,
+      "bbox_half_open": [
+        15,
+        72,
+        17,
+        73
+      ]
+    }
+  ],
+  "skin_component_count": 4,
+  "leg_components": [
+    {
+      "pixel_count": 41,
+      "bbox_half_open": [
+        32,
+        74,
+        38,
+        82
+      ]
+    },
+    {
+      "pixel_count": 33,
+      "bbox_half_open": [
+        20,
+        75,
+        26,
+        82
+      ]
+    }
+  ],
+  "two_legs_separated": true,
+  "leg_gap_px": 6,
+  "leg_gap_requirement_px": [
+    1,
+    2
+  ],
+  "leg_gap_pass": false,
+  "boot_components": [
+    {
+      "pixel_count": 41,
+      "bbox_half_open": [
+        32,
+        81,
+        39,
+        88
+      ]
+    },
+    {
+      "pixel_count": 39,
+      "bbox_half_open": [
+        20,
+        81,
+        27,
+        88
+      ]
+    }
+  ],
+  "boot_count": 2,
+  "boot_pixel_count": 80,
+  "boot_sole_edges": [
+    88
+  ],
+  "boot_soles_aligned": true,
+  "dark_lower_components": [
+    {
+      "pixel_count": 49,
+      "bbox_half_open": [
+        32,
+        81,
+        47,
+        88
+      ]
+    },
+    {
+      "pixel_count": 39,
+      "bbox_half_open": [
+        20,
+        81,
+        27,
+        88
+      ]
+    },
+    {
+      "pixel_count": 6,
+      "bbox_half_open": [
+        13,
+        81,
+        16,
+        84
+      ]
+    },
+    {
+      "pixel_count": 4,
+      "bbox_half_open": [
+        13,
+        84,
+        16,
+        86
+      ]
+    },
+    {
+      "pixel_count": 1,
+      "bbox_half_open": [
+        47,
+        81,
+        48,
+        82
+      ]
+    },
+    {
+      "pixel_count": 1,
+      "bbox_half_open": [
+        16,
+        86,
+        17,
+        87
+      ]
+    }
+  ],
+  "lip_colors_present": {
+    "#C97882": true,
+    "#A05D63": true
+  },
+  "colors": 22,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "generation_submissions": 1,
+  "generation_requests": 1,
+  "generations_used": 10,
+  "animation_started": false,
+  "production_modified": false,
+  "status": "fail"
+}
