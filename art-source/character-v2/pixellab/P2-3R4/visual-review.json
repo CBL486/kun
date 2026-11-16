@@ -1,0 +1,15 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3r4-visual-review-v1",
+  "status": "technical-pass-pending-user-confirmation",
+  "old_skirt_residue_removed": true,
+  "left_hand_preserved": true,
+  "left_cuff_preserved": true,
+  "left_leg_unchanged": true,
+  "right_leg_unchanged": true,
+  "boots_unchanged": true,
+  "exterior_changes": 0,
+  "runtime_48x72_preview": "art-source/character-v2/pixellab/P2-3R4/runtime-48x72-preview-8x.png",
+  "user_confirmation": "pending",
+  "four_direction_authorized": false,
+  "animation_authorized": false
+}
