@@ -1,0 +1,97 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3r5-left-hand-v1",
+  "input": "art-source/character-v2/pixellab/P2-3R4/down-left-skirt-cleaned.png",
+  "input_sha256": "4B51182AA44702F47DB84B014B52DF5ADDD3CCA5D961B21177F85D5557D9B9A2",
+  "raw": "art-source/character-v2/pixellab/P2-3R5/down-left-hand-raw.png",
+  "raw_sha256": "C11B34E77DA4231A6726F8861E05378B6D0B8105037CA9D86A3901EC1A0EE621",
+  "output": "art-source/character-v2/pixellab/P2-3R5/down-left-hand-cleaned.png",
+  "output_sha256": "8D8AC191FED1DBC7A6180092E025B159E19D99DC0166532BA1A01DC1DD4E2AC1",
+  "allowed_region": [
+    9,
+    68,
+    20,
+    84
+  ],
+  "mask_pixel_count": 68,
+  "changed_pixels_inside_mask": 51,
+  "changed_pixels_outside_mask": 0,
+  "raw_changed_pixels_outside_mask": 20,
+  "outside_mask_restored_from_input": 20,
+  "hand_bbox": [
+    10,
+    69,
+    19,
+    80
+  ],
+  "hand_bottom_y": 79,
+  "hand_pixel_count": 60,
+  "hand_width_by_row": {
+    "68": 0,
+    "69": 4,
+    "70": 6,
+    "71": 6,
+    "72": 6,
+    "73": 6,
+    "74": 6,
+    "75": 6,
+    "76": 6,
+    "77": 6,
+    "78": 5,
+    "79": 3,
+    "80": 0
+  },
+  "palm_skin_width_by_row": {
+    "73": 4,
+    "74": 4,
+    "75": 5,
+    "76": 5,
+    "77": 3,
+    "78": 3,
+    "79": 0
+  },
+  "skin_pixels_in_mask": 28,
+  "cuff_pixels_in_mask": 8,
+  "palm_blue_mapped_to_skin_shadow": [
+    [
+      14,
+      75
+    ],
+    [
+      13,
+      76
+    ],
+    [
+      14,
+      76
+    ],
+    [
+      13,
+      77
+    ],
+    [
+      13,
+      78
+    ]
+  ],
+  "soft_lip_colors_inside_hand_mask": 0,
+  "opaque_components_in_allowed_region": 1,
+  "hand_connected_to_arm": true,
+  "palm_readable": true,
+  "rounded_contour_readable": true,
+  "colors": 22,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "lip_colors_present": {
+    "#C97882": true,
+    "#A05D63": true
+  },
+  "generation_submissions": 1,
+  "generation_requests": 1,
+  "generations_used": 10,
+  "pixellab_calls": 1,
+  "animation_started": false,
+  "production_modified": false
+}

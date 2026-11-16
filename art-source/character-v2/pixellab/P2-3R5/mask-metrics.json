@@ -1,0 +1,71 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3r5-mask-v1",
+  "input": "art-source/character-v2/pixellab/P2-3R5/input-down-left-skirt-cleaned.png",
+  "input_sha256": "4B51182AA44702F47DB84B014B52DF5ADDD3CCA5D961B21177F85D5557D9B9A2",
+  "mask": "art-source/character-v2/pixellab/P2-3R5/left-hand-mask.png",
+  "mask_sha256": "C20A3C67B9645E63A0DC663B500D291258F3ECAF1E183377DE21D53A97C03DB2",
+  "api_mask": "art-source/character-v2/pixellab/P2-3R5/left-hand-mask-api.png",
+  "api_mask_sha256": "B666159420381DEAA70B2A28C7849F9565AD387C8F95927AF84750BF54EC5F97",
+  "allowed_region": [
+    9,
+    68,
+    20,
+    84
+  ],
+  "mask_spans": {
+    "69": [
+      14,
+      17
+    ],
+    "70": [
+      13,
+      18
+    ],
+    "71": [
+      13,
+      18
+    ],
+    "72": [
+      12,
+      17
+    ],
+    "73": [
+      12,
+      17
+    ],
+    "74": [
+      11,
+      16
+    ],
+    "75": [
+      10,
+      15
+    ],
+    "76": [
+      10,
+      15
+    ],
+    "77": [
+      10,
+      15
+    ],
+    "78": [
+      10,
+      15
+    ],
+    "79": [
+      10,
+      14
+    ],
+    "80": [
+      10,
+      14
+    ]
+  },
+  "mask_pixel_count": 68,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "generation_submissions": 0
+}

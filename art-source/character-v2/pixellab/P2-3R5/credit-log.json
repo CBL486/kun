@@ -1,0 +1,19 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3r5-credit-log-v1",
+  "date": "2026-11-16",
+  "branch": "codex/character-art-pixellab-p2-3r5",
+  "starting_commit": "c655558",
+  "taskbook_commit": "2e28c79",
+  "endpoint": "POST /v2/inpaint-v3",
+  "model": "Inpaint v3",
+  "subscription_plan": "Tier 1: Pixel Apprentice",
+  "seed": 20261117,
+  "generation_submissions": 1,
+  "generations_used": 10,
+  "balance_before_generation": 1986.9,
+  "balance_after_generation": 1976.9,
+  "purchases": 0,
+  "upgrades": 0,
+  "pro_used": false,
+  "status": "technical-pass-pending-user-confirmation"
+}

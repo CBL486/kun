@@ -1,0 +1,13 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3r5-visual-review-v1",
+  "status": "technical-check-pending-visual-confirmation",
+  "hand_connected_to_arm": true,
+  "palm_readable": true,
+  "thumb_or_round_contour_readable": true,
+  "cuff_visible": true,
+  "hand_no_long_strip": true,
+  "outside_mask_changes": 0,
+  "user_confirmation": "pending",
+  "four_direction_authorized": false,
+  "animation_authorized": false
+}
