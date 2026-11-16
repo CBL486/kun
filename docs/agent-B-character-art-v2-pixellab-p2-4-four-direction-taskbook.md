@@ -1,12 +1,13 @@
 # ART-V2 PixelLab P2-4 完整四方向静态角色任务书
 
-状态：授权执行；一次四方向主生成；完成后停止等待验收
+状态：ON HOLD — 等待 P2-3R6 双手比例修复通过；当前不得执行
 编写人：Agent A
 执行人：Agent B
 审查人：Agent A
 分支：`codex/character-art-pixellab-p2-4`
 起点：`1dd7afd`
 生产边界：不修改正式运行时，不部署，不接触生产、密钥、数据库或真实用户数据
+前置任务：`docs/agent-B-character-art-v2-pixellab-p2-3r6-two-hands-taskbook.md`
 
 ## 1. 目标
 
