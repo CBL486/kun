@@ -181,3 +181,12 @@ art-source/character-v2/pixellab/P2-3R2/api-response.json
 art-source/character-v2/pixellab/P2-3R2/job-response.json
 art-source/character-v2/pixellab/P2-3R2/credit-log.json
 ```
+
+## 9. 回归
+
+```text
+.\scripts\test-b7.ps1
+262 passed, 1 warning
+```
+
+警告为既有 Starlette/httpx 弃用提示。
