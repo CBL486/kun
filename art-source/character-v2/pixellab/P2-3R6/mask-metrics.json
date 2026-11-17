@@ -1,0 +1,29 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3r6-mask-v1",
+  "input": "art-source/character-v2/pixellab/P2-3R6/input-down-left-hand-cleaned.png",
+  "input_sha256": "8D8AC191FED1DBC7A6180092E025B159E19D99DC0166532BA1A01DC1DD4E2AC1",
+  "left_mask_sha256": "360EFCC233BF2E90629F77EB57BDCA809C09861922E34713375DAB0C979F0825",
+  "right_mask_sha256": "CF269E8BF058C0DFC0F1C86C7462A0748CDEE3D204738757B7EDA5A70B0AD252",
+  "combined_mask_sha256": "473A8650ADE0A7365D558C8E4C35C6B5282648075D09A6E6DF15F3895B4F24D7",
+  "api_mask_sha256": "A1F9B0B22E01E7A955BA7F8B455EA94F49D7622F0C5F2725A24532A639DFCA54",
+  "left_region": [
+    9,
+    68,
+    20,
+    82
+  ],
+  "right_region": [
+    42,
+    65,
+    56,
+    83
+  ],
+  "left_mask_pixels": 80,
+  "right_mask_pixels": 60,
+  "masks_are_separate": true,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "generation_submissions": 0
+}

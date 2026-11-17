@@ -1,0 +1,76 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-3r6-two-hands-v1",
+  "input_sha256": "8D8AC191FED1DBC7A6180092E025B159E19D99DC0166532BA1A01DC1DD4E2AC1",
+  "raw_sha256": "08BEFA0183DB47715D19CB3A3D89F3408F604108981E0291ED8CE1BC3B5FAF41",
+  "output_sha256": "54F1C7BD7D301577006A093A5EAE9AAA49B786996E36634C3B4B0FA47869E1E9",
+  "background_job_id": "1ff8755c-bf1f-44b6-93cf-b74a67e9a411",
+  "generation_id": "37e184ad-e091-4300-97fc-2feb42e0ee48",
+  "left_hand_bbox": [
+    12,
+    70,
+    17,
+    75
+  ],
+  "right_hand_bbox": [
+    42,
+    68,
+    46,
+    76
+  ],
+  "left_hand_outer_size": [
+    5,
+    3
+  ],
+  "right_hand_outer_size": [
+    4,
+    5
+  ],
+  "left_hand_outer_bbox": [
+    12,
+    72,
+    17,
+    75
+  ],
+  "right_hand_outer_bbox": [
+    42,
+    71,
+    46,
+    76
+  ],
+  "left_palm_skin_width_by_row": {
+    "72": 1,
+    "73": 3,
+    "74": 0,
+    "75": 0
+  },
+  "right_palm_skin_width_by_row": {
+    "71": 1,
+    "72": 3,
+    "73": 3,
+    "74": 2,
+    "75": 0
+  },
+  "left_cuff_pixels": 6,
+  "right_cuff_pixels": 4,
+  "left_hand_connected": true,
+  "right_hand_connected": true,
+  "right_hand_in_front_of_tail": true,
+  "changed_pixels_inside_masks": 65,
+  "changed_pixels_outside_masks": 0,
+  "raw_changed_pixels_outside_masks": 17,
+  "outside_mask_restored_from_input": 17,
+  "soft_lip_colors_inside_hand_masks": 0,
+  "palm_blue_mapped_to_skin_shadow": [],
+  "colors": 22,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "generation_submissions": 1,
+  "generation_requests": 1,
+  "generations_used": 10,
+  "pixellab_calls": 1,
+  "animation_started": false,
+  "production_modified": false
+}

@@ -1,0 +1,23 @@
+{
+  "job_id": "1ff8755c-bf1f-44b6-93cf-b74a67e9a411",
+  "job_status": "completed",
+  "usage": {
+    "type": "generations",
+    "generations": 10.0
+  },
+  "generation_id": "37e184ad-e091-4300-97fc-2feb42e0ee48",
+  "generation_mode": "inpainting_v3",
+  "billing_usage": {
+    "usd": 0.0,
+    "type": "generations",
+    "generations": 10
+  },
+  "billing_charged": true,
+  "seed": 20261118,
+  "image_width": 64,
+  "image_height": 96,
+  "original_image_n_colors": 129,
+  "quantized_image_n_colors": 27,
+  "generation_started_at": "2026-11-17T17:10:18.402854+08:00",
+  "downloaded_output": "down-two-hands-raw.png"
+}
