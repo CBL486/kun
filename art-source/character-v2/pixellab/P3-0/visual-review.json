@@ -1,0 +1,21 @@
+{
+  "schema_version": "rpg-character-pixellab-p3-0-visual-review-v1",
+  "status": "blocked-down-proof",
+  "checks": {
+    "frame0_exact_p2_4": true,
+    "four_frames_present": true,
+    "foot_baseline_y88": true,
+    "face_stable": false,
+    "mouth_stable": false,
+    "hair_tail_motion_at_most_1px": false,
+    "hands_small": true,
+    "other_directions_generated": false
+  },
+  "blockers": [
+    "frames 2 and 3 visibly change the mouth from a soft smile to an open expression",
+    "face and silhouette change beyond the allowed 1-pixel idle breathing"
+  ],
+  "review_evidence": "art-source/character-v2/pixellab/P3-0/idle-down-proof-4f-preview-8x.png",
+  "animation_authorized": false,
+  "four_direction_animation_completed": false
+}

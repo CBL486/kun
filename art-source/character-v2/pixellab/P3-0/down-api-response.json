@@ -1,0 +1,19 @@
+{
+  "model": "Animation v3",
+  "directions": [
+    "south"
+  ],
+  "endpoint": "POST /v2/characters/animations",
+  "submitted_at": "2026-11-17T10:33:19.2240816Z",
+  "status_code": 200,
+  "background_job_ids": [
+    "674934b7-a715-4c6c-937b-0b4cfadb5de1"
+  ],
+  "frame_count": 4,
+  "mode": "v3",
+  "keep_first_frame": true,
+  "status": "processing",
+  "seed": 20261120,
+  "usage": null,
+  "animation_group_id": "e75f8be6-873e-4f99-b41d-177cd0f170ea"
+}

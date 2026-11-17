@@ -1,0 +1,94 @@
+{
+  "schema_version": "rpg-character-pixellab-p3-0-down-proof-v1",
+  "status": "fail-face-expression-drift",
+  "source_sheet_sha256": "6B11705F7C3C599697B4D5CFAC6B3C8137CCE7FA5A8E6CB6136BF4C5800CAD12",
+  "output_sheet_sha256": "A2DDEDB6EC3BA1C0F3059B4E15D477780336FF5ABC0A3D284897CACECD680DD9",
+  "sheet_size": [
+    256,
+    96
+  ],
+  "frame_size": [
+    64,
+    96
+  ],
+  "direction_order": [
+    "down"
+  ],
+  "frame_count": 4,
+  "fps": 5,
+  "loop_order": [
+    0,
+    1,
+    2,
+    3,
+    0
+  ],
+  "row_frame0_pixel_identical_to_p2_4": true,
+  "common_crop_window": [
+    24,
+    8,
+    88,
+    104
+  ],
+  "frame_vertical_shifts": [
+    0,
+    0,
+    1,
+    0
+  ],
+  "frame_bboxes": [
+    [
+      7,
+      27,
+      57,
+      88
+    ],
+    [
+      8,
+      13,
+      58,
+      88
+    ],
+    [
+      8,
+      11,
+      59,
+      88
+    ],
+    [
+      7,
+      11,
+      60,
+      88
+    ]
+  ],
+  "sole_bottom_rows": [
+    87,
+    87,
+    87,
+    87
+  ],
+  "face_changed_pixels_vs_frame0": [
+    876,
+    1111,
+    1267
+  ],
+  "changed_pixels_between_adjacent_frames": [
+    1424,
+    1564,
+    1738
+  ],
+  "loop_frame3_to_frame0_changed_pixels": 2003,
+  "colors": 22,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "generation_submissions_by_direction": {
+    "down": 1
+  },
+  "generations_used": 1,
+  "animation_started": true,
+  "production_modified": false
+}

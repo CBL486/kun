@@ -1,0 +1,48 @@
+{
+  "schema_version": "rpg-character-pixellab-p3-0-credit-log-v1",
+  "date": "2026-11-17",
+  "branch": "codex/character-art-pixellab-p3-0-idle",
+  "starting_commit": "7b62880",
+  "taskbook_commit": "bf4ff47",
+  "endpoint": "POST /v2/characters/animations",
+  "model": "Animation v3",
+  "subscription_plan": "Tier 1: Pixel Apprentice",
+  "character_id": "7b4646da-32b0-4ac6-8e40-f66082036224",
+  "animation_group_id": "e75f8be6-873e-4f99-b41d-177cd0f170ea",
+  "animation_id": "6ec43bc7-ec2f-46f7-b144-168221ae89e3",
+  "generation_id": "660269f9-3a75-4cab-b580-abc1ecc2e45f",
+  "requested_seed": 20261120,
+  "actual_seed": 571592768,
+  "directions": {
+    "down": {
+      "model": "v3",
+      "submission_count": 1,
+      "generations_used": 1,
+      "output_id": "6ec43bc7-ec2f-46f7-b144-168221ae89e3"
+    },
+    "left": {
+      "model": null,
+      "submission_count": 0,
+      "generations_used": 0,
+      "output_id": null
+    },
+    "right": {
+      "model": null,
+      "submission_count": 0,
+      "generations_used": 0,
+      "output_id": null
+    },
+    "up": {
+      "model": null,
+      "submission_count": 0,
+      "generations_used": 0,
+      "output_id": null
+    }
+  },
+  "balance_before_generation": 1965.9,
+  "balance_after_generation": 1964.9,
+  "purchases": 0,
+  "upgrades": 0,
+  "pro_used": false,
+  "status": "blocked-down-proof"
+}

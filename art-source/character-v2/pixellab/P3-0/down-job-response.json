@@ -1,0 +1,32 @@
+{
+  "job_id": "674934b7-a715-4c6c-937b-0b4cfadb5de1",
+  "job_status": "completed",
+  "usage": {
+    "type": "generations",
+    "generations": 1.0
+  },
+  "generation_id": "660269f9-3a75-4cab-b580-abc1ecc2e45f",
+  "animation_id": "6ec43bc7-ec2f-46f7-b144-168221ae89e3",
+  "animation_group_id": "e75f8be6-873e-4f99-b41d-177cd0f170ea",
+  "frame_count": 5,
+  "requested_frame_count": 4,
+  "keep_first_frame": true,
+  "generation_model": "v3",
+  "billing_usage": {
+    "usd": 0.0,
+    "type": "generations",
+    "generations": 1
+  },
+  "seed": 571592768,
+  "action": "Very subtle idle breathing loop for a chibi pixel-art whale maid. Keep both boots planted at exactly the same baseline. Raise and lower the chest and shoulders by at most one pixel. Let the head follow by at most one pixel without changing the face. Add only one-pixel secondary motion to the hair tips, fin ears and whale tail. Keep both compact hands small and attached to their white cuffs. Preserve the short skirt, legs, boots, tail, outfit and all four direction silhouettes. Pixel art, binary alpha, no antialiasing, no blinking, no walking, no turning, no new character design.",
+  "input_frames_digest": null,
+  "storage_urls": {
+    "frames": [
+      "https://backblaze.pixellab.ai/file/pixellab-characters/fccb5e56-c7b3-443f-a301-525f3545fa90/7b4646da-32b0-4ac6-8e40-f66082036224/animations/6ec43bc7-ec2f-46f7-b144-168221ae89e3/south/0.png",
+      "https://backblaze.pixellab.ai/file/pixellab-characters/fccb5e56-c7b3-443f-a301-525f3545fa90/7b4646da-32b0-4ac6-8e40-f66082036224/animations/6ec43bc7-ec2f-46f7-b144-168221ae89e3/south/1.png",
+      "https://backblaze.pixellab.ai/file/pixellab-characters/fccb5e56-c7b3-443f-a301-525f3545fa90/7b4646da-32b0-4ac6-8e40-f66082036224/animations/6ec43bc7-ec2f-46f7-b144-168221ae89e3/south/2.png",
+      "https://backblaze.pixellab.ai/file/pixellab-characters/fccb5e56-c7b3-443f-a301-525f3545fa90/7b4646da-32b0-4ac6-8e40-f66082036224/animations/6ec43bc7-ec2f-46f7-b144-168221ae89e3/south/3.png",
+      "https://backblaze.pixellab.ai/file/pixellab-characters/fccb5e56-c7b3-443f-a301-525f3545fa90/7b4646da-32b0-4ac6-8e40-f66082036224/animations/6ec43bc7-ec2f-46f7-b144-168221ae89e3/south/4.png"
+    ]
+  }
+}
