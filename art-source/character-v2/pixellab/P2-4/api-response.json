@@ -1,0 +1,13 @@
+{
+  "seed": 20261119,
+  "reference_direction": "south",
+  "view": "high top-down",
+  "character_id": "7b4646da-32b0-4ac6-8e40-f66082036224",
+  "usage": null,
+  "submitted_at": "2026-11-17T09:47:42.5795232Z",
+  "status": "processing",
+  "endpoint": "POST /v2/create-character-with-4-directions",
+  "status_code": 200,
+  "model": "Standard 4 directions",
+  "background_job_id": "fb23530c-8170-4f80-a070-e8387939daca"
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-4-credit-log-v1",
+  "date": "2026-11-17",
+  "branch": "codex/character-art-pixellab-p2-4",
+  "starting_commit": "bf2a640",
+  "taskbook_commit": "1f3fab9",
+  "endpoint": "POST /v2/create-character-with-4-directions",
+  "model": "Standard 4 directions",
+  "subscription_plan": "Tier 1: Pixel Apprentice",
+  "view": "high top-down",
+  "seed": 20261119,
+  "character_id": "7b4646da-32b0-4ac6-8e40-f66082036224",
+  "generation_id": "5226c0da-1e04-49c4-81e1-57fd2474223c",
+  "generation_submissions": 1,
+  "generations_used": 1,
+  "balance_before_generation": 1966.9,
+  "balance_after_generation": 1965.9,
+  "purchases": 0,
+  "upgrades": 0,
+  "pro_used": false,
+  "status": "technical-pass-pending-user-confirmation"
+}

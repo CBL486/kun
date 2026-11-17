@@ -1,0 +1,18 @@
+{
+  "character_id": "7b4646da-32b0-4ac6-8e40-f66082036224",
+  "generation_id": "5226c0da-1e04-49c4-81e1-57fd2474223c",
+  "direction_order": [
+    "south",
+    "west",
+    "east",
+    "north"
+  ],
+  "directions_count": 4,
+  "view": "high top-down",
+  "template_id": "mannequin",
+  "seed": 20261119,
+  "raw_sheet_size": [
+    384,
+    96
+  ]
+}

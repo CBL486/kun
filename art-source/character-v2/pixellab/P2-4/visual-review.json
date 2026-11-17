@@ -1,0 +1,24 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-4-visual-review-v1",
+  "status": "technical-pass-pending-user-confirmation",
+  "checks": {
+    "identity_matches_reference": true,
+    "down_exact_approved": true,
+    "left_real_side": true,
+    "right_real_side": true,
+    "left_right_not_mirrored": true,
+    "left_near_leg_visible": true,
+    "right_near_leg_visible": true,
+    "up_back_readable": true,
+    "up_boots_visible": true,
+    "hands_compact": true,
+    "tail_preserved": true,
+    "foot_baseline_aligned": true,
+    "palette_within_limit": true,
+    "alpha_clean": true,
+    "map_readable_48x72": true,
+    "console_errors_zero": true
+  },
+  "user_confirmation": "pending",
+  "animation_authorized": false
+}

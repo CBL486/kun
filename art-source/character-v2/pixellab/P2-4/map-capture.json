@@ -1,0 +1,111 @@
+{
+  "schema_version": "rpg-character-pixellab-p2-4-map-capture-v1",
+  "html": "art-source/character-v2/pixellab/P2-4/map-preview-4dir.html",
+  "desktop": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "is_mobile": false,
+    "screenshot": "art-source/character-v2/pixellab/P2-4/map-desktop-4dir.png",
+    "player_rect": [
+      48,
+      72
+    ],
+    "max_horizontal_delta": 0,
+    "direction_samples": [
+      {
+        "direction": "down",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "left",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "right",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "up",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      }
+    ],
+    "console_errors": [],
+    "screenshot_sha256": "62BEE7D6430917D4EF4688335084C505BBC4227C80848C640582A15B2B2640AF"
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "is_mobile": true,
+    "screenshot": "art-source/character-v2/pixellab/P2-4/map-mobile-4dir.png",
+    "player_rect": [
+      48,
+      72
+    ],
+    "max_horizontal_delta": 0,
+    "direction_samples": [
+      {
+        "direction": "down",
+        "rect": [
+          171,
+          367,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "left",
+        "rect": [
+          171,
+          367,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "right",
+        "rect": [
+          171,
+          367,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "up",
+        "rect": [
+          171,
+          367,
+          48,
+          72
+        ]
+      }
+    ],
+    "console_errors": [],
+    "screenshot_sha256": "08FF9A01FDA0A04A04B1BCC9173AFE6490137D64AC70D21D782ED91E1485E1BA"
+  },
+  "all_console_errors": []
+}
