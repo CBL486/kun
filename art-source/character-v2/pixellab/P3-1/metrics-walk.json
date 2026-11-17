@@ -1,0 +1,577 @@
+{
+  "schema_version": "rpg-character-pixellab-p3-1-walk-v1",
+  "status": "technical-pass-pending-user-confirmation",
+  "source_sheet_sha256": "2277C5B0B4D4C50F40D0246C87828C16197C4A5AA0F83B8A58E5C0D42D510B69",
+  "output_sheet_sha256": "B2778093916657A445757C3CFB31091A11570B09C16EEC46743748AF2314CDED",
+  "sheet_size": [
+    384,
+    384
+  ],
+  "frame_size": [
+    64,
+    96
+  ],
+  "direction_order": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "frame_count": 6,
+  "fps": 9,
+  "loop_order": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    0
+  ],
+  "phases": [
+    "contact",
+    "down",
+    "pass",
+    "contact",
+    "down",
+    "pass"
+  ],
+  "frame_bboxes": {
+    "down": [
+      [
+        7,
+        27,
+        57,
+        88
+      ],
+      [
+        7,
+        27,
+        57,
+        89
+      ],
+      [
+        7,
+        27,
+        57,
+        88
+      ],
+      [
+        7,
+        27,
+        57,
+        88
+      ],
+      [
+        7,
+        27,
+        57,
+        89
+      ],
+      [
+        7,
+        27,
+        57,
+        88
+      ]
+    ],
+    "left": [
+      [
+        19,
+        21,
+        58,
+        88
+      ],
+      [
+        19,
+        21,
+        58,
+        89
+      ],
+      [
+        19,
+        21,
+        58,
+        87
+      ],
+      [
+        19,
+        21,
+        58,
+        88
+      ],
+      [
+        19,
+        21,
+        58,
+        89
+      ],
+      [
+        19,
+        21,
+        58,
+        88
+      ]
+    ],
+    "right": [
+      [
+        18,
+        22,
+        62,
+        88
+      ],
+      [
+        18,
+        22,
+        62,
+        89
+      ],
+      [
+        18,
+        22,
+        62,
+        87
+      ],
+      [
+        18,
+        22,
+        62,
+        88
+      ],
+      [
+        18,
+        22,
+        62,
+        89
+      ],
+      [
+        18,
+        22,
+        62,
+        88
+      ]
+    ],
+    "up": [
+      [
+        13,
+        22,
+        57,
+        88
+      ],
+      [
+        13,
+        22,
+        57,
+        89
+      ],
+      [
+        13,
+        22,
+        57,
+        88
+      ],
+      [
+        13,
+        22,
+        57,
+        88
+      ],
+      [
+        13,
+        22,
+        57,
+        89
+      ],
+      [
+        13,
+        22,
+        57,
+        88
+      ]
+    ]
+  },
+  "sole_bottom_rows": {
+    "down": [
+      87,
+      88,
+      87,
+      87,
+      88,
+      87
+    ],
+    "left": [
+      87,
+      88,
+      86,
+      87,
+      88,
+      87
+    ],
+    "right": [
+      87,
+      88,
+      86,
+      87,
+      88,
+      87
+    ],
+    "up": [
+      87,
+      88,
+      87,
+      87,
+      88,
+      87
+    ]
+  },
+  "frame_anchor_x": {
+    "down": [
+      30.29032258064516,
+      30.29032258064516,
+      30.79032258064516,
+      30.29032258064516,
+      30.29032258064516,
+      30.79032258064516
+    ],
+    "left": [
+      34.22,
+      34.22,
+      35.22,
+      36.22,
+      36.22,
+      35.22
+    ],
+    "right": [
+      29.171717171717173,
+      29.171717171717173,
+      30.171717171717173,
+      31.171717171717173,
+      31.171717171717173,
+      30.171717171717173
+    ],
+    "up": [
+      34.471830985915496,
+      34.471830985915496,
+      34.971830985915496,
+      34.471830985915496,
+      34.471830985915496,
+      34.971830985915496
+    ]
+  },
+  "max_anchor_x_drift": 1.0,
+  "max_sole_bottom_drift": 1,
+  "changed_pixels_between_adjacent_frames": {
+    "down": [
+      103,
+      114,
+      113,
+      102,
+      118,
+      116
+    ],
+    "left": [
+      69,
+      87,
+      72,
+      67,
+      84,
+      64
+    ],
+    "right": [
+      72,
+      97,
+      75,
+      71,
+      82,
+      60
+    ],
+    "up": [
+      76,
+      100,
+      102,
+      76,
+      95,
+      104
+    ]
+  },
+  "loop_frame5_to_frame0_changed_pixels": {
+    "down": 116,
+    "left": 64,
+    "right": 60,
+    "up": 104
+  },
+  "protected_region_changes_between_adjacent_frames": {
+    "down": {
+      "face": 0,
+      "torso": 0,
+      "hands": 0
+    },
+    "left": {
+      "face": 0,
+      "torso": 0,
+      "hands": 0
+    },
+    "right": {
+      "face": 0,
+      "torso": 0,
+      "hands": 0
+    },
+    "up": {
+      "face": 0,
+      "torso": 0,
+      "hands": 0
+    }
+  },
+  "colors": 22,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "generation_submissions": 0,
+  "pixellab_calls": 0,
+  "animation_started": false,
+  "production_modified": false,
+  "preview_webp": "art-source/character-v2/pixellab/P3-1/walk-preview-4x.webp",
+  "preview_gif": "art-source/character-v2/pixellab/P3-1/walk-preview-checker-4x.gif",
+  "contact_sheet": "art-source/character-v2/pixellab/P3-1/walk-contact-sheet.png",
+  "map_preview": "art-source/character-v2/pixellab/P3-1/map-preview-walk.html",
+  "map_evidence": {
+    "map_preview": "art-source/character-v2/pixellab/P3-1/map-preview-walk.html",
+    "runtime_size": [
+      48,
+      72
+    ],
+    "desktop": {
+      "viewport": [
+        1440,
+        1000
+      ],
+      "is_mobile": false,
+      "screenshot": "art-source/character-v2/pixellab/P3-1/map-desktop-walk.png",
+      "screenshot_sha256": "E82266D431B0F599CB3D80DD0F0026465148406A9D60FC501198171E84AC64ED",
+      "player_rect": [
+        48,
+        72
+      ],
+      "max_horizontal_delta": 0,
+      "direction_samples": [
+        {
+          "direction": "down",
+          "rect": [
+            754,
+            468,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "left",
+          "rect": [
+            754,
+            468,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "right",
+          "rect": [
+            754,
+            468,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "up",
+          "rect": [
+            754,
+            468,
+            48,
+            72
+          ]
+        }
+      ],
+      "proof_cells": [
+        {
+          "direction": "down",
+          "frame": 0,
+          "rect": [
+            35,
+            897,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "down",
+          "frame": 1,
+          "rect": [
+            264,
+            897,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "down",
+          "frame": 2,
+          "rect": [
+            494,
+            897,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "left",
+          "frame": 2,
+          "rect": [
+            723,
+            897,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "right",
+          "frame": 2,
+          "rect": [
+            952,
+            897,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "up",
+          "frame": 2,
+          "rect": [
+            1182,
+            897,
+            48,
+            72
+          ]
+        }
+      ],
+      "console_errors": []
+    },
+    "mobile": {
+      "viewport": [
+        390,
+        844
+      ],
+      "is_mobile": true,
+      "screenshot": "art-source/character-v2/pixellab/P3-1/map-mobile-walk.png",
+      "screenshot_sha256": "56F56A1B498F1B8A1577139FD7573F99610B908EE4316D990A2E33F7C17E125C",
+      "player_rect": [
+        48,
+        72
+      ],
+      "max_horizontal_delta": 0,
+      "direction_samples": [
+        {
+          "direction": "down",
+          "rect": [
+            171,
+            325,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "left",
+          "rect": [
+            171,
+            325,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "right",
+          "rect": [
+            171,
+            325,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "up",
+          "rect": [
+            171,
+            325,
+            48,
+            72
+          ]
+        }
+      ],
+      "proof_cells": [
+        {
+          "direction": "down",
+          "frame": 0,
+          "rect": [
+            63,
+            710,
+            31,
+            31
+          ]
+        },
+        {
+          "direction": "down",
+          "frame": 1,
+          "rect": [
+            179,
+            710,
+            31,
+            31
+          ]
+        },
+        {
+          "direction": "down",
+          "frame": 2,
+          "rect": [
+            296,
+            710,
+            31,
+            31
+          ]
+        },
+        {
+          "direction": "left",
+          "frame": 2,
+          "rect": [
+            63,
+            777,
+            31,
+            31
+          ]
+        },
+        {
+          "direction": "right",
+          "frame": 2,
+          "rect": [
+            179,
+            777,
+            31,
+            31
+          ]
+        },
+        {
+          "direction": "up",
+          "frame": 2,
+          "rect": [
+            296,
+            777,
+            31,
+            31
+          ]
+        }
+      ],
+      "console_errors": []
+    },
+    "console_errors": []
+  }
+}

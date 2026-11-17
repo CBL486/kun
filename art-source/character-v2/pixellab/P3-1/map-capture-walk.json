@@ -1,0 +1,239 @@
+{
+  "schema_version": "rpg-character-pixellab-p3-1-map-capture-v1",
+  "html": "art-source/character-v2/pixellab/P3-1/map-preview-walk.html",
+  "runtime_size": [
+    48,
+    72
+  ],
+  "desktop": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "is_mobile": false,
+    "screenshot": "art-source/character-v2/pixellab/P3-1/map-desktop-walk.png",
+    "screenshot_sha256": "E82266D431B0F599CB3D80DD0F0026465148406A9D60FC501198171E84AC64ED",
+    "player_rect": [
+      48,
+      72
+    ],
+    "max_horizontal_delta": 0,
+    "direction_samples": [
+      {
+        "direction": "down",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "left",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "right",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "up",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      }
+    ],
+    "proof_cells": [
+      {
+        "direction": "down",
+        "frame": 0,
+        "rect": [
+          35,
+          897,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "down",
+        "frame": 1,
+        "rect": [
+          264,
+          897,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "down",
+        "frame": 2,
+        "rect": [
+          494,
+          897,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "left",
+        "frame": 2,
+        "rect": [
+          723,
+          897,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "right",
+        "frame": 2,
+        "rect": [
+          952,
+          897,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "up",
+        "frame": 2,
+        "rect": [
+          1182,
+          897,
+          48,
+          72
+        ]
+      }
+    ],
+    "console_errors": []
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "is_mobile": true,
+    "screenshot": "art-source/character-v2/pixellab/P3-1/map-mobile-walk.png",
+    "screenshot_sha256": "56F56A1B498F1B8A1577139FD7573F99610B908EE4316D990A2E33F7C17E125C",
+    "player_rect": [
+      48,
+      72
+    ],
+    "max_horizontal_delta": 0,
+    "direction_samples": [
+      {
+        "direction": "down",
+        "rect": [
+          171,
+          325,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "left",
+        "rect": [
+          171,
+          325,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "right",
+        "rect": [
+          171,
+          325,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "up",
+        "rect": [
+          171,
+          325,
+          48,
+          72
+        ]
+      }
+    ],
+    "proof_cells": [
+      {
+        "direction": "down",
+        "frame": 0,
+        "rect": [
+          63,
+          710,
+          31,
+          31
+        ]
+      },
+      {
+        "direction": "down",
+        "frame": 1,
+        "rect": [
+          179,
+          710,
+          31,
+          31
+        ]
+      },
+      {
+        "direction": "down",
+        "frame": 2,
+        "rect": [
+          296,
+          710,
+          31,
+          31
+        ]
+      },
+      {
+        "direction": "left",
+        "frame": 2,
+        "rect": [
+          63,
+          777,
+          31,
+          31
+        ]
+      },
+      {
+        "direction": "right",
+        "frame": 2,
+        "rect": [
+          179,
+          777,
+          31,
+          31
+        ]
+      },
+      {
+        "direction": "up",
+        "frame": 2,
+        "rect": [
+          296,
+          777,
+          31,
+          31
+        ]
+      }
+    ],
+    "console_errors": []
+  },
+  "all_console_errors": []
+}

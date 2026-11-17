@@ -1,0 +1,19 @@
+{
+  "schema_version": "rpg-character-pixellab-p3-1-walk-visual-v1",
+  "status": "technical-pass-pending-user-confirmation",
+  "checks": {
+    "six_frames_per_direction": true,
+    "contact_down_pass_phases_recorded": true,
+    "face_static": true,
+    "torso_static": true,
+    "hands_static": true,
+    "foot_baseline_drift_lte_1": true,
+    "frame_anchor_drift_lte_1": true,
+    "palette_22": true,
+    "binary_alpha": true,
+    "map_readable_48x72": true,
+    "console_errors_zero": true
+  },
+  "user_confirmation": "pending",
+  "idle_locked": true
+}
