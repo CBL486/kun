@@ -1,20 +1,20 @@
 # ART-V2 PixelLab P2-4 完整四方向静态角色任务书
 
-状态：ON HOLD — 等待 P2-3R6 双手比例修复通过；当前不得执行
+状态：授权执行；P2-3R6 双手母版已通过；最多一次四方向主生成
 编写人：Agent A
 执行人：Agent B
 审查人：Agent A
 分支：`codex/character-art-pixellab-p2-4`
-起点：`1dd7afd`
+起点：`bf2a640`
 生产边界：不修改正式运行时，不部署，不接触生产、密钥、数据库或真实用户数据
-前置任务：`docs/agent-B-character-art-v2-pixellab-p2-3r6-two-hands-taskbook.md`
+前置任务：P2-3R6 双手比例修复已通过
 
 ## 1. 目标
 
 把当前已确认的 down 单帧扩展成完整四方向静态精灵表：
 
 ```text
-down：使用当前已批准的 P2-3R5 单帧
+down：使用当前已批准的 P2-3R6 双手单帧
 left：真实左侧面
 right：真实右侧面
 up：真实背面
@@ -29,13 +29,13 @@ up：真实背面
 - 短裙和可见短腿；
 - 深蓝短靴；
 - 鲸尾；
-- 可读的左手/袖口。
+- 可读的左右手/袖口。
 
 ## 2. 唯一 down 母版
 
 ```text
-art-source/character-v2/pixellab/P2-3R5/down-left-hand-cleaned.png
-SHA-256: 8D8AC191FED1DBC7A6180092E025B159E19D99DC0166532BA1A01DC1DD4E2AC1
+art-source/character-v2/pixellab/P2-3R6/down-two-hands-cleaned.png
+SHA-256: 54F1C7BD7D301577006A093A5EAE9AAA49B786996E36634C3B4B0FA47869E1E9
 ```
 
 Down 是最终批准帧。PixelLab 本次即使生成 south 方向，也不得覆盖这个已批准 down；最终精灵表的第一格必须逐像素等于该文件。
@@ -69,13 +69,13 @@ Same blue-haired chibi whale-eared maid as the reference. Preserve the exact
 face, large blue eyes, soft rose lips, navy bob hair, white maid headband,
 light-blue fin ears, navy-and-white outfit, ice-white apron, waist bow,
 short skirt with visible short legs, dark navy ankle boots, small whale tail,
-and readable rounded left hand with a 1-pixel white cuff.
+two compact readable hands with matching 1-pixel white cuffs.
 
 Generate four cardinal views. Keep the chibi proportions and outfit structure.
 In down and up views show two separated legs and two boots. In left and right
 views show a readable near leg and a small portion of the far leg, with real
 side poses rather than mirrors. Both boot soles must align to the same baseline.
-The left hand must remain a compact rounded hand, never a long strip or sleeve.
+Both hands must remain compact rounded hands, never oversized fists, long strips or sleeves.
 North view must show back hair, back clothing, rear waist bow and both boots;
 the whale tail may be naturally occluded from directly behind.
 
@@ -117,7 +117,7 @@ Alpha 0/255
 1. 每个 96×96 原始格使用统一 64 px 公共裁切窗口；
 2. 不按方向 bbox 分别居中；
 3. 不拉伸、不旋转、不手工补画；
-4. down 直接使用 P2-3R5 批准帧，不使用生成 south；
+4. down 直接使用 P2-3R6 批准帧，不使用生成 south；
 5. left/right/up 从 PixelLab 结果裁切；
 6. 对生成帧做确定性色板映射，优先沿用 down 的 22 色；
 7. 所有鞋底接触边界统一 y=88；
@@ -127,8 +127,8 @@ Alpha 0/255
 
 ### down
 
-- 必须逐像素等于 P2-3R5 批准帧；
-- 柔唇、左手、旧裙清理保持。
+- 必须逐像素等于 P2-3R6 批准帧；
+- 柔唇、双手比例、旧裙清理保持。
 
 ### left / right
 
@@ -243,7 +243,7 @@ P2-4 通过：用户视觉确认
 
 ```text
 预计：8 generations
-当前余额：1976.9
+当前余额：1966.9
 不购买 Pro
 不升级
 最多 1 次四方向提交
@@ -253,13 +253,13 @@ P2-4 通过：用户视觉确认
 ## 11. 给 Agent B 的启动消息
 
 ```text
-你是 AI World 项目的 Agent B。P2-3R5 左手已通过，现在开始 P2-4 完整四方向静态角色。
+你是 AI World 项目的 Agent B。P2-3R6 双手比例已通过，现在开始 P2-4 完整四方向静态角色。
 
-创建 codex/character-art-pixellab-p2-4，从 1dd7afd 开始。
-唯一 down 母版：art-source/character-v2/pixellab/P2-3R5/down-left-hand-cleaned.png
+创建 codex/character-art-pixellab-p2-4，从 bf2a640 开始。
+唯一 down 母版：art-source/character-v2/pixellab/P2-3R6/down-two-hands-cleaned.png
 Down 最终必须逐像素保持该文件，不允许被生成的 south 覆盖。
 
-使用 PixelLab Standard 4 directions、high top-down，只提交一次，预计 8 generations。目标：同一角色、短裙露腿、双靴、可读圆手、软唇、鲸鳍耳和鲸尾；left/right 必须真实侧向而非镜像；up 必须有两腿/鞋跟、后发和蝴蝶结，鲸尾可自然遮挡。
+使用 PixelLab Standard 4 directions、high top-down，只提交一次，预计 8 generations。目标：同一角色、短裙露腿、双靴、两只协调小手、软唇、鲸鳍耳和鲸尾；left/right 必须真实侧向而非镜像；up 必须有两腿/鞋跟、后发和蝴蝶结，鲸尾可自然遮挡。
 
 清理为 256×96，每帧 64×96，色板 21～24，Alpha 0/255，鞋底 y=88。交 4x/棋盘格预览、桌面/手机 48×72 地图截图、mirror ratio、direction bbox、metrics、credit-log 和可复现脚本。
 
