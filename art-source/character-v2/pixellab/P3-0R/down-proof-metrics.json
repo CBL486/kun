@@ -1,7 +1,7 @@
 {
   "schema_version": "rpg-character-pixellab-p3-0r-idle-down-proof-v1",
   "source_sheet_sha256": "6B11705F7C3C599697B4D5CFAC6B3C8137CCE7FA5A8E6CB6136BF4C5800CAD12",
-  "output_sheet_sha256": "7A009043A0A3B4DAD8F7299CAA930E4DF2F220B4C0605C8F7231320A0406A087",
+  "output_sheet_sha256": "F7A4BAC86D7AB932E83AD8B2D93379EA5339E874692F5C733A1D70E361A99B3D",
   "sheet_size": [
     256,
     96
@@ -24,17 +24,17 @@
   ],
   "frame0_pixel_identical_to_p2_4": true,
   "frame2_pixel_identical_to_frame0": true,
-  "secondary_region_changed_pixels": 11,
+  "secondary_region_changed_pixels": 32,
   "face_region_changed_pixels": 0,
   "torso_region_changed_pixels": 0,
   "hand_region_changed_pixels": 0,
   "leg_region_changed_pixels": 0,
   "changed_pixels_between_adjacent_frames": [
-    8,
-    8,
-    7
+    23,
+    23,
+    26
   ],
-  "loop_frame3_to_frame0_changed_pixels": 7,
+  "loop_frame3_to_frame0_changed_pixels": 26,
   "frame_bboxes": [
     [
       7,

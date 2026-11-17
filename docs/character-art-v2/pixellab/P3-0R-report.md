@@ -2,6 +2,9 @@
 
 状态：`TECHNICAL PASS — PENDING USER CONFIRMATION`
 
+返工说明：用户拒绝首版过于单一的边缘抖动。本版扩大为连续的鲸尾末端/后发侧束
+1 px 位移，仍不改变面部、躯干、手、腿和靴子。
+
 日期：2026-11-17
 
 执行人：Agent B
@@ -51,7 +54,7 @@ down/left/right 位移鲸尾轮廓，up 位移背面发梢。位移均使用显�
 
 ```text
 art-source/character-v2/pixellab/P3-0R/idle-4dir-4f.png
-SHA-256: 2277C5B0B4D4C50F40D0246C87828C16197C4A5AA0F83B8A58E5C0D42D510B69
+SHA-256: 656A0414BDAE81EB52CB546441AA67039CB96AB947BD4A5300420E3D9A9B5B69
 ```
 
 预览：
@@ -105,28 +108,28 @@ up   ：(13,22,57,88)
 次级区域变化：
 
 ```text
-down：11 px
-left：19 px
-right：20 px
-up：18 px
+down：32 px
+left：41 px
+right：57 px
+up：41 px
 ```
 
 相邻帧变化：
 
 ```text
-down ：8 / 8 / 7
-left ：14 / 14 / 12
-right：14 / 14 / 13
-up   ：12 / 12 / 12
+down ：23 / 23 / 26
+left ：27 / 27 / 33
+right：35 / 35 / 37
+up   ：26 / 26 / 27
 ```
 
 首尾循环变化：
 
 ```text
-down：7
-left：12
-right：13
-up：12
+down：26
+left：33
+right：37
+up：27
 ```
 
 ## 5. 地图证据

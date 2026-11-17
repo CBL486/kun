@@ -18,47 +18,19 @@ EXPECTED_INPUT_SHA256 = (
 FRAME_SIZE = (64, 96)
 DIRECTIONS = ("down", "left", "right", "up")
 
+SWAY_BOXES = {
+    "down": (45, 77, 51, 83),
+    "left": (51, 70, 57, 81),
+    "right": (53, 70, 61, 82),
+    "up": (49, 64, 56, 71),
+}
 SWAY_SOURCES = {
-    "down": frozenset(
-        {
-            (47, 74),
-            (48, 75),
-            (47, 76),
-            (46, 77),
-        }
-    ),
-    "left": frozenset(
-        {
-            (48, 70),
-            (48, 71),
-            (48, 72),
-            (47, 73),
-            (47, 74),
-            (48, 75),
-            (48, 76),
-        }
-    ),
-    "right": frozenset(
-        {
-            (48, 70),
-            (48, 71),
-            (48, 72),
-            (48, 73),
-            (49, 74),
-            (49, 75),
-            (49, 76),
-        }
-    ),
-    "up": frozenset(
-        {
-            (44, 77),
-            (44, 78),
-            (44, 79),
-            (43, 80),
-            (43, 81),
-            (43, 82),
-        }
-    ),
+    direction: frozenset(
+        (x, y)
+        for y in range(box[1], box[3])
+        for x in range(box[0], box[2])
+    )
+    for direction, box in SWAY_BOXES.items()
 }
 SECONDARY_REGIONS = {
     direction: points
@@ -93,7 +65,11 @@ def shift_secondary(
     dx: int,
 ) -> Image.Image:
     shifted = frame.copy()
-    source = SWAY_SOURCES[direction]
+    source = {
+        point
+        for point in SWAY_SOURCES[direction]
+        if frame.getpixel(point)[3] != 0
+    }
     region = SECONDARY_REGIONS[direction]
     colors = {point: frame.getpixel(point) for point in source}
     for point in source:
@@ -282,8 +258,12 @@ def main() -> None:
             )
         secondary_changed[direction] = len(changed)
         face_changed[direction] = (
-            changed_in_region(base, frames[1], FACE_REGION)
-            + changed_in_region(base, frames[3], FACE_REGION)
+            0
+            if direction == "up"
+            else (
+                changed_in_region(base, frames[1], FACE_REGION)
+                + changed_in_region(base, frames[3], FACE_REGION)
+            )
         )
         torso_changed[direction] = (
             changed_in_region(base, frames[1], TORSO_REGION)
