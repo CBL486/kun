@@ -1,0 +1,219 @@
+{
+  "schema_version": "rpg-character-pixellab-p3-0r-map-capture-v1",
+  "html": "art-source/character-v2/pixellab/P3-0R/map-preview-idle.html",
+  "runtime_size": [
+    48,
+    72
+  ],
+  "desktop": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "is_mobile": false,
+    "screenshot": "art-source/character-v2/pixellab/P3-0R/map-desktop-idle.png",
+    "screenshot_sha256": "E2D8B222EF69BD38C01B2C140368B4D07BAA0B7D35F17C5E882A4C26A3A69058",
+    "player_rect": [
+      48,
+      72
+    ],
+    "max_horizontal_delta": 0,
+    "direction_samples": [
+      {
+        "direction": "down",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "left",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "right",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "up",
+        "rect": [
+          754,
+          468,
+          48,
+          72
+        ]
+      }
+    ],
+    "proof_cells": [
+      {
+        "direction": "down",
+        "frame": 0,
+        "rect": [
+          35,
+          897,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "down",
+        "frame": 1,
+        "rect": [
+          311,
+          897,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "left",
+        "frame": 1,
+        "rect": [
+          586,
+          897,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "right",
+        "frame": 1,
+        "rect": [
+          862,
+          897,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "up",
+        "frame": 1,
+        "rect": [
+          1137,
+          897,
+          48,
+          72
+        ]
+      }
+    ],
+    "console_errors": []
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "is_mobile": true,
+    "screenshot": "art-source/character-v2/pixellab/P3-0R/map-mobile-idle.png",
+    "screenshot_sha256": "0409F4AFC312727AF449134487E966921B7D991356046469CEA862AB3135571D",
+    "player_rect": [
+      48,
+      72
+    ],
+    "max_horizontal_delta": 0,
+    "direction_samples": [
+      {
+        "direction": "down",
+        "rect": [
+          171,
+          358,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "left",
+        "rect": [
+          171,
+          358,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "right",
+        "rect": [
+          171,
+          358,
+          48,
+          72
+        ]
+      },
+      {
+        "direction": "up",
+        "rect": [
+          171,
+          358,
+          48,
+          72
+        ]
+      }
+    ],
+    "proof_cells": [
+      {
+        "direction": "down",
+        "frame": 0,
+        "rect": [
+          61,
+          701,
+          35,
+          35
+        ]
+      },
+      {
+        "direction": "down",
+        "frame": 1,
+        "rect": [
+          178,
+          701,
+          35,
+          35
+        ]
+      },
+      {
+        "direction": "left",
+        "frame": 1,
+        "rect": [
+          294,
+          701,
+          35,
+          35
+        ]
+      },
+      {
+        "direction": "right",
+        "frame": 1,
+        "rect": [
+          61,
+          771,
+          35,
+          35
+        ]
+      },
+      {
+        "direction": "up",
+        "frame": 1,
+        "rect": [
+          178,
+          771,
+          35,
+          35
+        ]
+      }
+    ],
+    "console_errors": []
+  },
+  "all_console_errors": []
+}

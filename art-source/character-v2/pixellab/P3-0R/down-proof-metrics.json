@@ -1,0 +1,80 @@
+{
+  "schema_version": "rpg-character-pixellab-p3-0r-idle-down-proof-v1",
+  "source_sheet_sha256": "6B11705F7C3C599697B4D5CFAC6B3C8137CCE7FA5A8E6CB6136BF4C5800CAD12",
+  "output_sheet_sha256": "7A009043A0A3B4DAD8F7299CAA930E4DF2F220B4C0605C8F7231320A0406A087",
+  "sheet_size": [
+    256,
+    96
+  ],
+  "frame_size": [
+    64,
+    96
+  ],
+  "direction_order": [
+    "down"
+  ],
+  "frame_count": 4,
+  "fps": 5,
+  "loop_order": [
+    0,
+    1,
+    2,
+    3,
+    0
+  ],
+  "frame0_pixel_identical_to_p2_4": true,
+  "frame2_pixel_identical_to_frame0": true,
+  "secondary_region_changed_pixels": 11,
+  "face_region_changed_pixels": 0,
+  "torso_region_changed_pixels": 0,
+  "hand_region_changed_pixels": 0,
+  "leg_region_changed_pixels": 0,
+  "changed_pixels_between_adjacent_frames": [
+    8,
+    8,
+    7
+  ],
+  "loop_frame3_to_frame0_changed_pixels": 7,
+  "frame_bboxes": [
+    [
+      7,
+      27,
+      57,
+      88
+    ],
+    [
+      7,
+      27,
+      57,
+      88
+    ],
+    [
+      7,
+      27,
+      57,
+      88
+    ],
+    [
+      7,
+      27,
+      57,
+      88
+    ]
+  ],
+  "sole_bottom_rows": [
+    87,
+    87,
+    87,
+    87
+  ],
+  "colors": 22,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "generation_submissions": 0,
+  "pixellab_calls": 0,
+  "animation_started": false,
+  "production_modified": false
+}

@@ -1,0 +1,603 @@
+{
+  "schema_version": "rpg-character-pixellab-p3-0r-idle-v1",
+  "status": "technical-pass-pending-user-confirmation",
+  "source_sheet_sha256": "6B11705F7C3C599697B4D5CFAC6B3C8137CCE7FA5A8E6CB6136BF4C5800CAD12",
+  "output_sheet_sha256": "2277C5B0B4D4C50F40D0246C87828C16197C4A5AA0F83B8A58E5C0D42D510B69",
+  "sheet_size": [
+    256,
+    384
+  ],
+  "frame_size": [
+    64,
+    96
+  ],
+  "direction_order": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "frame_count": 4,
+  "fps": 5,
+  "loop_order": [
+    0,
+    1,
+    2,
+    3,
+    0
+  ],
+  "frame0_pixel_identical_to_p2_4": true,
+  "frame2_pixel_identical_to_frame0": true,
+  "secondary_motion_rules": {
+    "down": {
+      "source_pixels": [
+        [
+          46,
+          77
+        ],
+        [
+          47,
+          74
+        ],
+        [
+          47,
+          76
+        ],
+        [
+          48,
+          75
+        ]
+      ],
+      "frame1_dx": -1,
+      "frame3_dx": 1
+    },
+    "left": {
+      "source_pixels": [
+        [
+          47,
+          73
+        ],
+        [
+          47,
+          74
+        ],
+        [
+          48,
+          70
+        ],
+        [
+          48,
+          71
+        ],
+        [
+          48,
+          72
+        ],
+        [
+          48,
+          75
+        ],
+        [
+          48,
+          76
+        ]
+      ],
+      "frame1_dx": -1,
+      "frame3_dx": 1
+    },
+    "right": {
+      "source_pixels": [
+        [
+          48,
+          70
+        ],
+        [
+          48,
+          71
+        ],
+        [
+          48,
+          72
+        ],
+        [
+          48,
+          73
+        ],
+        [
+          49,
+          74
+        ],
+        [
+          49,
+          75
+        ],
+        [
+          49,
+          76
+        ]
+      ],
+      "frame1_dx": -1,
+      "frame3_dx": 1
+    },
+    "up": {
+      "source_pixels": [
+        [
+          43,
+          80
+        ],
+        [
+          43,
+          81
+        ],
+        [
+          43,
+          82
+        ],
+        [
+          44,
+          77
+        ],
+        [
+          44,
+          78
+        ],
+        [
+          44,
+          79
+        ]
+      ],
+      "frame1_dx": -1,
+      "frame3_dx": 1
+    }
+  },
+  "secondary_region_changed_pixels": {
+    "down": 11,
+    "left": 19,
+    "right": 20,
+    "up": 18
+  },
+  "face_region_changed_pixels": {
+    "down": 0,
+    "left": 0,
+    "right": 0,
+    "up": 0
+  },
+  "torso_region_changed_pixels": {
+    "down": 0,
+    "left": 0,
+    "right": 0,
+    "up": 0
+  },
+  "hand_region_changed_pixels": {
+    "down": 0,
+    "left": 0,
+    "right": 0,
+    "up": 0
+  },
+  "leg_region_changed_pixels": {
+    "down": 0,
+    "left": 0,
+    "right": 0,
+    "up": 0
+  },
+  "changed_pixels_between_adjacent_frames": {
+    "down": [
+      8,
+      8,
+      7
+    ],
+    "left": [
+      14,
+      14,
+      12
+    ],
+    "right": [
+      14,
+      14,
+      13
+    ],
+    "up": [
+      12,
+      12,
+      12
+    ]
+  },
+  "loop_frame3_to_frame0_changed_pixels": {
+    "down": 7,
+    "left": 12,
+    "right": 13,
+    "up": 12
+  },
+  "frame_bboxes": {
+    "down": [
+      [
+        7,
+        27,
+        57,
+        88
+      ],
+      [
+        7,
+        27,
+        57,
+        88
+      ],
+      [
+        7,
+        27,
+        57,
+        88
+      ],
+      [
+        7,
+        27,
+        57,
+        88
+      ]
+    ],
+    "left": [
+      [
+        19,
+        21,
+        58,
+        88
+      ],
+      [
+        19,
+        21,
+        58,
+        88
+      ],
+      [
+        19,
+        21,
+        58,
+        88
+      ],
+      [
+        19,
+        21,
+        58,
+        88
+      ]
+    ],
+    "right": [
+      [
+        18,
+        22,
+        62,
+        88
+      ],
+      [
+        18,
+        22,
+        62,
+        88
+      ],
+      [
+        18,
+        22,
+        62,
+        88
+      ],
+      [
+        18,
+        22,
+        62,
+        88
+      ]
+    ],
+    "up": [
+      [
+        13,
+        22,
+        57,
+        88
+      ],
+      [
+        13,
+        22,
+        57,
+        88
+      ],
+      [
+        13,
+        22,
+        57,
+        88
+      ],
+      [
+        13,
+        22,
+        57,
+        88
+      ]
+    ]
+  },
+  "sole_bottom_rows": {
+    "down": [
+      87,
+      87,
+      87,
+      87
+    ],
+    "left": [
+      87,
+      87,
+      87,
+      87
+    ],
+    "right": [
+      87,
+      87,
+      87,
+      87
+    ],
+    "up": [
+      87,
+      87,
+      87,
+      87
+    ]
+  },
+  "frame_anchor_x": {
+    "down": [
+      29.0,
+      29.0,
+      29.0,
+      29.0
+    ],
+    "left": [
+      34.0,
+      34.0,
+      34.0,
+      34.0
+    ],
+    "right": [
+      29.0,
+      29.0,
+      29.0,
+      29.0
+    ],
+    "up": [
+      34.5,
+      34.5,
+      34.5,
+      34.5
+    ]
+  },
+  "max_anchor_x_drift": 0.0,
+  "max_sole_bottom_drift": 0,
+  "colors": 22,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "semi_transparent_pixels": 0,
+  "generation_submissions": 0,
+  "pixellab_calls": 0,
+  "animation_started": false,
+  "production_modified": false,
+  "preview_webp": "art-source/character-v2/pixellab/P3-0R/idle-preview-4x.webp",
+  "preview_gif": "art-source/character-v2/pixellab/P3-0R/idle-preview-checker-4x.gif",
+  "contact_sheet": "art-source/character-v2/pixellab/P3-0R/idle-contact-sheet.png",
+  "map_preview": "art-source/character-v2/pixellab/P3-0R/map-preview-idle.html",
+  "map_evidence": {
+    "map_preview": "art-source/character-v2/pixellab/P3-0R/map-preview-idle.html",
+    "runtime_size": [
+      48,
+      72
+    ],
+    "desktop": {
+      "viewport": [
+        1440,
+        1000
+      ],
+      "is_mobile": false,
+      "screenshot": "art-source/character-v2/pixellab/P3-0R/map-desktop-idle.png",
+      "screenshot_sha256": "E2D8B222EF69BD38C01B2C140368B4D07BAA0B7D35F17C5E882A4C26A3A69058",
+      "player_rect": [
+        48,
+        72
+      ],
+      "max_horizontal_delta": 0,
+      "direction_samples": [
+        {
+          "direction": "down",
+          "rect": [
+            754,
+            468,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "left",
+          "rect": [
+            754,
+            468,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "right",
+          "rect": [
+            754,
+            468,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "up",
+          "rect": [
+            754,
+            468,
+            48,
+            72
+          ]
+        }
+      ],
+      "proof_cells": [
+        {
+          "direction": "down",
+          "frame": 0,
+          "rect": [
+            35,
+            897,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "down",
+          "frame": 1,
+          "rect": [
+            311,
+            897,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "left",
+          "frame": 1,
+          "rect": [
+            586,
+            897,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "right",
+          "frame": 1,
+          "rect": [
+            862,
+            897,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "up",
+          "frame": 1,
+          "rect": [
+            1137,
+            897,
+            48,
+            72
+          ]
+        }
+      ],
+      "console_errors": []
+    },
+    "mobile": {
+      "viewport": [
+        390,
+        844
+      ],
+      "is_mobile": true,
+      "screenshot": "art-source/character-v2/pixellab/P3-0R/map-mobile-idle.png",
+      "screenshot_sha256": "0409F4AFC312727AF449134487E966921B7D991356046469CEA862AB3135571D",
+      "player_rect": [
+        48,
+        72
+      ],
+      "max_horizontal_delta": 0,
+      "direction_samples": [
+        {
+          "direction": "down",
+          "rect": [
+            171,
+            358,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "left",
+          "rect": [
+            171,
+            358,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "right",
+          "rect": [
+            171,
+            358,
+            48,
+            72
+          ]
+        },
+        {
+          "direction": "up",
+          "rect": [
+            171,
+            358,
+            48,
+            72
+          ]
+        }
+      ],
+      "proof_cells": [
+        {
+          "direction": "down",
+          "frame": 0,
+          "rect": [
+            61,
+            701,
+            35,
+            35
+          ]
+        },
+        {
+          "direction": "down",
+          "frame": 1,
+          "rect": [
+            178,
+            701,
+            35,
+            35
+          ]
+        },
+        {
+          "direction": "left",
+          "frame": 1,
+          "rect": [
+            294,
+            701,
+            35,
+            35
+          ]
+        },
+        {
+          "direction": "right",
+          "frame": 1,
+          "rect": [
+            61,
+            771,
+            35,
+            35
+          ]
+        },
+        {
+          "direction": "up",
+          "frame": 1,
+          "rect": [
+            178,
+            771,
+            35,
+            35
+          ]
+        }
+      ],
+      "console_errors": []
+    },
+    "console_errors": []
+  }
+}

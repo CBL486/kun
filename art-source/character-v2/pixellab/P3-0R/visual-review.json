@@ -1,0 +1,23 @@
+{
+  "schema_version": "rpg-character-pixellab-p3-0r-idle-visual-v1",
+  "status": "technical-pass-pending-user-confirmation",
+  "checks": {
+    "down_proof": true,
+    "frame0_exact": true,
+    "frame2_exact": true,
+    "face_unchanged": true,
+    "torso_unchanged": true,
+    "hands_unchanged": true,
+    "legs_boots_unchanged": true,
+    "secondary_motion_one_pixel": true,
+    "overall_bbox_unchanged": true,
+    "sole_y88": true,
+    "four_directions_complete": true,
+    "animated_webp": true,
+    "animated_gif": true,
+    "contact_sheet": true,
+    "map_capture": true,
+    "map_console_errors_zero": true
+  },
+  "user_confirmation": "pending"
+}

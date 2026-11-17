@@ -1,0 +1,14 @@
+{
+  "schema_version": "rpg-character-pixellab-p3-0r-credit-log-v1",
+  "date": "2026-11-17",
+  "branch": "codex/character-art-pixellab-p3-0r-idle",
+  "starting_commit": "ff9b334",
+  "taskbook_commit": "d70c687",
+  "generation_submissions": 0,
+  "generations_used": 0,
+  "pixellab_calls": 0,
+  "purchases": 0,
+  "upgrades": 0,
+  "pro_used": false,
+  "status": "technical-pass-pending-user-confirmation"
+}
